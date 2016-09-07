@@ -1,0 +1,4 @@
+#!/bin/bash
+wget -t0 -c http://pratyeka.org/zomia/sounds.tar.gz
+tar -xf sounds.tar.gz
+rm sounds.tar.gz
