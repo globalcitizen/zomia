@@ -1,0 +1,411 @@
+..:: Concept and Realisation ::..
+
+@globalcitizen / Walter Stanish
+
+..:: Special thanks ::..
+
+The open source movement
+Creative Commons
+freemusicarchive.org
+freesound.org
+
+..:: Software Tools ::..
+
+audacity
+bfxr
+Gimp
+Love2D
+Lua
+rotLove
+vi
+
+..:: Music ::..
+
+'Overworld' by Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1600009 / Uploaded: 2016-02-09)
+
+'Irregular' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: ? / Uploaded: 2011-05-04)
+
+'Ritual' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1100466 / Uploaded: 2008-06-08)
+
+'Chanter' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1100571 / Uploaded: 2009-03-15)
+
+'Tabuk' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1100818 / Uploaded: 2011-04-23)
+
+'Dhaka' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400003 / Uploaded: 2014-01-14)
+
+'Pippin the Hunchback' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400005 / Uploaded: 2014-01-16)
+
+'Jalandhar' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400018 / Uploaded: 2014-05-03)
+
+'Teller of the Tales' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400020 / Uploaded: 2014-05-13)
+
+'Lord of the Land' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400022 / Uploaded: 2014-05-13)
+
+'Suonatore di Liuto' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400023 / Uploaded: 2014-05-13)
+
+'Sardana' Kevin MacLeod (incompetech.com)
+CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+(ISRC: USUAN1400055 / Uploaded: 2014-11-25)
+
+--
+
+'Across the Sky' Kevin D. Hartnell (kevinhartnell.com) (USA)
+CC BY-SA 4.0 
+http://creativecommons.org/licenses/by-sa/4.0/
+(Uploaded: 2016-08-12)
+
+'Tree of Tears' Kevin D. Hartnell (kevinhartnell.com) (USA)
+CC BY-SA 4.0 
+http://creativecommons.org/licenses/by-sa/4.0/
+(Uploaded: 2016-08-12)
+
+--
+
+Album: 'It's time for adventure!' / Komiku (France)
+
+Tracks 'Fouler l'horizon', 'Le Grand Village', 'Champ de tournesol', 'Barque sur le lac', 'La Citadelle', 'La ville aux ponts suspendus', 'La montagne', 'Un désert', 'De l'herbe sous les pieds', 'Quelques rues sombres', 'Trop la win', 'Pirates libertaires', 'Bleu', 'Un coin loin du monde', 'L'orage et l'aventure'.
+
+CC-0 1.0 Universal License (Public Domain)
+http://creativecommons.org/publicdomain/zero/1.0/
+(Uploaded: 2016-07-21)
+
+--
+
+Album: 'Vide' / Monplaisir (France)
+
+Tracks 'Vie et mort du fantôme de la machine', 'Le grand soir', 'L'été sera chaud'.
+
+CC-0 1.0 Universal License (Public Domain)
+http://creativecommons.org/publicdomain/zero/1.0/
+(Uploaded: 2016-07-26)
+
+--
+
+Album: 'Masters Remastered' / Various
+
+Tracks 'FMA Overlords - Can/Can't (Orpheus In The Underworld)', 'Greg Reinfeld - Canon in D ni nonaC (Pachelbel's Canon)', 'sickclown - chpn_op35_fun&roll .sickclown 3', 'Expwy - Omnes - Organum Triplum-Haec Dies', 'Bach and Joe DeGeorge - Tocatta in D Minor', 'Jaan Patterson - Toccata and Fugue (Johann Sebastian Bach)', 'In Glove With Bach - Invention No. 8 Collage - Sans Gloves, Latex Gloves, Thin Gloves, Ski Gloves, Mittens, Boxing Gloves', 'MonkSeven - Satie's Gym Shoes: One', 'Future Sauce - Gymnopedie No. 1 (Erik Satie)', 'Jaan Patterson - Hungarian Rhapsody No.2, S.244:2', 'Jaan Patterson - The Flight of the Bumblebee (Nikolai Andrejewitsch Rimski-Korsakow)', 'U Can Unlearn Guitar - Beethoven Really Rolls Over (Rage Over Lost Penny)', 'The Good China - From the New World (Theme from Dvorak's 9th Symphony)', 'Greg Reinfeld - Two-Part Invention in 1985 (Bach's Inventions and Sinfonias)', 'Greg Reinfeld - Turkish Eternity (Mozart's Piano Sonata No. 11)', 'Troy Holder - Troy Holder - Ode to Joy (Beethoven)', 'Troy Holder - Lacrimosa (Mozart)', 'Mons J - Allegro Can Bro (Beethoven Symphony No.5)', 'Luke Larix - The Fifth Gnossiennes', 'Steve Combs - Canon in D', 'International Surrealist Bulletin - Gnossienne no. 1', 'Jaan Patterson - Rachmaninov - Morceau de Fantaisie Elegie in E-min', 'Lee Rosevere - Madgapuff March (rmx) by JS Bach', 'Alpha Hydrae - Alpha Hydrae - Hashi&Kiku (Schuman's Traumerei)', 'Steve Combs - Furry Leash (Für Elise)', 'Jaan Patterson - Gnossiennes No.1 (Éric Alfred Leslie Satie)', 'simon_mathewson - Robert SCHUMANN Op 68 No. 1 (Melody)', 'Telegraphy - Camille Saint Saens Danse Macabre', 'Jaan Patterson - Nulla in Mundo Pax Sincera (Vivaldi)', 'NoLogic - 1 Prologue (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 2 Adagio (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 3 Allegro part 1 (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 4 Allegro part 2 (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 5 Andantino (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 6 Più Allegro (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 7 Tempo I (Fantasia in C minor K 475 by W. A. Mozart)', 'NoLogic - 8 Epilogue (Fantasia in C minor K 475 by W. A. Mozart)', 'TheUse - Polovetsian Dance (Crazy Circus Music)', 'Dislotec - Solfeggio (prod. Breakmaster Cylinder) - C.P.E. Bach', 'The Good China - The End (Chopin Prelude #4)', 'Morphw Cybhuman - Bach Toccata in D minor', 'zejuju - marseillaise', 'TheUse - J.S. Bach - Prelude No 6 in D glitched minor', 'Control K - Eine Kleine Nasamusik', 'Allie Automne (prod. by Meera) - Fur Elise', 'Floyd Willems - Gnome & Promenade/Pictures at an Exhibition/Mussorgsky', 'MANWOMANCHILD - Bach Prelude in C BWV 846', 'TheUse - Pachelbel's Canon in R Mason' 
+
+
+CC-0 1.0 Universal License (Public Domain)
+http://creativecommons.org/publicdomain/zero/1.0/
+(Uploaded: 2015-03-08)
+
+-- 
+
+Album: 'We Used To Paint Stars In The Sky' / Scott Holmes (2012)
+
+Tracks 'Feather', 'Always The Last To Know', 'Ascension', 'Levels Of Greatness', 'October', 'Signals', 'We Used To Paint Stars In The Sky', 'Death Of An Orchid', 'Beyond Something Beautiful'.
+
+CC-BY-4.0 Attribution License
+http://creativecommons.org/licenses/by/4.0/
+(Uploaded: 2014-02-06)
+
+
+Album: 'Colossal Stillness' / Scott Holmes (2014)
+
+Tracks 'Reflections Across The Sky', 'Breathe New Life', 'Chasing Shadows', 'Uninvited', 'Origin l', 'Origin ll', 'Wash Away', 'Remember The Archer', 'Close To The Distance', 'Reminiscence'.
+
+CC-BY-4.0 Attribution License
+http://creativecommons.org/licenses/by/4.0/
+(Uploaded: 2015-02-06)
+
+--
+
+'Midnight Caravan' / Artofescapism
+CC-BY-4.0 Attribution License
+http://creativecommons.org/licenses/by/4.0/
+(Uploaded: 2016-06-20)
+
+--
+
+Album: 'Sound-trax' / Philipp Weigl (Germany)
+
+Tracks 'Subdivision of the Masses', 'Even when we fall', 'The Scent of Cedars'.
+
+CC-BY-4.0 Attribution License
+http://creativecommons.org/licenses/by/4.0/
+(Uploaded: 2016-04-28)
+
+
+..:: Sound Effects ::..
+
+Many sound effects were generated by bxfr.
+
+'Water Dripping in Cave' / Sclolex
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Summer Loop' / Sclolex
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Thunder in Tuscany' / Sclolex
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sleeping Cave Monster' / Sclolex
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sea Cave' / Andy Gardner
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sea Cave 2' / Andy Gardner
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Cave 02' / Rucisko
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Cave Drips' / Everythingsounds
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Monster Sigh in Cave' / TinTinOko
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cave River Fall 04' / jpdeglet69
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Cave River 02' / jpdeglet69
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Creature in da Cave v2' / CGEffex
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Ambience Cave 00' / LittleRobotSoundFactory
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cave Atmosphere' / vegapomme27
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Atmosphere Cave (Loop)' / xDimebagx
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Water Dripping (Large Echo)' / editor_adp
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Ambient Test 2' / Vitouliss
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Wailing Winds' / Brandonyte
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'SylverMonk Cave Grunt' / SylverMonk
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cavernscape' / Blaukreuz
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Lava Loop' / Audionautics
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'IndustialDoors Piezo Short' / Klankbeeld
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Water Splash 01' / Aglinder
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Creepy Dungeon Ambience' / DrMinky
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Monster Screaming in a Cave' / qubodup
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Wumpus Roar' / smcameron
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Creek Cave Summer' / kvgarlic
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Two Cats Eating Food in a Cave' / Acegunfighter
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Evil laughs deep in his cave' / Navadaux
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Arrow Clatter' / smcameron
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Fall with Impact' / smcameron
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cavedoor' / smidoid
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Birdsong in Woodland' / earthsounds
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Ominous Heavy Breathing' / DaxSchaffer
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'20131102 Scream 03' / dobroide
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'20131102 Roar' / dobroide
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Grunt' / TobiasKosmos
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Angry Dog Bark Snarl Flat' / Jaylew1987
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Bark 1' / esperri
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Small Dog Barking' / ivolipa
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Bark' / exuberate
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Barks' / exuberate
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Bark Aggressive' / ivolipa
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Bark Light Aggressive' / ivolipa
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'FX Dog Barking' / davidmenke
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Big Dog Barking 02' / mich3d
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Barking' / praesius
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog whining impression' / scottemoil
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dog whining sound' / Piink_Aces
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Animals Dog Bark Springer Spaniel 001' / soundscalpel.com
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Aggressive Dog Barks' / ivolipa
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Howl 01/02/03' / CGEffex
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'One Bark of a Poodle Dog' / fabiopx
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dog Growl' / Benboncan (Remix of ljudman)
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Dog Barking 03' / oen
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Goblin Cackle' / spookymodem
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Goblin Scream' / spookymodem
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Goblin Heavy Breathing' / spookymodem
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Goblin Death' / spookymodem
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Goblin Laugh' / starblazer64
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Evil Laugh 10' / Nanakisan
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
