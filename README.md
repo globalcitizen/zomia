@@ -8,5 +8,6 @@ I twisted my ankle in Vietnam in early August 2016 and decided to use part of th
 
 ## Development status
 
-Development began on the 2nd of September, 2016. As of September 8 it is possible to walk around a level, sound and graphics are functional and some back-story is on the way to being generated. There is an awful lot of media as well... almost 1GB so far. Screenshots follow.
+Development began on the 2nd of September, 2016. As of September 8 it is possible to walk around a level, sound and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises but there is no fighting or interaction yet, and they don't move. There is an awful lot of free audio media prepared as well... almost 1GB so far.
 
+Screenshots will be here shortly.
