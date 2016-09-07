@@ -4,7 +4,7 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 
 ## Project background
 
-I twisted my ankle in Vietnam in early August 2016 and decided to use part of the resulting enforced period of immobility to learn me some Lua! A roguelike based on Yunnanese history seemed the obvious project. I don't expect to spend much time on it beyond the current few weeks, so plan to launch an early version of it for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). This gives me approximately nine days to get something playable together.
+I twisted my ankle in Vietnam in early August 2016 and decided to use part of the resulting enforced period of immobility to learn me some Lua! A roguelike based on Yunnanese history seemed the obvious project. I don't expect to spend much time on it beyond the current few weeks, so plan to launch an early version of it for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). This gives me approximately nine days to get something playable together. Not a great deal of time... anyway, you can also check out [Zomia's entry on Roguebasin](http://www.roguebasin.com/index.php?title=Zomia).
 
 ## Development status
 
