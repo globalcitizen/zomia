@@ -16,7 +16,7 @@ Screenshots will be here shortly.
 
 ### Get libraries
 
-Zomia relies on quite a few libraries.Tthey have all been placed in `git submodule` so to get the whole thing working all you have to do is:
+Zomia relies on quite a few libraries. They have all been placed in this repository as `git submodule` entries, so to get the whole thing working all you have to do is:
 
 ```
 git checkout --recursive https://github.com/globalcitizen/zomia.git
@@ -36,6 +36,13 @@ Next, you need to get the music files. To do this:
 ```
 cd music
 ./download-music
+```
+
+Next, you need the audio files. To do this:
+
+```
+cd sounds
+./download-sounds
 ```
 
 ### Get LÖVE2D
