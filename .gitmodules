@@ -4,3 +4,6 @@
 [submodule "libs/rotLove"]
 	path = libs/rotLove
 	url = https://github.com/paulofmandown/rotLove.git
+[submodule "libs/slam"]
+	path = libs/slam
+	url = https://github.com/vrld/slam.git
