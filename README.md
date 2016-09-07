@@ -50,7 +50,7 @@ love .
 
 ### Dungeon
 
-Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize.
+Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. There is no lighting/field of view yet.
 
 ![Dungeon](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-dungeon.jpg)
 
