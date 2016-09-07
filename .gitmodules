@@ -1,0 +1,3 @@
+[submodule "libs/astray"]
+	path = libs/astray
+	url = https://github.com/SiENcE/astray.git
