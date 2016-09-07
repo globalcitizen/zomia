@@ -1,3 +1,6 @@
 [submodule "libs/astray"]
 	path = libs/astray
 	url = https://github.com/SiENcE/astray.git
+[submodule "libs/rotLove"]
+	path = libs/rotLove
+	url = https://github.com/paulofmandown/rotLove.git
