@@ -1,0 +1,20 @@
+npc_types['goblin'] = {
+			name="Goblin",
+			color={30,138,30},
+			hostile=true,
+			move='attack',
+			sounds={
+				attack=love.audio.newSource({
+					"npcs/goblin/goblin-1.mp3",
+					"npcs/goblin/goblin-2.mp3",
+					"npcs/goblin/goblin-3.mp3",
+					"npcs/goblin/goblin-4.mp3",
+					"npcs/goblin/goblin-5.mp3",
+					"npcs/goblin/goblin-6.mp3",
+					"npcs/goblin/goblin-7.mp3"
+				}),
+				win=love.audio.newSource({
+					"npcs/goblin/goblin-laugh.mp3"
+				})
+			}
+		}
