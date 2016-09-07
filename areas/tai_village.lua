@@ -23,7 +23,3 @@ while not (line==nil) do
         end
 end
 f:close()
-
-for i=1,100,1 do
- print(" - " .. taiVillageNames:generate())
-end
