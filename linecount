@@ -1,0 +1,1 @@
+wc -l npcs/*.lua areas.lua npcs.lua main.lua areas/*.lua
