@@ -11,3 +11,41 @@ I twisted my ankle in Vietnam in early August 2016 and decided to use part of th
 Development began on the 2nd of September, 2016. As of September 8 it is possible to walk around a level, sound and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises but there is no fighting or interaction yet, and they don't move. There is an awful lot of free audio media prepared as well... almost 1GB so far.
 
 Screenshots will be here shortly.
+
+## How to run
+
+### Get libraries
+
+Zomia relies on quite a few libraries.Tthey have all been placed in `git submodule` so to get the whole thing working all you have to do is:
+
+```
+git checkout --recursive https://github.com/globalcitizen/zomia.git
+```
+
+This of course assumes you have `git` and are comfortable with a command line. The command should download everything, and will take awhile. If you check out the code without using recursive mode (ie. without media or libraries), it won't run, but you can tell it to download them afterwards with:
+
+```
+git submodule init
+git submodule update
+```
+
+### Get media
+
+Next, you need to get the music files. To do this:
+
+```
+cd music
+./download-music
+```
+
+### Get LÖVE2D
+
+You also need [LÖVE2D](http://love2d.org/), the graphics framework for Lua that the game runs on - v0.10 or later is recommended. Then you're all set! To run the game, change to the base directory and type:
+
+```
+love .
+```
+
+## Screenshots
+
+
