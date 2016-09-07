@@ -48,11 +48,13 @@ love .
 
 ## Screenshots
 
-### World generation status
+### Dungeon
 
 Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize.
 
 ![Dungeon](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-dungeon.jpg)
+
+### User interface
 
 Here is the inventory screen. As you can see, some work has been done on the generation of human reasonable niceties from hard D&D-style item attribute data.
 
@@ -61,6 +63,8 @@ Here is the inventory screen. As you can see, some work has been done on the gen
 There is a list of keyboard commands accessible by pressing 'h', this also shows you about how much is implemented.
 
 ![Key Command Help](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-help.jpg)
+
+### World generation
 
 This is a separate program I am working on worldgen in. The idea is to procedurally generate a wilderness with general topography, distance and features matching that of ancient Yunnan. This will be used to ensure that every game is different but also similar in a general way, which hopefully should be enough to hang procedural plot features off. Certainly, given the richness of the region's history, this should work. It's low priority right now, however.
 
