@@ -16,7 +16,7 @@ sounds={}
 inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30}}
 equipment = {left_hand='sword'}
 beautify=true
-experimentalFov=false
+experimentalFov=true
 simpleAreaShade=false
 --beautify=false
 characterX=1
@@ -236,7 +236,8 @@ function love.load()
 
 	-- update visibility
 	if experimentalFov then
-		update_draw_visibility()
+		update_draw_visibility_new()
+		--update_draw_visibility()
 	end
 
 	print('--------------------------- OK! Here we go! ---------------------------------')
@@ -276,7 +277,8 @@ function love.keypressed(key)
         end
 	-- redetermine visibility of all squares
 	if experimentalFov then
-		update_draw_visibility()
+		update_draw_visibility_new()
+		--update_draw_visibility()
 	end
 end
 
@@ -1137,7 +1139,7 @@ function draw_visibility_overlay()
 		local tile = visibleTiles[i]
 		x=tile.x
 		y=tile.y
-		love.graphics.setColor(255,255,255)
+		love.graphics.setColor(255,255,0,30)
 		love.graphics.rectangle("line",(x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
 		love.graphics.setFont(heavy_font)
 		love.graphics.print(tile.last,(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
@@ -1206,4 +1208,23 @@ function draw_simpleareashade()
 	love.graphics.rectangle('fill',0,(characterY+7)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
 
 end
+
+
+function lightPassesCallback(coords,qx,qy)
+	if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' then
+		return true
+	end
+	return false
+end
+
+function isVisibleCallback(x,y,r,v)
+	table.insert(visibleTiles,{x=x,y=y,r=r,last=r})
+end
+
+function update_draw_visibility_new()
+	visibleTiles={}
+	fov=ROT.FOV.Precise:new(lightPassesCallback,{topology=8})
+	results = fov:compute(characterX,characterY,15,isVisibleCallback)
+end
+
 
