@@ -9,3 +9,4 @@ Alternatively, when checking out the project use `git clone --recursive https://
  * [astray](https://github.com/SiENcE/astray): Procedural dungeon generation
  * [rotLove](https://github.com/paulofmandown/rotLove): Port of rot.js providing various procedural generation features.
  * [SLAM](https://github.com/vrld/slam/): Audio management
+ * __utils__: Various simple library functions pulled from the internet.

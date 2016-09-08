@@ -9,8 +9,8 @@ require 'areas'
 require 'world'
 
 -- utilities
-require 'tableshow'
-require 'split'
+require 'libs/utils/tableshow'
+require 'libs/utils/split'
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
