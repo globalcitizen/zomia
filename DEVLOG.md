@@ -4,6 +4,7 @@
     - Wasted the whole day on field of view re-implementation
       - Wound up with a half-working implementation that infinite-loop-crashes in large rooms because the algorithm is imperfect, looks like hopscotch (new roguelike? :)
       - Made a simple area shading mode which kinda works (ignores tile geometry)
+    - Finally got the rotLove precise version working ... even though its callback arguments were wacky. Phew!
 
  * __2016-09-07__:
     - Further logo design work
