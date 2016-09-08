@@ -8,7 +8,7 @@ I twisted my ankle in Vietnam in early August 2016 and decided to use part of th
 
 ## Development status
 
-Development began on the 2nd of September, 2016. As of September 8 it is possible to walk around a level, sound and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises but there is no fighting or interaction yet, and they don't move. However, we now have the workings of vision so they should soon be able to respond to your presence including moving and attacking. There is an awful lot of free audio media prepared as well... almost 1GB so far.
+Development began on the 2nd of September, 2016. As of September 8 it is possible to walk around a level, sound and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises but there is no fighting or interaction yet, and they don't move. However, we now have the workings of vision so they should soon be able to respond to your presence including moving and attacking. There is an awful lot of free audio media prepared as well... almost 1GB so far. You can check out the [development log](https://github.com/globalcitizen/zomia/blob/master/DEVLOG.md) for further details.
 
 ## How to run
 
