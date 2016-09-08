@@ -59,11 +59,17 @@ function generate_world()
 end
 
 function world_load_area(z,x,y)
+	-- if there is no tilemap yet generated, it means the world area still needs to be instantiated
+	if world[z][x][y].tilemap == nil then
+		area_generate(z,x,y])
+	end
+
 	-- assign maptiles from area
+	tilemap = randomStandingLocation(world[z][x][y].tilemap)
 
         -- correctly place character
         print "Placing character..."
-        characterX, characterY = randomStandingLocation() -- random for now
+        characterX, characterY = randomStandingLocation(tilemap)
 
 	-- start music
 	print("Starting music...")
