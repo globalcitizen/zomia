@@ -276,8 +276,9 @@ end
 
 function love.draw()
 	--local start_time = love.timer.getTime()
-	draw_tilemap()				-- rare changes (~4-5ms or so)
-        draw_tilemap_beautification()           -- rare changes (costs ~1ms or so)
+	--draw_tilemap_visibilitylimited()
+	draw_tilemap()			-- rare changes (~4-5ms or so)
+        --draw_tilemap_beautification()           -- rare changes (costs ~1ms or so)
 	--local draw_tilemap_time = love.timer.getTime()-start_time
 	--print( string.format( "Time to draw tilemap: %.3f ms", draw_tilemap_time*1000))
 
@@ -297,6 +298,7 @@ function love.draw()
 	draw_popups()
 
 	draw_visibility_overlay()
+	draw_location_overlay()
 end
 
 function draw_tilemap()
@@ -999,13 +1001,14 @@ function update_draw_visibility()
 	local direction = {1,2,3,4,5,6,7,8}
 	-- we store branches for future lookup here
 	local options={}
-	local options_added={}
+	local options_calculated={}
 	-- we continue exploring until we have exhausted all options
 	local done=false
 	local last=''
+	print("==============================================")
 	while done==false do
 		-- if we are on ground or an open door
-		print(x .. "/" .. y)
+		print(x .. "/" .. y .. ': ' .. table.concat(direction,','))
 		if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
 			-- this tile is visible
 			table.insert(visibleTiles,{['x']=x,['y']=y,['last']=#direction})
@@ -1017,7 +1020,6 @@ function update_draw_visibility()
 				cx,cy = update_draw_visibility_helper(x,y,directions[dir]['offset'])
 				-- hang the next directions and last direction on that tile location option
 				local newoption = {}
-				local okey = cx .. ',' .. cy
 				local c = {cx, cy}
 				if #direction == 3 then
 					newoption = {coordinates=c,next={dir},last=direction}
@@ -1025,50 +1027,38 @@ function update_draw_visibility()
 					newoption = {coordinates=c,next=directions[dir]['next'],last=direction}
 				end
 				-- insert only if the tile hasnt already been staged
-				if options_added[okey] == nil then
+				existing_index = 0
+				max = #options
+				for i=1, max, 1 do
+					if options[i]['coordinates'][1] == cx and options[i]['coordinates'][2] == cy then
+						existing_index = i+0
+					end
+				end
+				if existing_index == 0 then
 					table.insert(options,newoption)
-					options_added[okey] = #options
-					--[[
-					print("====post insert=========")
-					print(table.show(options))
-					print("========================")
-					--]]
+					for i=1,#direction,1 do
+						-- record each cell + direction (x/y/direction) combination as pre-scheduled
+						local option_key = cx .. ',' .. cy .. ',' .. direction[i]
+						options_calculated[option_key] = true
+					end
 				else
-					-- already staged - add our directions if necessary
-					-- first we need to find the existing index
-					existing_index = 0
-					max = #options
-					for i=1, max, 1 do
-						if options[i]['coordinates'][1] == cx and options[i]['coordinates'][2] == cy then
-							existing_index = i+0
-						end
-					end
-					if existing_index == 0 then
-						print("----- failed to obtain index (zero index) ------")
-						print("cx="..cx.."/cy="..cy)
-						print(table.show(options))
-						os.exit()
-					end
 					for i,d in pairs(newoption.next) do
-						-- check the existing entry for the direction
-						local found_it = false
-						print("existing_index = " .. existing_index)
-						--print(table.show(options))
-						--print(table.show(options_added))
-						print("attempting to index options[" .. existing_index .. "]...")
-						--print(table.show(options[existing_index]))
-						print("attempting to index options[" .. existing_index .. "]['next']...")
-						--print(table.show(options[existing_index]['next']))
-						for _,v in pairs(options[existing_index]['next']) do
-						  print("v = " .. v)
-						  if v == d then
-						    found_it = true
-						    break
-						  end
-						end
-						-- if it wasn't found, insert it
-						if found_it == false then
-							table.insert(options[existing_index]['next'],d)
+						local option_key = cx .. ',' .. cy .. ',' .. d
+						if options_calculated[option_key] ~= nil then
+							-- check the existing entry for the direction
+							local found_it = false
+							for _,v in pairs(options[existing_index]['next']) do
+							  --print("v = " .. v)
+							  if v == d then
+							    found_it = true
+							    break
+							  end
+							end
+							-- if it wasn't found, insert it
+							if found_it == false then
+								print("added direction '" .. d .. "' to existing index @ " .. cx .. "/" .. cy)
+								table.insert(options[existing_index]['next'],d)
+							end
 						end
 					end
 				end
@@ -1141,3 +1131,24 @@ function draw_visibility_overlay()
 		love.graphics.print(tile.last,(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
 	end
 end
+
+function draw_location_overlay()
+		love.graphics.setColor(255,255,255)
+		love.graphics.setFont(heavy_font)
+		love.graphics.print(characterX .. '/' .. characterY,(resolutionTilesX-10)*tilePixelsX,tilePixelsY)
+end
+
+function draw_tilemap_visibilitylimited()
+	-- draw tilemap
+	for i=1,#visibleTiles,1 do
+		local tile = visibleTiles[i]
+		x=tile.x
+		y=tile.y
+		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
+		if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+			love.graphics.setColor(groundColor)
+			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+		end
+	end
+end
+
