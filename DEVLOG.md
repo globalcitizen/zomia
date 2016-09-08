@@ -7,6 +7,7 @@
     - Finally got the rotLove precise version working ... even though its callback arguments were wacky. Phew!
     - Convert all display functions to LOS/POV only
     - Added partial visibility fog to peripheral vision squares
+    - Remember and display seen tiles
 
  * __2016-09-07__:
     - Further logo design work
