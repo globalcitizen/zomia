@@ -4,6 +4,7 @@ require 'libs/slam/slam'
 require 'npcs'
 require 'areas'
 require 'tableshow'
+require 'split'
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
@@ -535,7 +536,7 @@ function draw_poorvisibility_overlay()
 		v=tile.v
 		local alpha
 		if v ~= 1 then
-			alpha = 55 + (200*v)
+			alpha = 125 + (130*v)
 			love.graphics.setColor(0,0,0,alpha)
 			--print("@" .. x .. "/" .. y .. ", visibility = " .. v)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
@@ -1349,6 +1350,18 @@ end
 
 function draw_tilemap_visibilitylimited()
 	-- draw tilemap
+	for i=1,#seenTiles,1 do
+		local tile = seenTiles[i]
+		x=tile.x
+		y=tile.y
+		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
+		if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+			love.graphics.setColor(groundColor)
+			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			love.graphics.setColor(0,0,0,150)
+			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+		end
+	end
 	for i=1,#visibleTiles,1 do
 		local tile = visibleTiles[i]
 		x=tile.x
@@ -1407,6 +1420,10 @@ end
 -- working FOV
 function update_draw_visibility_new()
 	visibleTiles={}
+	-- mark all seen tiles as not currently seen
+	for i,v in ipairs(seenTiles) do
+		seenTiles['i'] = 0
+	end
 	fov=ROT.FOV.Precise:new(lightPassesCallback,{topology=8})
 	results = fov:compute(characterX,characterY,15,isVisibleCallback)
 end
@@ -1425,6 +1442,8 @@ end
 
 -- for FOV calculation
 function isVisibleCallback(x,y,r,v)
+	-- first mark as visible
 	table.insert(visibleTiles,{x=x,y=y,r=r,last=r,v=v})
+	-- also mark in seen tiles as currently seen
 	table.insert(seenTiles,{x=x,y=y})
 end
