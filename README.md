@@ -81,7 +81,9 @@ There is a list of keyboard commands accessible by pressing 'h', this also shows
 
 ### World generation
 
-This is a separate program I am working on worldgen in. The idea is to procedurally generate a wilderness with general topography, distance and features matching that of ancient Yunnan. This will be used to ensure that every game is different but also similar in a general way, which hopefully should be enough to hang procedural plot features off. Certainly, given the richness of the region's history, this should work. It's low priority right now, however.
+This is a separate program I am working on worldgen in. The idea is to procedurally generate a wilderness with general topography, distance and features matching that of ancient Yunnan. This will be used to ensure that every game is different but also similar in a general way, which hopefully should be enough to hang procedural plot features off. Certainly, given the richness of the region's history, this should work. It's low priority right now, however, and the intent right now is to get something out for ARRP2016 which means I am very short on time. Therefore we have a simplified localized worldgen as a placeholder right now.
+
+In the graphic below, the upper river is the Jinshajiang (upper Yangtse), the lower river is the Red River, and the central lake is Erhai.
 
 ![World Generation (in Progress)](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-worldgen.jpg)
 
