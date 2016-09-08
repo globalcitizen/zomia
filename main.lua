@@ -1,8 +1,14 @@
+-- libraries
 ROT=require 'libs/rotLove/rotLove/rotLove'
 astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
+
+-- game portions
 require 'npcs'
 require 'areas'
+require 'worldgen'
+
+-- utilities
 require 'tableshow'
 require 'split'
 
@@ -76,27 +82,34 @@ screenModeFlags = {fullscreen=true, fullscreentype='desktop', vsync=true, msaa=0
 
 function love.load()
 
+
 	-- load font
+	print('Loading fonts')
         heavy_font = love.graphics.newFont("fonts/pf_tempesta_five_extended_bold.ttf",8)
         medium_font = love.graphics.newFont("fonts/pf_tempesta_five_bold.ttf",8)
         light_font = love.graphics.newFont("fonts/pf_tempesta_five.ttf",8)
 	love.graphics.setFont(light_font)
 
 	-- hide mouse
+	print('Hiding mouse')
 	love.mouse.setVisible(false)
 
 	-- set up graphics mode
-	print(' - Attempting to switch to fullscreen resolution.')
+	print('Attempting to switch to fullscreen resolution.')
 	love.window.setMode(resolutionPixelsX, resolutionPixelsY, screenModeFlags)
 	resolutionPixelsX = love.graphics.getWidth()
 	resolutionPixelsY = love.graphics.getHeight()
 	print(' - Resolution obtained: ' .. resolutionPixelsX .. ' x ' .. resolutionPixelsY .. ' pixels')
 
 	-- now determine tile resolution
-	print('Tile size: ' .. tilePixelsX .. ' x ' .. tilePixelsY .. ' pixels')
+	print('     - Tile size: ' .. tilePixelsX .. ' x ' .. tilePixelsY .. ' pixels')
 	resolutionTilesX=math.floor(resolutionPixelsX/tilePixelsX)
 	resolutionTilesY=math.floor(resolutionPixelsY/tilePixelsY)
-	print('Displayable tilemap size: ' .. resolutionTilesX .. ' x ' .. resolutionTilesY .. ' tiles')
+	print('     - Displayable tilemap size: ' .. resolutionTilesX .. ' x ' .. resolutionTilesY .. ' tiles')
+
+	-- generate world
+	print('Generating world.')
+	generate_world()
 
 	-- now pre-initialize tilemap table row tables
 	for i=1,resolutionTilesX,1 do
