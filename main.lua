@@ -1209,22 +1209,26 @@ function draw_simpleareashade()
 
 end
 
-
-function lightPassesCallback(coords,qx,qy)
-	if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' then
-		return true
-	end
-	return false
-end
-
-function isVisibleCallback(x,y,r,v)
-	table.insert(visibleTiles,{x=x,y=y,r=r,last=r})
-end
-
+-- working FOV
 function update_draw_visibility_new()
 	visibleTiles={}
 	fov=ROT.FOV.Precise:new(lightPassesCallback,{topology=8})
 	results = fov:compute(characterX,characterY,15,isVisibleCallback)
 end
 
+-- for FOV calculation
+function lightPassesCallback(coords,qx,qy)
+	-- required as otherwise moving near the edge crashes
+	if tilemap[qx] ~= nil and tilemap[qx][qy] ~= nil then
+		-- actual check
+		if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' then
+			return true
+		end
+	end
+	return false
+end
 
+-- for FOV calculation
+function isVisibleCallback(x,y,r,v)
+	table.insert(visibleTiles,{x=x,y=y,r=r,last=r})
+end
