@@ -10,8 +10,8 @@
     - Remember and display seen tiles
     - Basic (simplified) world generation
     - Beginnings of area-specific tile and name generation
-    - Linecount 1911 (though includes a lot of duplicated crap that will go)
     - Lots of work on world area loading (properly dynamic)
+    - Linecount 1908 (though includes a lot of duplicated crap that will go)
 
  * __2016-09-07__:
     - Further logo design work
