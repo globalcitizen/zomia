@@ -17,6 +17,7 @@ inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathb
 equipment = {left_hand='sword'}
 beautify=true
 experimentalFov=false
+simpleAreaShade=false
 --beautify=false
 characterX=1
 characterY=1
@@ -307,7 +308,9 @@ function love.draw()
 	end
 	draw_coordinates_overlay()
 
-	draw_simpleareashade()
+	if simpleAreaShade then
+		draw_simpleareashade()
+	end
 end
 
 function draw_tilemap()

@@ -1,5 +1,10 @@
 # Development log
 
+ * __2016-09-08__:
+    - Wasted the whole day on field of view re-implementation
+      - Wound up with a half-working implementation that infinite-loop-crashes in large rooms because the algorithm is imperfect, looks like hopscotch (new roguelike? :)
+      - Made a simple area shading mode which kinda works (ignores tile geometry)
+
  * __2016-09-07__:
     - Further logo design work
     - Add further structure to NPCs (different sound types, etc.)
