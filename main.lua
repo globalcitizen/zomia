@@ -16,6 +16,7 @@ sounds={}
 inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30}}
 equipment = {left_hand='sword'}
 beautify=true
+experimentalFov=false
 --beautify=false
 characterX=1
 characterY=1
@@ -233,7 +234,9 @@ function love.load()
 	ambience:play()
 
 	-- update visibility
-	update_draw_visibility()
+	if experimentalFov then
+		update_draw_visibility()
+	end
 
 	print('--------------------------- OK! Here we go! ---------------------------------')
 end
@@ -271,7 +274,9 @@ function love.keypressed(key)
 		ascend()
         end
 	-- redetermine visibility of all squares
-	update_draw_visibility()
+	if experimentalFov then
+		update_draw_visibility()
+	end
 end
 
 function love.draw()
@@ -297,8 +302,12 @@ function love.draw()
 	draw_logmessages()
 	draw_popups()
 
-	draw_visibility_overlay()
-	draw_location_overlay()
+	if experimentalFov then
+		draw_visibility_overlay()
+	end
+	draw_coordinates_overlay()
+
+	draw_simpleareashade()
 end
 
 function draw_tilemap()
@@ -1132,7 +1141,7 @@ function draw_visibility_overlay()
 	end
 end
 
-function draw_location_overlay()
+function draw_coordinates_overlay()
 		love.graphics.setColor(255,255,255)
 		love.graphics.setFont(heavy_font)
 		love.graphics.print(characterX .. '/' .. characterY,(resolutionTilesX-10)*tilePixelsX,tilePixelsY)
@@ -1150,5 +1159,48 @@ function draw_tilemap_visibilitylimited()
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 		end
 	end
+end
+
+function draw_simpleareashade()
+	-- top
+	love.graphics.setColor(0,0,0,255)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-10)*tilePixelsY)
+	love.graphics.setColor(0,0,0,135)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-9)*tilePixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-8)*tilePixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-7)*tilePixelsY)
+
+	-- left
+	love.graphics.setColor(0,0,0,255)
+	love.graphics.rectangle('fill',0,0,(characterX-10)*tilePixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,135)
+	love.graphics.rectangle('fill',0,0,(characterX-9)*tilePixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,0,(characterX-8)*tilePixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,0,(characterX-7)*tilePixelsX,resolutionPixelsY)
+
+	-- right
+	love.graphics.setColor(0,0,0,255)
+	love.graphics.rectangle('fill',(characterX+10)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,135)
+	love.graphics.rectangle('fill',(characterX+9)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',(characterX+8)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',(characterX+7)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+
+	-- bottom
+	love.graphics.setColor(0,0,0,255)
+	love.graphics.rectangle('fill',0,(characterY+10)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,135)
+	love.graphics.rectangle('fill',0,(characterY+9)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,(characterY+8)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.setColor(0,0,0,100)
+	love.graphics.rectangle('fill',0,(characterY+7)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+
 end
 
