@@ -70,7 +70,7 @@ function world_load_area(z,x,y)
 	music = love.audio.newSource(world[z][x][y].music)
 	music:setLooping(true)
 	music:play()
-	music:setVolume(world[z][x][y].music_volume
+	music:setVolume(world[z][x][y].music_volume)
 
 	-- start ambience
 	print("Starting ambience...")
