@@ -917,9 +917,9 @@ function moveCharacterRelatively(x,y)
 		end
 	else
 		if tilemap[newX][newY] == 0 then
-			logMessage(failMessageColor,"You can't move that way (there is a wall in the way).")
-		else
-			logMessage(failMessageColor,"You can't move that way (there is something in the way).")
+--			logMessage(failMessageColor,"You can't move that way (there is a wall in the way).")
+--		else
+--			logMessage(failMessageColor,"You can't move that way (there is something in the way).")
 		end
 	end
 end
