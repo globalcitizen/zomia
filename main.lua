@@ -25,6 +25,7 @@ tilePixelsX=16
 tilePixelsY=16
 tilemap = {}
 visibleTiles = {}
+seenTiles = {}
 logMessages = {}
 
 -- colors
@@ -302,6 +303,7 @@ function love.draw()
 		draw_stairs_visibilitylimited()
 		draw_character()
 		draw_npcs_visibilitylimited()
+		draw_poorvisibility_overlay()
 	else
 		draw_footprints()			-- frequent changes
 		draw_groundfeatures()			-- occasional changes
@@ -520,6 +522,23 @@ function draw_doors()
 					love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,tilePixelsX,3)
 				end
 			end
+		end
+	end
+end
+
+function draw_poorvisibility_overlay()
+	-- draw shadedness over poorly visible tiles
+        for i=1,#visibleTiles,1 do
+                local tile = visibleTiles[i]
+                x=tile.x
+                y=tile.y
+		v=tile.v
+		local alpha
+		if v ~= 1 then
+			alpha = 55 + (200*v)
+			love.graphics.setColor(0,0,0,alpha)
+			--print("@" .. x .. "/" .. y .. ", visibility = " .. v)
+			love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
 		end
 	end
 end
@@ -1407,4 +1426,5 @@ end
 -- for FOV calculation
 function isVisibleCallback(x,y,r,v)
 	table.insert(visibleTiles,{x=x,y=y,r=r,last=r,v=v})
+	table.insert(seenTiles,{x=x,y=y})
 end
