@@ -8,6 +8,7 @@
     - Convert all display functions to LOS/POV only
     - Added partial visibility fog to peripheral vision squares
     - Remember and display seen tiles
+    - Basic (simplified) world generation
 
  * __2016-09-07__:
     - Further logo design work
