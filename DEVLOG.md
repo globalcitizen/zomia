@@ -11,7 +11,7 @@
     - Basic (simplified) world generation
     - Beginnings of area-specific tile and name generation
     - Lots of work on world area loading (properly dynamic)
-    - Linecount 1908 (though includes a lot of duplicated crap that will go)
+    - Linecount 1971
 
  * __2016-09-07__:
     - Further logo design work
