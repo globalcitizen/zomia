@@ -3,6 +3,7 @@ astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
 require 'npcs'
 require 'areas'
+require 'tableshow'
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
@@ -1041,22 +1042,29 @@ function update_draw_visibility()
 		end
 		-- now we pick one of the existing options in the list, and allow the loop to repeat.
 		-- if there are no options in the list, we are done
-		if #options == 0 then
-			done = true
-		else
-			local c=options[1]['coordinates']
-			x,y = c
-			print("new option:")
-			if x ~= nil then
-				print(x)
+		if #options ~= 0 then
+			if options[1] ~= nil and options[1]['coordinates'] ~= nil then
+				local tmpc=options[1]['coordinates']
+				x = tmpc[1]
+				y = tmpc[2]
+				if x ~= nil then
+					print(" x = " .. x)
+				end
+				if y ~= nil then
+					print(" y = " .. y)
+				end
+				direction = options[1]['next']
+				last = options[1]['last']
 			end
-			if y ~= nil then
-				print(y)
-			end
-			direction = options[1]['next']
-			last = options[1]['last']
 			table.remove(options,1)
 		end
+		if #options == 0 then
+			done=true
+		end
+		-- show options
+		print("========================")
+		print(table.show(options))
+		print("========================")
 	end
 end
 
