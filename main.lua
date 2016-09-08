@@ -857,12 +857,12 @@ function beautifyTiles()
 	end
 end
 
-function randomStandingLocationWithoutNPCsOrPlayer()
+function randomStandingLocationWithoutNPCsOrPlayer(thetilemap)
 	local failed = 1
 	local x,y = 0
 	while not(failed == 0) do
 		failed = 1
-		x,y = randomStandingLocation()
+		x,y = randomStandingLocation(thetilemap)
 		if x == characterX and y == characterY then
 			failed = true
 		else
@@ -882,18 +882,17 @@ function randomStandingLocationWithoutNPCsOrPlayer()
 	return x, y
 end
 
-function randomStandingLocation()
+function randomStandingLocation(thetilemap)
 	local found_x,found_y = 0
 	local placed=false
 	while placed == false do
 		x = math.random(1,resolutionTilesX)
 		y = math.random(1,resolutionTilesY)
-		if tilemap[x][y] == 1 or tilemap[x][y] == '1' then
+		if thetilemap[x][y] == 1 or thetilemap[x][y] == '1' then
 			found_x = x
 			found_y = y
 			placed = true
 		end
-		--print("randomStandingLocation failed @ " .. x .. "/" .. y .. " (wanted 1 found '" .. tilemap[x][y] .. "')")
 	end
 	return x,y
 end
@@ -1235,6 +1234,7 @@ function draw_tilemap_visibilitylimited()
 		local tile = seenTiles[i]
 		x=tile.x
 		y=tile.y
+		print("x/y = " .. x .. "/" .. y)
 		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
 		if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 			love.graphics.setColor(groundColor)

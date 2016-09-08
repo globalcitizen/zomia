@@ -59,30 +59,45 @@ function generate_world()
 end
 
 function world_load_area(z,x,y)
+	-- Say hello
+	print("Loading world area @ " .. z .. "," .. x .. "," .. y .. " ...")
+
 	-- if there is no tilemap yet generated, it means the world area still needs to be instantiated
 	if world[z][x][y].tilemap == nil then
-		area_generate(z,x,y])
+		print(" - Tilemap not found, generating...")
+		world[z][x][y] = area_generate(z,x,y)
+	else
+		print(" - Tilemap already exists.")
 	end
 
+
 	-- assign maptiles from area
-	tilemap = randomStandingLocation(world[z][x][y].tilemap)
+	tilemap = world[z][x][y].tilemap
 
         -- correctly place character
         print "Placing character..."
         characterX, characterY = randomStandingLocation(tilemap)
 
 	-- start music
-	print("Starting music...")
-	music = love.audio.newSource(world[z][x][y].music)
-	music:setLooping(true)
-	music:play()
-	music:setVolume(world[z][x][y].music_volume)
+	if world[z][x][y].music ~= nil then
+		print("Starting music...")
+		music = love.audio.newSource(world[z][x][y].music)
+		music:setLooping(true)
+		music:play()
+		if world[z][x][y].music_volume ~= nil then
+			music:setVolume(world[z][x][y].music_volume)
+		end
+	end
 
 	-- start ambience
-	print("Starting ambience...")
-	ambience = love.audio.newSource(world[z][x][y].ambient)
-	ambience:setLooping(true)
-	music:setVolume(world[z][x][y].ambient_volume)
-	ambience:play()
+	if world[z][x][y].ambient ~= nil then
+		print("Starting ambience...")
+		ambience = love.audio.newSource(world[z][x][y].ambient)
+		ambience:setLooping(true)
+		ambience:play()
+		if world[z][x][y].ambient_volume ~= nil then
+			ambience:setVolume(world[z][x][y].ambient_volume)
+		end
+	end
 
 end

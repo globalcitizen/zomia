@@ -11,10 +11,10 @@ function area_generate(z,x,y)
 		new_area.name=world[z][x][y].name
 	end
 	setmetatable(new_area,{__index = area_types[area_type]})
-	if new_area.setup ~= nil then
-		new_area:setup(new_area)
+	if area_types[new_area.type].setup ~= nil then
+		area_types[new_area.type].setup(new_area)
 	end
-	world[z][x][y] = new_area
+	return new_area
 end
 
 -- load areas
