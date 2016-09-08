@@ -57,3 +57,12 @@ function generate_world()
 		world[0][11][10] = {type='tai_cave_entrance'}
 	end
 end
+
+function world_load_area(z,x,y)
+	-- assign maptiles from area
+	-- start music
+	-- start ambient
+        -- correctly place character
+        print "Placing character..."
+        characterX, characterY = randomStandingLocation() -- random for now
+end
