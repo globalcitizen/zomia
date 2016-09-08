@@ -484,7 +484,7 @@ function draw_npcs()
 		end
 	        love.graphics.setColor(npcLabelShadowColor)
 		-- NB. The following line is useful for debugging UTF-8 issues which Lua has in buckets
-		-- print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
+		--print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
 		love.graphics.setFont(light_font)
                 love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+7, (l['y']-1)*tilePixelsY+2)
 		if npcs[i]['color'] ~= nil then
@@ -1027,19 +1027,61 @@ function update_draw_visibility()
 				-- insert only if the tile hasnt already been staged
 				if options_added[okey] == nil then
 					table.insert(options,newoption)
-					options_added[okey] = true
+					options_added[okey] = #options
+					--[[
 					print("====post insert=========")
 					print(table.show(options))
 					print("========================")
+					--]]
+				else
+					-- already staged - add our directions if necessary
+					-- first we need to find the existing index
+					existing_index = 0
+					max = #options
+					for i=1, max, 1 do
+						if options[i]['coordinates'][1] == cx and options[i]['coordinates'][2] == cy then
+							existing_index = i+0
+						end
+					end
+					if existing_index == 0 then
+						print("----- failed to obtain index (zero index) ------")
+						print("cx="..cx.."/cy="..cy)
+						print(table.show(options))
+						os.exit()
+					end
+					for i,d in pairs(newoption.next) do
+						-- check the existing entry for the direction
+						local found_it = false
+						print("existing_index = " .. existing_index)
+						--print(table.show(options))
+						--print(table.show(options_added))
+						print("attempting to index options[" .. existing_index .. "]...")
+						--print(table.show(options[existing_index]))
+						print("attempting to index options[" .. existing_index .. "]['next']...")
+						--print(table.show(options[existing_index]['next']))
+						for _,v in pairs(options[existing_index]['next']) do
+						  print("v = " .. v)
+						  if v == d then
+						    found_it = true
+						    break
+						  end
+						end
+						-- if it wasn't found, insert it
+						if found_it == false then
+							table.insert(options[existing_index]['next'],d)
+						end
+					end
 				end
 			end
 			-- debug summary
+			--[[
 			local output = "@" .. x .. "/" .. y .. " directions("
 			for crap,dir in pairs(direction) do
 				output = output .. dir .. " "
 			end
 			output = output .. ")"
 			print(output)
+			--]]
 		end
 		-- now we pick one of the existing options in the list, and allow the loop to repeat.
 		-- if there are no options in the list, we are done
@@ -1048,12 +1090,14 @@ function update_draw_visibility()
 				local tmpc=options[1]['coordinates']
 				x = tmpc[1]
 				y = tmpc[2]
+				--[[
 				if x ~= nil then
 					print(" x = " .. x)
 				end
 				if y ~= nil then
 					print(" y = " .. y)
 				end
+				--]]
 				direction = options[1]['next']
 				last = options[1]['last']
 			end
@@ -1061,11 +1105,13 @@ function update_draw_visibility()
 		end
 		if #options == 0 then
 			done=true
+			--[[
 		else
 			-- show options
 			print("=====end run============")
 			print(table.show(options))
 			print("========================")
+			--]]
 		end
 	end
 end
@@ -1091,7 +1137,7 @@ function draw_visibility_overlay()
 		y=tile.y
 		love.graphics.setColor(255,255,255)
 		love.graphics.rectangle("line",(x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
-		love.graphics.setFont(light_font)
+		love.graphics.setFont(heavy_font)
 		love.graphics.print(tile.last,(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
 	end
 end
