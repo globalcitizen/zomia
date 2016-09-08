@@ -65,6 +65,9 @@ Here is a brand new field of view output overlay showing working FOV calculcatio
 
 ![Field of view](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov.jpg)
 
+And here is the final FOV implementation showing previously seen tiles, currently seen tiles, and unknown.
+
+![Field of view #2](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov2.jpg)
 
 ### User interface
 
