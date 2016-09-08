@@ -4,4 +4,6 @@ areas={}
 area_types={}
 
 -- load areas
+require "areas/tai_cave_entrance"
 require "areas/tai_village"
+require "areas/wilderness"
