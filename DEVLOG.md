@@ -6,6 +6,7 @@
       - Made a simple area shading mode which kinda works (ignores tile geometry)
     - Finally got the rotLove precise version working ... even though its callback arguments were wacky. Phew!
     - Convert all display functions to LOS/POV only
+    - Added partial visibility fog to peripheral vision squares
 
  * __2016-09-07__:
     - Further logo design work
