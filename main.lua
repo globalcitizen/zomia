@@ -21,6 +21,7 @@ characterY=1
 tilePixelsX=16
 tilePixelsY=16
 tilemap = {}
+visibleTiles = {}
 logMessages = {}
 
 -- colors
@@ -230,6 +231,9 @@ function love.load()
 	music:setVolume(2)
 	ambience:play()
 
+	-- update visibility
+	update_draw_visibility()
+
 	print('--------------------------- OK! Here we go! ---------------------------------')
 end
 
@@ -265,10 +269,11 @@ function love.keypressed(key)
 	elseif key == "," and (love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift")) then
 		ascend()
         end
+	-- redetermine visibility of all squares
+	update_draw_visibility()
 end
 
 function love.draw()
-	-- the most important part
 	--local start_time = love.timer.getTime()
 	draw_tilemap()				-- rare changes (~4-5ms or so)
         draw_tilemap_beautification()           -- rare changes (costs ~1ms or so)
@@ -289,6 +294,8 @@ function love.draw()
 	-- highly dynamic, usually no drawing at all
 	draw_logmessages()
 	draw_popups()
+
+	draw_visibility_overlay()
 end
 
 function draw_tilemap()
@@ -476,7 +483,7 @@ function draw_npcs()
 		end
 	        love.graphics.setColor(npcLabelShadowColor)
 		-- NB. The following line is useful for debugging UTF-8 issues which Lua has in buckets
-		-- print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
+		print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
 		love.graphics.setFont(light_font)
                 love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+7, (l['y']-1)*tilePixelsY+2)
 		if npcs[i]['color'] ~= nil then
@@ -967,4 +974,114 @@ function attack_npc(i)
 	npcs[i]['sounds']['attack']:play()
 	logMessage(notifyMessageColor,'You smash it!')
 	--table.remove(npcs,i)
+end
+
+-- calculate the set of visible tilemap squares
+function update_draw_visibility()
+	visibleTiles={}
+	-- our algorithm is as follows:
+	--  starting at the player's own location, spiral outward in a clockwise direction.
+	--   - if a given tile blocks vision, mark its adjacent blocks as not visible (stop searching)
+	local directions = {}
+	-- note that 'next' can be determined by a modulo calculation instead... slower though
+	directions[1] = {offset={-1,-1}, next={8,1,2}}
+	directions[2] = {offset={0,-1},  next={1,2,3}}
+	directions[3] = {offset={1,-1},  next={2,3,4}}
+	directions[4] = {offset={1,0},   next={3,4,5}}
+	directions[5] = {offset={1,1},   next={4,5,6}}
+	directions[6] = {offset={0,1},   next={5,6,7}}
+	directions[7] = {offset={-1,1},  next={6,7,8}}
+	directions[8] = {offset={-1,0},  next={7,8,1}}
+	-- we begin at the character's current location, and spiral out from there
+	local x = characterX
+	local y = characterY
+	local direction = {1,2,3,4,5,6,7,8}
+	-- we store branches for future lookup here
+	local options={}
+	local options_added={}
+	-- we continue exploring until we have exhausted all options
+	local done=false
+	local last=''
+	while done==false do
+		-- if we are on ground or an open door
+		print(x .. "/" .. y)
+		if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
+			-- this tile is visible
+			table.insert(visibleTiles,{['x']=x,['y']=y,['last']=#last})
+			-- use direction to inform subsequent options
+			for crap,dir in pairs(direction) do
+				local cx = 0
+				local cy = 0
+				-- calculate the next tile location
+				cx,cy = update_draw_visibility_helper(x,y,directions[dir]['offset'])
+				-- hang the next directions and last direction on that tile location option
+				local newoption = {}
+				local okey = cx .. ',' .. cy
+				local c = {cx, cy}
+				if #direction == 3 then
+					if options_added[okey] == nil then
+						newoption = {coordinates=c,next={dir},last=direction}
+						options_added[okey] = true
+					end
+				else
+					if options_added[okey] == nil then
+						newoption = {coordinates=c,next=directions[dir]['next'],last=direction}
+						options_added[okey] = true
+					end
+				end
+				table.insert(options,newoption)
+			end
+			-- debug summary
+			local output = "@" .. x .. "/" .. y .. " directions("
+			for crap,dir in pairs(direction) do
+				output = output .. dir .. " "
+			end
+			output = output .. ")"
+			print(output)
+		end
+		-- now we pick one of the existing options in the list, and allow the loop to repeat.
+		-- if there are no options in the list, we are done
+		if #options == 0 then
+			done = true
+		else
+			local c=options[1]['coordinates']
+			x,y = c
+			print("new option:")
+			if x ~= nil then
+				print(x)
+			end
+			if y ~= nil then
+				print(y)
+			end
+			direction = options[1]['next']
+			last = options[1]['last']
+			table.remove(options,1)
+		end
+	end
+end
+
+-- compute relative coordinate
+function update_draw_visibility_helper(x,y,offset)
+	local offset_x = offset[1]
+	local offset_y = offset[2]
+	local newx = 0
+	local newy = 0
+	local newx = x + offset_x
+	local newy = y + offset_y
+	return newx,newy
+end
+
+function draw_visibility_overlay()
+	local coordinate
+	local x = 0
+	local y = 0
+	for i=1,#visibleTiles,1 do
+		local tile = visibleTiles[i]
+		x=tile.x
+		y=tile.y
+		love.graphics.setColor(255,255,255)
+		love.graphics.rectangle("line",(x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
+		love.graphics.setFont(light_font)
+		love.graphics.print(tile.last,(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
+	end
 end
