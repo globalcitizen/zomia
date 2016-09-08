@@ -284,20 +284,32 @@ end
 
 function love.draw()
 	--local start_time = love.timer.getTime()
-	--draw_tilemap_visibilitylimited()
-	draw_tilemap()			-- rare changes (~4-5ms or so)
+	if experimentalFov then
+		draw_tilemap_visibilitylimited()
+	else
+		draw_tilemap()			-- rare changes (~4-5ms or so)
+	end
         --draw_tilemap_beautification()           -- rare changes (costs ~1ms or so)
 	--local draw_tilemap_time = love.timer.getTime()-start_time
 	--print( string.format( "Time to draw tilemap: %.3f ms", draw_tilemap_time*1000))
 
 	-- currently these are all redrawn every frame... could optimize this later
 	--local start_time = love.timer.getTime()
-	draw_footprints()			-- frequent changes
-	draw_groundfeatures()			-- occasional changes
-	draw_doors()				-- occasional changes
-	draw_stairs()				-- never changes
-	draw_character()			-- frequent changes
-	draw_npcs()				-- frequent changes
+	if experimentalFov then
+		draw_footprints_visibilitylimited()
+		draw_groundfeatures_visibilitylimited()
+		draw_doors_visibilitylimited()
+		draw_stairs_visibilitylimited()
+		draw_character()
+		draw_npcs_visibilitylimited()
+	else
+		draw_footprints()			-- frequent changes
+		draw_groundfeatures()			-- occasional changes
+		draw_doors()				-- occasional changes
+		draw_stairs()				-- never changes
+		draw_character()			-- frequent changes
+		draw_npcs()				-- frequent changes
+	end
 	--local draw_dynamics_time = love.timer.getTime()-start_time
 	--print( string.format( "Time to draw dynamics: %.3f ms", draw_dynamics_time*1000))
 
@@ -306,7 +318,7 @@ function love.draw()
 	draw_popups()
 
 	if experimentalFov then
-		draw_visibility_overlay()
+		-- draw_visibility_overlay()
 	end
 	draw_coordinates_overlay()
 
@@ -338,6 +350,21 @@ function draw_footprints()
 	end
 end
 
+function draw_footprints_visibilitylimited()
+	-- draw footprints
+        for i=1,#visibleTiles,1 do
+                local tile = visibleTiles[i]
+                x=tile.x
+                y=tile.y
+		for j,footprint in ipairs(footprints) do
+			if footprint['x']==x and footprint['y']==y then
+				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
+				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
+			end
+		end
+	end
+end
+
 function draw_groundfeatures()
 	-- draw groundfeatures
 	for i,feature in ipairs(groundfeatures) do
@@ -358,6 +385,73 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
+		end
+	end
+end
+
+function draw_groundfeatures_visibilitylimited()
+	-- draw groundfeatures
+        for i=1,#visibleTiles,1 do
+                local tile = visibleTiles[i]
+                x=tile.x
+                y=tile.y
+		for i,feature in ipairs(groundfeatures) do
+			if feature['x'] == x and feature['y'] == y then
+				if feature['type'] == 'shrub' then
+				love.graphics.setColor(20,85,30,90)
+					love.graphics.line(
+								(feature['x']-1)*tilePixelsX+4, (feature['y']-1)*tilePixelsY+2,
+								(feature['x']-1)*tilePixelsX+6, (feature['y']-1)*tilePixelsY+13,
+								(feature['x']-1)*tilePixelsX+12, (feature['y']-1)*tilePixelsY+4
+							  )
+					love.graphics.line(
+								(feature['x']-1)*tilePixelsX+6, (feature['y']-1)*tilePixelsY+13,
+								(feature['x']-1)*tilePixelsX+8, (feature['y']-1)*tilePixelsY+5
+							  )
+				elseif feature['type'] == 'puddle' then
+					love.graphics.setColor(0,10,65,155)
+					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+				elseif feature['type'] == 'stone' then
+					love.graphics.setColor(rockColor,120)
+					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
+				end
+			end
+		end
+	end
+end
+
+function draw_stairs_visibilitylimited()
+        for i=1,#visibleTiles,1 do
+                local tile = visibleTiles[i]
+                x=tile.x
+                y=tile.y
+		if tilemap[x][y] == '>' or tilemap[x][y] == '<' then
+			love.graphics.setColor(0,0,0,255)
+			love.graphics.rectangle('fill',(x-1)*tilePixelsX,(y-1)*tilePixelsY+2,tilePixelsX-3,tilePixelsY-3)
+			love.graphics.setColor(255,255,255,255)
+			local total_lines = math.floor(tilePixelsX*0.7/2.5)
+			local colorstep = 130/total_lines
+			for i=1,total_lines,1 do
+				love.graphics.setColor(255-(i*colorstep),255-(i*colorstep),255-(i*colorstep),255-(i*colorstep))
+				if true or tilemap[x][y] == '>' then
+					love.graphics.line(
+								(x-1)*tilePixelsX+(i-1)*3+2,
+								(y-1)*tilePixelsY+4,
+								(x-1)*tilePixelsX+(i-1)*3+2,
+								(y-1)*tilePixelsY+tilePixelsY-3
+					)
+				else
+					love.graphics.line(
+								(x-1)*tilePixelsX+tilePixelsX-(i-1)*3+2,
+								(y-1)*tilePixelsY+4,
+								(x-1)*tilePixelsX+tilePixelsX-(i-1)*3+2,
+								(y-1)*tilePixelsY+tilePixelsY-3
+					)
+				end
+			end
+			love.graphics.setColor(155,155,155,255)
+			love.graphics.setFont(heavy_font)
+			love.graphics.print(tilemap[x][y],(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
 		end
 	end
 end
@@ -425,6 +519,38 @@ function draw_doors()
 					love.graphics.setColor(doorColor)
 					love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,tilePixelsX,3)
 				end
+			end
+		end
+	end
+end
+
+function draw_doors_visibilitylimited()
+	-- draw doors (on top of the map tilemap)
+        for i=1,#visibleTiles,1 do
+                local tile = visibleTiles[i]
+                x=tile.x
+                y=tile.y
+		-- if horizontal door
+		if (x>1 and tilemap[x-1][y] == 0) or (x<resolutionTilesX and tilemap[x+1][y] == 0) then
+			-- 2 = closed door
+			if tilemap[x][y] == 2 then
+				love.graphics.setColor(doorColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),tilePixelsX,3)
+			-- 3 = open door
+			elseif tilemap[x][y] == 3 then
+				love.graphics.setColor(doorColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),3,tilePixelsY)
+			end
+		-- vertical door
+		else
+			-- 2 = closed door
+			if tilemap[x][y] == 2 then
+				love.graphics.setColor(doorColor)
+				love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,3,tilePixelsY)
+			-- 3 = open door
+			elseif tilemap[x][y] == 3 then
+				love.graphics.setColor(doorColor)
+				love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,tilePixelsX,3)
 			end
 		end
 	end
@@ -510,6 +636,56 @@ function draw_npcs()
 		end
 		love.graphics.setFont(light_font)
                 love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+6, (l['y']-1)*tilePixelsY+1)
+	end
+end
+
+function draw_npcs_visibilitylimited()
+	-- draw npcs
+	for i=1,#npcs,1 do
+		local l=npcs[i]['location']
+		-- check if it's in the list of visible tiles
+
+		-- cheat and display a dot on each unseen NPC
+		--love.graphics.setColor(255,255,255,255)
+		--love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+(characterSmallness+3),(l['y']-1)*tilePixelsY+(characterSmallness+3),tilePixelsX-(characterSmallness+3)*2,tilePixelsY-(characterSmallness+3)*2)
+		local found=false
+		for j=1,#visibleTiles,1 do
+                	local tile = visibleTiles[j]
+                	if tile.x == l['x'] and tile.y == l['y'] then
+				found = true
+			end
+		end
+		if found==true then
+			if npcs[i]['color'] ~= nil then
+				love.graphics.setColor(npcs[i]['color'])
+			else
+				love.graphics.setColor(defaultNpcColor)
+			end
+			love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness,(l['y']-1)*tilePixelsY+characterSmallness,tilePixelsX-characterSmallness*2,tilePixelsY-characterSmallness*2)
+			if npcs[i]['tail'] ~= nil then
+				love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness,(l['y']-1)*tilePixelsY+tilePixelsY-characterSmallness-2,-2,2)
+				love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness-2,(l['y']-1)*tilePixelsY+tilePixelsY-characterSmallness-4,1,2)
+				love.graphics.setColor(0,0,0,255)
+				love.graphics.points({
+					(l['x']-1)*tilePixelsX+characterSmallness+2,
+					(l['y']-1)*tilePixelsY+characterSmallness+2,
+					(l['x']-1)*tilePixelsX+tilePixelsX-characterSmallness-3,
+					(l['y']-1)*tilePixelsY+characterSmallness+2,
+						    })
+			end
+		        love.graphics.setColor(npcLabelShadowColor)
+			-- NB. The following line is useful for debugging UTF-8 issues which Lua has in buckets
+			--print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
+			love.graphics.setFont(light_font)
+       		         love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+7, (l['y']-1)*tilePixelsY+2)
+			if npcs[i]['color'] ~= nil then
+				love.graphics.setColor(npcs[i]['color'])
+			else
+				love.graphics.setColor(defaultNpcLabelColor)
+			end
+			love.graphics.setFont(light_font)
+        	        love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+6, (l['y']-1)*tilePixelsY+1)
+		end
 	end
 end
 
@@ -1230,5 +1406,5 @@ end
 
 -- for FOV calculation
 function isVisibleCallback(x,y,r,v)
-	table.insert(visibleTiles,{x=x,y=y,r=r,last=r})
+	table.insert(visibleTiles,{x=x,y=y,r=r,last=r,v=v})
 end
