@@ -112,7 +112,8 @@ function love.load()
 	generate_world()
 
 	-- load initial world location
-	world_load_area(0,10,10)
+	print('Entering world.')
+	world_load_area(0,10,10)			-- FIXTHIS: remove magic values from here and world.lua
 
 	-- update visibility
 	if experimentalFov then
