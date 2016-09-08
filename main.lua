@@ -484,7 +484,7 @@ function draw_npcs()
 		end
 	        love.graphics.setColor(npcLabelShadowColor)
 		-- NB. The following line is useful for debugging UTF-8 issues which Lua has in buckets
-		print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
+		-- print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
 		love.graphics.setFont(light_font)
                 love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+7, (l['y']-1)*tilePixelsY+2)
 		if npcs[i]['color'] ~= nil then
@@ -1008,7 +1008,7 @@ function update_draw_visibility()
 		print(x .. "/" .. y)
 		if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
 			-- this tile is visible
-			table.insert(visibleTiles,{['x']=x,['y']=y,['last']=#last})
+			table.insert(visibleTiles,{['x']=x,['y']=y,['last']=#direction})
 			-- use direction to inform subsequent options
 			for crap,dir in pairs(direction) do
 				local cx = 0
@@ -1020,17 +1020,18 @@ function update_draw_visibility()
 				local okey = cx .. ',' .. cy
 				local c = {cx, cy}
 				if #direction == 3 then
-					if options_added[okey] == nil then
-						newoption = {coordinates=c,next={dir},last=direction}
-						options_added[okey] = true
-					end
+					newoption = {coordinates=c,next={dir},last=direction}
 				else
-					if options_added[okey] == nil then
-						newoption = {coordinates=c,next=directions[dir]['next'],last=direction}
-						options_added[okey] = true
-					end
+					newoption = {coordinates=c,next=directions[dir]['next'],last=direction}
 				end
-				table.insert(options,newoption)
+				-- insert only if the tile hasnt already been staged
+				if options_added[okey] == nil then
+					table.insert(options,newoption)
+					options_added[okey] = true
+					print("====post insert=========")
+					print(table.show(options))
+					print("========================")
+				end
 			end
 			-- debug summary
 			local output = "@" .. x .. "/" .. y .. " directions("
@@ -1060,11 +1061,12 @@ function update_draw_visibility()
 		end
 		if #options == 0 then
 			done=true
+		else
+			-- show options
+			print("=====end run============")
+			print(table.show(options))
+			print("========================")
 		end
-		-- show options
-		print("========================")
-		print(table.show(options))
-		print("========================")
 	end
 end
 
