@@ -60,9 +60,23 @@ end
 
 function world_load_area(z,x,y)
 	-- assign maptiles from area
-	-- start music
-	-- start ambient
+
         -- correctly place character
         print "Placing character..."
         characterX, characterY = randomStandingLocation() -- random for now
+
+	-- start music
+	print("Starting music...")
+	music = love.audio.newSource(world[z][x][y].music)
+	music:setLooping(true)
+	music:play()
+	music:setVolume(world[z][x][y].music_volume
+
+	-- start ambience
+	print("Starting ambience...")
+	ambience = love.audio.newSource(world[z][x][y].ambient)
+	ambience:setLooping(true)
+	music:setVolume(world[z][x][y].ambient_volume)
+	ambience:play()
+
 end

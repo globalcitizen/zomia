@@ -111,35 +111,8 @@ function love.load()
 	print('Generating world.')
 	generate_world()
 
-	-- position us in the world
+	-- load initial world location
 	world_load_area(0,10,10)
-
-	-- randomly place character
-	print "Randomly placing character..."
-	characterX, characterY = randomStandingLocation()
-
-	-- start music
-	print("Starting music...")
---[[ REWRITE TO USE AREA INFO
-	music = love.audio.newSource({
-					"music/Greg_Reinfeld_-_02_-_Canon_in_D_ni_nonaC_Pachelbels_Canon.mp3",
-					"music/Kevin MacLeod - Sardana.mp3",
-					"music/Kevin MacLeod - Suonatore di Liuto.mp3",
-					"music/Kevin MacLeod - Teller of the Tales.mp3",
-					"music/Komiku_-_03_-_Champ_de_tournesol.mp3",
-					"music/Komiku_-_05_-_La_Citadelle.mp3",
-					"music/Komiku_-_06_-_La_ville_aux_ponts_suspendus.mp3"
-				   })
-	music:setLooping(true)
-	music:play()
-	music:setVolume(0.05)
-	ambience = love.audio.newSource({
-						"sounds/ambient/cave-drips.mp3"
-					})
-	ambience:setLooping(true)
-	music:setVolume(2)
-	ambience:play()
---]]
 
 	-- update visibility
 	if experimentalFov then
