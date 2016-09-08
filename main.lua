@@ -146,21 +146,20 @@ function love.load()
 	local tmp_tilemap = generator:CellToTiles(dungeon, symbols )
 
 	-- sanity check
-	--print("width of tilemap is " .. #tilemap)
-	--print("width of tmp_tilemap is " .. #tmp_tilemap)
+	print("width of tilemap is " .. #tilemap)
+	print("width of tmp_tilemap is " .. #tmp_tilemap)
 
+	-- the astray generator begins its tilemap at row 0 and column 0 instead of row 1 and column 1, which does not match other lua code
 	for y = 1, #tmp_tilemap[1] do
         	local line = ''
                 for x = 1, #tmp_tilemap do
 			local nx=x-1
 			local ny=y-1
 			if tmp_tilemap[nx] ~= nil and tmp_tilemap[nx][ny] ~= nil then
-				-- print("tilemap x=" .. x .. "/y=" .. y .. " so nx=" .. nx .. "/ny=" .. ny)
 				tilemap[x][y] = tmp_tilemap[nx][ny]
                         	line = line .. tmp_tilemap[nx][ny]
 			end
                 end
-                --print(line)
         end
 
 	-- randomly place character
