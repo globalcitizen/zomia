@@ -112,12 +112,17 @@ function love.load()
 	--  sparsenessModifier,         (10 = full of corridors, 90 = full of rock)  = "rockiness"
 	--  deadEndRemovalModifier,     (10 = lots of dead ends, 100 = no dead ends) = "connectedness"
 	--  roomGenerator
+	--    - noOfRoomsToPlace
+	--    - minRoomWidth
+	--    - maxRoomWidth
+	--    - minRoomHeight
+	--    - maxRoomHeight
 ]]--
 	local symbols = {Wall=0, Empty=1, DoorN=2, DoorS=2, DoorE=2, DoorW=2}
 	--local generator = astray.Astray:new( math.floor(resolutionTilesX/2), math.floor(resolutionTilesY/2), 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
 	--local generator = astray.Astray:new( resolutionTilesY-1, math.floor(resolutionTilesY/2)-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
 	--local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
-	local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 80, 70, 100, astray.RoomGenerator:new(10,1,5,1,5) )
+	local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 80, 70, 100, astray.RoomGenerator:new(22,2,5,2,5) )
 	local dungeon = generator:Generate()
 	local tmp_tilemap = generator:CellToTiles(dungeon, symbols )
 
