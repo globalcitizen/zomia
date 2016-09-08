@@ -57,9 +57,14 @@ love .
 
 ### Dungeon
 
-Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. There is no lighting/field of view yet.
+Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. Doors can be opened and closed.
 
 ![Dungeon](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-dungeon.jpg)
+
+Here is a brand new field of view output overlay showing working FOV calculcation.
+
+![Field of view](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov.jpg)
+
 
 ### User interface
 
