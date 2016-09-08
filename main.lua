@@ -536,9 +536,11 @@ function draw_poorvisibility_overlay()
 		v=tile.v
 		local alpha
 		if v ~= 1 then
-			alpha = 125 + (130*v)
+			alpha = 50*v
 			love.graphics.setColor(0,0,0,alpha)
 			--print("@" .. x .. "/" .. y .. ", visibility = " .. v)
+			love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
+			love.graphics.setColor(0,0,0,100)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY,tilePixelsX,tilePixelsY)
 		end
 	end
@@ -1358,7 +1360,7 @@ function draw_tilemap_visibilitylimited()
 		if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 			love.graphics.setColor(groundColor)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
-			love.graphics.setColor(0,0,0,150)
+			love.graphics.setColor(0,0,0,100)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 		end
 	end
