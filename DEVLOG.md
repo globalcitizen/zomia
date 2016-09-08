@@ -9,6 +9,7 @@
     - Added partial visibility fog to peripheral vision squares
     - Remember and display seen tiles
     - Basic (simplified) world generation
+    - Beginnings of area-specific tile and name generation
 
  * __2016-09-07__:
     - Further logo design work
