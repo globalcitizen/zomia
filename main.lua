@@ -1277,7 +1277,6 @@ function draw_tilemap_visibilitylimited()
 		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
 			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
 			if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
-				--love.graphics.setColor(groundColor)
 				love.graphics.setColor(groundColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 				love.graphics.setColor(0,0,0,100)
