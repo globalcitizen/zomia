@@ -1,12 +1,13 @@
 area_types['tai_village'] = {
 				 name  = 'Tai Village',
-				 prefix= 'The Tai Village of ',
 				 setup = function(instance) 
 
 					-- Generate an appropriate name
 					instance.name=taiVillageNames:generate()
+					instance.prefix='The Little Tai Village of '
 
 					-- Generate an appropriate map
+					--  - First, all clear
 					local new_tilemap = {}
 					for i=1,resolutionTilesX,1 do
 						new_tilemap[i] = {}
@@ -14,6 +15,14 @@ area_types['tai_village'] = {
 							new_tilemap[i][j] = 1
 						end
 					end
+					--  - Second, a few buildings
+					-- TODO
+					--  - Third, a couple of roads
+					-- TODO
+					--  - Fourth, a water pond
+					-- TODO
+					--  - Fifth, some trees
+					-- TODO
 					instance.tilemap=new_tilemap
 
 					-- Populate with NPCs
