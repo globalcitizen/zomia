@@ -83,7 +83,15 @@ area_types['tai_village'] = {
 					--  - Fourth, a water pond
 					-- TODO
 					--  - Fifth, some trees
-					-- TODO
+					for i=1,20,1 do
+						-- set space required around tree
+						treeSpace=1
+						-- find a location
+						ts = treeSpace*2 + 1
+						bx,by = randomStandingLocation(new_tilemap,ts)
+						new_tilemap[bx+treeSpace][by+treeSpace] = 'T'
+					end
+
 					instance.tilemap=new_tilemap
 
 					-- Populate with NPCs

@@ -45,6 +45,7 @@ waterMessageColor={50,50,195}
 rockColor={0,0,0}
 groundColor={25,25,25}
 waterColor={0,10,95}
+treeColor={80,185,50}
 puddleColor={0,10,65,155}
 doorColor={88,6,8}
 circleColor={0,128,128}
@@ -242,6 +243,16 @@ function draw_tilemap()
 				for i=1,tilePixelsX,4 do
 					love.graphics.line((x-1)*tilePixelsX+i, (y-1)*tilePixelsY+2, (x-1)*tilePixelsX+i+1, (y-1)*tilePixelsY+tilePixelsY-2)
 				end
+                        elseif tilemap[x][y] == 'T' then
+				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+                                love.graphics.setColor(treeColor)
+                                love.graphics.rectangle("fill", (x-1)*tilePixelsX+1, (y-1)*tilePixelsY+1, tilePixelsX-2, tilePixelsY-2)
+				love.graphics.setColor(groundColor)
+				love.graphics.line((x-1)*tilePixelsX, (y-1)*tilePixelsY+tilePixelsY/2, (x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY+tilePixelsY/2)
+				love.graphics.line((x-1)*tilePixelsX+tilePixelsX/2, (y-1)*tilePixelsY, (x-1)*tilePixelsX+tilePixelsX/2, (y-1)*tilePixelsY+tilePixelsY)
+				love.graphics.line((x-1)*tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
+				love.graphics.line((x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
                         elseif tilemap[x][y] == 'W' then
                                 love.graphics.setColor(waterColor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
