@@ -82,6 +82,17 @@ screenModeFlags = {fullscreen=true, fullscreentype='desktop', vsync=true, msaa=0
 
 function love.load()
 
+	-- load multi-area sounds
+	sounds['pickup'] = love.audio.newSource("sounds/8-bit/pickup.wav")
+	sounds['door_open'] = love.audio.newSource("sounds/8-bit/door-open.wav")
+	sounds['door_close'] = love.audio.newSource("sounds/8-bit/door-close.wav")
+	sounds['footfall_water'] = love.audio.newSource("sounds/8-bit/footfall-water-1.wav")
+	sounds['footfalls'] = {}
+	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-1.wav"))
+	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-2.wav"))
+	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-3.wav"))
+	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-4.wav"))
+	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-5.wav"))
 
 	-- load font
 	print('Loading fonts')
@@ -125,7 +136,6 @@ function love.load()
 end
 
 function love.keypressed(key)
-	logMessage("key pressed")
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
         elseif key == "right" or key == "6" then
@@ -308,7 +318,7 @@ function draw_stairs_visibilitylimited()
                 local tile = visibleTiles[i]
                 x=tile.x
                 y=tile.y
-		if tilemap[x][y] == '>' or tilemap[x][y] == '<' then
+		if tilemap[x] ~= nil and tilemap[x][y] ~= nil and (tilemap[x][y] == '>' or tilemap[x][y] == '<') then
 			love.graphics.setColor(0,0,0,255)
 			love.graphics.rectangle('fill',(x-1)*tilePixelsX,(y-1)*tilePixelsY+2,tilePixelsX-3,tilePixelsY-3)
 			love.graphics.setColor(255,255,255,255)
@@ -432,27 +442,29 @@ function draw_doors_visibilitylimited()
                 local tile = visibleTiles[i]
                 x=tile.x
                 y=tile.y
-		-- if horizontal door
-		if (x>1 and tilemap[x-1][y] == 0) or (x<resolutionTilesX and tilemap[x+1][y] == 0) then
-			-- 2 = closed door
-			if tilemap[x][y] == 2 then
-				love.graphics.setColor(doorColor)
-				love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),tilePixelsX,3)
-			-- 3 = open door
-			elseif tilemap[x][y] == 3 then
-				love.graphics.setColor(doorColor)
-				love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),3,tilePixelsY)
-			end
-		-- vertical door
-		else
-			-- 2 = closed door
-			if tilemap[x][y] == 2 then
-				love.graphics.setColor(doorColor)
-				love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,3,tilePixelsY)
-			-- 3 = open door
-			elseif tilemap[x][y] == 3 then
-				love.graphics.setColor(doorColor)
-				love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,tilePixelsX,3)
+		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
+			-- if horizontal door
+			if (x>1 and tilemap[x-1][y] == 0) or (x<resolutionTilesX and tilemap[x+1][y] == 0) then
+				-- 2 = closed door
+				if tilemap[x][y] == 2 then
+					love.graphics.setColor(doorColor)
+					love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),tilePixelsX,3)
+				-- 3 = open door
+				elseif tilemap[x][y] == 3 then
+					love.graphics.setColor(doorColor)
+					love.graphics.rectangle("fill", (x-1)*tilePixelsX,(y-1)*tilePixelsY+(math.floor(tilePixelsY/2)),3,tilePixelsY)
+				end
+			-- vertical door
+			else
+				-- 2 = closed door
+				if tilemap[x][y] == 2 then
+					love.graphics.setColor(doorColor)
+					love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,3,tilePixelsY)
+				-- 3 = open door
+				elseif tilemap[x][y] == 3 then
+					love.graphics.setColor(doorColor)
+					love.graphics.rectangle("fill",(x-1)*tilePixelsX+(math.floor(tilePixelsX/2)),(y-1)*tilePixelsX,tilePixelsX,3)
+				end
 			end
 		end
 	end
@@ -1258,10 +1270,12 @@ function draw_tilemap_visibilitylimited()
 		local tile = visibleTiles[i]
 		x=tile.x
 		y=tile.y
-		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
-		if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
-			love.graphics.setColor(groundColor)
-			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
+			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
+			if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			end
 		end
 	end
 end
