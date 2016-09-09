@@ -7,6 +7,8 @@
     - Better initial world generation
     - Work on `tai_cave` area generation
     - Lose footprints on area change
+    - In `tai_village` made buildings not spawn adjacent
+    - Implement random NPC movement
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
