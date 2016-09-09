@@ -815,7 +815,7 @@ function moveCharacterRelatively(x,y)
 				endTurn()
 			end
 		end
-	else
+	end
 end
 
 -- make the tiles more beautiful
