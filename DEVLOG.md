@@ -6,6 +6,7 @@
     - Made stairs work
     - Better initial world generation
     - Work on `tai_cave` area generation
+    - Lose footprints on area change
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
