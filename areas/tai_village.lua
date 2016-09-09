@@ -8,7 +8,7 @@ area_types['tai_village'] = {
 					for i=1,resolutionTilesX,1 do
 						new_tilemap[i] = {}
 						for j=1,resolutionTilesY,1 do
-							new_tilemap[i][j] = '1'
+							new_tilemap[i][j] = 1
 						end
 					end
 					instance.tilemap=new_tilemap

@@ -125,6 +125,7 @@ function love.load()
 end
 
 function love.keypressed(key)
+	logMessage("key pressed")
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
         elseif key == "right" or key == "6" then
@@ -752,10 +753,10 @@ function moveCharacterRelatively(x,y)
 	newX = characterX + x
 	newY = characterY + y
 	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs)
-	if tilemap[newX][newY] == 1 or tilemap[newX][newY] == 2 or tilemap[newX][newY] == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
+	if tilemap[newX][newY]+0 == 1 or tilemap[newX][newY]+0 == 2 or tilemap[newX][newY]+0 == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
 		local blocked=false
 		-- if it's a closed door, open it
-		if tilemap[newX][newY] == 2 then
+		if tilemap[newX][newY]+0 == 2 then
 			opendoor(newX,newY)
 		else
 			-- if there is no NPC there
@@ -795,7 +796,7 @@ function moveCharacterRelatively(x,y)
 			end
 		end
 	else
-		if tilemap[newX][newY] == 0 then
+		if tilemap[newX][newY]+0 == 0 then
 --			logMessage(failMessageColor,"You can't move that way (there is a wall in the way).")
 --		else
 --			logMessage(failMessageColor,"You can't move that way (there is something in the way).")
@@ -1236,7 +1237,7 @@ function draw_tilemap_visibilitylimited()
 		print(" (Hint: Did you forget to initialize the tilemap?)")
 		os.exit()
 	end
-	--print(table.show(seenTiles))
+	--[[
 	for i,p in pairs(seenTiles) do
 		local tile = split(i,',')
 		x=tile[1]+0
@@ -1244,7 +1245,7 @@ function draw_tilemap_visibilitylimited()
 		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
 		if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 			--love.graphics.setColor(groundColor)
-			love.graphics.setColor(255,255,255,255)
+			love.graphics.setColor(groundColor)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			love.graphics.setColor(0,0,0,100)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
@@ -1252,12 +1253,13 @@ function draw_tilemap_visibilitylimited()
 			print("Not drawing tile @ " .. x .. "/" .. y .. " ... raw value = '" .. tilemap[x][y] .. "'")
 		end
 	end
+	]]--
 	for i=1,#visibleTiles,1 do
 		local tile = visibleTiles[i]
 		x=tile.x
 		y=tile.y
 		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
-		if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+		if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 			love.graphics.setColor(groundColor)
 			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 		end
