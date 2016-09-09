@@ -20,10 +20,11 @@ music = 0
 sounds={}
 
 -- basics
+fov = 15    -- de-facto distance of vision
+defaultOutsideFOV = 20
 inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30}}
 equipment = {left_hand='sword'}
 beautify=true
-experimentalFov=true
 simpleAreaShade=false
 --beautify=false
 characterX=1
@@ -129,7 +130,7 @@ function love.load()
 	world_load_area(world_location.z,world_location.x,world_location.y)
 
 	-- update visibility
-	if experimentalFov then
+	if fov > 0 then
 		update_draw_visibility_new()
 		--update_draw_visibility()
 	end
@@ -170,7 +171,7 @@ function love.keypressed(key)
 		ascend()
         end
 	-- redetermine visibility of all squares
-	if experimentalFov then
+	if fov > 0 then
 		update_draw_visibility_new()
 		--update_draw_visibility()
 	end
@@ -178,7 +179,7 @@ end
 
 function love.draw()
 	--local start_time = love.timer.getTime()
-	if experimentalFov then
+	if fov > 0 then
 		draw_tilemap_visibilitylimited()
 	else
 		draw_tilemap()			-- rare changes (~4-5ms or so)
@@ -189,7 +190,7 @@ function love.draw()
 
 	-- currently these are all redrawn every frame... could optimize this later
 	--local start_time = love.timer.getTime()
-	if experimentalFov then
+	if fov > 0 then
 		draw_footprints_visibilitylimited()
 		draw_groundfeatures_visibilitylimited()
 		draw_doors_visibilitylimited()
@@ -208,19 +209,21 @@ function love.draw()
 	--local draw_dynamics_time = love.timer.getTime()-start_time
 	--print( string.format( "Time to draw dynamics: %.3f ms", draw_dynamics_time*1000))
 
+	-- shade if appropriate
+	if simpleAreaShade then
+		draw_simpleareashade()
+	end
+
 	-- highly dynamic, usually no drawing at all
 	draw_logmessages()
 	draw_popups()
 
-	if experimentalFov then
+	if fov > 0 then
 		-- draw_visibility_overlay()
 	end
 	draw_coordinates_overlay()
 	draw_areaname_overlay()
 
-	if simpleAreaShade then
-		draw_simpleareashade()
-	end
 end
 
 function draw_tilemap()
@@ -232,6 +235,12 @@ function draw_tilemap()
 			if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 				love.graphics.setColor(groundColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+                        elseif tilemap[x][y] == '=' then
+                                love.graphics.setColor(doorColor)
+                                love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+                        elseif tilemap[x][y] == 'W' then
+                                love.graphics.setColor(waterColor)
+                                love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			end
 		end
 	end
@@ -1313,45 +1322,49 @@ function draw_tilemap_visibilitylimited()
 end
 
 function draw_simpleareashade()
+	local myfov = fov
+	if myfov == 0 then 
+		myfov = defaultOutsideFOV
+	end
 	-- top
 	love.graphics.setColor(0,0,0,255)
-	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-10)*tilePixelsY)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-myfov)*tilePixelsY)
 	love.graphics.setColor(0,0,0,135)
-	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-9)*tilePixelsY)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-myfov+1)*tilePixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-8)*tilePixelsY)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-myfov+2)*tilePixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-7)*tilePixelsY)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,(characterY-myfov+3)*tilePixelsY)
 
 	-- left
 	love.graphics.setColor(0,0,0,255)
-	love.graphics.rectangle('fill',0,0,(characterX-10)*tilePixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,0,(characterX-myfov)*tilePixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,135)
-	love.graphics.rectangle('fill',0,0,(characterX-9)*tilePixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,0,(characterX-myfov+1)*tilePixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,0,(characterX-8)*tilePixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,0,(characterX-myfov+2)*tilePixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,0,(characterX-7)*tilePixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,0,(characterX-myfov+3)*tilePixelsX,resolutionPixelsY)
 
 	-- right
 	love.graphics.setColor(0,0,0,255)
-	love.graphics.rectangle('fill',(characterX+10)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',(characterX+myfov)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,135)
-	love.graphics.rectangle('fill',(characterX+9)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',(characterX+myfov-1)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',(characterX+8)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',(characterX+myfov-2)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',(characterX+7)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',(characterX+myfov-3)*tilePixelsX,0,resolutionPixelsX,resolutionPixelsY)
 
 	-- bottom
 	love.graphics.setColor(0,0,0,255)
-	love.graphics.rectangle('fill',0,(characterY+10)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,(characterY+myfov)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,135)
-	love.graphics.rectangle('fill',0,(characterY+9)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,(characterY+myfov-1)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,(characterY+8)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,(characterY+myfov-2)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
 	love.graphics.setColor(0,0,0,100)
-	love.graphics.rectangle('fill',0,(characterY+7)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
+	love.graphics.rectangle('fill',0,(characterY+myfov-3)*tilePixelsY,resolutionPixelsX,resolutionPixelsY)
 
 end
 
@@ -1362,8 +1375,9 @@ function update_draw_visibility_new()
 	for i,v in ipairs(seenTiles) do
 		seenTiles['i'] = 0
 	end
-	fov=ROT.FOV.Precise:new(lightPassesCallback,{topology=8})
-	results = fov:compute(characterX,characterY,15,isVisibleCallback)
+	local thefov = nil
+	thefov=ROT.FOV.Precise:new(lightPassesCallback,{topology=8})
+	results = thefov:compute(characterX,characterY,fov,isVisibleCallback)
 end
 
 -- for FOV calculation
