@@ -25,6 +25,8 @@
     - Added randomly placed buildings
     - Added randomly placed trees
     - Basic wilderness generation
+    - Majority of area-switching logic
+    - Linecount 2383
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
