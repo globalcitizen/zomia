@@ -41,6 +41,7 @@ function generate_world()
 	if cave_location == 1 then
 		world[-1][10][9] = {type='tai_cave'}
 		world[0][10][9] = {type='tai_cave_entrance'}
+		world_location = {z=0,x=10,y=9}
 		world[0][10][11] = {type='wilderness'}
 		world[0][9][10] = {type='wilderness'}
 		world[0][11][10] = {type='wilderness'}
@@ -48,6 +49,7 @@ function generate_world()
 		world[0][10][9] = {type='wilderness'}
 		world[-1][10][11] = {type='tai_cave'}
 		world[0][10][11] = {type='tai_cave_entrance'}
+		world_location = {z=0,x=10,y=11}
 		world[0][9][10] = {type='wilderness'}
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 3 then
@@ -55,6 +57,7 @@ function generate_world()
 		world[0][10][11] = {type='wilderness'}
 		world[-1][9][10] = {type='tai_cave'}
 		world[0][9][10] = {type='tai_cave_entrance'}
+		world_location = {z=0,x=9,y=10}
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 4 then
 		world[0][10][9] = {type='wilderness'}
@@ -62,6 +65,7 @@ function generate_world()
 		world[0][9][10] = {type='wilderness'}
 		world[-1][11][10] = {type='tai_cave'}
 		world[0][11][10] = {type='tai_cave_entrance'}
+		world_location = {z=0,x=11,y=10}
 	end
 end
 
@@ -88,7 +92,7 @@ function world_load_area(z,x,y)
 	end
 
 	-- assign maptiles from area
-	tilemap = world[z][x][y].tilemap
+	tilemap = world[z][x][y].map
 
 	-- if any NPCs are not placed, place them randomly now
 	if world[z][x][y].npcs ~= nil then
