@@ -78,12 +78,15 @@ area_types['tai_village'] = {
 							end
 						end
 					end
+
+					-- should probably add a temple...
+
 					--  - Third, a couple of roads
 					-- TODO
 					--  - Fourth, a water pond
 					-- TODO
 					--  - Fifth, some trees
-					for i=1,20,1 do
+					for i=1,50,1 do
 						-- set space required around tree
 						treeSpace=1
 						-- find a location
