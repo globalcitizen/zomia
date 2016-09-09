@@ -797,7 +797,10 @@ function moveCharacterRelatively(x,y)
 	newY = characterY + y
 	-- if the space is off the map...
 	if newX > resolutionTilesX or newY > resolutionTilesY or newX < 1 or newY < 1 then
-		-- trying to change areas... handle where.
+		-- trying to change areas... handle this here.
+		-- NOTE that we should pre-generate the subsequent area if not already generated
+		--      so that we can test whether the diagonal or other movement is actually
+		--	allowed, and/or fudge it, ie. if blocked cross with +1 or -1 on some axis
 		--  first, diagonals
 		if newX > resolutionTilesX and newY > resolutionTilesY then
 			-- down right
@@ -1342,7 +1345,7 @@ end
 function draw_coordinates_overlay()
 		love.graphics.setColor(255,255,255)
 		love.graphics.setFont(heavy_font)
-		love.graphics.print(characterX .. '/' .. characterY,(resolutionTilesX-10)*tilePixelsX,tilePixelsY)
+		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y,(resolutionTilesX-10)*tilePixelsX,tilePixelsY)
 end
 
 function draw_tilemap_visibilitylimited()
