@@ -88,9 +88,6 @@ function world_load_area(z,x,y)
 	-- load npcs
 	npcs = world[z][x][y].npcs
 
-        -- correctly place character
-        print "Placing character..."
-        characterX, characterY = randomStandingLocation(tilemap)
 
 	-- start music
 	if world[z][x][y].music ~= nil then
