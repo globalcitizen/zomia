@@ -1,5 +1,6 @@
 area_types['tai_village'] = {
 				 name  = 'Tai Village',
+				 prefix= 'The Tai Village of ',
 				 setup = function(instance) 
 
 					-- Generate an appropriate name

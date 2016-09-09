@@ -214,6 +214,7 @@ function love.draw()
 		-- draw_visibility_overlay()
 	end
 	draw_coordinates_overlay()
+	draw_areaname_overlay()
 
 	if simpleAreaShade then
 		draw_simpleareashade()
@@ -1238,6 +1239,21 @@ function draw_visibility_overlay()
 		love.graphics.setFont(heavy_font)
 		love.graphics.print(tile.last,(x-1)*tilePixelsX+tilePixelsX/2*0.7,(y-1)*tilePixelsY+1)
 	end
+end
+
+function draw_areaname_overlay()
+		local name = world[world_location.z][world_location.x][world_location.y].name
+		local prefix = "The Tai Village of "
+		if world[world_location.z][world_location.x][world_location.y].prefix ~= nil then
+			prefix = world[world_location.z][world_location.x][world_location.y].prefix
+		end
+		love.graphics.setColor(255,255,255)
+		love.graphics.setFont(heavy_font)
+		love.graphics.print(name,math.floor(resolutionTilesX/2)*tilePixelsX,tilePixelsY)
+		if prefix ~= nil then
+			love.graphics.setFont(light_font)
+			love.graphics.printf(prefix,math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,tilePixelsY,tilePixelsX*10,'right')
+		end
 end
 
 function draw_coordinates_overlay()
