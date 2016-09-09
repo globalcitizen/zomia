@@ -6,7 +6,7 @@ area_types={}
 -- instantiate area
 function area_generate(z,x,y)
 	local new_area = {}
-	if world[z][x][y].type ~= nil then
+	if world[z][x][y].type == nil then
 		new_area.type='wilderness'
 	end
 	new_area.type=world[z][x][y].type
