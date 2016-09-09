@@ -19,6 +19,7 @@
     - Implemented procedurally generated river in Tai village
     - Implemented procedurally generated bridge over river in Tai village
     - Implemented area-specific field of view
+    - Added `chicken` and `rooster` NPCs, including identifying and normalizing lots of freely licensed audio
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
