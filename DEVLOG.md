@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-09__:
+    - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
+
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
       - Wound up with a half-working implementation that infinite-loop-crashes in large rooms because the algorithm is imperfect, looks like hopscotch (new roguelike? :)
