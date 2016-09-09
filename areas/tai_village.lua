@@ -31,7 +31,7 @@ area_types['tai_village'] = {
                                                                         "music/Komiku_-_05_-_La_Citadelle.mp3",
                                                                         "music/Komiku_-_06_-_La_ville_aux_ponts_suspendus.mp3"
                                                          }
-                                        instance.music_volume=0.05
+                                        instance.music_volume=0.3
 
                                         -- ambient noise
 					--[[
