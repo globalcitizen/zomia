@@ -36,6 +36,15 @@ area_types['tai_village'] = {
 						if y==bridge_location then 
 							tiletype='='
 						end
+						-- had a crash here, leave for debugging
+						print("river_center_x = " .. river_center_x .. " ... y = " .. y .. " (resolutionTilesX = " .. resolutionTilesX .. " / resolutionTilesY = " .. resolutionTilesY .. ")")
+						-- river_center_x = 27 ... y = 1
+						if new_tilemap[river_center_x-1] == nil then
+							print(table.show(new_tilemap))
+							print("Allegedly new_tilemap[" .. (river_center_x-1) .. "] is nonexistant.")
+							print(table.show(new_tilemap[river_center_x-1]))
+							os.exit()
+						end
 						new_tilemap[river_center_x-1][y] = tiletype
 						new_tilemap[river_center_x][y] = tiletype
 						new_tilemap[river_center_x+1][y] = tiletype
@@ -57,8 +66,18 @@ area_types['tai_village'] = {
 					end
 					
 					--  - Second, a few buildings
-					--for i=1,5,1 do
-					--end
+					for i=1,5,1 do
+						-- set scale (building are this x this squared)
+						buildingScale=4
+						-- find a location
+						bx,by = randomStandingLocation(new_tilemap,4)
+						-- fill it in
+						for tx=bx,bx+buildingScale,1 do
+							for ty=by,by+buildingScale,1 do
+								new_tilemap[tx][ty] = '0'
+							end
+						end
+					end
 					--  - Third, a couple of roads
 					-- TODO
 					--  - Fourth, a water pond

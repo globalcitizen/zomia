@@ -910,16 +910,29 @@ function randomStandingLocationWithoutNPCsOrPlayer(thetilemap)
 	return x, y
 end
 
-function randomStandingLocation(thetilemap)
+function randomStandingLocation(thetilemap,size)
+	size = size or 1     -- ie. 1 is default
 	local found_x,found_y = 0
 	local placed=false
 	while placed == false do
-		x = math.random(1,resolutionTilesX)
-		y = math.random(1,resolutionTilesY)
-		if thetilemap[x][y] == 1 or thetilemap[x][y] == '1' then
-			found_x = x
-			found_y = y
+		x = math.random(1,resolutionTilesX+1-size)
+		y = math.random(1,resolutionTilesY+1-size)
+		if size == 1 then
+			if thetilemap[x][y] == 1 or thetilemap[x][y] == '1' then
+				found_x = x
+				found_y = y
+				placed = true
+			end
+		else
+			-- check the whole square
 			placed = true
+			for tx=x,x+size,1 do
+				for ty=y,y+size,1 do
+					if thetilemap[x][y] ~= 1 and thetilemap[x][y] ~= '1' then
+						placed = false
+					end
+				end
+			end
 		end
 	end
 	return x,y
