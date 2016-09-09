@@ -21,6 +21,8 @@
     - Implemented area-specific field of view
     - Added `chicken`, `rooster` and `water_buffalo` NPCs, including identifying and normalizing lots of freely licensed audio
     - Made bridge look sorta log-constructed
+    - Enhanced free space search function to allow arbitrary-size area search
+    - Added randomly placed buildings
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
