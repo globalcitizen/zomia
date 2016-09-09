@@ -238,6 +238,10 @@ function draw_tilemap()
                         elseif tilemap[x][y] == '=' then
                                 love.graphics.setColor(doorColor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+				love.graphics.setColor(0,0,0,100)
+				for i=1,tilePixelsX,4 do
+					love.graphics.line((x-1)*tilePixelsX+i, (y-1)*tilePixelsY+2, (x-1)*tilePixelsX+i+1, (y-1)*tilePixelsY+tilePixelsY-2)
+				end
                         elseif tilemap[x][y] == 'W' then
                                 love.graphics.setColor(waterColor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
@@ -1289,6 +1293,10 @@ function draw_tilemap_visibilitylimited()
 			elseif tilemap[x][y] == '=' then
 				love.graphics.setColor(doorColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+                                love.graphics.setColor(0,0,0,100)
+                                for i=1,tilePixelsX,4 do
+                                        love.graphics.line((x-1)*tilePixelsX+i, (y-1)*tilePixelsY+2, (x-1)*tilePixelsX+i+1, (y-1)*tilePixelsY+tilePixelsY-2)
+                                end
 				love.graphics.setColor(0,0,0,100)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			elseif tilemap[x][y] == 'W' then
