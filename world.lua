@@ -112,8 +112,10 @@ function world_load_area(z,x,y)
 	end
 
 	-- load colors
-	if world[z][x][y].colors.groundColor ~= nil then
-		groundColor = world[z][x][y].colors.groundColor
+	if world[z][x][y].colors ~= nil then
+		if world[z][x][y].colors.groundColor ~= nil then
+			groundColor = world[z][x][y].colors.groundColor
+		end
 	end
 
 	-- load fov
