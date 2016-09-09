@@ -63,9 +63,14 @@ Here is a slightly more recent view showing a procedurally generated river and b
 
 ![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village2.jpg)
 
-Finally, here is the current view showing full-visibility daytime above-ground field of view, a procedurally generated river and bridge, grass-coloured backdrop, various suitable village animals, and another name.
+Subsequent view showing full-visibility daytime above-ground field of view, a procedurally generated river and bridge, grass-coloured backdrop, various suitable village animals, and another name.
 
 ![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village3.jpg)
+
+Current development view showing the above plus ugly houses and trees.
+
+![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village4.jpg)
+
 
 ### Dungeon
 
@@ -80,6 +85,7 @@ Here is a brand new field of view output overlay showing working FOV calculcatio
 And here is the final FOV implementation showing previously seen tiles, currently seen tiles, and unknown.
 
 ![Field of view #2](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov2.jpg)
+
 
 ### User interface
 
