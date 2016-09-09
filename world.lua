@@ -74,6 +74,21 @@ function world_load_area(z,x,y)
 	-- assign maptiles from area
 	tilemap = world[z][x][y].tilemap
 
+	-- if any NPCs are not placed, place them randomly now
+	if world[z][x][y].npcs ~= nil then
+		for i,npc in ipairs(world[z][x][y].npcs) do
+			if npc.location == nil then
+				npc.location = {}
+				npcx,npcy = randomStandingLocation(tilemap)
+				npc.location['x'] = npcx
+				npc.location['y'] = npcy
+			end
+		end
+	end
+
+	-- load npcs
+	npcs = world[z][x][y].npcs
+
         -- correctly place character
         print "Placing character..."
         characterX, characterY = randomStandingLocation(tilemap)
