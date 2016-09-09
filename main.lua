@@ -926,8 +926,8 @@ function randomStandingLocation(thetilemap,size)
 	local found_x,found_y = 0
 	local placed=false
 	while placed == false do
-		x = math.random(1,resolutionTilesX+1-size)
-		y = math.random(1,resolutionTilesY+1-size)
+		x = math.random(1,resolutionTilesX-1-size)
+		y = math.random(1,resolutionTilesY-1-size)
 		if size == 1 then
 			if thetilemap[x][y] == 1 or thetilemap[x][y] == '1' then
 				found_x = x
@@ -937,9 +937,10 @@ function randomStandingLocation(thetilemap,size)
 		else
 			-- check the whole square
 			placed = true
-			for tx=x,x+size,1 do
-				for ty=y,y+size,1 do
-					if thetilemap[x][y] ~= 1 and thetilemap[x][y] ~= '1' then
+			for tx=1,size,1 do
+				for ty=1,size,1 do
+					print("tx/ty = " .. (x+tx) .. "/" .. (y+ty) .. "     ... vs. " .. resolutionTilesX .. "/" .. resolutionTilesY)
+					if thetilemap[x+tx][y+ty] ~= 1 then
 						placed = false
 					end
 				end
