@@ -71,7 +71,10 @@ area_types['tai_village'] = {
 					instance.npcs = {}
 					add_npcs(instance.npcs,'tai_villager_male',5)
 					add_npcs(instance.npcs,'tai_villager_female',3)
+					add_npcs(instance.npcs,'chicken',6)
+					add_npcs(instance.npcs,'rooster',2)
 					add_npcs(instance.npcs,'dog',2)
+					add_npcs(instance.npcs,'water_buffalo',1)
 
                                         -- music
                                         instance.music = {
