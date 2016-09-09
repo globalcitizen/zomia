@@ -1069,7 +1069,7 @@ end
 function opendoor(x,y)
 	if tilemap[x][y] == 2 then
 		local instance=sounds['door_open']:play()
-		instance:setVolume(1)
+		instance:setVolume(0.1)
 		logMessage(notifyMessageColor,"You opened the door.")
 		tilemap[x][y] = 3
 	end
@@ -1078,7 +1078,7 @@ end
 function closedoor(x,y)
 	if tilemap[x][y] == 3 then
 		local instance = sounds['door_close']:play()
-		instance:setVolume(1)
+		instance:setVolume(0.1)
 		logMessage(notifyMessageColor,"You closed the door.")
 		tilemap[x][y] = 2
 	end
@@ -1380,8 +1380,6 @@ function draw_tilemap_visibilitylimited()
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 				love.graphics.setColor(0,0,0,100)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
-			else
-				print("Not drawing tile @ " .. x .. "/" .. y .. " ... raw value = '" .. tilemap[x][y] .. "'")
 			end
 		end
 	end
