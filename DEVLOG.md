@@ -24,6 +24,7 @@
     - Enhanced free space search function to allow arbitrary-size area search
     - Added randomly placed buildings
     - Added randomly placed trees
+    - Basic wilderness generation
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
