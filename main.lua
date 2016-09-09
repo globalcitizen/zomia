@@ -124,7 +124,7 @@ function love.load()
 
 	-- load initial world location
 	print('Entering world.')
-	world_load_area(world_location[z],world_location[x],world_location[y])
+	world_load_area(world_location.z,world_location.x,world_location.y)
 
 	-- update visibility
 	if experimentalFov then
