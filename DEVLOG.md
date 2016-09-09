@@ -6,6 +6,7 @@
     - Fix bounds-checking on new draw routines
     - NPC generation function to structure-generic format
     - Bounds checking on character movement (attempts to leave current play area)
+    - Auto-placement of unplaced NPCs in loaded areas
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
