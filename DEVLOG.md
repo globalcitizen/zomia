@@ -2,6 +2,8 @@
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
+    - Restore cross-area sounds such as footfalls
+    - Fix bounds-checking on new draw routines
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
