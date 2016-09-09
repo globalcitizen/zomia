@@ -1249,23 +1249,23 @@ function draw_tilemap_visibilitylimited()
 		print(" (Hint: Did you forget to initialize the tilemap?)")
 		os.exit()
 	end
-	--[[
 	for i,p in pairs(seenTiles) do
 		local tile = split(i,',')
 		x=tile[1]+0
 		y=tile[2]+0
-		-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
-		if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
-			--love.graphics.setColor(groundColor)
-			love.graphics.setColor(groundColor)
-			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
-			love.graphics.setColor(0,0,0,100)
-			love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
-		else
-			print("Not drawing tile @ " .. x .. "/" .. y .. " ... raw value = '" .. tilemap[x][y] .. "'")
+		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
+			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
+			if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+				--love.graphics.setColor(groundColor)
+				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+				love.graphics.setColor(0,0,0,100)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			else
+				print("Not drawing tile @ " .. x .. "/" .. y .. " ... raw value = '" .. tilemap[x][y] .. "'")
+			end
 		end
 	end
-	]]--
 	for i=1,#visibleTiles,1 do
 		local tile = visibleTiles[i]
 		x=tile.x
