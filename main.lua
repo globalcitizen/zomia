@@ -773,7 +773,7 @@ function moveCharacterRelatively(x,y)
 		return false
 	end
 	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs)
-	if tilemap[newX][newY]+0 == 1 or tilemap[newX][newY]+0 == 2 or tilemap[newX][newY]+0 == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
+	if tilemap[newX][newY] == 1 or tilemap[newX][newY] == 2 or tilemap[newX][newY] == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
 		local blocked=false
 		-- if it's a closed door, open it
 		if tilemap[newX][newY]+0 == 2 then
@@ -816,12 +816,6 @@ function moveCharacterRelatively(x,y)
 			end
 		end
 	else
-		if tilemap[newX][newY]+0 == 0 then
---			logMessage(failMessageColor,"You can't move that way (there is a wall in the way).")
---		else
---			logMessage(failMessageColor,"You can't move that way (there is something in the way).")
-		end
-	end
 end
 
 -- make the tiles more beautiful
