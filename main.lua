@@ -764,6 +764,11 @@ end
 function moveCharacterRelatively(x,y)
 	newX = characterX + x
 	newY = characterY + y
+	-- if the space is off the map...
+	if newX > resolutionTilesX or newY > resolutionTilesY or newX < 1 or newY < 1 then
+		logMessage("Changing areas is not yet implemented!")
+		return false
+	end
 	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs)
 	if tilemap[newX][newY]+0 == 1 or tilemap[newX][newY]+0 == 2 or tilemap[newX][newY]+0 == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
 		local blocked=false
