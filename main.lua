@@ -844,7 +844,6 @@ function moveCharacterRelatively(x,y)
 			world_location.y = world_location.y - 1
 			characterY=resolutionTilesY
 		end
-		music:stop()
 		world_load_area(world_location.z,world_location.x,world_location.y)
 		return true
 	end
