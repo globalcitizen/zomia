@@ -10,7 +10,7 @@ for i=0,20,1 do
 end
 	
 -- holds location in world
-world_location={0,10,10}
+world_location = {z=0,x=10,y=10}
 
 -- generates world at start of game
 function generate_world()
