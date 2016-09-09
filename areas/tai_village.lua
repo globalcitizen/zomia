@@ -6,6 +6,10 @@ area_types['tai_village'] = {
 					instance.name=taiVillageNames:generate()
 					instance.prefix='The Little Tai Village of '
 
+					-- Colours
+					instance.colors={}
+					instance.colors['groundColor'] = {40,130,40}
+
 					-- Generate an appropriate map
 					--  - First, all clear
 					local new_tilemap = {}

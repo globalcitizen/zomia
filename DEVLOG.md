@@ -15,6 +15,7 @@
           - Add area-specific field of view (eg. day/above-ground = all)
           - Add area-specific ground colours
           - Add area-specific tile types
+    - Implemented area-specific ground colours
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation

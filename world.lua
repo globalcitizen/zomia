@@ -70,7 +70,6 @@ function world_load_area(z,x,y)
 		print(" - Tilemap already exists.")
 	end
 
-
 	-- assign maptiles from area
 	tilemap = world[z][x][y].tilemap
 
@@ -113,6 +112,11 @@ function world_load_area(z,x,y)
 		if world[z][x][y].ambient_volume ~= nil then
 			ambience:setVolume(world[z][x][y].ambient_volume)
 		end
+	end
+
+	-- load colors
+	if world[z][x][y].colors.groundColor ~= nil then
+		groundColor = world[z][x][y].colors.groundColor
 	end
 
 end
