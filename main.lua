@@ -43,6 +43,8 @@ vegetableMessageColor={50,115,50}
 waterMessageColor={50,50,195}
 rockColor={0,0,0}
 groundColor={25,25,25}
+waterColor={0,10,95}
+puddleColor={0,10,65,155}
 doorColor={88,6,8}
 circleColor={0,128,128}
 characterColor={205,205,0}
@@ -274,7 +276,7 @@ function draw_groundfeatures()
 						(feature['x']-1)*tilePixelsX+8, (feature['y']-1)*tilePixelsY+5
 					  )
 		elseif feature['type'] == 'puddle' then
-			love.graphics.setColor(0,10,65,155)
+			love.graphics.setColor(puddleColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
@@ -1276,8 +1278,13 @@ function draw_tilemap_visibilitylimited()
 		y=tile[2]+0
 		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
 			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
-			if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+			if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+				love.graphics.setColor(0,0,0,100)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			elseif tilemap[x][y] == 'W' then
+				love.graphics.setColor(waterColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 				love.graphics.setColor(0,0,0,100)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
@@ -1292,8 +1299,11 @@ function draw_tilemap_visibilitylimited()
 		y=tile.y
 		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
 			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
-			if tilemap[x][y]+0 == 1 or tilemap[x][y]+0 == 2 or tilemap[x][y]+0 == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
+			if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			elseif tilemap[x][y] == 'W' then
+				love.graphics.setColor(waterColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			end
 		end
@@ -1359,7 +1369,7 @@ function lightPassesCallback(coords,qx,qy)
 	-- required as otherwise moving near the edge crashes
 	if tilemap[qx] ~= nil and tilemap[qx][qy] ~= nil then
 		-- actual check
-		if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' then
+		if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' or tilemap[qx][qy] == 'W' then
 			return true
 		end
 	end
