@@ -1139,7 +1139,11 @@ function endTurn()
 					tryy = l.y-1
 				end
 				-- moment of truth
-				success=true			
+				if tilemap[tryx] ~= nil and tilemap[tryx][tryy] ~= nil and tilemap[tryx][tryy] == 1 then
+					l.x=tryx
+					l.y=tryy
+					success=true			
+				end
 				attempts = attempts + 1
 			end
 		end
