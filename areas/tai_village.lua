@@ -22,7 +22,7 @@ area_types['tai_village'] = {
 					--  - Second, we place a river to the left or right
 					river_location = math.random(1,2)
 					river_edge_offset = math.random(2,3) * 0.1
-					bridge_location = math.random(1,resolutionTilesY)
+					bridge_location = math.floor(math.random(math.floor(resolutionTilesY*0.2),math.floor(resolutionTilesY*0.8)))
 					if river_location == 1 then
 						river_center_x = river_edge_offset*resolutionTilesX
 					else
