@@ -59,6 +59,10 @@ Here is one of the first views of a village, which is heavily under development.
 
 ![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village1.jpg)
 
+Here is a slightly more recent view showing a procedurally generated river and bridge, grass-coloured backdrop, and another name.
+
+![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village2.jpg)
+
 ### Dungeon
 
 Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. Doors can be opened and closed.
