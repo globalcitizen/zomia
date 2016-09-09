@@ -1,11 +1,14 @@
 -- holds world structure
 --  - initially generate a 20x20 grid at ground level
+world_radius=20
 world = {}
-world[0] = {}
-for i=0,20,1 do
-	world[0][i] = {}
-	for j=0,20,1 do
-		world[0][i][j] = ''
+for z=-math.floor(world_radius/2),math.floor(world_radius/2),1 do
+	world[z] = {}
+	for x=1,world_radius*2,1 do
+		world[z][x] = {}
+		for y=1,world_radius*2,1 do 
+			world[z][x][y] = {}
+		end
 	end
 end
 	
@@ -36,24 +39,28 @@ function generate_world()
 	math.randomseed(os.time())
 	local cave_location = math.random(1,4)
 	if cave_location == 1 then
+		world[-1][10][9] = {type='tai_cave'}
 		world[0][10][9] = {type='tai_cave_entrance'}
 		world[0][10][11] = {type='wilderness'}
 		world[0][9][10] = {type='wilderness'}
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 2 then
 		world[0][10][9] = {type='wilderness'}
+		world[-1][10][11] = {type='tai_cave'}
 		world[0][10][11] = {type='tai_cave_entrance'}
 		world[0][9][10] = {type='wilderness'}
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 3 then
 		world[0][10][9] = {type='wilderness'}
 		world[0][10][11] = {type='wilderness'}
+		world[-1][9][10] = {type='tai_cave'}
 		world[0][9][10] = {type='tai_cave_entrance'}
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 4 then
 		world[0][10][9] = {type='wilderness'}
 		world[0][10][11] = {type='wilderness'}
 		world[0][9][10] = {type='wilderness'}
+		world[-1][11][10] = {type='tai_cave'}
 		world[0][11][10] = {type='tai_cave_entrance'}
 	end
 end
@@ -63,6 +70,16 @@ function world_load_area(z,x,y)
 	print("Loading world area @ " .. z .. "," .. x .. "," .. y .. " ...")
 
 	-- if there is no tilemap yet generated, it means the world area still needs to be instantiated
+	if world[z] == nil then
+		print("Z-index not defined in world at: Z=" .. z)
+		os.exit()
+	elseif world[z][x] == nil then
+		print("X-index not defined in world at: Z=" .. z .. "/X=" .. x)
+		os.exit()
+	elseif world[z][x][y] == nil then
+		print("X-index not defined in world at: Z=" .. z .. "/X=" .. x .. "/Y=" .. y)
+		os.exit()
+	end
 	if world[z][x][y].tilemap == nil then
 		print(" - Tilemap not found, generating...")
 		world[z][x][y] = area_generate(z,x,y)
