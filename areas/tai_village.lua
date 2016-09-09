@@ -6,6 +6,9 @@ area_types['tai_village'] = {
 					instance.name=taiVillageNames:generate()
 					instance.prefix='The Little Tai Village of '
 
+					-- FOV
+					instance.fov=0
+
 					-- Colours
 					instance.colors={}
 					instance.colors['groundColor'] = {40,130,40}
@@ -28,13 +31,11 @@ area_types['tai_village'] = {
 					else
 						river_center_x = resolutionTilesX-(river_edge_offset*resolutionTilesX)
 					end
-					for y=0,resolutionTilesY,1 do
+					for y=1,resolutionTilesY,1 do
 						tiletype='W'
 						if y==bridge_location then 
 							tiletype='='
 						end
-						--print("river_center_x = " .. river_center_x)
-						--print("y = " .. y)
 						new_tilemap[river_center_x-1][y] = tiletype
 						new_tilemap[river_center_x][y] = tiletype
 						new_tilemap[river_center_x+1][y] = tiletype
