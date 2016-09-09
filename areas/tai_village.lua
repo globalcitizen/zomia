@@ -95,7 +95,7 @@ area_types['tai_village'] = {
 						new_tilemap[bx+treeSpace][by+treeSpace] = 'T'
 					end
 
-					instance.tilemap=new_tilemap
+					instance.map=new_tilemap
 
 					-- Populate with NPCs
 					instance.npcs = {}
