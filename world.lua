@@ -144,5 +144,8 @@ function world_load_area(z,x,y)
 		fov = world[z][x][y].fov
 	end
 
+	-- reset footprints
+	footprints = {}
+
 
 end
