@@ -130,6 +130,10 @@ function love.load()
 	print('Entering world.')
 	world_load_area(world_location.z,world_location.x,world_location.y)
 
+        -- place character
+        print "Placing character..."
+        characterX, characterY = randomStandingLocation(tilemap)
+
 	-- update visibility
 	if fov > 0 then
 		update_draw_visibility_new()
@@ -793,8 +797,53 @@ function moveCharacterRelatively(x,y)
 	newY = characterY + y
 	-- if the space is off the map...
 	if newX > resolutionTilesX or newY > resolutionTilesY or newX < 1 or newY < 1 then
-		logMessage("Changing areas is not yet implemented!")
-		return false
+		-- trying to change areas... handle where.
+		--  first, diagonals
+		if newX > resolutionTilesX and newY > resolutionTilesY then
+			-- down right
+			world_location.y = world_location.y + 1
+			world_location.x = world_location.x + 1
+			characterX=1
+			characterY=1
+		elseif newX > resolutionTilesY and newY < 1 then
+			-- up right
+			world_location.y = world_location.y - 1
+			world_location.x = world_location.x + 1
+			characterX=1
+			characterY=resolutionTilesY
+		elseif newX < 1 and newY > resolutionTilesY then
+			-- down left
+			world_location.y = world_location.y + 1
+			world_location.x = world_location.x - 1
+			characterX=resolutionTilesX
+			characterY=1
+		elseif newX < 1 and newY < 1 then
+			-- up left
+			world_location.y = world_location.y - 1
+			world_location.x = world_location.x - 1
+			characterX=resolutionTilesX
+			characterY=resolutionTilesY
+		--  next, straight
+		elseif newX > resolutionTilesX then
+			-- right
+			world_location.x = world_location.x + 1
+			characterX=1
+		elseif newY > resolutionTilesY then
+			-- down
+			world_location.y = world_location.y + 1
+			characterY=1
+		elseif newX < 1 then
+			-- left
+			world_location.x = world_location.x - 1
+			characterX=resolutionTilesX
+		elseif newY < 1 then
+			-- up
+			world_location.y = world_location.y - 1
+			characterY=resolutionTilesY
+		end
+		music:stop()
+		world_load_area(world_location.z,world_location.x,world_location.y)
+		return true
 	end
 	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs, '=' = left-right wooden bridge)
 	if tilemap[newX][newY] == 1 or tilemap[newX][newY] == 2 or tilemap[newX][newY] == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' or tilemap[newX][newY] == '=' then
