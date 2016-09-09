@@ -3,6 +3,8 @@
  * __2016-09-10__:
     - Generate `tai_cave_entrance` area
     - Fixed some area generation and transition related bugs
+    - Made stairs work
+    - Better initial world generation
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
