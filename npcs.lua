@@ -3,8 +3,8 @@ npcs={}
 -- holds reference npc types
 npc_types={}
 
--- add NPC(s) to map
-function add_npcs(npc_type,npc_qty)
+-- add NPC(s) to specified structure (eg. could be npcs (current map NPCs), or a world[z][x][y].npcs structure for other areas)
+function add_npcs(structure,npc_type,npc_qty)
 	if npc_qty == nil then
 		npc_qty = 1
 	end
@@ -15,7 +15,7 @@ function add_npcs(npc_type,npc_qty)
 		if new_npc.setup ~= nil then
 			new_npc:setup(new_npc)
 		end
-		table.insert(npcs,new_npc)
+		table.insert(structure,new_npc)
 	end
 end
 

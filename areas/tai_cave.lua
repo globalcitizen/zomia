@@ -46,17 +46,12 @@ area_types['tai_cave'] = {
 					instance.map=new_tilemap
 
 					-- Populate with NPCs
---[[
-				        add_npcs('akha_villager',2)
-				        add_npcs('hmong_villager',2)
-				        add_npcs('tai_villager_male',2)
-				        add_npcs('tai_villager_female',2)
-				        add_npcs('tibetan_villager',2)
-				        add_npcs('yi_villager',2)
-				        add_npcs('goblin',1)
-				        add_npcs('dog',1)
-				        add_npcs('mouse',1)
---]]
+					instance.npcs = {}
+				        add_npcs(instance.npcs,'tai_villager_male',1)
+				        add_npcs(instance.npcs,'tai_villager_female',2)
+				        add_npcs(instance.npcs,'goblin',5)
+				        add_npcs(instance.npcs,'dog',1)
+				        add_npcs(instance.npcs,'mouse',1)
 			
 				        -- place npcs
 --[[ ALL THESE RELY ON RANDOM LOCATIONS - THOSE FUNCTIONS ARE HARDCODED TO tilemap AND NEED REWRITING ...

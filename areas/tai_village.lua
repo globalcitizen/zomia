@@ -1,8 +1,10 @@
 area_types['tai_village'] = {
 				 name  = 'Tai Village',
 				 setup = function(instance) 
+
 					-- Generate an appropriate name
 					instance.name=taiVillageNames:generate()
+
 					-- Generate an appropriate map
 					local new_tilemap = {}
 					for i=1,resolutionTilesX,1 do
@@ -12,7 +14,12 @@ area_types['tai_village'] = {
 						end
 					end
 					instance.tilemap=new_tilemap
+
 					-- Populate with NPCs
+					instance.npcs = {}
+					add_npcs(instance.npcs,'tai_villager_male',5)
+					add_npcs(instance.npcs,'tai_villager_female',3)
+					add_npcs(instance.npcs,'dog',2)
 
                                         -- music
                                         instance.music = {
@@ -25,6 +32,7 @@ area_types['tai_village'] = {
                                                                         "music/Komiku_-_06_-_La_ville_aux_ponts_suspendus.mp3"
                                                          }
                                         instance.music_volume=0.05
+
                                         -- ambient noise
 					--[[
                                         instance.ambient = {
