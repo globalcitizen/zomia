@@ -5,6 +5,7 @@
     - Fixed some area generation and transition related bugs
     - Made stairs work
     - Better initial world generation
+    - Work on `tai_cave` area generation
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
