@@ -772,11 +772,11 @@ function moveCharacterRelatively(x,y)
 		logMessage("Changing areas is not yet implemented!")
 		return false
 	end
-	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs)
-	if tilemap[newX][newY] == 1 or tilemap[newX][newY] == 2 or tilemap[newX][newY] == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' then
+	-- if the map space is potentially standable (1 = floor, 3 = open door, '<' = down stairs, '>' = up stairs, '=' = left-right wooden bridge)
+	if tilemap[newX][newY] == 1 or tilemap[newX][newY] == 2 or tilemap[newX][newY] == 3 or tilemap[newX][newY] == '<' or tilemap[newX][newY] == '>' or tilemap[newX][newY] == '=' then
 		local blocked=false
 		-- if it's a closed door, open it
-		if tilemap[newX][newY]+0 == 2 then
+		if tilemap[newX][newY] == 2 then
 			opendoor(newX,newY)
 		else
 			-- if there is no NPC there
@@ -1277,6 +1277,11 @@ function draw_tilemap_visibilitylimited()
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 				love.graphics.setColor(0,0,0,100)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			elseif tilemap[x][y] == '=' then
+				love.graphics.setColor(doorColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+				love.graphics.setColor(0,0,0,100)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			elseif tilemap[x][y] == 'W' then
 				love.graphics.setColor(waterColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
@@ -1295,6 +1300,9 @@ function draw_tilemap_visibilitylimited()
 			-- 1 = floor, 2 = closed door, 3 = open door, '<' = upward stairs, '>' = downward stairs
 			if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 or tilemap[x][y] == '<' or tilemap[x][y] == '>' then
 				love.graphics.setColor(groundColor)
+				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
+			elseif tilemap[x][y] == '=' then
+				love.graphics.setColor(doorColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			elseif tilemap[x][y] == 'W' then
 				love.graphics.setColor(waterColor)
@@ -1363,7 +1371,7 @@ function lightPassesCallback(coords,qx,qy)
 	-- required as otherwise moving near the edge crashes
 	if tilemap[qx] ~= nil and tilemap[qx][qy] ~= nil then
 		-- actual check
-		if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' or tilemap[qx][qy] == 'W' then
+		if tilemap[qx][qy] == 1 or tilemap[qx][qy] == 3 or tilemap[qx][qy] == '<' or tilemap[qx][qy] == '>' or tilemap[qx][qy] == 'W' or tilemap[qx][qy] == '=' then
 			return true
 		end
 	end

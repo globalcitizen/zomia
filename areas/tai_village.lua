@@ -21,20 +21,31 @@ area_types['tai_village'] = {
 					end
 					--  - Second, we place a river to the left or right
 					river_location = math.random(1,2)
-					river_edge_offset = math.random(2,4) * 0.1
+					river_edge_offset = math.random(2,3) * 0.1
+					bridge_location = math.random(1,resolutionTilesY)
 					if river_location == 1 then
 						river_center_x = river_edge_offset*resolutionTilesX
 					else
 						river_center_x = resolutionTilesX-(river_edge_offset*resolutionTilesX)
 					end
 					for y=0,resolutionTilesY,1 do
-						new_tilemap[river_center_x-1][y] = 'W'
-						new_tilemap[river_center_x][y] = 'W'
-						new_tilemap[river_center_x+1][y] = 'W'
+						tiletype='W'
+						if y==bridge_location then 
+							tiletype='='
+						end
+						--print("river_center_x = " .. river_center_x)
+						--print("y = " .. y)
+						new_tilemap[river_center_x-1][y] = tiletype
+						new_tilemap[river_center_x][y] = tiletype
+						new_tilemap[river_center_x+1][y] = tiletype
+						if tiletype == '=' then
+							new_tilemap[river_center_x-2][y] = tiletype
+							new_tilemap[river_center_x+2][y] = tiletype
+						end
 						river_shift = math.random(1,100)
-						if river_shift < 8 then
+						if river_shift < 4 then
 							river_center_x = river_center_x - 1
-						elseif river_shift > 92 then
+						elseif river_shift > 96 then
 							river_center_x = river_center_x + 1
 						end
 						if river_center_x < 4 then
