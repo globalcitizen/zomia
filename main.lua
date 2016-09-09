@@ -1243,7 +1243,7 @@ end
 
 function draw_areaname_overlay()
 		local name = world[world_location.z][world_location.x][world_location.y].name
-		local prefix = "The Tai Village of "
+		local prefix = nil
 		if world[world_location.z][world_location.x][world_location.y].prefix ~= nil then
 			prefix = world[world_location.z][world_location.x][world_location.y].prefix
 		end
