@@ -1151,7 +1151,8 @@ function descend()
 	if tilemap[characterX][characterY] == ">" then
 		logMessage(notifyMessageColor,'Descending...')
 		music:stop()
-		music:play()
+                world_location.z = world_location.z - 1
+                world_load_area(world_location.z,world_location.x,world_location.y)
 	else
 		logMessage(failMessageColor,'There is no way down here!')
 	end
@@ -1161,7 +1162,8 @@ function ascend()
 	if tilemap[characterX][characterY] == "<" then
 		logMessage(notifyMessageColor,'Ascending...')
 		music:stop()
-		music:play()
+                world_location.z = world_location.z + 1
+                world_load_area(world_location.z,world_location.x,world_location.y)
 	else
 		logMessage(failMessageColor,'There is no way up here!')
 	end
