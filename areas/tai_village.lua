@@ -68,12 +68,12 @@ area_types['tai_village'] = {
 					--  - Second, a few buildings
 					for i=1,5,1 do
 						-- set scale (building are this x this squared)
-						buildingScale=4
+						buildingScale=3
 						-- find a location
-						bx,by = randomStandingLocation(new_tilemap,4)
+						bx,by = randomStandingLocation(new_tilemap,5)
 						-- fill it in
-						for tx=bx,bx+buildingScale,1 do
-							for ty=by,by+buildingScale,1 do
+						for tx=bx+1,bx+buildingScale,1 do
+							for ty=by+1,by+buildingScale,1 do
 								new_tilemap[tx][ty] = '0'
 							end
 						end
