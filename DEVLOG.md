@@ -1,5 +1,9 @@
 # Development log
 
+ * __2016-09-10__:
+    - Generate `tai_cave_entrance` area
+    - Fixed some area generation and transition related bugs
+
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
     - Restore cross-area sounds such as footfalls
