@@ -1,6 +1,6 @@
 npc_types['tai_villager_female'] = {
 			name="Tai Female Villager",
-			color={128,0,128},
+			color={178,0,178},
 			hostile=false,
 			move='no',
 			sounds={
