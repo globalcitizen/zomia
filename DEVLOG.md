@@ -16,6 +16,7 @@
           - Add area-specific ground colours
           - Add area-specific tile types
     - Implemented area-specific ground colours
+    - Implemented procedurally generated river in Tai village
 
  * __2016-09-08__:
     - Wasted the whole day on field of view re-implementation
