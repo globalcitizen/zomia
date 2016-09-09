@@ -1,10 +1,20 @@
 area_types['tai_cave'] = {
 				 name  = 'Cave',
 				 setup = function(instance) 
-					-- Possibly we just copy the name from the already named area above us in the world
+					-- We copy the name from the already named area above us in the world
+                                        instance.name=world[world_location.z+1][world_location.x][world_location.y].name
+                                        instance.prefix='Within '
 
 					-- Generate an appropriate map
 					local new_tilemap
+					new_tilemap = {}
+                                        for i=1,resolutionTilesX,1 do
+                                                new_tilemap[i] = {}
+                                                for j=1,resolutionTilesY,1 do
+                                                        new_tilemap[i][j] = 0	-- initializes to rock
+                                                end
+                                        end
+
 					-- OLD generate tilemap
 					--[[
 					        cl=ROT.Map.Cellular:new(resolutionTilesX, resolutionTilesY) -- , {connected=true})
@@ -83,6 +93,7 @@ area_types['tai_cave'] = {
 --]]
 				
 				        -- music
+					--[[
 					instance.music = {
 				                                        "music/Greg_Reinfeld_-_02_-_Canon_in_D_ni_nonaC_Pachelbels_Canon.mp3",
 				                                        "music/Kevin MacLeod - Sardana.mp3",
@@ -93,10 +104,18 @@ area_types['tai_cave'] = {
 				                                        "music/Komiku_-_06_-_La_ville_aux_ponts_suspendus.mp3"
 				                         }
 					instance.music_volume=0.05
+					--]]
 					-- ambient noise
 					instance.ambient = {
 				                                                "sounds/ambient/cave-drips.mp3"
 				                           }
 					instance.ambient_volume = 2
+
+					-- colors
+                                        instance.colors={}
+                                        instance.colors['groundColor'] = {25,25,25}
+
+					-- FOV
+					instance.fov = math.random(5,15)
 				 end
 		       	    }
