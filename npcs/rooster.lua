@@ -46,7 +46,6 @@ npc_types['rooster'] = {
 					"npcs/rooster/rooster-crow-7.mp3",
 					"npcs/rooster/rooster-crow-8.mp3",
 					"npcs/rooster/rooster-crow-9.mp3"
-							     })
 				})
 			}
 		}

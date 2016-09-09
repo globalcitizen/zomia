@@ -13,6 +13,5 @@ npc_types['chicken'] = {
 					"npcs/chicken/chicken-6.mp3",
 					"npcs/chicken/chicken-7.mp3"
 							     })
-				})
 			}
 		}
