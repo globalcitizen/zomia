@@ -36,15 +36,22 @@ area_types['tai_village'] = {
 						if y==bridge_location then 
 							tiletype='='
 						end
+						--[[
 						-- had a crash here, leave for debugging
 						print("river_center_x = " .. river_center_x .. " ... y = " .. y .. " (resolutionTilesX = " .. resolutionTilesX .. " / resolutionTilesY = " .. resolutionTilesY .. ")")
 						-- river_center_x = 27 ... y = 1
-						if new_tilemap[river_center_x-1] == nil then
-							print(table.show(new_tilemap))
+						if type(new_tilemap[river_center_x-1]) == nil then
+							--print(table.show(new_tilemap))
 							print("Allegedly new_tilemap[" .. (river_center_x-1) .. "] is nonexistant.")
 							print(table.show(new_tilemap[river_center_x-1]))
 							os.exit()
+						elseif new_tilemap[river_center_x-1][y+0] == nil then
+							--print(table.show(new_tilemap))
+							print("Allegedly new_tilemap[" .. (river_center_x-1) .. "][" .. y .. "] is nonexistant.")
+							print(table.show(new_tilemap[river_center_x-1]))
+							os.exit()
 						end
+						--]]
 						new_tilemap[river_center_x-1][y] = tiletype
 						new_tilemap[river_center_x][y] = tiletype
 						new_tilemap[river_center_x+1][y] = tiletype
@@ -52,6 +59,7 @@ area_types['tai_village'] = {
 							new_tilemap[river_center_x-2][y] = tiletype
 							new_tilemap[river_center_x+2][y] = tiletype
 						end
+						--[[
 						river_shift = math.random(1,100)
 						if river_shift < 4 then
 							river_center_x = river_center_x - 1
@@ -63,6 +71,7 @@ area_types['tai_village'] = {
 						elseif river_center_x > resolutionTilesX-4 then
 							river_center_x = resolutionTilesX-4
 						end
+						--]]
 					end
 					
 					--  - Second, a few buildings
