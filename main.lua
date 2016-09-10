@@ -371,7 +371,7 @@ function draw_tilemap()
 				--treerandomsource=ROT.RNG.MWC.new()
 				--treerandomsource:randomseed(x*y)
 				--greenfactor = treerandomsource:random(70,100)/100
-				greenfactor=math.abs(x/y) --math.random(70,100)/100
+				greenfactor=math.abs(x/y)/3 --math.random(70,100)/100
 				love.graphics.setColor(treeColor[1]*greenfactor,treeColor[2]*1.25*greenfactor,treeColor[3]*greenfactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX+1, (y-1)*tilePixelsY+1, tilePixelsX-2, tilePixelsY-2)
 				love.graphics.setColor(groundColor)
@@ -1134,7 +1134,7 @@ function footfallNoise(groundtype)
 	instance = love.audio.newSource(sounds.footfalls[groundtype][footfall])
 	instance:play()
 	if groundtype == 'bridge' then
-		instance:setVolume(0.2)
+		instance:setVolume(0.35)
 	else
 		instance:setVolume(.05)
 	end
