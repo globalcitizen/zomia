@@ -10,6 +10,7 @@
     - In `tai_village` made buildings not spawn adjacent
     - Implement random NPC movement
     - Add background NPC noises
+    - Stop music and ambient sound when changing areas
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
