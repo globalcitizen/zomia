@@ -1099,8 +1099,33 @@ function endTurn()
 	for i,npc in ipairs(npcs) do
 		-- each one has a 1% chance of making a noise
 		if npc.vocal ~= nil and npc.vocal==true and math.floor(math.random(0,100)) == 1 then
-        		npcs[i].sounds.attack:setVolume(0.3)
-        		npcs[i].sounds.attack:play()
+			-- as an improvement on just playing the noise, we should vary the volume versus the 
+			-- (simple, crow flies) distance to the NPC from the player.
+			--
+			--  this attempt runs and does have some effect, but i'm not sure how correct it is 
+			--  or whether our samples' volume normalization is adequate to make it work correctly.
+			--
+			--  the pythagorean distance formula is: SQRT( (x2-x1)^2 + (y2-y1)^2 )
+			--
+			--  in lua this seems to be:
+			--   math.sqrt(
+			--    math.abs(characterX-npc.location.x)^2
+			--      +
+			--    math.abs(characterY-npc.location.y)^2
+			--   )
+			--
+			-- let's say we get 0.01 volume @ max distance, and 0.5ish volume @ close distance
+			minimum_volume=0.01
+			maximum_volume=0.5
+ 			-- if we define max distance as the distance between two corners of the map, then...
+			largest_possible_distance = math.sqrt(math.abs(resolutionTilesX,1)^2 + math.abs(resolutionTilesY-1)^2)
+			-- and our sound's distance is...
+			sound_distance = math.sqrt(math.abs(characterX-npc.location.x)^2 + math.abs(characterY-npc.location.y)^2)
+			-- now we determine the ratio of maximum (assume linear dropoff over distance)
+			volume_ratio = sound_distance/largest_possible_distance
+			-- finally we calculate our desired volume
+			volume = minimum_volume + volume_ratio*(maximum_volume-minimum_volume)
+        		npc.sounds.attack:play():setVolume(volume)
 		end
 		-- each one has a 10% chance of moving, but only if they have 'random' movement enabled
 		if npc.move=='random' and math.floor(math.random(0,10)) == 9 then
