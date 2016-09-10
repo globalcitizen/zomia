@@ -70,6 +70,12 @@ function generate_world()
 end
 
 function world_load_area(z,x,y)
+	-- stop the music
+	for i,m in pairs(current_area_music) do
+		m:stop()
+	end
+	current_area_music = {}
+
 	-- Say hello
 	print("Loading world area @ " .. z .. "," .. x .. "," .. y .. " ...")
 
@@ -119,6 +125,7 @@ function world_load_area(z,x,y)
 		if world[z][x][y].music_volume ~= nil then
 			music:setVolume(world[z][x][y].music_volume)
 		end
+		table.insert(current_area_music,music)
 	end
 
 	-- start ambience
@@ -130,6 +137,7 @@ function world_load_area(z,x,y)
 		if world[z][x][y].ambient_volume ~= nil then
 			ambience:setVolume(world[z][x][y].ambient_volume)
 		end
+		table.insert(current_area_music,ambience)
 	end
 
 	-- load colors

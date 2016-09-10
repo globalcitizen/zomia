@@ -16,7 +16,9 @@ require 'libs/utils/split'
 love.keyboard.setKeyRepeat(true)
 
 -- sound
-music = 0
+music = {}
+ambience = {}
+current_area_music = {}
 sounds={}
 
 -- basics
