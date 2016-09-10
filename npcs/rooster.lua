@@ -3,6 +3,7 @@ npc_types['rooster'] = {
 			color={148,198,180},
 			hostile=false,
 			move='random',
+			vocal=true,
 			sounds={
 				attack=love.audio.newSource({
 					"npcs/rooster/rooster-call-1.mp3",

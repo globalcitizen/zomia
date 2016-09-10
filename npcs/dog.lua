@@ -4,6 +4,7 @@ npc_types['dog'] = {
 			hostile=true,
 			move='attack',
 			tail=true,
+			vocal=true,
 			sounds={
 				attack=love.audio.newSource({
 									"npcs/dog/dog-bark-1.mp3",

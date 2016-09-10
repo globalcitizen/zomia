@@ -990,7 +990,6 @@ function randomStandingLocation(thetilemap,size)
 			placed = true
 			for tx=1,size,1 do
 				for ty=1,size,1 do
-					print("tx/ty = " .. (x+tx) .. "/" .. (y+ty) .. "     ... vs. " .. resolutionTilesX .. "/" .. resolutionTilesY)
 					if thetilemap[x+tx][y+ty] ~= 1 then
 						placed = false
 					end
@@ -1096,6 +1095,11 @@ end
 function endTurn()
 	-- allow NPCs to move
 	for i,npc in ipairs(npcs) do
+		-- each one has a 1% chance of making a noise
+		if npc.vocal ~= nil and npc.vocal==true and math.floor(math.random(0,100)) == 1 then
+        		npcs[i].sounds.attack:setVolume(0.3)
+        		npcs[i].sounds.attack:play()
+		end
 		-- each one has a 10% chance of moving, but only if they have 'random' movement enabled
 		if npc.move=='random' and math.floor(math.random(0,10)) == 9 then
 			-- attempt to move: pick a direction, then try all directions clockwise until success

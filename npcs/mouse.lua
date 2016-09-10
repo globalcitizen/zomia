@@ -5,6 +5,7 @@ npc_types['mouse'] = {
 			hostile=true,
 			move='attack',
 			tail=true,
+			vocal=true,
 			sounds={
 				attack=love.audio.newSource({
 								"npcs/mouse/mouse-1.mp3",
