@@ -18,7 +18,9 @@
     - Downloaded and processed many more open licensed footstep noises
     - Support multiple ground types for footfall audio and make that work
     - Add rapid-shimmering water
-    - Linecount 2704
+    - Adjust sounds and graphics
+    - Fix subterranean footprints
+    - Linecount 2712
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
