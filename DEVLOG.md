@@ -11,6 +11,7 @@
     - Implement random NPC movement
     - Add background NPC noises
     - Stop music and ambient sound when changing areas
+    - Make background NPC noises fade with distance
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
