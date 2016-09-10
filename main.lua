@@ -12,6 +12,9 @@ require 'world'
 require 'libs/utils/tableshow'
 require 'libs/utils/split'
 
+-- random
+--randomsource = ROT.RNG.MWC:new()
+
 -- keyboard
 love.keyboard.setKeyRepeat(true)
 
@@ -101,10 +104,10 @@ function love.load()
        				"sounds/footsteps/bridge-4.mp3",
        				"sounds/footsteps/bridge-5.mp3",
        				"sounds/footsteps/bridge-6.mp3",
-       				"sounds/footsteps/bridge-7.mp3",
-       				"sounds/footsteps/gravel-1.mp3"
+       				"sounds/footsteps/bridge-7.mp3"
 				    }
 	sounds['footfalls']['gravel'] = {
+       				"sounds/footsteps/gravel-1.mp3",
        				"sounds/footsteps/gravel-10.mp3",
        				"sounds/footsteps/gravel-11.mp3",
        				"sounds/footsteps/gravel-12.mp3",
@@ -365,7 +368,9 @@ function draw_tilemap()
 				love.graphics.setColor(groundColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
                                 --love.graphics.setColor(treeColor)
-				--math.randomseed(x*y)
+				--treerandomsource=ROT.RNG.MWC.new()
+				--treerandomsource:randomseed(x*y)
+				--greenfactor = treerandomsource:random(70,100)/100
 				greenfactor=math.abs(x/y) --math.random(70,100)/100
 				love.graphics.setColor(treeColor[1]*greenfactor,treeColor[2]*1.25*greenfactor,treeColor[3]*greenfactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX+1, (y-1)*tilePixelsY+1, tilePixelsX-2, tilePixelsY-2)
@@ -997,7 +1002,7 @@ function moveCharacterRelatively(x,y)
 			-- if the new location is not beyond the map
 			if newX > 0 and newY > 0 and newX <= resolutionTilesX and newY <= resolutionTilesY then
 				-- ACTUALLY MOVE!
-				footfallNoise()
+				footfallNoise(groundtype(newX,newY))
 				table.insert(footprints,{x=characterX,y=characterY,r=math.random(-90,90)})
 				if #footprints > max_footprints then
 					table.remove(footprints,1)
@@ -1128,7 +1133,11 @@ function footfallNoise(groundtype)
 	footfall = math.random(1,#sounds.footfalls[groundtype])
 	instance = love.audio.newSource(sounds.footfalls[groundtype][footfall])
 	instance:play()
-	instance:setVolume(0.01)
+	if groundtype == 'bridge' then
+		instance:setVolume(0.2)
+	else
+		instance:setVolume(.05)
+	end
 	instance:setPitch(.5 + math.random() * .5)
 end
 
@@ -1643,4 +1652,13 @@ function isVisibleCallback(x,y,r,v)
 	table.insert(visibleTiles,{x=x,y=y,r=r,last=r,v=v})
 	-- also mark in seen tiles as currently seen
 	seenTiles[x..','..y] = 1
+end
+
+function groundtype(x,y)
+	local t=tilemap[x][y]
+	if t == '=' then
+		return 'bridge'
+	else
+		return 'gravel'
+	end
 end
