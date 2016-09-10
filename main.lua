@@ -1140,9 +1140,19 @@ function endTurn()
 				end
 				-- moment of truth
 				if tilemap[tryx] ~= nil and tilemap[tryx][tryy] ~= nil and tilemap[tryx][tryy] == 1 then
-					l.x=tryx
-					l.y=tryy
-					success=true			
+					-- double-check there are no NPCs already there
+					local blocked=false
+					-- loop here
+        				for n,npc in ipairs(npcs) do
+						if npc.location.x == tryx and npc.location.y == tryy then
+							blocked=true	
+						end
+					end
+					if blocked == false then
+						l.x=tryx
+						l.y=tryy
+						success=true
+					end
 				end
 				attempts = attempts + 1
 			end
