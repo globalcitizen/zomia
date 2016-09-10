@@ -16,7 +16,8 @@
     - Make goblin NPCs vocal
     - Fix handling of moving in to undefined world areas
     - Downloaded and processed many more open licensed footstep noises
-    - Support multiple ground types for footfall audio
+    - Support multiple ground types for footfall audio and make that work
+    - Add rapid-shimmering water
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
