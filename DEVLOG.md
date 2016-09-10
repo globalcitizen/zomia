@@ -15,6 +15,7 @@
     - Make trees different shades of green
     - Make goblin NPCs vocal
     - Fix handling of moving in to undefined world areas
+    - Downloaded and processed many more open licensed footstep noises
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
