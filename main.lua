@@ -1096,9 +1096,8 @@ end
 function endTurn()
 	-- allow NPCs to move
 	for i,npc in ipairs(npcs) do
-		-- each one has a 10% chance of moving
-		local movementchance = math.floor(math.random(0,10))
-		if movementchance == 9 then
+		-- each one has a 10% chance of moving, but only if they have 'random' movement enabled
+		if npc.move=='random' and math.floor(math.random(0,10)) == 9 then
 			-- attempt to move: pick a direction, then try all directions clockwise until success
 			local direction = math.ceil(math.random(0,9))
 			local success=false
