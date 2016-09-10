@@ -12,6 +12,9 @@
     - Add background NPC noises
     - Stop music and ambient sound when changing areas
     - Make background NPC noises fade with distance
+    - Make trees different shades of green
+    - Make goblin NPCs vocal
+    - Fix handling of moving in to undefined world areas
 
  * __2016-09-09__:
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
