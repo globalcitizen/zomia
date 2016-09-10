@@ -3,6 +3,7 @@ npc_types['goblin'] = {
 			color={30,138,30},
 			hostile=true,
 			move='attack',
+			vocal=true,
 			sounds={
 				attack=love.audio.newSource({
 					"npcs/goblin/goblin-1.mp3",
