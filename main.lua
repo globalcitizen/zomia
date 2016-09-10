@@ -43,6 +43,7 @@ logMessages = {}
 
 -- colors
 characterSmallness=4
+footprintColor={50,50,50,100}
 notifyMessageColor={128,128,128}
 failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
@@ -390,7 +391,7 @@ end
 
 function draw_footprints()
 	-- draw footprints
-	love.graphics.setColor(50,50,50,50)
+	love.graphics.setColor(footprintColor)
 	for i,footprint in ipairs(footprints) do
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
@@ -399,6 +400,7 @@ end
 
 function draw_footprints_visibilitylimited()
 	-- draw footprints
+	love.graphics.setColor(footprintColor)
         for i=1,#visibleTiles,1 do
                 local tile = visibleTiles[i]
                 x=tile.x
@@ -1506,7 +1508,9 @@ function draw_areaname_overlay()
 		end
 		love.graphics.setColor(255,255,255)
 		love.graphics.setFont(heavy_font)
-		love.graphics.print(name,math.floor(resolutionTilesX/2)*tilePixelsX,tilePixelsY)
+		if name ~= nil then
+			love.graphics.print(name,math.floor(resolutionTilesX/2)*tilePixelsX,tilePixelsY)
+		end
 		if prefix ~= nil then
 			love.graphics.setFont(light_font)
 			love.graphics.printf(prefix,math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,tilePixelsY,tilePixelsX*10,'right')
