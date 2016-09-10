@@ -365,8 +365,8 @@ function draw_tilemap()
 				love.graphics.setColor(groundColor)
 				love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
                                 --love.graphics.setColor(treeColor)
-				math.randomseed(x*y)
-				greenfactor=math.random(70,100)/100
+				--math.randomseed(x*y)
+				greenfactor=math.abs(x/y) --math.random(70,100)/100
 				love.graphics.setColor(treeColor[1]*greenfactor,treeColor[2]*1.25*greenfactor,treeColor[3]*greenfactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX+1, (y-1)*tilePixelsY+1, tilePixelsX-2, tilePixelsY-2)
 				love.graphics.setColor(groundColor)
@@ -375,7 +375,8 @@ function draw_tilemap()
 				love.graphics.line((x-1)*tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
 				love.graphics.line((x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
                         elseif tilemap[x][y] == 'W' then
-                                love.graphics.setColor(waterColor)
+				bluefactor=math.random(70,100)/100
+                                love.graphics.setColor(waterColor[1]*bluefactor,waterColor[2]*bluefactor*1.25,waterColor[3]*bluefactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			end
 		end
