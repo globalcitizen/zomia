@@ -306,7 +306,8 @@ end
 function love.draw()
 	--local start_time = love.timer.getTime()
 	if fov > 0 then
-		draw_tilemap_visibilitylimited()
+		draw_tilemap()
+		--draw_tilemap_visibilitylimited()
 	else
 		draw_tilemap()			-- rare changes (~4-5ms or so)
 	end
@@ -348,8 +349,8 @@ function love.draw()
 		-- draw_visibility_overlay()
 	end
 	draw_coordinates_overlay()
-	draw_areaname_overlay()
-
+	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
+	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 end
 
 function draw_tilemap()
@@ -1523,9 +1524,17 @@ function draw_areaname_overlay()
 end
 
 function draw_coordinates_overlay()
-		love.graphics.setColor(255,255,255)
+		love.graphics.setColor(155,155,155)
 		love.graphics.setFont(heavy_font)
-		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y,(resolutionTilesX-10)*tilePixelsX,tilePixelsY)
+		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y,(resolutionTilesX-10)*tilePixelsX,0)
+end
+
+function draw_depth_overlay()
+		love.graphics.setColor(155,155,155)
+		love.graphics.setFont(light_font)
+		love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,0,tilePixelsX*10,'right')
+		love.graphics.setFont(heavy_font)
+                love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,0)
 end
 
 function draw_tilemap_visibilitylimited()
