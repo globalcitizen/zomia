@@ -40,6 +40,7 @@ function generate_world()
 	local cave_location = math.random(1,4)
 	if cave_location == 1 then
 		world[-1][10][9] = {type='tai_cave'}
+		world_location = {z=-1,x=10,y=9}
 		world[0][10][9] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=10,y=9}
 		world[0][10][11] = {type='wilderness'}
@@ -48,6 +49,7 @@ function generate_world()
 	elseif cave_location == 2 then
 		world[0][10][9] = {type='wilderness'}
 		world[-1][10][11] = {type='tai_cave'}
+		world_location = {z=-1,x=10,y=11}
 		world[0][10][11] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=10,y=11}
 		world[0][9][10] = {type='wilderness'}
@@ -56,6 +58,7 @@ function generate_world()
 		world[0][10][9] = {type='wilderness'}
 		world[0][10][11] = {type='wilderness'}
 		world[-1][9][10] = {type='tai_cave'}
+		world_location = {z=-1,x=9,y=10}
 		world[0][9][10] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=9,y=10}
 		world[0][11][10] = {type='wilderness'}
@@ -64,6 +67,7 @@ function generate_world()
 		world[0][10][11] = {type='wilderness'}
 		world[0][9][10] = {type='wilderness'}
 		world[-1][11][10] = {type='tai_cave'}
+		world_location = {z=-1,x=11,y=10}
 		world[0][11][10] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=11,y=10}
 	end
