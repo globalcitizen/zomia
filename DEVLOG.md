@@ -1,5 +1,12 @@
 # Development log
 
+ * __2016-09-11__:
+    - Day off, mostly collectd and distilled ideas about game direction, features and issues.
+    - Made the decision to further circumscribe the 2016 ARRP release's scope to dungeon-only.
+        - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the Roguelike Radio expisode on Coffee-break roguelikes.
+        - The hope is that by focusing on a smaller game the playability will be higher and the initial release more successful/interesting.
+        - This does not circumscribe later releases from working toward the original, larger scope.
+
  * __2016-09-10__:
     - Generate `tai_cave_entrance` area
     - Fixed some area generation and transition related bugs
