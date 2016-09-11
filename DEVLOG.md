@@ -4,6 +4,7 @@
     - Began the day by reading some studies of [http://brogue.wikia.com/wiki/Level_Generation level generation] algorithms in [https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/ Brogue], documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
     - New RNG from rotLove library
     - Reduced background NPC vocality
+    - Footprint alpha variance
 
  * __2016-09-11__:
     - Day off, mostly collectd and distilled ideas about game direction, features and issues.
