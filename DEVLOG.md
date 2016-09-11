@@ -1,9 +1,14 @@
 # Development log
 
+ * __2016-09-12__:
+    - Began the day by reading some studies of [http://brogue.wikia.com/wiki/Level_Generation level generation] algorithms in [https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/ Brogue], documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
+    - New RNG from rotLove library
+    - Reduced background NPC vocality
+
  * __2016-09-11__:
     - Day off, mostly collectd and distilled ideas about game direction, features and issues.
-    - Made the decision to further circumscribe the 2016 ARRP release's scope to dungeon-only.
-        - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the Roguelike Radio expisode on Coffee-break roguelikes.
+    - Made the decision to further circumscribe the [http://www.roguebasin.com/index.php?title=2016_ARRP 2016 ARRP] release's scope to dungeon-only.
+        - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the [http://www.roguelikeradio.com/2012/05/episode-36-coffeebreak-roguelikes.html Roguelike Radio expisode on coffee-break roguelikes].
         - The hope is that by focusing on a smaller game the playability will be higher and the initial release more successful/interesting.
         - This does not circumscribe later releases from working toward the original, larger scope.
 
