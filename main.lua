@@ -13,7 +13,10 @@ require 'libs/utils/tableshow'
 require 'libs/utils/split'
 
 -- random
---randomsource = ROT.RNG.MWC:new()
+--rng = ROT.RNG.LCG:new()
+--rng = ROT.RNG.MWC:new()
+rng = ROT.RNG.Twister:new()
+rng:randomseed()
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
@@ -1227,8 +1230,8 @@ end
 function endTurn()
 	-- allow NPCs to move
 	for i,npc in ipairs(npcs) do
-		-- each one has a 1% chance of making a noise
-		if npc.vocal ~= nil and npc.vocal==true and math.floor(math.random(0,100)) == 1 then
+		-- each one has a 0.5% chance of making a noise
+		if npc.vocal ~= nil and npc.vocal==true and math.floor(rng:random(1,200)) == 1 then
 			-- as an improvement on just playing the noise, we should vary the volume versus the 
 			-- (simple, crow flies) distance to the NPC from the player.
 			--
