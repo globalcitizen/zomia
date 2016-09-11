@@ -394,8 +394,9 @@ end
 
 function draw_footprints()
 	-- draw footprints
-	love.graphics.setColor(footprintColor)
 	for i,footprint in ipairs(footprints) do
+		alpha = 100 - footprint.x*footprint.y % 80
+		love.graphics.setColor(footprintColor[1],footprintColor[2],footprintColor[3],alpha)
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
 	end
@@ -403,12 +404,13 @@ end
 
 function draw_footprints_visibilitylimited()
 	-- draw footprints
-	love.graphics.setColor(footprintColor)
         for i=1,#visibleTiles,1 do
                 local tile = visibleTiles[i]
                 x=tile.x
                 y=tile.y
 		for j,footprint in ipairs(footprints) do
+			alpha = 100 - footprint.x*footprint.y % 80
+			love.graphics.setColor(footprintColor[1],footprintColor[2],footprintColor[3],alpha)
 			if footprint['x']==x and footprint['y']==y then
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
