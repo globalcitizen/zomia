@@ -130,7 +130,7 @@ Album: 'We Used To Paint Stars In The Sky' / Scott Holmes (2012)
 
 Tracks 'Feather', 'Always The Last To Know', 'Ascension', 'Levels Of Greatness', 'October', 'Signals', 'We Used To Paint Stars In The Sky', 'Death Of An Orchid', 'Beyond Something Beautiful'.
 
-CC-BY-4.0 Attribution License
+CCC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2014-02-06)
 
@@ -139,14 +139,14 @@ Album: 'Colossal Stillness' / Scott Holmes (2014)
 
 Tracks 'Reflections Across The Sky', 'Breathe New Life', 'Chasing Shadows', 'Uninvited', 'Origin l', 'Origin ll', 'Wash Away', 'Remember The Archer', 'Close To The Distance', 'Reminiscence'.
 
-CC-BY-4.0 Attribution License
+CCC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2015-02-06)
 
 --
 
 'Midnight Caravan' / Artofescapism
-CC-BY-4.0 Attribution License
+CCC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2016-06-20)
 
@@ -156,7 +156,7 @@ Album: 'Sound-trax' / Philipp Weigl (Germany)
 
 Tracks 'Subdivision of the Masses', 'Even when we fall', 'The Scent of Cedars'.
 
-CC-BY-4.0 Attribution License
+CCC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2016-04-28)
 
@@ -194,11 +194,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Cave Drips' / Everythingsounds
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Monster Sigh in Cave' / TinTinOko
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cave River Fall 04' / jpdeglet69
@@ -210,11 +210,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Creature in da Cave v2' / CGEffex
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Ambience Cave 00' / LittleRobotSoundFactory
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cave Atmosphere' / vegapomme27
@@ -222,7 +222,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Atmosphere Cave (Loop)' / xDimebagx
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Water Dripping (Large Echo)' / editor_adp
@@ -238,7 +238,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'SylverMonk Cave Grunt' / SylverMonk
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cavernscape' / Blaukreuz
@@ -246,11 +246,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Lava Loop' / Audionautics
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'IndustialDoors Piezo Short' / Klankbeeld
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Water Splash 01' / Aglinder
@@ -258,15 +258,15 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Creepy Dungeon Ambience' / DrMinky
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Monster Screaming in a Cave' / qubodup
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Wumpus Roar' / smcameron
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Creek Cave Summer' / kvgarlic
@@ -282,39 +282,39 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Arrow Clatter' / smcameron
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Fall with Impact' / smcameron
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cavedoor' / smidoid
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Birdsong in Woodland' / earthsounds
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Ominous Heavy Breathing' / DaxSchaffer
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20131102 Scream 03' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20131102 Roar' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Grunt' / TobiasKosmos
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Angry Dog Bark Snarl Flat' / Jaylew1987
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark 1' / esperri
@@ -322,35 +322,35 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Small Dog Barking' / ivolipa
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark' / exuberate
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barks' / exuberate
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark Aggressive' / ivolipa
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark Light Aggressive' / ivolipa
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'FX Dog Barking' / davidmenke
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Big Dog Barking 02' / mich3d
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barking' / praesius
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog whining impression' / scottemoil
@@ -358,19 +358,19 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Dog whining sound' / Piink_Aces
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Animals Dog Bark Springer Spaniel 001' / soundscalpel.com
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Aggressive Dog Barks' / ivolipa
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Howl 01/02/03' / CGEffex
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'One Bark of a Poodle Dog' / fabiopx
@@ -378,11 +378,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Dog Growl' / Benboncan (Remix of ljudman)
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barking 03' / oen
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Goblin Cackle' / spookymodem
@@ -406,15 +406,15 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Evil Laugh 10' / Nanakisan
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster' / Kangaroovindaloo
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Gailis' / Sam_Kaleja
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Singing in the Morning' / caculo
@@ -422,11 +422,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Rooster Chicken Calls 1' / AGFX
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Chicken Calls 2' / AGFX
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Sclolex' / Sclolex
@@ -442,7 +442,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 '20070812 Rooster' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster crow' / jsbarrett
@@ -466,27 +466,27 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Rooster call up close' / msantoro11
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster call 2' / msantoro11
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster 1' / Tomlija
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20150403_01 Dawn Chorus' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20100423 Ros(e)mary Shrub' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20150403 Morning Chorus' / dobroide
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Buffalo' /  __O
@@ -494,11 +494,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Water Buffalo Bells - Laos / RTB45
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Buffles - Grognement + amb oiseaux' / roubignolle
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cow - Breath Multiple 1' / JarredGibb
@@ -510,27 +510,27 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps, Puddles, A' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Muddy, D' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Dry Leaves, E' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Stones, A' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Concrete, A' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Ice, A' / InspectorJ
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Concrete Footstep 1' / Yoyodaman234
@@ -538,23 +538,23 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Grassy Footstep 1' / OwlStorm
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 2' / OwlStorm
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 3' / OwlStorm
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 4' / OwlStorm
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'FootstepsGravel' / mikaelfernstrom
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Snow Crunchy Close' / lwdickens
@@ -582,59 +582,59 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps Stairs Wooden Hollow 02' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 03' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 04' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 01' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 07' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 03' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 06' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 05' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 02' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 08' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 01' / D W
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Bridge-Boot Footsteps SFX #2' / Adam Wayne Gistarb
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grass-Boot Footsteps SFX #1' / Adam Wayne Gistarb
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dirt & Rocks Footsteps SFX #3' / Adam Wayne Gistarb
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Step 1' - 'Step 12' / carrigsound
@@ -650,25 +650,254 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps' / hazure
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Small Rocks Footsteps' / hazure
-CC-BY-3.0 Attribution License
+CCC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Human Footstep Snow 001' / soundscalpel.com
-C-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Human Footstep Snow 002' / soundscalpel.com
-C-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Human Footstep Snow 003' / soundscalpel.com
-C-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Gravel Desertwind' / ikbenraar
 Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
+
+'Wooden door closes' / jorickhoofd
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'WoodDoorOpen' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'WoodDoorClose' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'WoodDoorClose1' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'WoodDoorCloseLatch' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'DoorOpenWoodScape' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'LargeWoodDoorCloseScrape' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'WoodDoorOpen5' / chewiesmissus
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'DOOR Bathroom Wood INT Open Close Hard Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Bathroom Wood INT Open Close Soft Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Bathroom Wood INT Open Close Medium Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Flat Wood INT Open Close Near' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Staircase Wood INT Open Close Near' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Staircase Wood INT Open Close Far' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Soft Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Medium Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Hard Near MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Hard Far MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Medium Near MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DOOR Apartment Wood INT Open Close Soft Near MG' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Door Cupboard' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Door Thick Creak Medium Perspective INT' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Door Big Wooden INT' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cellar Door Wooden Corridor 2 INT' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Cellar Door Wooden Corridor 1 INT' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Window Wood Bathroom' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Window Attic Wood Open Close 01' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Drawer Kitchen Cupboard Modern' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Door Wood INT Open Close - Close Perspective 01' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Door Wood INT Open Close - Close Perspective 02' / matucha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Wood Door' / ninebilly
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sliding Door Closing' / joedeshon
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Wooden Door Open' / joedeshon
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Wooden Door Close' / joedeshon
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Sliding Door Opening' / joedeshon
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Wooden Door Squeak' / joedeshon
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Hard Door Banging' / vate
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Soft Door Banging' / vate
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Opening Closing Pantry Door' / Omar Alvarado
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Opening Closing Bathroom 2 Door' / Omar Alvarado
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Opening Closing Bathroom Door' / Omar Alvarado
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DoorLocked' / Yap Audio Production
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'BargeDoorOpen' / Yap Audio Production
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'DoorSwingShut' / Yap Audio Production
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'door-creak01' / Aiyumi
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'door-open-close01' / Aiyumi
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'door-open-close02' / Aiyumi
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Open 01' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Open 02' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Locked 01' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Locked 02' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Locked 03' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Close Squeak 01' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Close Squeak 02' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Close Squeak 03' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Close Lone Squeak 01' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Door Close Lone Squeak 02' / Skyumori
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
