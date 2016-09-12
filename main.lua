@@ -46,7 +46,7 @@ logMessages = {}
 -- colors
 characterSmallness=4
 footprintColor={50,50,50,100}
-mossColor={41,113,13,200}
+mossColor={41,113,13,150}
 notifyMessageColor={128,128,128}
 failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
