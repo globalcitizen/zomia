@@ -10,6 +10,7 @@
        - Port Brogue's C dungeon generation algorithms to Lua for this area type
     - Add new `tilemap.lua` source file for tilemap manipulation related functions
     - Auto-replace depth reading with area name at surface
+    - Player spawns at stairs after ascent/descent
 
  * __2016-09-11__:
     - Day off, mostly collected and distilled ideas about game direction, features and issues.

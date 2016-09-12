@@ -78,16 +78,8 @@ area_types['natural_cavern'] = {
 				        print "Randomly placing stairs..."
 				        stairsX, stairsY = randomStandingLocation(instance.map)
 				        instance.map[stairsX][stairsY] = '>'
-					if last_world_location.z == world_location.z-1 and last_world_location.y == world_location.y and last_world_location.x == world_location.x then
-						characterX = stairsX
-						characterY = stairsY
-					end
 				        stairsX, stairsY = randomStandingLocation(instance.map)
 				        instance.map[stairsX][stairsY] = '<'
-					if last_world_location.z == world_location.z+1 and last_world_location.y==world_location.y and last_world_location.x==world_location.x then
-						characterX = stairsX
-						characterY = stairsY
-					end
 --[[
 				
 				        -- music
