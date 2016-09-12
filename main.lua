@@ -56,6 +56,8 @@ failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
 waterMessageColor={50,50,195}
 rockColor={0,0,0}
+bloodColor={255,0,0,180}
+bloodMessageColor={bloodColor[1],bloodColor[2],bloodColor[3],255}
 groundColor={25,25,25}
 waterColor={0,10,95}
 treeColor={80,185,50}
@@ -451,6 +453,9 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'puddle' then
 			love.graphics.setColor(puddleColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+		elseif feature['type'] == 'blood' then
+			love.graphics.setColor(bloodColor)
+			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -479,6 +484,9 @@ function draw_groundfeatures_visibilitylimited()
 							  )
 				elseif feature['type'] == 'puddle' then
 					love.graphics.setColor(0,10,65,155)
+					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+				elseif feature['type'] == 'blood' then
+					love.graphics.setColor(bloodColor)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 				elseif feature['type'] == 'stone' then
 					love.graphics.setColor(rockColor,120)
@@ -1182,9 +1190,12 @@ function autoPickup()
 				logMessage(notifyMessageColor,'You collect a small pebble.')
 				table.remove(groundfeatures,i)
 				inventory_add('pebble')
+			elseif gf.type == 'blood' then
+				logMessage(bloodMessageColor,'You tread in a pool of blood.')
+				footfallNoise('water')
 			elseif gf.type == 'puddle' then
 				logMessage(waterMessageColor,'You tread in a puddle.')
-				sounds['footfall_water']:play()
+				footfallNoise('water')
 			end
 		end
 	end
@@ -1366,9 +1377,13 @@ function ascend()
 end
 
 function attack_npc(i)
-	npcs[i]['sounds']['attack']:setVolume(3)
-	npcs[i]['sounds']['attack']:play()
+	npc=npcs[i]
+	npc.sounds.attack:setVolume(3)
+	npc.sounds.attack:play()
+	-- add blood
 	logMessage(notifyMessageColor,'You smash it!')
+	table.insert(groundfeatures,{x=npc.location.x,y=npc.location.y,type='blood'})
+	print(table.show(groundfeatures))
 	table.remove(npcs,i)
 end
 
