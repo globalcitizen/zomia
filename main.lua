@@ -1559,7 +1559,7 @@ end
 function draw_coordinates_overlay()
 		love.graphics.setColor(155,155,155)
 		love.graphics.setFont(heavy_font)
-		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y,(resolutionTilesX-10)*tilePixelsX,0)
+		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y .. ' (' .. love.timer.getFPS() .. 'fps)',(resolutionTilesX-10)*tilePixelsX,0)
 end
 
 function draw_depth_overlay()
