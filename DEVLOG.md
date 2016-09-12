@@ -19,6 +19,9 @@
     - Re-enable kills
     - Pools of blood after kills
     - Make pools of blood sound like treading in water
+    - Louder liquid footfalls
+    - Better blood pools
+    - Located, downloaded and processed proper sounds for doors (8 bit noises too out of context)
 
  * __2016-09-11__:
     - Day off, mostly collected and distilled ideas about game direction, features and issues.
