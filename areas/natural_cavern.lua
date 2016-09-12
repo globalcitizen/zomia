@@ -115,14 +115,19 @@ function mapgen_broguestyle(width,height)
 	local new_tilemap = tilemap_new(width,height,0)
 
 	-- First, place a room.
-	mapgen_broguestyle_design_random_room(new_tilemap)
+	new_tilemap = mapgen_broguestyle_design_random_room(new_tilemap)
 
 --[[ Then, it draws another room on another grid, which it slides like a piece of cellophane over the level until the new room fits snugly against an existing room without touching or overlapping. When there’s a fit, it transfers the room from the cellophane to the master grid and punches out a door. It does that repeatedly until it can’t fit any more rooms.
 
 That first room can sometimes be a “cavern” — a large, winding, organic shape that fills a lot of the space of the level. Those are made by filling the level randomly with 55% floor and 45% wall, and then running five rounds of smoothing. In every round of smoothing, every floor cell with fewer than four adjacent floor cells becomes a wall, and every wall cell with six or more adjacent floor cells becomes a floor. This process forces the random noise to coalesce and contract into a meandering blob shape. The algorithm picks the biggest blob that is fully connected and calls that the first room.
 
 There are a bunch of different techniques for drawing a room, chosen at random each time — for example, two large rectangles overlaid on each other, a large donut shape, a circle or a “blob” produced like the cavern described above but with smaller dimensions. Sometimes, we’ll generate the room with a hallway sticking off of it at a random point, and require that the end of the hallway connect to an existing room.
+--]]
 
+	-- Second, attach additional rooms
+	new_tilemap = mapgen_broguestyle_attach_rooms(new_tilemap)
+
+--[[
 At this point we have a simply connected network of differently shaped rooms. The problem is that there are no loops in the geometry; the entire map is a single tree, where each room after the first has exactly one “parent” room (that it grew off from) and any number of “child” rooms (that grew off from it). It turns out it’s not much fun to explore that kind of level, because it requires a lot of backtracking and it’s easy to get cornered by monsters. So, we start inspecting the walls of the level. If we can find a wall that has a passable cell on both sides of it, where the two cells are at least certain distance apart in terms of pathfinding, we punch out a door (or a secret door). Do that a bunch of times and you get a level that’s nicely connected.
 
 Then we move onto lakes. Lakes are masses of a particular terrain type — water, lava, chasm or brimstone — that can span almost the entire level. They’re atmospheric, they enable long-distance attacks, and they impose structure on the level at a large scale to prevent it from feeling like a homogenous maze of twisty passages. We pull out the cellophane and draw a lake on it using the cellular automata method, and then we slide the cellophane around to random locations until we find a place that works — where all of the passable parts of the level that aren’t covered by lake are still fully connected, so the player is never required to cross the lake. If twenty random tries fails to find a qualifying location, we draw a smaller lake and try again. If we can find a qualifying location, we drop the lake onto the map there and overwrite the terrain underneath it. Some lakes have wreaths — shallow water surrounds deep water, and “chasm edge” terrain surrounds chasms — and we draw that in at this stage.
@@ -150,6 +155,7 @@ end
 
 -- Add a random room to the supplied tilemap
 function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,roomtype_frequencies)
+
 	-- defaults
 	attach_hallway = attach_hallway or false
 	doorsites = doorsites or nil
@@ -196,6 +202,8 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 			mapgen_broguestyle_attach_hallway_to(tilemap, doorsites);
 		end
 	end
+
+	return tilemap
 end
 
 function mapgen_broguestyle_room_cross(tilemap)
@@ -413,4 +421,79 @@ function mapgen_broguestyle_room_entrance(tilemap)
 	roomy2 = #tilemap[1] - roomheight2 - 2
 	tilemap_draw_rectangle(tilemap,roomx,roomy,roomwidth,roomheight,1)
 	tilemap_draw_rectangle(tilemap,roomx2,roomy2,roomwidth2,roomheight2,1)
+end
+
+function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
+--[[
+    fillSequentialList(sCoord, DCOLS*DROWS);
+    shuffleList(sCoord, DCOLS*DROWS);
+--]]
+	-- First we shuffle a per-axis ordered matrix the size of our map
+
+--[[
+    roomMap = allocGrid();
+--]]
+	-- Then we get a new map structure the same size
+	local roommap = tilemap_new(#tilemap,#tilemap[1])
+
+--[[
+    for (roomsBuilt = roomsAttempted = 0; roomsBuilt < maxRoomCount && roomsAttempted < attempts; roomsAttempted++) {
+--]]
+
+	local roomsbuilt = 0
+	local roomsattempted=0
+
+	for roomsattempted=0, max_attempts, 1 do
+		if roomsbuild >= max_roomcount then
+			break
+		end
+
+--[[
+        // Build a room in hyperspace.
+        fillGrid(roomMap, 0);
+        designRandomRoom(roomMap, roomsAttempted <= attempts - 5 && rand_percent(theDP->corridorChance),
+                         doorSites, theDP->roomFrequencies);
+--]]
+
+	end
+
+--[[
+        if (D_INSPECT_LEVELGEN) {
+            colorOverDungeon(&darkGray);
+            hiliteGrid(roomMap, &blue, 100);
+            if (doorSites[0][0] != -1) plotCharWithColor('^', mapToWindowX(doorSites[0][0]), mapToWindowY(doorSites[0][1]), &black, &green);
+            if (doorSites[1][0] != -1) plotCharWithColor('v', mapToWindowX(doorSites[1][0]), mapToWindowY(doorSites[1][1]), &black, &green);
+            if (doorSites[2][0] != -1) plotCharWithColor('<', mapToWindowX(doorSites[2][0]), mapToWindowY(doorSites[2][1]), &black, &green);
+            if (doorSites[3][0] != -1) plotCharWithColor('>', mapToWindowX(doorSites[3][0]), mapToWindowY(doorSites[3][1]), &black, &green);
+            temporaryMessage("Generating this room:", true);
+        }
+
+        // Slide hyperspace across real space, in a random but predetermined order, until the room matches up with a wall.
+        for (i = 0; i < DCOLS*DROWS; i++) {
+            x = sCoord[i] / DROWS;
+            y = sCoord[i] % DROWS;
+
+            dir = directionOfDoorSite(grid, x, y);
+            oppDir = oppositeDirection(dir);
+            if (dir != NO_DIRECTION
+                && doorSites[oppDir][0] != -1
+                && roomFitsAt(grid, roomMap, x - doorSites[oppDir][0], y - doorSites[oppDir][1])) {
+
+                // Room fits here.
+                if (D_INSPECT_LEVELGEN) {
+                    colorOverDungeon(&darkGray);
+                    hiliteGrid(grid, &white, 100);
+                }
+                insertRoomAt(grid, roomMap, x - doorSites[oppDir][0], y - doorSites[oppDir][1], doorSites[oppDir][0], doorSites[oppDir][1]);
+                grid[x][y] = 2; // Door site.
+                if (D_INSPECT_LEVELGEN) {
+                    hiliteGrid(grid, &green, 50);
+                    temporaryMessage("Added room.", true);
+                }
+                roomsBuilt++;
+                break;
+            }
+        }
+    }
+--]]
 end
