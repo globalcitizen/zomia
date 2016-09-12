@@ -75,3 +75,21 @@ function tilemap_draw_circle(tilemap,sx,sy,radius,maptiletyle)
 
 	return tilemap
 end
+
+-- Fill
+function tilemap_fill(tilemap,maptiletype)
+	for x=1,#tilemap,1 do
+		for y=1,#tilemap[1],1 do
+			tilemap[x][y] = maptiletype
+		end
+	end
+	return tilemap
+end
+
+-- Check the validity of a set of coordinates given a specific tilemap
+function tilemap_coordinates_valid(tilemap,x,y)
+	if math.floor(x) == x and math.floor(y) == y and x > 0 and y > 0 and x < #tilemap and y < #tilemap[1] then
+		return true
+	end
+	return false
+end
