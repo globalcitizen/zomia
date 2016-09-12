@@ -7,7 +7,14 @@ area_types={}
 function area_generate(z,x,y)
 	local new_area = {}
 	if world[z][x][y].type == nil then
-		new_area.type='wilderness'
+		if z == 0 then
+			new_area.type='wilderness'
+		elseif z < 0 then
+			new_area.type='natural_cavern'
+		else
+			print("ERROR: Transition to elevated area.")
+			os.exit()
+		end
 	else
 		new_area.type=world[z][x][y].type
 	end
