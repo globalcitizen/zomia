@@ -1369,7 +1369,7 @@ function attack_npc(i)
 	npcs[i]['sounds']['attack']:setVolume(3)
 	npcs[i]['sounds']['attack']:play()
 	logMessage(notifyMessageColor,'You smash it!')
-	--table.remove(npcs,i)
+	table.remove(npcs,i)
 end
 
 -- calculate the set of visible tilemap squares
