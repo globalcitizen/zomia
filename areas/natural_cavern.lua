@@ -31,7 +31,7 @@ area_types['natural_cavern'] = {
         				--local generator = astray.Astray:new( math.floor(resolutionTilesX/2), math.floor(resolutionTilesY/2), 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
         				--local generator = astray.Astray:new( resolutionTilesY-1, math.floor(resolutionTilesY/2)-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
         				--local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
-				        local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 80, 70, 100, astray.RoomGenerator:new(22,2,5,2,5) )
+				        local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 20, 90, 90, astray.RoomGenerator:new(22,2,5,2,5) )
 				        local dungeon = generator:Generate()
 				        local tmp_tilemap = generator:CellToTiles(dungeon, symbols )
   				      	-- the astray generator begins its tilemap at row 0 and column 0 instead of row 1 and column 1, which does not match other lua code
@@ -78,8 +78,16 @@ area_types['natural_cavern'] = {
 				        print "Randomly placing stairs..."
 				        stairsX, stairsY = randomStandingLocation(instance.map)
 				        instance.map[stairsX][stairsY] = '>'
+					if last_world_location.z == world_location.z-1 and last_world_location.y == world_location.y and last_world_location.x == world_location.x then
+						characterX = stairsX
+						characterY = stairsY
+					end
 				        stairsX, stairsY = randomStandingLocation(instance.map)
 				        instance.map[stairsX][stairsY] = '<'
+					if last_world_location.z == world_location.z+1 and last_world_location.y==world_location.y and last_world_location.x==world_location.x then
+						characterX = stairsX
+						characterY = stairsY
+					end
 --[[
 				
 				        -- music
