@@ -1,1 +1,1 @@
-wc -l npcs/*.lua areas.lua npcs.lua main.lua areas/*.lua world.lua tilemap.lua
+wc -l npcs/*.lua areas.lua npcs.lua main.lua areas/*.lua world.lua tilemap.lua sounds.lua

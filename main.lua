@@ -9,6 +9,7 @@ require 'npcs'
 require 'areas'
 require 'world'
 require 'tilemap'
+require 'sounds'
 
 -- utilities
 require 'libs/utils/tableshow'
@@ -22,12 +23,6 @@ rng:randomseed()
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
-
--- sound
-music = {}
-ambience = {}
-current_area_music = {}
-sounds={}
 
 -- basics
 fov = 15    -- de-facto distance of vision
@@ -99,123 +94,6 @@ resolutionPixelsY=v.height
 screenModeFlags = {fullscreen=true, fullscreentype='desktop', vsync=true, msaa=0}
 
 function love.load()
-
-	-- load multi-area sounds
-	sounds['pickup'] = love.audio.newSource("sounds/8-bit/pickup.wav")
-	sounds['door_open'] = love.audio.newSource("sounds/8-bit/door-open.wav")
-	sounds['door_close'] = love.audio.newSource("sounds/8-bit/door-close.wav")
-	sounds['footfalls'] = {}
-	--sounds['footfalls']['water'] = love.audio.newSource("sounds/8-bit/footfall-water-1.wav")
-	sounds['footfalls']['bridge'] = {
-       				"sounds/footsteps/bridge-1.mp3",
-       				"sounds/footsteps/bridge-2.mp3",
-       				"sounds/footsteps/bridge-3.mp3",
-       				"sounds/footsteps/bridge-4.mp3",
-       				"sounds/footsteps/bridge-5.mp3",
-       				"sounds/footsteps/bridge-6.mp3",
-       				"sounds/footsteps/bridge-7.mp3"
-				    }
-	sounds['footfalls']['gravel'] = {
-       				"sounds/footsteps/gravel-1.mp3",
-       				"sounds/footsteps/gravel-10.mp3",
-       				"sounds/footsteps/gravel-11.mp3",
-       				"sounds/footsteps/gravel-12.mp3",
-       				"sounds/footsteps/gravel-13.mp3",
-       				"sounds/footsteps/gravel-14.mp3",
-       				"sounds/footsteps/gravel-15.mp3",
-       				"sounds/footsteps/gravel-16.mp3",
-       				"sounds/footsteps/gravel-17.mp3",
-       				"sounds/footsteps/gravel-18.mp3",
-       				"sounds/footsteps/gravel-19.mp3",
-       				"sounds/footsteps/gravel-2.mp3",
-       				"sounds/footsteps/gravel-20.mp3",
-       				"sounds/footsteps/gravel-21.mp3",
-       				"sounds/footsteps/gravel-22.mp3",
-       				"sounds/footsteps/gravel-23.mp3",
-       				"sounds/footsteps/gravel-24.mp3",
-       				"sounds/footsteps/gravel-25.mp3",
-       				"sounds/footsteps/gravel-3.mp3",
-       				"sounds/footsteps/gravel-4.mp3",
-       				"sounds/footsteps/gravel-5.mp3",
-       				"sounds/footsteps/gravel-6.mp3",
-       				"sounds/footsteps/gravel-7.mp3",
-       				"sounds/footsteps/gravel-8.mp3",
-       				"sounds/footsteps/gravel-9.mp3"
-			   }
-		sounds['footfalls']['ice'] = {
-       				"sounds/footsteps/ice-1.mp3",
-       				"sounds/footsteps/ice-10.mp3",
-       				"sounds/footsteps/ice-11.mp3",
-       				"sounds/footsteps/ice-12.mp3",
-       				"sounds/footsteps/ice-13.mp3",
-       				"sounds/footsteps/ice-14.mp3",
-       				"sounds/footsteps/ice-15.mp3",
-       				"sounds/footsteps/ice-16.mp3",
-       				"sounds/footsteps/ice-17.mp3",
-       				"sounds/footsteps/ice-18.mp3",
-       				"sounds/footsteps/ice-19.mp3",
-       				"sounds/footsteps/ice-2.mp3",
-       				"sounds/footsteps/ice-20.mp3",
-       				"sounds/footsteps/ice-21.mp3",
-       				"sounds/footsteps/ice-22.mp3",
-       				"sounds/footsteps/ice-23.mp3",
-       				"sounds/footsteps/ice-24.mp3",
-       				"sounds/footsteps/ice-25.mp3",
-       				"sounds/footsteps/ice-3.mp3",
-       				"sounds/footsteps/ice-4.mp3",
-       				"sounds/footsteps/ice-5.mp3",
-       				"sounds/footsteps/ice-6.mp3",
-       				"sounds/footsteps/ice-7.mp3",
-       				"sounds/footsteps/ice-8.mp3",
-       				"sounds/footsteps/ice-9.mp3",
-			     }
-		sounds['footfalls']['leaves'] = {
-       				"sounds/footsteps/leaves-1.mp3",
-       				"sounds/footsteps/leaves-10.mp3",
-       				"sounds/footsteps/leaves-11.mp3",
-       				"sounds/footsteps/leaves-12.mp3",
-       				"sounds/footsteps/leaves-13.mp3",
-       				"sounds/footsteps/leaves-14.mp3",
-       				"sounds/footsteps/leaves-15.mp3",
-       				"sounds/footsteps/leaves-16.mp3",
-       				"sounds/footsteps/leaves-17.mp3",
-       				"sounds/footsteps/leaves-18.mp3",
-       				"sounds/footsteps/leaves-19.mp3",
-       				"sounds/footsteps/leaves-2.mp3",
-       				"sounds/footsteps/leaves-20.mp3",
-       				"sounds/footsteps/leaves-21.mp3",
-       				"sounds/footsteps/leaves-22.mp3",
-       				"sounds/footsteps/leaves-23.mp3",
-       				"sounds/footsteps/leaves-3.mp3",
-       				"sounds/footsteps/leaves-4.mp3",
-       				"sounds/footsteps/leaves-5.mp3",
-       				"sounds/footsteps/leaves-6.mp3",
-       				"sounds/footsteps/leaves-7.mp3",
-       				"sounds/footsteps/leaves-8.mp3",
-       				"sounds/footsteps/leaves-9.mp3"
-			    }
-                sounds['footfalls']['water'] = {
-       				"sounds/footsteps/puddle-1.mp3",
-       				"sounds/footsteps/puddle-10.mp3",
-       				"sounds/footsteps/puddle-11.mp3",
-       				"sounds/footsteps/puddle-12.mp3",
-       				"sounds/footsteps/puddle-13.mp3",
-       				"sounds/footsteps/puddle-14.mp3",
-       				"sounds/footsteps/puddle-15.mp3",
-       				"sounds/footsteps/puddle-16.mp3",
-       				"sounds/footsteps/puddle-17.mp3",
-       				"sounds/footsteps/puddle-18.mp3",
-       				"sounds/footsteps/puddle-19.mp3",
-       				"sounds/footsteps/puddle-2.mp3",
-       				"sounds/footsteps/puddle-20.mp3",
-       				"sounds/footsteps/puddle-3.mp3",
-       				"sounds/footsteps/puddle-4.mp3",
-       				"sounds/footsteps/puddle-5.mp3",
-       				"sounds/footsteps/puddle-6.mp3",
-       				"sounds/footsteps/puddle-7.mp3",
-       				"sounds/footsteps/puddle-8.mp3",
-       				"sounds/footsteps/puddle-9.mp3"
-						  }
 
 	-- load font
 	print('Loading fonts')
