@@ -718,6 +718,15 @@ function draw_popups()
 		love.graphics.setColor(popupTitleColor)
 		love.graphics.setFont(heavy_font)
 		love.graphics.printf("Help",0,border*1.3,resolutionPixelsX,"center")
+		-- ideas: could combine many potential keys in to a single overlay. simplicity of interface is good to aim for.
+		--        (in particular, probably we should kill 'e' for equipment)... for example...
+		--
+		--   tab: shows equipment         \
+		--   tab: quest log                |
+		--   tab: permanent message log     > could potentially show all of these on one overlay?
+		--   tab: player statistics        |
+		--   tab: player conditions       /
+		--     m: world map               
 		keys = {
 			c='Close doors',
 			e='Equipment',
