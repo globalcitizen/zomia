@@ -46,6 +46,7 @@ logMessages = {}
 -- colors
 characterSmallness=4
 footprintColor={50,50,50,100}
+mossColor={41,113,13,200}
 notifyMessageColor={128,128,128}
 failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
@@ -333,6 +334,11 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
+		elseif feature['type'] == 'moss' then
+			love.graphics.setColor(mossColor)
+			local bx=(feature['x']-1)*tilePixelsX
+			local by=(feature['y']-1)*tilePixelsY
+			love.graphics.points({bx+3,by+3,bx+7,by+2,bx+6,by+4,bx+9,by+5})
 		end
 	end
 end
@@ -368,6 +374,11 @@ function draw_groundfeatures_visibilitylimited()
 				elseif feature['type'] == 'stone' then
 					love.graphics.setColor(rockColor,120)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
+				elseif feature['type'] == 'moss' then
+					love.graphics.setColor(mossColor)
+					local bx=(feature['x']-1)*tilePixelsX
+					local by=(feature['y']-1)*tilePixelsY
+					love.graphics.points({bx+3,by+3,bx+7,by+2,bx+6,by+4,bx+9,by+5})
 				end
 			end
 		end

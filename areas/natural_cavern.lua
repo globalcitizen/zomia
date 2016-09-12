@@ -32,7 +32,7 @@ area_types['natural_cavern'] = {
         				--local generator = astray.Astray:new( math.floor(resolutionTilesX/2), math.floor(resolutionTilesY/2), 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
         				--local generator = astray.Astray:new( resolutionTilesY-1, math.floor(resolutionTilesY/2)-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
         				--local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 30, 20, 90, astray.RoomGenerator:new(10,1,5,1,5) )
-				        local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 50, 40, 50, astray.RoomGenerator:new(22,2,5,2,5) )
+				        local generator = astray.Astray:new( resolutionTilesX/2-1, resolutionTilesY/2-1, 25, 90, 80, astray.RoomGenerator:new(22,2,5,2,5) )
 				        local dungeon = generator:Generate()
 				        local tmp_tilemap = generator:CellToTiles(dungeon, symbols )
   				      	-- the astray generator begins its tilemap at row 0 and column 0 instead of row 1 and column 1, which does not match other lua code
@@ -54,27 +54,21 @@ area_types['natural_cavern'] = {
 				        add_npcs(instance.npcs,'goblin',5)
 				        add_npcs(instance.npcs,'mouse',1)
 			
-				        -- place npcs
---[[ ALL THESE RELY ON RANDOM LOCATIONS - THOSE FUNCTIONS ARE HARDCODED TO tilemap AND NEED REWRITING ...
-				        print "Randomly placing NPCs..."
-				        for i=1,#npcs,1 do
-				                npcs[i]['location'] = {}
-				                npcs[i]['location']['x'],npcs[i]['location']['y'] = randomStandingLocationWithoutNPCsOrPlayer()
-				        end
-				
-				        -- place ground features
+				        -- ground features
 				        for i=1,120,1 do
 				                groundfeatures[i] = {}
-				                groundfeatures[i]['x'],groundfeatures[i]['y'] = randomStandingLocation()
+				                groundfeatures[i]['x'],groundfeatures[i]['y'] = randomStandingLocation(new_tilemap)
 				                if i < 3 then
 				                        groundfeatures[i]['type'] = 'shrub'
 				                elseif i < 10 then
 				                        groundfeatures[i]['type'] = 'puddle'
-				                else
+				                elseif i < 20 then
+				                        groundfeatures[i]['type'] = 'moss'
+						else
 				                        groundfeatures[i]['type'] = 'stone'
 				                end
 				        end
-			--]]	
+
 				        -- place stairs
 				        print "Randomly placing stairs..."
 				        stairsX, stairsY = randomStandingLocation(instance.map)
