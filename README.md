@@ -8,7 +8,7 @@ I twisted my ankle in Vietnam in early August 2016 and decided to use part of th
 
 ## Development status
 
-Development began on the 2nd of September, 2016. As of September 12 different areas are generated, it is possible to walk around them and between them, sound (music, ambient and event) and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises, you can kill them, they leave puddle of blood. Some NPCs will move randomly.  We now have the workings of vision so they should get smarter shortly. There is an awful lot of free audio media prepared as well... almost 1GB so far. You can check out the [development log](https://github.com/globalcitizen/zomia/blob/master/DEVLOG.md) for further details.
+Development began on the 2nd of September, 2016. As of September 12 different areas are generated, it is possible to walk around them and between them, sound (music, ambient and event) and graphics are functional, even with some frills, and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises, you can kill them, they leave puddle of blood. Some NPCs will move randomly.  We now have the workings of vision so they should get smarter shortly. There is an awful lot of free audio media prepared as well... almost 1GB so far. You can check out the [development log](https://github.com/globalcitizen/zomia/blob/master/DEVLOG.md) for further details, or [check out the video preview from September 12](http://pratyeka.org/zomia-beta.mp4) (no audio unfortunately).
 
 ## How to run
 
