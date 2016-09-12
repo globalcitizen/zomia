@@ -11,6 +11,7 @@
     - Add new `tilemap.lua` source file for tilemap manipulation related functions
     - Auto-replace depth reading with area name at surface
     - Player spawns at stairs after ascent/descent
+    - Normalize world-shift to new area load function
 
  * __2016-09-11__:
     - Day off, mostly collected and distilled ideas about game direction, features and issues.
