@@ -19,6 +19,8 @@ maptiletypes = {
 
 -- New tilemap
 function tilemap_new(width,height,defaultmaptiletype)
+	width = width or resolutionTilesX
+	height = height or resolutionTilesY
 	defaultmaptiletype = defaultmaptiletype or 0
 	local m={}
 	for x=1,width,1 do
@@ -27,6 +29,7 @@ function tilemap_new(width,height,defaultmaptiletype)
 			m[x][y] = defaultmaptiletype
 		end
 	end
+	return m
 end
 
 -- Fill a rectangle on the tilemap with a certain maptiletype
