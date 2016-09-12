@@ -7,6 +7,7 @@
     - Footprint alpha variance
     - Move information overlays to edge of screen
     - Create new `natural_cavern` area type as beginning of ARRP 2016 release
+    - Add new `tilemap.lua` source file for tilemap manipulation related functions
 
  * __2016-09-11__:
     - Day off, mostly collectd and distilled ideas about game direction, features and issues.

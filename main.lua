@@ -7,6 +7,7 @@ require 'libs/slam/slam'
 require 'npcs'
 require 'areas'
 require 'world'
+require 'tilemap'
 
 -- utilities
 require 'libs/utils/tableshow'
