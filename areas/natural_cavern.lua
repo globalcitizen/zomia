@@ -167,7 +167,11 @@ Many of the probabilities throughout this process vary by depth. Levels become m
 end
 
 -- Add a random room to the supplied tilemap
-function mapgen_broguestyle_designrandomroom(tilemap)
+function mapgen_broguestyle_designrandomroom(tilemap,attach_hallway,doorsites,roomtype_frequencies)
+	-- defaults
+	attach_hallway = attach_hallway or false
+	doorsites = doorsites or nil
+	roomtype_frequencies = roomtype_frequencies or nil
 
 	--[[ Brogue itself includes the following room types:
 		0. Cross room :: designCrossRoom()
@@ -179,7 +183,37 @@ function mapgen_broguestyle_designrandomroom(tilemap)
 		6. Cavern :: designCavern() with different arguments
 		7. Entrance room (the big upside-down T room at the start of depth 1) :: designEntranceRoom()
 	]]--
+
+	-- currently we have only implemented room types 0-4 and 7.
+	roomtype = rng:random(0,5)
+	if roomtype == 0 then
+		tilemap = mapgen_broguestyle_room_cross(tilemap)
+	elseif roomtype == 1 then
+		tilemap = mapgen_broguestyle_room_sym(tilemap)
+	elseif roomtype == 2 then
+		tilemap = mapgen_broguestyle_room_small(tilemap)
+	elseif roomtype == 3 then
+		tilemap = mapgen_broguestyle_room_circular(tilemap)
+	elseif roomtype == 4 then
+		tilemap = mapgen_broguestyle_room_chunky(tilemap)
+	elseif roomtype == 5 then
+		tilemap = mapgen_broguestyle_room_entrance(tilemap)
+	end
 	
+	if doorsites ~= nil then
+		mapgen_broguestyle_choose_random_doorsites(tilemap,doorsites)
+		if attach_hallway then
+			dir = rng:random(0,3)
+			for i=0, 3, 1 do
+				if doorSites[dir][0] ~= -1 then 
+					i = 3
+				else
+					dir = (dir + 1) % 4 -- each room will have at least 2 valid directions for doors.
+				end
+			end
+			mapgen_broguestyle_attach_hallway_to(tilemap, doorsites);
+		end
+	end
 end
 
 function mapgen_broguestyle_room_cross(tilemap)
