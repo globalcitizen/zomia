@@ -8,7 +8,7 @@ I twisted my ankle in Vietnam in early August 2016 and decided to use part of th
 
 ## Development status
 
-Development began on the 2nd of September, 2016. As of September 10 different areas are generated, it is possible to walk around them and between them, sound (music, ambient and event) and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises but there is no fighting or interaction yet. Some NPCs will move randomly. However, we now have the workings of vision so they should soon be able to respond to your presence including moving and attacking. There is an awful lot of free audio media prepared as well... almost 1GB so far. You can check out the [development log](https://github.com/globalcitizen/zomia/blob/master/DEVLOG.md) for further details.
+Development began on the 2nd of September, 2016. As of September 12 different areas are generated, it is possible to walk around them and between them, sound (music, ambient and event) and graphics are functional and some back-story is on the way to being generated. There are NPCs you can run in to, they make noises, you can kill them, they leave puddle of blood. Some NPCs will move randomly.  We now have the workings of vision so they should get smarter shortly. There is an awful lot of free audio media prepared as well... almost 1GB so far. You can check out the [development log](https://github.com/globalcitizen/zomia/blob/master/DEVLOG.md) for further details.
 
 ## How to run
 
@@ -53,24 +53,7 @@ love .
 
 ## Screenshots
 
-## Village
-
-Here is one of the first views of a village, which is heavily under development. You can see area-specific generated NPCs, as well as a Markov-generated village name.
-
-![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village1.jpg)
-
-Here is a slightly more recent view showing a procedurally generated river and bridge, grass-coloured backdrop, and another name.
-
-![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village2.jpg)
-
-Subsequent view showing full-visibility daytime above-ground field of view, a procedurally generated river and bridge, grass-coloured backdrop, various suitable village animals, and another name.
-
-![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village3.jpg)
-
-Current development view showing the above plus ugly houses and trees.
-
-![Village](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-village4.jpg)
-
+For screenshots of longer term elements, under development but lying outside of the ARRP 2016 feature set, see [this document](https://github.com/globalcitizen/zomia/blob/master/LONGTERM.md).
 
 ### Dungeon
 
@@ -96,12 +79,3 @@ Here is the inventory screen. As you can see, some work has been done on the gen
 There is a list of keyboard commands accessible by pressing 'h', this also shows you about how much is implemented.
 
 ![Key Command Help](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-help.jpg)
-
-### World generation
-
-This is a separate program I am working on worldgen in. The idea is to procedurally generate a wilderness with general topography, distance and features matching that of ancient Yunnan. This will be used to ensure that every game is different but also similar in a general way, which hopefully should be enough to hang procedural plot features off. Certainly, given the richness of the region's history, this should work. It's low priority right now, however, and the intent right now is to get something out for ARRP2016 which means I am very short on time. Therefore we have a simplified localized worldgen as a placeholder right now.
-
-In the graphic below, the upper river is the Jinshajiang (upper Yangtse), the lower river is the Red River, and the central lake is Erhai.
-
-![World Generation (in Progress)](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-worldgen.jpg)
-
