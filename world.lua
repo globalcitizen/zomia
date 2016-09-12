@@ -78,13 +78,16 @@ end
 function world_load_area(z,x,y)
 	-- remember last location
 	last_world_location = {z=world_location.z,y=world_location.y,x=world_location.x}
+	-- remember seenTiles
+	world[world_location.z][world_location.x][world_location.y].seenTiles = seenTiles
+	seenTiles={}
 
 	-- set new location
 	world_location.z = z
 	world_location.y = y
 	world_location.x = x
 
-	-- stop the music
+	-- YOU. CANT. Stop the music
 	for i,m in pairs(current_area_music) do
 		m:stop()
 	end
@@ -111,8 +114,20 @@ function world_load_area(z,x,y)
 		print(" - Area tilemap already exists.")
 	end
 
-	-- assign maptiles from area
+	-- if there is no seenTiles table, create it now
+	if world[z][x][y].seenTiles == nil then
+		world[z][x][y].seenTiles = {}
+	end
+
+	-- if there is no footprints table, create it now
+	if world[z][x][y].footprints == nil then
+		world[z][x][y].footprints = {}
+	end
+
+	-- assign maptiles and related from area
 	tilemap = world[z][x][y].map
+	seenTiles = world[z][x][y].seenTiles
+	footprints = world[z][x][y].footprints
 
 	-- if any NPCs are not placed, place them randomly now
 	if world[z][x][y].npcs ~= nil then
@@ -165,9 +180,6 @@ function world_load_area(z,x,y)
 	if world[z][x][y].fov ~= nil then
 		fov = world[z][x][y].fov
 	end
-
-	-- reset footprints
-	footprints = {}
 
 	-- place character intelligently as appropriate
 	--  if we just came from below...

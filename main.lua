@@ -309,8 +309,8 @@ end
 function love.draw()
 	--local start_time = love.timer.getTime()
 	if fov > 0 then
-		draw_tilemap()
-		--draw_tilemap_visibilitylimited()
+		--draw_tilemap()
+		draw_tilemap_visibilitylimited()
 	else
 		draw_tilemap()			-- rare changes (~4-5ms or so)
 	end
