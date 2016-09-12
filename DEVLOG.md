@@ -1,9 +1,9 @@
 # Development log
 
- * __2016-09-13__:
+ * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
 
- * __2016-09-12__:
+ * __2016-09-12__ (5-6 days remaining / 11 days used):
     - Began the day by reading some studies of [level generation](http://brogue.wikia.com/wiki/Level_Generation) algorithms in [Brogue](https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/), documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
     - New RNG from rotLove library
     - Reduced background NPC vocality
@@ -27,14 +27,14 @@
     - Located, downloaded and processed proper sounds for doors (8 bit noises too out of context)
     - Linecount 3330
 
- * __2016-09-11__:
+ * __2016-09-11__ (6-7 days remaining / 10 days used):
     - Day off, mostly collected and distilled ideas about game direction, features and issues.
     - Made the decision to further circumscribe the [2016 ARRP](http://www.roguebasin.com/index.php?title=2016_ARRP) release's scope to dungeon-only.
         - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the [Roguelike Radio expisode on coffee-break roguelikes](http://www.roguelikeradio.com/2012/05/episode-36-coffeebreak-roguelikes.html).
         - The hope is that by focusing on a smaller game the playability will be higher and the initial release more successful/interesting.
         - This does not circumscribe later releases from working toward the original, larger scope.
 
- * __2016-09-10__:
+ * __2016-09-10__ (7-8 days remaining / 9 days used):
     - Generate `tai_cave_entrance` area
     - Fixed some area generation and transition related bugs
     - Made stairs work
@@ -56,7 +56,7 @@
     - Fix subterranean footprints
     - Linecount 2712
 
- * __2016-09-09__:
+ * __2016-09-09__ (8-9 days remaining / 8 days used):
     - Improve tilemap drawing routines to utilize list of currently/ever seen tiles
     - Restore cross-area sounds such as footfalls
     - Fix bounds-checking on new draw routines
@@ -84,7 +84,7 @@
     - Majority of area-switching logic
     - Linecount 2383
 
- * __2016-09-08__:
+ * __2016-09-08__ (9-10 days remaining / 7 days used):
     - Wasted the whole day on field of view re-implementation
       - Wound up with a half-working implementation that infinite-loop-crashes in large rooms because the algorithm is imperfect, looks like hopscotch (new roguelike? :)
       - Made a simple area shading mode which kinda works (ignores tile geometry)
@@ -97,7 +97,7 @@
     - Lots of work on world area loading (properly dynamic)
     - Linecount 1971
 
- * __2016-09-07__:
+ * __2016-09-07__ (10-11 days remaining / 6 days used):
     - Further logo design work
     - Add further structure to NPCs (different sound types, etc.)
     - Alter directory tree and code structure to support segregated NPC metadata (one NPC per source file)
@@ -118,7 +118,7 @@
     - Restructured the project to a new repository and moved it to Github
     - Linecount 1302
 
- * __2016-09-06__:
+ * __2016-09-06__ (11-12 days remaining / 5 days used):
     - Added help popup to display key commands
     - Added escape key to quit
     - Added up and down stair graphics, ascend/descend commands, relevant messages
@@ -140,7 +140,7 @@
     - Began some design work on logo
     - Linecount is 977
 
- * __2016-09-05__:
+ * __2016-09-05__ (12-13 days remaining / 4 days used):
     - Broke drawing routines in to disparate functions, performed timing analysis
     - Removed significant debug output
     - Added limitation to footprint trail length
@@ -148,7 +148,7 @@
     - Integrated SLAM audio manager
     - Simplified rotLove/SLAM library require to same directory
 
- * __2016-09-04__:
+ * __2016-09-04__ (13-14 days remaining / 3 days used):
     - Downloaded more music and categorized music in to place genres
     - Language-based name generation
     - Began overall world generation
@@ -164,10 +164,10 @@
     - Began NPC movement
     - Linecount is 659
 
- * __2016-09-03__:
+ * __2016-09-03__ (14-15 days remaining / 2 days used):
     - Tile decorations
     - Footprints
     - Selected and downloaded appropriately licensed music 
  
- * __2016-09-02__:
+ * __2016-09-02__ (15-16 days remaining / 1 day used):
     - Basic movement
