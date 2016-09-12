@@ -2,6 +2,7 @@
 ROT=require 'libs/rotLove/rotLove/rotLove'
 astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
+shack=require 'libs/shack/shack'
 
 -- game portions
 require 'npcs'
@@ -246,6 +247,9 @@ function love.load()
 	resolutionTilesY=math.floor(resolutionPixelsY/tilePixelsY)
 	print('     - Displayable tilemap size: ' .. resolutionTilesX .. ' x ' .. resolutionTilesY .. ' tiles')
 
+	-- record with shack library for shaking
+	shack:setDimensions(love.graphics.getDimensions())
+
 	-- generate world
 	print('Generating world.')
 	generate_world()
@@ -307,6 +311,7 @@ function love.keypressed(key)
 end
 
 function love.draw()
+	shack:apply()
 	--local start_time = love.timer.getTime()
 	if fov > 0 then
 		--draw_tilemap()
@@ -355,6 +360,11 @@ function love.draw()
 	draw_coordinates_overlay()
 	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
+	
+end
+
+function love.update(dt)
+ shack:update(dt)
 end
 
 function draw_tilemap()
@@ -1024,7 +1034,15 @@ function moveCharacterRelatively(x,y)
 				autoPickup()
 				endTurn()
 			end
+		else
+			shack:setShake(20)
+			shack:setRotation(.1)
+			shack:zoom(1.05)
 		end
+	else
+		shack:setShake(20)
+		shack:setRotation(.1)
+		shack:zoom(1.05)
 	end
 end
 

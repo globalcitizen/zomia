@@ -7,3 +7,6 @@
 [submodule "libs/slam"]
 	path = libs/slam
 	url = https://github.com/vrld/slam.git
+[submodule "libs/shack"]
+	path = libs/shack
+	url = https://github.com/Ulydev/shack.git
