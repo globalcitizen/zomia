@@ -429,6 +429,7 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
     shuffleList(sCoord, DCOLS*DROWS);
 --]]
 	-- First we shuffle a per-axis ordered matrix the size of our map
+	-- FIXTHIS: TODO
 
 --[[
     roomMap = allocGrid();
@@ -453,49 +454,57 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
         designRandomRoom(roomMap, roomsAttempted <= attempts - 5 && rand_percent(theDP->corridorChance),
                          doorSites, theDP->roomFrequencies);
 --]]
-	local attach_hallway = false
-	corridor_chance = 5		-- in % (should be in dungeon profile)
-	if roomsattempted <= (max_attempts -5) then
-		attach_hallway = true
-		if rng:random(1,100) < corridor_chance then
-			attach_hallway = false		
-		end
-	else
-		attach_hallway = false
-		if rng:random(1,100) < corridor_chance then
+		local attach_hallway = false
+		corridor_chance = 5		-- in % (should be in dungeon profile)
+		if roomsattempted <= (max_attempts -5) then
 			attach_hallway = true
+			if rng:random(1,100) < corridor_chance then
+				attach_hallway = false		
+			end
+		else
+			attach_hallway = false
+			if rng:random(1,100) < corridor_chance then
+				attach_hallway = true
+			end
 		end
-	end
 
-	roommap = mapgen_broguestyle_design_random_room(roommap, attach_hallway, doorsites)
+		roommap = mapgen_broguestyle_design_random_room(roommap, attach_hallway, doorsites)
 
 --[[
         // Slide hyperspace across real space, in a random but predetermined order, until the room matches up with a wall.
         for (i = 0; i < DCOLS*DROWS; i++) {
             x = sCoord[i] / DROWS;
             y = sCoord[i] % DROWS;
-
             dir = directionOfDoorSite(grid, x, y);
             oppDir = oppositeDirection(dir);
+--]]
+
+		for i=0, (#tilemap * #tilemap[1]), 1 do
+			x = scoord[i] / #tilemap[1]
+			y = scoord[i] % #tilemap[1]
+			dir = tilemap_door_direction(tilemap,x,y)
+			oppdir = tilemap_opposite_direction(dir)
+	
+--[[
             if (dir != NO_DIRECTION
                 && doorSites[oppDir][0] != -1
                 && roomFitsAt(grid, roomMap, x - doorSites[oppDir][0], y - doorSites[oppDir][1])) {
+]]--
 
+			if dir ~= nil and doorsites[oppdir][0] != -1 and tilemap_room_fits_at(tilemap,roommap,x-doorsites[oppdir][0],y-doorsites[oppdir][1]) then
+
+--[[
                 // Room fits here.
-                if (D_INSPECT_LEVELGEN) {
-                    colorOverDungeon(&darkGray);
-                    hiliteGrid(grid, &white, 100);
-                }
                 insertRoomAt(grid, roomMap, x - doorSites[oppDir][0], y - doorSites[oppDir][1], doorSites[oppDir][0], doorSites[oppDir][1]);
                 grid[x][y] = 2; // Door site.
-                if (D_INSPECT_LEVELGEN) {
-                    hiliteGrid(grid, &green, 50);
-                    temporaryMessage("Added room.", true);
-                }
                 roomsBuilt++;
                 break;
-            }
-        }
 --]]
+				tilemap_insert_room_at(tilemap, roommap, x-doorsites[oppdir][0], y-doorsites[oppdir][1], doorsites[oppdir][0], doorsites[oppdir][1])
+				tilemap[x][y] = 2	-- door site
+				roomsbuilt = roomsbuilt + 1
+				break
+			end
+		end
 	end
 end
