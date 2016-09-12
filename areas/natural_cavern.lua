@@ -434,7 +434,7 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
     roomMap = allocGrid();
 --]]
 	-- Then we get a new map structure the same size
-	local roommap = tilemap_new(#tilemap,#tilemap[1])
+	local roommap = tilemap_new(#tilemap,#tilemap[1],0)
 
 --[[
     for (roomsBuilt = roomsAttempted = 0; roomsBuilt < maxRoomCount && roomsAttempted < attempts; roomsAttempted++) {
@@ -450,24 +450,26 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
 
 --[[
         // Build a room in hyperspace.
-        fillGrid(roomMap, 0);
         designRandomRoom(roomMap, roomsAttempted <= attempts - 5 && rand_percent(theDP->corridorChance),
                          doorSites, theDP->roomFrequencies);
 --]]
-
+	local attach_hallway = false
+	corridor_chance = 5		-- in % (should be in dungeon profile)
+	if roomsattempted <= (max_attempts -5) then
+		attach_hallway = true
+		if rng:random(1,100) < corridor_chance then
+			attach_hallway = false		
+		end
+	else
+		attach_hallway = false
+		if rng:random(1,100) < corridor_chance then
+			attach_hallway = true
+		end
 	end
 
---[[
-        if (D_INSPECT_LEVELGEN) {
-            colorOverDungeon(&darkGray);
-            hiliteGrid(roomMap, &blue, 100);
-            if (doorSites[0][0] != -1) plotCharWithColor('^', mapToWindowX(doorSites[0][0]), mapToWindowY(doorSites[0][1]), &black, &green);
-            if (doorSites[1][0] != -1) plotCharWithColor('v', mapToWindowX(doorSites[1][0]), mapToWindowY(doorSites[1][1]), &black, &green);
-            if (doorSites[2][0] != -1) plotCharWithColor('<', mapToWindowX(doorSites[2][0]), mapToWindowY(doorSites[2][1]), &black, &green);
-            if (doorSites[3][0] != -1) plotCharWithColor('>', mapToWindowX(doorSites[3][0]), mapToWindowY(doorSites[3][1]), &black, &green);
-            temporaryMessage("Generating this room:", true);
-        }
+	roommap = mapgen_broguestyle_design_random_room(roommap, attach_hallway, doorsites)
 
+--[[
         // Slide hyperspace across real space, in a random but predetermined order, until the room matches up with a wall.
         for (i = 0; i < DCOLS*DROWS; i++) {
             x = sCoord[i] / DROWS;
@@ -494,6 +496,6 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
                 break;
             }
         }
-    }
 --]]
+	end
 end
