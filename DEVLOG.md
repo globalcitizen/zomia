@@ -9,6 +9,7 @@
     - Create new `natural_cavern` area type as beginning of ARRP 2016 release
        - Port Brogue's C dungeon generation algorithms to Lua for this area type
     - Add new `tilemap.lua` source file for tilemap manipulation related functions
+    - Auto-replace depth reading with area name at surface
 
  * __2016-09-11__:
     - Day off, mostly collectd and distilled ideas about game direction, features and issues.
