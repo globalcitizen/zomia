@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-13__:
+    - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
+
  * __2016-09-12__:
     - Began the day by reading some studies of [level generation](http://brogue.wikia.com/wiki/Level_Generation) algorithms in [Brogue](https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/), documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
     - New RNG from rotLove library
