@@ -100,7 +100,7 @@ function tai_cave_name_generate()
 			'Cavity',
 			'Cavities'
 	}
-	prefix = prefixes[math.random(1,#prefixes)]
-	suffix = suffixes[math.random(1,#suffixes)]
+	prefix = prefixes[rng:random(1,#prefixes)]
+	suffix = suffixes[rng:random(1,#suffixes)]
 	return prefix .. ' ' .. suffix
 end

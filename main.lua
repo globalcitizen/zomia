@@ -377,7 +377,7 @@ function draw_tilemap()
 				--treerandomsource=ROT.RNG.MWC.new()
 				--treerandomsource:randomseed(x*y)
 				--greenfactor = treerandomsource:random(70,100)/100
-				greenfactor=math.abs(x/y)/3 --math.random(70,100)/100
+				greenfactor=math.abs(x/y)/3 --rng:random(70,100)/100
 				love.graphics.setColor(treeColor[1]*greenfactor,treeColor[2]*1.25*greenfactor,treeColor[3]*greenfactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX+1, (y-1)*tilePixelsY+1, tilePixelsX-2, tilePixelsY-2)
 				love.graphics.setColor(groundColor)
@@ -386,7 +386,7 @@ function draw_tilemap()
 				love.graphics.line((x-1)*tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
 				love.graphics.line((x-1)*tilePixelsX+tilePixelsX, (y-1)*tilePixelsY, (x-1)*tilePixelsX, (y-1)*tilePixelsY+tilePixelsY)
                         elseif tilemap[x][y] == 'W' then
-				bluefactor=math.random(70,100)/100
+				bluefactor=rng:random(70,100)/100
                                 love.graphics.setColor(waterColor[1]*bluefactor,waterColor[2]*bluefactor*1.25,waterColor[3]*bluefactor)
                                 love.graphics.rectangle("fill", (x-1)*tilePixelsX, (y-1)*tilePixelsX, tilePixelsX, tilePixelsY)
 			end
@@ -1012,7 +1012,7 @@ function moveCharacterRelatively(x,y)
 			if newX > 0 and newY > 0 and newX <= resolutionTilesX and newY <= resolutionTilesY then
 				-- ACTUALLY MOVE!
 				footfallNoise(groundtype(newX,newY))
-				table.insert(footprints,{x=characterX,y=characterY,r=math.random(-90,90)})
+				table.insert(footprints,{x=characterX,y=characterY,r=rng:random(-90,90)})
 				if #footprints > max_footprints then
 					table.remove(footprints,1)
 				end
@@ -1109,8 +1109,8 @@ function randomStandingLocation(thetilemap,size)
 	local found_x,found_y = 0
 	local placed=false
 	while placed == false do
-		x = math.random(1,resolutionTilesX-1-size)
-		y = math.random(1,resolutionTilesY-1-size)
+		x = rng:random(1,resolutionTilesX-1-size)
+		y = rng:random(1,resolutionTilesY-1-size)
 		if size == 1 then
 			if thetilemap[x][y] == 1 or thetilemap[x][y] == '1' then
 				found_x = x
@@ -1138,8 +1138,7 @@ end
 
 function footfallNoise(groundtype)
 	local groundtype = groundtype or 'gravel'
-	math.randomseed(os.time())
-	footfall = math.random(1,#sounds.footfalls[groundtype])
+	footfall = rng:random(1,#sounds.footfalls[groundtype])
 	instance = love.audio.newSource(sounds.footfalls[groundtype][footfall])
 	instance:play()
 	if groundtype == 'bridge' then
@@ -1147,7 +1146,7 @@ function footfallNoise(groundtype)
 	else
 		instance:setVolume(.05)
 	end
-	instance:setPitch(.5 + math.random() * .5)
+	instance:setPitch(.5 + rng:random(0,1) * .5)
 end
 
 function autoPickup()
@@ -1265,9 +1264,9 @@ function endTurn()
         		npc.sounds.attack:play():setVolume(volume)
 		end
 		-- each one has a 10% chance of moving, but only if they have 'random' movement enabled
-		if npc.move=='random' and math.floor(math.random(0,10)) == 9 then
+		if npc.move=='random' and math.floor(rng:random(0,10)) == 9 then
 			-- attempt to move: pick a direction, then try all directions clockwise until success
-			local direction = math.ceil(math.random(0,9))
+			local direction = math.ceil(rng:random(0,9))
 			local success=false
 			local attempts=0
 			local l=npc.location

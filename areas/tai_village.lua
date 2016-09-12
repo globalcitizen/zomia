@@ -23,9 +23,9 @@ area_types['tai_village'] = {
 						end
 					end
 					--  - Second, we place a river to the left or right
-					river_location = math.random(1,2)
-					river_edge_offset = math.random(2,3) * 0.1
-					bridge_location = math.floor(math.random(math.floor(resolutionTilesY*0.2),math.floor(resolutionTilesY*0.8)))
+					river_location = rng:random(1,2)
+					river_edge_offset = rng:random(2,3) * 0.1
+					bridge_location = math.floor(rng:random(math.floor(resolutionTilesY*0.2),math.floor(resolutionTilesY*0.8)))
 					if river_location == 1 then
 						river_center_x = river_edge_offset*resolutionTilesX
 					else
@@ -36,31 +36,19 @@ area_types['tai_village'] = {
 						if y==bridge_location then 
 							tiletype='='
 						end
-						--[[
-						-- had a crash here, leave for debugging
 						print("river_center_x = " .. river_center_x .. " ... y = " .. y .. " (resolutionTilesX = " .. resolutionTilesX .. " / resolutionTilesY = " .. resolutionTilesY .. ")")
 						-- river_center_x = 27 ... y = 1
-						if type(new_tilemap[river_center_x-1]) == nil then
-							--print(table.show(new_tilemap))
-							print("Allegedly new_tilemap[" .. (river_center_x-1) .. "] is nonexistant.")
-							print(table.show(new_tilemap[river_center_x-1]))
-							os.exit()
-						elseif new_tilemap[river_center_x-1][y+0] == nil then
-							--print(table.show(new_tilemap))
-							print("Allegedly new_tilemap[" .. (river_center_x-1) .. "][" .. y .. "] is nonexistant.")
-							print(table.show(new_tilemap[river_center_x-1]))
-							os.exit()
-						end
-						--]]
-						new_tilemap[river_center_x-1][y] = tiletype
+						rcx = river_center_x-1
+						new_tilemap[rcx][y] = tiletype
 						new_tilemap[river_center_x][y] = tiletype
-						new_tilemap[river_center_x+1][y] = tiletype
+						rcx = river_center_x+1
+						new_tilemap[rcx][y] = tiletype
 						if tiletype == '=' then
 							new_tilemap[river_center_x-2][y] = tiletype
 							new_tilemap[river_center_x+2][y] = tiletype
 						end
 						--[[
-						river_shift = math.random(1,100)
+						river_shift = rng:random(1,100)
 						if river_shift < 4 then
 							river_center_x = river_center_x - 1
 						elseif river_shift > 96 then

@@ -38,8 +38,7 @@ function generate_world()
 	--
 	--  we make Z,X,Y instead because it's neater
 	world[0][10][10] = {type='tai_village'}
-	math.randomseed(os.time())
-	local cave_location = math.random(1,4)
+	local cave_location = rng:random(1,4)
 	if cave_location == 1 then
 		world[-1][10][9] = {type='natural_cavern'}
 		world_location = {z=-1,x=10,y=9}

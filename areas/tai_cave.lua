@@ -116,6 +116,6 @@ area_types['tai_cave'] = {
                                         instance.colors['groundColor'] = {25,25,25}
 
 					-- FOV
-					instance.fov = math.random(5,15)
+					instance.fov = rng:random(5,15)
 				 end
 		       	    }
