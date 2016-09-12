@@ -1531,11 +1531,15 @@ function draw_coordinates_overlay()
 end
 
 function draw_depth_overlay()
-		love.graphics.setColor(155,155,155)
-		love.graphics.setFont(light_font)
-		love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,0,tilePixelsX*10,'right')
-		love.graphics.setFont(heavy_font)
-                love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,0)
+		if world_location.z < 0 then
+			love.graphics.setColor(155,155,155)
+			love.graphics.setFont(light_font)
+			love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,0,tilePixelsX*10,'right')
+			love.graphics.setFont(heavy_font)
+                	love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,0)
+		else
+			draw_areaname_overlay()
+		end
 end
 
 function draw_tilemap_visibilitylimited()
