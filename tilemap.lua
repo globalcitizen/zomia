@@ -51,7 +51,7 @@ function tilemap_draw_circle(tilemap,sx,sy,radius,maptiletyle)
 	--]]
 	for i=math.max(0,sx-radius-1), math.max(#tilemap, sx+radius), 1 do
 		for j=math.max(0,sy-radius-1), math.max(#tilemap[1],sy+radius),1 do
-			if (i-sx)*(i-sx) + (j-sy)*(j-sy) < radius*radius* + radius then
+			if ((i-sx)*(i-sx) + (j-sy)*(j-sy)) < (radius*radius + radius) then
 				tilemap[i][j] = maptiletype
 			end
 		end
