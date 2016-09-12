@@ -15,6 +15,7 @@
     - Player health display
     - Make seen tiles and footprints properly remembered/retrieved when changing dungeon levels
     - Added [shack](https://github.com/Ulydev/shack) library for screen shaking
+    - Added FPS to coordinate overlay
 
  * __2016-09-11__:
     - Day off, mostly collected and distilled ideas about game direction, features and issues.
