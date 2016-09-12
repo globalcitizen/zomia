@@ -296,8 +296,9 @@ function draw_footprints_visibilitylimited()
                 x=tile.x
                 y=tile.y
 		for j,footprint in ipairs(footprints) do
+			-- semi-randomize alpha levels
 			alpha = 100 - footprint.x*footprint.y % 80
-			love.graphics.setColor(footprint.c) -- footprintColor[1],footprintColor[2],footprintColor[3],alpha)
+			love.graphics.setColor(footprint.c[1], footprint.c[2], footprint.c[3], alpha)
 			if footprint['x']==x and footprint['y']==y then
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
@@ -913,6 +914,41 @@ function moveCharacterRelatively(x,y)
 				table.insert(footprints,{x=characterX,y=characterY,r=rng:random(-90,90),c=current_footprint_color})
 				if #footprints > max_footprints then
 					table.remove(footprints,1)
+				end
+				-- if we are not current leaving footprints in the default color
+				if current_footprint_color ~= footprintColor then
+					local min_shift = 10
+					-- slowly shift the color back toward the normal, on a per-element basis
+					rshift = math.min(min_shift,((current_footprint_color[1] + footprintColor[1])/2))
+					gshift = math.min(min_shift,((current_footprint_color[2] + footprintColor[2])/2))
+					bshift = math.min(min_shift,((current_footprint_color[3] + footprintColor[3])/2))
+					-- shift red
+					if current_footprint_color[1] < footprintColor[1] then
+						current_footprint_color[1] = current_footprint_color[1] + rshift
+					elseif current_footprint_color[1] > footprintColor[1] then
+						current_footprint_color[1] = current_footprint_color[1] - rshift
+						if current_footprint_color[1] < footprintColor[1] then
+							current_footprint_color[1] = footprintColor[1]
+						end
+					end
+					-- shift green
+					if current_footprint_color[2] < footprintColor[2] then
+						current_footprint_color[2] = current_footprint_color[2] + rshift
+					elseif current_footprint_color[2] > footprintColor[2] then
+						current_footprint_color[2] = current_footprint_color[2] - rshift
+						if current_footprint_color[2] < footprintColor[2] then
+							current_footprint_color[2] = footprintColor[2]
+						end
+					end
+					-- shift blue
+					if current_footprint_color[3] < footprintColor[3] then
+						current_footprint_color[3] = current_footprint_color[3] + rshift
+					elseif current_footprint_color[3] > footprintColor[3] then
+						current_footprint_color[3] = current_footprint_color[3] - rshift
+						if current_footprint_color[3] < footprintColor[3] then
+							current_footprint_color[3] = footprintColor[3]
+						end
+					end
 				end
 				characterX = newX
 				characterY = newY
