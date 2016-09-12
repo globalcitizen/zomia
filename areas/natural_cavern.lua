@@ -6,13 +6,7 @@ area_types['natural_cavern'] = {
 
 					-- Generate an appropriate map
 					local new_tilemap
-					new_tilemap = {}
-                                        for i=1,resolutionTilesX,1 do
-                                                new_tilemap[i] = {}
-                                                for j=1,resolutionTilesY,1 do
-                                                        new_tilemap[i][j] = 0	-- initializes to rock
-                                                end
-                                        end
+					new_tilemap = tilemap_new()
 
 					-- OLD generate tilemap
 					--[[
