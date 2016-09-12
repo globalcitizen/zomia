@@ -164,6 +164,13 @@ At this point we have a simply connected network of differently shaped rooms. Th
 	end
 
 --[[
+    finishWalls(false);
+--]]
+	-- Now finish any exposed granite with walls and revert any unexposed walls to granite
+	local including_diagonals = false
+	mapgen_broguestyle_finish_walls(including_diagonals)
+
+--[[
 Then we move onto lakes. Lakes are masses of a particular terrain type — water, lava, chasm or brimstone — that can span almost the entire level. They’re atmospheric, they enable long-distance attacks, and they impose structure on the level at a large scale to prevent it from feeling like a homogenous maze of twisty passages. We pull out the cellophane and draw a lake on it using the cellular automata method, and then we slide the cellophane around to random locations until we find a place that works — where all of the passable parts of the level that aren’t covered by lake are still fully connected, so the player is never required to cross the lake. If twenty random tries fails to find a qualifying location, we draw a smaller lake and try again. If we can find a qualifying location, we drop the lake onto the map there and overwrite the terrain underneath it. Some lakes have wreaths — shallow water surrounds deep water, and “chasm edge” terrain surrounds chasms — and we draw that in at this stage.
 --]]
 
@@ -667,4 +674,104 @@ function mapgen_broguestyle_dijkstrascan(pathmap,costmap,some_boolean)
 	local costmap = tilemap_new(#pathmap,#pathmap[1])
 	-- TODO ...
 	return pathmap
+end
+
+-- Now finish any exposed granite with walls and revert any unexposed walls to granite
+function mapgen_broguestyle_finish_walls(tilemap,including_diagonals)
+--[[
+    short i, j, x1, y1;
+    boolean foundExposure;
+    enum directions dir;
+--]]
+	local found_exposure
+
+--[[
+    for (i=0; i<DCOLS; i++) {
+--]]
+
+	for i=0, #tilemap, 1 do
+
+--[[
+                for (j=0; j<DROWS; j++) {
+--]]
+
+		for j=0, #tilemap[1], 1 do
+
+--[[
+                        if (pmap[i][j].layers[DUNGEON] == GRANITE) {
+--]]
+
+			if pmap[i][j].layers[DUNGEON] == GRANITE then
+--[[
+                                foundExposure = false;
+                                for (dir = 0; dir < (includingDiagonals ? 8 : 4) && !foundExposure; dir++) {
+                                        x1 = i + nbDirs[dir][0];
+                                        y1 = j + nbDirs[dir][1];
+                                        if (coordinatesAreInMap(x1, y1)
+                                                && (!cellHasTerrainFlag(x1, y1, T_OBSTRUCTS_VISION) || !cellHasTerrainFlag(x1, y1, T_OBSTRUCTS_PASSABILITY))) {
+
+                                                pmap[i][j].layers[DUNGEON] = WALL;
+                                                foundExposure = true;
+                                        }
+                                }
+--]]
+
+				found_exposure = false
+				local dir_max = 4
+				if including_diagonals then dir_max = 8 end
+				for dir=0, dir_max, 1 do
+					x1 = i + nbdirs[dir][0]
+					y1 = j + nbdirs[dir][1]
+					if tilemap_coordinates_valid(tilemap,x1,y1) -- and
+						-- and x1,y1 is not obstructing vision
+						-- and x1,y1 is not obstructing passability
+					      then
+						pmap[i][j].layers[DUNGEON] = WALL
+						found_exposure = true
+						break
+					end
+				end
+
+--[[
+                        } else if (pmap[i][j].layers[DUNGEON] == WALL) {
+--]]
+
+			elseif pmap[i][j].layers[DUNGEON] == WALL then
+
+--[[
+                                foundExposure = false;
+                                for (dir = 0; dir < (includingDiagonals ? 8 : 4) && !foundExposure; dir++) {
+                                        x1 = i + nbDirs[dir][0];
+                                        y1 = j + nbDirs[dir][1];
+                                        if (coordinatesAreInMap(x1, y1)
+                                                && (!cellHasTerrainFlag(x1, y1, T_OBSTRUCTS_VISION) || !cellHasTerrainFlag(x1, y1, T_OBSTRUCTS_PASSABILITY))) {
+
+                                                foundExposure = true;
+                                        }
+                                }
+                                if (foundExposure == false) {
+                                        pmap[i][j].layers[DUNGEON] = GRANITE;
+                                }
+--]]
+
+				found_exposure = false
+				local dir_max = 4
+				if including_diagonals then dir_max = 8 end
+				for dir=0, dir_max, 1 do
+					x1 = i + nbdirs[dir][0]
+					y1 = j + nbdirs[dir][1]
+					if tilemap_coordinates_valid(tilemap,x1,y1) -- and
+						-- and x1,y1 is not obstructing vision
+						-- and x1,y1 is not obstructing passability
+					      then
+						found_exposure = true
+					end
+				end
+				if found_exposure == false then
+					pmap[i][j].layers[DUNGEON] = GRANITE
+				end
+
+			end
+		end
+	end
 end
