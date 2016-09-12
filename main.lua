@@ -97,7 +97,6 @@ print(' - Reported maximum full screen resolution: ' .. v.width .. ' x ' .. v.he
 resolutionPixelsX=v.width
 resolutionPixelsY=v.height
 screenModeFlags = {fullscreen=true, fullscreentype='desktop', vsync=true, msaa=0}
--- screenModeFlags = {fullscreen=true}
 
 function love.load()
 
@@ -217,13 +216,6 @@ function love.load()
        				"sounds/footsteps/puddle-8.mp3",
        				"sounds/footsteps/puddle-9.mp3"
 						  }
---[[
-	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-1.wav"))
-	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-2.wav"))
-	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-3.wav"))
-	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-4.wav"))
-	table.insert(sounds['footfalls'],love.audio.newSource("sounds/8-bit/footfall-5.wav"))
---]]
 
 	-- load font
 	print('Loading fonts')
@@ -1385,7 +1377,6 @@ function attack_npc(i)
 	-- add blood
 	logMessage(notifyMessageColor,'You smash it!')
 	table.insert(groundfeatures,{x=npc.location.x,y=npc.location.y,type='blood'})
-	print(table.show(groundfeatures))
 	table.remove(npcs,i)
 end
 
@@ -1505,13 +1496,6 @@ function update_draw_visibility()
 		end
 		if #options == 0 then
 			done=true
-			--[[
-		else
-			-- show options
-			print("=====end run============")
-			print(table.show(options))
-			print("========================")
-			--]]
 		end
 	end
 end
