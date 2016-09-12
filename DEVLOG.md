@@ -14,7 +14,7 @@
  * __2016-09-11__:
     - Day off, mostly collectd and distilled ideas about game direction, features and issues.
     - Made the decision to further circumscribe the [2016 ARRP](http://www.roguebasin.com/index.php?title=2016_ARRP) release's scope to dungeon-only.
-        - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the [http://www.roguelikeradio.com/2012/05/episode-36-coffeebreak-roguelikes.html Roguelike Radio expisode on coffee-break roguelikes].
+        - This was partly on account of available time, partly more exposure to Brogue, and partly listening to the [Roguelike Radio expisode on coffee-break roguelikes](http://www.roguelikeradio.com/2012/05/episode-36-coffeebreak-roguelikes.html).
         - The hope is that by focusing on a smaller game the playability will be higher and the initial release more successful/interesting.
         - This does not circumscribe later releases from working toward the original, larger scope.
 
