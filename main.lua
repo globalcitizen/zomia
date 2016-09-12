@@ -56,7 +56,7 @@ failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
 waterMessageColor={50,50,195}
 rockColor={0,0,0}
-bloodColor={255,0,0,180}
+bloodColor={255,0,0,100}
 bloodMessageColor={bloodColor[1],bloodColor[2],bloodColor[3],255}
 groundColor={25,25,25}
 waterColor={0,10,95}
@@ -456,6 +456,7 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'blood' then
 			love.graphics.setColor(bloodColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -488,6 +489,7 @@ function draw_groundfeatures_visibilitylimited()
 				elseif feature['type'] == 'blood' then
 					love.graphics.setColor(bloodColor)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
 				elseif feature['type'] == 'stone' then
 					love.graphics.setColor(rockColor,120)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -1170,7 +1172,7 @@ function footfallNoise(groundtype)
 	footfall = rng:random(1,#sounds.footfalls[groundtype])
 	instance = love.audio.newSource(sounds.footfalls[groundtype][footfall])
 	instance:play()
-	if groundtype == 'bridge' then
+	if groundtype == 'bridge' or groundtype == 'water' then
 		instance:setVolume(0.35)
 	else
 		instance:setVolume(.05)
@@ -1582,7 +1584,7 @@ function draw_depth_overlay()
 			love.graphics.setColor(155,155,155)
 			love.graphics.setFont(light_font)
 			love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,0,tilePixelsX*10,'right')
-			love.graphics.setFont(heavy_font)
+			love.graphics.setFont(light_font)
                 	love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,0)
 		else
 			draw_areaname_overlay()
