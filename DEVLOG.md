@@ -7,6 +7,7 @@
     - Footprint alpha variance
     - Move information overlays to edge of screen
     - Create new `natural_cavern` area type as beginning of ARRP 2016 release
+       - Port Brogue's C dungeon generation algorithms to Lua for this area type
     - Add new `tilemap.lua` source file for tilemap manipulation related functions
 
  * __2016-09-11__:
