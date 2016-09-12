@@ -556,3 +556,115 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
 		end
 	end
 end
+
+function mapgen_broguestyle_add_loops(tilemap, minimum_pathing_distance)
+--[[
+	const short dirCoords[2][2] = {{1, 0}, {0, 1}};
+--]]
+	local dir_coords = {{1,0},{0,1}}
+
+--[[
+    fillSequentialList(sCoord, DCOLS*DROWS);
+    shuffleList(sCoord, DCOLS*DROWS);
+--]]
+        -- First we shuffle a per-axis ordered matrix the size of our map
+        -- FIXTHIS: TODO
+
+	pathmap = tilemap_new(#tilemap,#tilemap[1],0)
+	costmap = tilemap_new(#tilemap,#tilemap[1],0)
+
+--[[
+    copyGrid(costMap, grid);
+    findReplaceGrid(costMap, 0, 0, PDS_OBSTRUCTION);
+    findReplaceGrid(costMap, 1, 30000, 1);
+--]]
+
+--[[
+    for (i = 0; i < DCOLS*DROWS; i++) {
+--]]
+
+	for i=0, (#tilemap * #tilemap[1]), 1 do
+
+--[[
+        x = sCoord[i]/DROWS;
+        y = sCoord[i] % DROWS;
+--]]
+
+		x = scoord[i] / #tilemap[1]
+		y = scoord[i] % #tilemap[1]
+
+--[[
+        if (!grid[x][y]) {
+--]]
+
+		if tilemap[x][y] ~= 0 then
+
+--[[
+            for (d=0; d <= 1; d++) { // Try a horizontal door, and then a vertical door.
+--]]
+
+			for d in {0,1} do 	-- try a horizontal door, then a vertical door
+
+--[[
+                newX = x + dirCoords[d][0];
+                oppX = x - dirCoords[d][0];
+                newY = y + dirCoords[d][1];
+                oppY = y - dirCoords[d][1];
+--]]
+
+				newx = x + dircoords[d][0]
+				oppx = x - dircoords[d][0]
+				newy = y + dircoords[d][1]
+				oppy = y - dircoords[d][1]
+
+--[[
+                if (coordinatesAreInMap(newX, newY)
+                    && coordinatesAreInMap(oppX, oppY)
+                    && grid[newX][newY] > 0
+                    && grid[oppX][oppY] > 0) { // If the tile being inspected has floor on both sides,
+--]]
+
+				-- if the tile being inspected has floor on both sides
+				if tilemap_coordinates_valid(tilemap,newx,newy) and 
+				   tilemap_coordinates_valid(tilemap,oppx,oppy) and
+				   tilemap[newx][newy] == 1 and
+				   tilemap[oppx][oppy] == 1 then
+
+--[[
+                    fillGrid(pathMap, 30000);
+                    pathMap[newX][newY] = 0;
+                    dijkstraScan(pathMap, costMap, false);
+--]]
+
+					tilemap_fill(pathmap,30000)
+					pathmap[newx][newy] = 0
+					pathmap = mapgen_broguestyle_dijkstrascan(pathmap,costmap,false)
+
+--[[
+                    if (pathMap[oppX][oppY] > minimumPathingDistance) { // and if the pathing distance between the two flanking floor tiles exceeds minimumPathingDistance,
+                        grid[x][y] = 2;             // then turn the tile into a doorway.
+                        costMap[x][y] = 1;          // (Cost map also needs updating.)
+                        break;
+                    }
+--]]
+					-- if the pathing distance between the two flanking floor tiles exceeds the minimum
+					if pathmap[oppx][oppy] > minimum_pathing_distance then
+						-- turn the tile in to a doorway
+						tilemap[x][y] = 2
+						-- then update the cost map
+						costmap[x][y] = 1
+						break
+					end
+				end
+			end
+		end
+	end
+
+end
+
+-- TODO: fix some_boolean
+function mapgen_broguestyle_dijkstrascan(pathmap,costmap,some_boolean)
+	local costmap = tilemap_new(#pathmap,#pathmap[1])
+	-- TODO ...
+	return pathmap
+end
