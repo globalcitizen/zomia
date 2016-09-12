@@ -73,14 +73,14 @@ area_types['natural_cavern'] = {
 				                        groundfeatures[i]['type'] = 'stone'
 				                end
 				        end
-				
+			--]]	
 				        -- place stairs
 				        print "Randomly placing stairs..."
-				        stairsX, stairsY = randomStandingLocation()
-				        tilemap[stairsX][stairsY] = '>'
-				        stairsX, stairsY = randomStandingLocation()
-				        tilemap[stairsX][stairsY] = '<'
---]]
+				        stairsX, stairsY = randomStandingLocation(instance.map)
+				        instance.map[stairsX][stairsY] = '>'
+				        stairsX, stairsY = randomStandingLocation(instance.map)
+				        instance.map[stairsX][stairsY] = '<'
+--[[
 				
 				        -- music
 					--[[
