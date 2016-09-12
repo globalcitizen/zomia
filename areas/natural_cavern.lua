@@ -331,7 +331,7 @@ function mapgen_broguestyle_room_chunky(tilemap)
 		        }
 		    }
 	--]]
-	for i=0,chunkcount, do
+	for i=0,chunkcount,0 do
 		x = rng:random(minx,maxx)
 		y = rng:random(miny,maxy)
 		if tilemap[x][y] == 0 then
@@ -348,7 +348,6 @@ end
 
 -- this one requires rotLove cellular automata library integration
 function mapgen_broguestyle_room_cavern(tilemap,minwidth,maxwidth,minheight,maxheight)
-	return false
 
 	local foundfillpoint = false
 	--[[
