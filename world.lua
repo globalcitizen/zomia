@@ -161,5 +161,18 @@ function world_load_area(z,x,y)
 	-- reset footprints
 	footprints = {}
 
+	-- place character intelligently as appropriate
+	--  if we just came from below...
+	if last_world_location.z == z-1 and last_world_location.y == y and last_world_location.x == x then
+	 -- place the player at the '>' (ie. down stairs)
+	 upstairs = tilemap_find_maptiletype(tilemap,'>')
+	 characterX = upstairs[1].x
+	 characterY = upstairs[1].y
+	elseif last_world_location.z == z+1 and last_world_location.y == y and last_world_location.x == x then
+	 -- place the player at the '<' (ie. up stairs)
+	 upstairs = tilemap_find_maptiletype(tilemap,'<')
+	 characterX = upstairs[1].x
+	 characterY = upstairs[1].y
+	end
 
 end
