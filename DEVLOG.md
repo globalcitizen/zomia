@@ -12,6 +12,7 @@
     - Auto-replace depth reading with area name at surface
     - Player spawns at stairs after ascent/descent
     - Normalize world-shift to new area load function
+    - Player health display
 
  * __2016-09-11__:
     - Day off, mostly collected and distilled ideas about game direction, features and issues.
