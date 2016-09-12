@@ -491,7 +491,7 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
                 && roomFitsAt(grid, roomMap, x - doorSites[oppDir][0], y - doorSites[oppDir][1])) {
 ]]--
 
-			if dir ~= nil and doorsites[oppdir][0] != -1 and tilemap_room_fits_at(tilemap,roommap,x-doorsites[oppdir][0],y-doorsites[oppdir][1]) then
+			if dir ~= nil and doorsites[oppdir][0] ~= -1 and tilemap_room_fits_at(tilemap,roommap,x-doorsites[oppdir][0],y-doorsites[oppdir][1]) then
 
 --[[
                 // Room fits here.
