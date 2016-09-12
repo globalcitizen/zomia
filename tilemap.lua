@@ -32,8 +32,21 @@ function tilemap_new(width,height,defaultmaptiletype)
 	return m
 end
 
+-- Find all instances of a specific maptiletype on a tilemap
+function tilemap_find_maptiletype(tilemap,maptiletype)
+	local results = {}
+	for x=1,#tilemap,1 do
+		for y=1,#tilemap[1],1 do
+			if tilemap[x][y] == maptiletype then
+				table.insert(results,{x=x,y=y})
+			end
+		end
+	end
+	return results
+end
+
 -- Fill a rectangle on the tilemap with a certain maptiletype
-function tilemap_draw_recangle(tilemap,sx,sy,width,height,maptiletype)
+function tilemap_draw_rectangle(tilemap,sx,sy,width,height,maptiletype)
 	for x=sx,sx+width,1 do
 		for y=sy,sy+width,1 do
 			tilemap[x][y] = maptiletype
