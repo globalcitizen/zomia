@@ -16,6 +16,7 @@ sounds={}
                                    "sounds/footsteps/bridge-6.mp3",
                                    "sounds/footsteps/bridge-7.mp3"
                                })
+
    sounds['footfalls']['gravel'] = love.audio.newSource({
                                    "sounds/footsteps/gravel-1.mp3",
                                    "sounds/footsteps/gravel-10.mp3",
@@ -43,6 +44,7 @@ sounds={}
                                    "sounds/footsteps/gravel-8.mp3",
                                    "sounds/footsteps/gravel-9.mp3"
                       })
+
            sounds['footfalls']['ice'] = love.audio.newSource({
                                    "sounds/footsteps/ice-1.mp3",
                                    "sounds/footsteps/ice-10.mp3",
@@ -70,6 +72,7 @@ sounds={}
                                    "sounds/footsteps/ice-8.mp3",
                                    "sounds/footsteps/ice-9.mp3",
                         })
+
            sounds['footfalls']['leaves'] = love.audio.newSource({
                                    "sounds/footsteps/leaves-1.mp3",
                                    "sounds/footsteps/leaves-10.mp3",
@@ -95,6 +98,7 @@ sounds={}
                                    "sounds/footsteps/leaves-8.mp3",
                                    "sounds/footsteps/leaves-9.mp3"
                        })
+
                 sounds['footfalls']['water'] = love.audio.newSource({
                                    "sounds/footsteps/puddle-1.mp3",
                                    "sounds/footsteps/puddle-10.mp3",
@@ -118,8 +122,7 @@ sounds={}
                                    "sounds/footsteps/puddle-9.mp3"
                                                   })
 
-
-	sounds['door_locked'] = {
+	sounds['door_locked'] = love.audio.newSource({
 				"sounds/doors/door-locked-26.mp3",
 				"sounds/doors/door-locked-27.mp3",
 				"sounds/doors/door-locked-28.mp3",
@@ -306,7 +309,7 @@ sounds={}
 				"sounds/doors/door-wood-close-97.mp3",
 				"sounds/doors/door-wood-close-98.mp3",
 				"sounds/doors/door-wood-close-99.mp3"
-			}}
+			})
 
 	sounds['door_locked'] = love.audio.newSource({
 				"sounds/doors/door-wood-locked-1.mp3",

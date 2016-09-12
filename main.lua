@@ -1039,9 +1039,7 @@ end
 
 function footfallNoise(groundtype)
 	local groundtype = groundtype or 'gravel'
-	footfall = rng:random(1,#sounds.footfalls[groundtype])
-	instance = love.audio.newSource(sounds.footfalls[groundtype][footfall])
-	instance:play()
+	instance = sounds.footfalls[groundtype]:play()
 	if groundtype == 'bridge' or groundtype == 'water' then
 		instance:setVolume(0.35)
 	else
@@ -1110,7 +1108,7 @@ end
 function opendoor(x,y)
 	if tilemap[x][y] == 2 then
 		local instance=sounds['door_open']:play()
-		instance:setVolume(0.1)
+		instance:setVolume(0.8)
 		logMessage(notifyMessageColor,"You opened the door.")
 		tilemap[x][y] = 3
 	end
@@ -1119,7 +1117,7 @@ end
 function closedoor(x,y)
 	if tilemap[x][y] == 3 then
 		local instance = sounds['door_close']:play()
-		instance:setVolume(0.1)
+		instance:setVolume(0.8)
 		logMessage(notifyMessageColor,"You closed the door.")
 		tilemap[x][y] = 2
 	end
