@@ -76,6 +76,14 @@ function generate_world()
 end
 
 function world_load_area(z,x,y)
+	-- remember last location
+	last_world_location = {z=world_location.z,y=world_location.y,x=world_location.x}
+
+	-- set new location
+	world_location.z = z
+	world_location.y = y
+	world_location.x = x
+
 	-- stop the music
 	for i,m in pairs(current_area_music) do
 		m:stop()
