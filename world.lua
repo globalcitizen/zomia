@@ -19,7 +19,7 @@ world_location = {z=0,x=10,y=10}
 function generate_world()
 	-- simplified world generation for early release for ARRP2016
 	-- 
-	--  general plan is:
+	--  general plan was:
 	--   - tai village
 	--      - contains buildings, people, trees, animals, water (later)
 	--      - surrounded by four directions
@@ -32,6 +32,8 @@ function generate_world()
 	--	- player is directed to cave somehow
 	--         - cave has subterranean levels, player can kill stuff and return to the town
 	--
+	--  general plan is now start in the cave, and instead of 'tai_cave' use 'natural_cavern'
+	--
 	--  therefore, world areas can be identified with xyz coordinates.
 	--
 	--  we make Z,X,Y instead because it's neater
@@ -39,7 +41,7 @@ function generate_world()
 	math.randomseed(os.time())
 	local cave_location = math.random(1,4)
 	if cave_location == 1 then
-		world[-1][10][9] = {type='tai_cave'}
+		world[-1][10][9] = {type='natural_cavern'}
 		world_location = {z=-1,x=10,y=9}
 		world[0][10][9] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=10,y=9}
@@ -48,7 +50,7 @@ function generate_world()
 		world[0][11][10] = {type='wilderness'}
 	elseif cave_location == 2 then
 		world[0][10][9] = {type='wilderness'}
-		world[-1][10][11] = {type='tai_cave'}
+		world[-1][10][11] = {type='natural_cavern'}
 		world_location = {z=-1,x=10,y=11}
 		world[0][10][11] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=10,y=11}
@@ -57,7 +59,7 @@ function generate_world()
 	elseif cave_location == 3 then
 		world[0][10][9] = {type='wilderness'}
 		world[0][10][11] = {type='wilderness'}
-		world[-1][9][10] = {type='tai_cave'}
+		world[-1][9][10] = {type='natural_cavern'}
 		world_location = {z=-1,x=9,y=10}
 		world[0][9][10] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=9,y=10}
@@ -66,7 +68,7 @@ function generate_world()
 		world[0][10][9] = {type='wilderness'}
 		world[0][10][11] = {type='wilderness'}
 		world[0][9][10] = {type='wilderness'}
-		world[-1][11][10] = {type='tai_cave'}
+		world[-1][11][10] = {type='natural_cavern'}
 		world_location = {z=-1,x=11,y=10}
 		world[0][11][10] = {type='tai_cave_entrance'}
 --		world_location = {z=0,x=11,y=10}
