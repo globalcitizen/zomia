@@ -31,6 +31,8 @@ sounds={}
 -- basics
 fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
+initial_health=25
+player = {name="Joe Player",health=initial_health,max_health=initial_health}
 inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30}}
 equipment = {left_hand='sword'}
 beautify=true
@@ -349,6 +351,7 @@ function love.draw()
 	if fov > 0 then
 		-- draw_visibility_overlay()
 	end
+	draw_player_status_overlay()
 	draw_coordinates_overlay()
 	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
@@ -1519,6 +1522,20 @@ function draw_areaname_overlay()
 			love.graphics.setFont(light_font)
 			love.graphics.printf(prefix,math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,tilePixelsY,tilePixelsX*10,'right')
 		end
+end
+
+function draw_player_status_overlay()
+		percentage = player.health/player.max_health
+		local healthy_color = {255,0,0,150}
+		love.graphics.setColor(healthy_color)
+		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY*0.5)
+		percentage = (percentage * 100) .. '%'
+		love.graphics.setColor(0,0,0,100)
+		love.graphics.setFont(light_font)
+		love.graphics.printf(percentage,resolutionPixelsX*0.3+1,-2,resolutionPixelsX*0.05,'center')
+		love.graphics.setColor(255,255,255)
+		love.graphics.setFont(light_font)
+		love.graphics.printf(percentage,resolutionPixelsX*0.3,-2,resolutionPixelsX*0.05,'center')
 end
 
 function draw_coordinates_overlay()
