@@ -5,6 +5,11 @@ current_area_music = {}
 sounds={}
 
 
+   sounds['pickup'] = love.audio.newSource({
+				   "sounds/8-bit/pickup.wav",
+				   "sounds/8-bit/pickup-2.wav"
+			})
+
    sounds['footfalls'] = {}
 
    sounds['footfalls']['bridge'] = love.audio.newSource({
