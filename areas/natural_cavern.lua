@@ -112,17 +112,10 @@ area_types['natural_cavern'] = {
 function mapgen_broguestyle(width,height)
 
 	-- Begin with blank (rock/wall) tiles
-	local new_tilemap
-	new_tilemap = {}
-	for x=1,width,1 do
-		new_tilemap[x] = {}
-		for y=1,height,1 do
-			new_tilemap[x][y] = 0   -- initializes to rock
-		end
-	end
+	local new_tilemap = tilemap_new(width,height,0)
 
 	-- First, place a room.
-	mapgen_broguestyle_designrandomroom(new_tilemap)
+	mapgen_broguestyle_design_random_room(new_tilemap)
 
 --[[ Then, it draws another room on another grid, which it slides like a piece of cellophane over the level until the new room fits snugly against an existing room without touching or overlapping. When there’s a fit, it transfers the room from the cellophane to the master grid and punches out a door. It does that repeatedly until it can’t fit any more rooms.
 
@@ -156,7 +149,7 @@ Many of the probabilities throughout this process vary by depth. Levels become m
 end
 
 -- Add a random room to the supplied tilemap
-function mapgen_broguestyle_designrandomroom(tilemap,attach_hallway,doorsites,roomtype_frequencies)
+function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,roomtype_frequencies)
 	-- defaults
 	attach_hallway = attach_hallway or false
 	doorsites = doorsites or nil
