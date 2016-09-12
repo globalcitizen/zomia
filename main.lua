@@ -283,7 +283,7 @@ function draw_footprints()
 	-- draw footprints
 	for i,footprint in ipairs(footprints) do
 		alpha = 100 - footprint.x*footprint.y % 80
-		love.graphics.setColor(footprintColor[1],footprintColor[2],footprintColor[3],alpha)
+		love.graphics.setColor(footprint.c) -- footprintColor[1],footprintColor[2],footprintColor[3],alpha)
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 		love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
 	end
@@ -297,7 +297,7 @@ function draw_footprints_visibilitylimited()
                 y=tile.y
 		for j,footprint in ipairs(footprints) do
 			alpha = 100 - footprint.x*footprint.y % 80
-			love.graphics.setColor(footprintColor[1],footprintColor[2],footprintColor[3],alpha)
+			love.graphics.setColor(footprint.c) -- footprintColor[1],footprintColor[2],footprintColor[3],alpha)
 			if footprint['x']==x and footprint['y']==y then
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+2,(footprint['y']-1)*tilePixelsY+2,3,3)
 				love.graphics.rectangle('line',(footprint['x']-1)*tilePixelsX+8,(footprint['y']-1)*tilePixelsY+8,3,3)
@@ -323,10 +323,12 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'puddle' then
 			love.graphics.setColor(puddleColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+			current_footprint_color = puddleColor
 		elseif feature['type'] == 'blood' then
 			love.graphics.setColor(bloodColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
+			current_footprint_color = bloodColor
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -356,10 +358,12 @@ function draw_groundfeatures_visibilitylimited()
 				elseif feature['type'] == 'puddle' then
 					love.graphics.setColor(0,10,65,155)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
+					current_footprint_color = puddleColor
 				elseif feature['type'] == 'blood' then
 					love.graphics.setColor(bloodColor)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
+					current_footprint_color = bloodColor
 				elseif feature['type'] == 'stone' then
 					love.graphics.setColor(rockColor,120)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -905,7 +909,8 @@ function moveCharacterRelatively(x,y)
 			if newX > 0 and newY > 0 and newX <= resolutionTilesX and newY <= resolutionTilesY then
 				-- ACTUALLY MOVE!
 				footfallNoise(groundtype(newX,newY))
-				table.insert(footprints,{x=characterX,y=characterY,r=rng:random(-90,90)})
+				if current_footprint_color == nil then current_footprint_color = footprintColor end
+				table.insert(footprints,{x=characterX,y=characterY,r=rng:random(-90,90),c=current_footprint_color})
 				if #footprints > max_footprints then
 					table.remove(footprints,1)
 				end
