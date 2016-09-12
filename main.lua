@@ -927,6 +927,7 @@ end
 function moveCharacterRelatively(x,y)
 	newX = characterX + x
 	newY = characterY + y
+	last_world_location = {z=world_location.z,y=world_location.y,x=world_location.x}
 	-- if the space is off the map...
 	if newX > resolutionTilesX or newY > resolutionTilesY or newX < 1 or newY < 1 then
 		-- trying to change areas... handle this here.

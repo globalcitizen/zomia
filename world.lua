@@ -14,6 +14,7 @@ end
 	
 -- holds location in world
 world_location = {z=0,x=10,y=10}
+last_world_location = world_location
 
 -- generates world at start of game
 function generate_world()
