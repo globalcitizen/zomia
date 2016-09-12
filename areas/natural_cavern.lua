@@ -596,8 +596,8 @@ function mapgen_broguestyle_add_loops(tilemap, minimum_pathing_distance)
 --[[
         if (!grid[x][y]) {
 --]]
-
-		if tilemap[x][y] ~= 0 then
+		-- if the tile is rock
+		if tilemap[x][y] == 0 then
 
 --[[
             for (d=0; d <= 1; d++) { // Try a horizontal door, and then a vertical door.
