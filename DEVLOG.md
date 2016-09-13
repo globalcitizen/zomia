@@ -3,10 +3,13 @@
  * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
     - Added the `moss` ground feature
-    - More work on Brogue dungeon generation port (very time consuming)
     - Some research in to fantasy creature systems
     - Some research in to Buddhist, Chinese, Hindu, and Tai mythology
-    - Many additional tilemap functions to support Brogue-style dungeon generation algorithms
+    - More work on Brogue dungeon generation port (very time consuming)
+       - Many additional tilemap functions to support Brogue-style dungeon generation algorithms
+       - Most room generators (except cellular automata based cavern type) working
+       - Mostly everything else still broken
+    - Linecount 4857
 
  * __2016-09-12__ (5-6 days remaining / 11 days used):
     - Began the day by reading some studies of [level generation](http://brogue.wikia.com/wiki/Level_Generation) algorithms in [Brogue](https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/), documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
