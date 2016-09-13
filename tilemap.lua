@@ -17,10 +17,23 @@ maptiletypes = {
 			['=']='bridge_horizontal'
 	       }
 
+-- Reference table of direction offsets
+--  (Order is left, right, up, down, NW, SW, NE, SE)
+directions   = {
+			{0,-1},
+			{0,1},
+			{-1,0},
+			{1,0},
+			{-1,-1},
+			{-1,1},
+			{1,-1},
+			{1,1}
+	       };
+
 -- New tilemap
 function tilemap_new(width,height,defaultmaptiletype)
-	width = width or resolutionTilesX
-	height = height or resolutionTilesY
+	width = math.floor(width) or resolutionTilesX
+	height = math.floor(height) or resolutionTilesY
 	defaultmaptiletype = defaultmaptiletype or 0
 	local m={}
 	for x=1,width,1 do
@@ -47,9 +60,21 @@ end
 
 -- Fill a rectangle on the tilemap with a certain maptiletype
 function tilemap_draw_rectangle(tilemap,sx,sy,width,height,maptiletype)
+	if tilemap == nil then
+		print("ERROR: tilemap_draw_rectangle(): Passed a nil tilemap.")
+		--os.exit()
+	end
+	print("tilemap_draw_rectangle() passed tilemap of dimensions " .. #tilemap .. "x" .. #tilemap[1] .. ", sx/sy = " .. sx .. "/" .. sy .. ", w/h = " .. width .. "/" .. height .. ", and maptiletype = '" .. maptiletype .. "'")
+	sx = math.floor(sx)
+	sy = math.floor(sy)
+	width = math.floor(width)
+	height = math.floor(height)
 	for x=sx,sx+width,1 do
 		for y=sy,sy+width,1 do
-			tilemap[x][y] = maptiletype
+			if x>0 and y>0 and x<#tilemap and y<#tilemap[1] then
+				print("tilemap_draw_rectangle() attempting to draw '" .. maptiletype .. "' at position " .. x .. "/" .. y .. " (vs. w/h " .. width .. "/" .. height .. ")")
+				tilemap[x][y] = maptiletype
+			end
 		end
 	end
 end
@@ -92,4 +117,34 @@ function tilemap_coordinates_valid(tilemap,x,y)
 		return true
 	end
 	return false
+end
+
+-- Check the direction of a potential doorway.
+--  If the indicated tile is a wall on the room stored in grid, and it could be the site of
+--  a door out of that room, then return the outbound direction that the door faces.
+--  Otherwise, return nil ("no direction").
+function tilemap_door_direction(tilemap,x,y)
+
+	-- If the square is something other than rock, it's already occupied, and we
+	-- return a nil value to represent no direction
+	if tilemap[x][y] != 0 then
+		return nil
+	end
+
+	-- for the plain four directions (left, right, up, down)...
+	for dir=1, 4, 1 do
+		-- calculate coordinate offsets for adjacent tiles
+		newx = x + directions[dir][0]
+		newy = y + directions[dir][1]
+		oppx = x - directions[dir][0]
+		oppy = y - directions[dir][1]
+		-- if both sets of coordinates lie within the map and the
+		-- opposite coordinate is also floor (ie. standable)...
+		if tilemap_coordinates_valid(oppx,oppy) and tilemap_coordinates_valid(newx,newy) and tilemap[oppx][oppy] == 1 then
+			-- we have a result
+			return dir
+		end
+	end
+
+	return nil
 end
