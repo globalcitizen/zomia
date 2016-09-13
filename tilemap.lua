@@ -93,10 +93,13 @@ function tilemap_draw_rectangle(tilemap,sx,sy,width,height,maptiletype)
 			end
 		end
 	end
+
+	return tilemap
 end
 
+
 -- Fill a circle on the tilemap with a certain maptiletype
-function tilemap_draw_circle(tilemap,sx,sy,radius,maptiletyle)
+function tilemap_draw_circle(tilemap,sx,sy,radius,maptiletype)
 	--[[
 	for (i=max(0, x - radius - 1); i < max(DCOLS, x + radius); i++) {
 		for (j=max(0, y - radius - 1); j < max(DROWS, y + radius); j++) {
@@ -117,6 +120,7 @@ function tilemap_draw_circle(tilemap,sx,sy,radius,maptiletyle)
 	return tilemap
 end
 
+
 -- Fill
 function tilemap_fill(tilemap,maptiletype)
 	for x=1,#tilemap,1 do
@@ -126,6 +130,7 @@ function tilemap_fill(tilemap,maptiletype)
 	end
 	return tilemap
 end
+
 
 -- Check the validity of a set of coordinates given a specific tilemap
 function tilemap_coordinates_valid(tilemap,x,y)
@@ -138,6 +143,7 @@ function tilemap_coordinates_valid(tilemap,x,y)
 	end
 	return false
 end
+
 
 -- Check the direction of a potential doorway.
 --  If the indicated tile is a wall on the room stored in grid, and it could be the site of
@@ -186,7 +192,8 @@ stack traceback:
 	return nil
 end
 
--- get the opposite of a given direction
+
+-- Get the opposite of a given direction
 function tilemap_opposite_direction(numeric_direction)
 	if opposite_directions[numeric_direction] ~= nil then
 		return opposite_directions[numeric_direction]
@@ -197,7 +204,9 @@ function tilemap_opposite_direction(numeric_direction)
 	end
 end
 
--- output a textual representation of a tilemap
+
+-- Output a textual representation of a tilemap
+--  (Note: Multi-character tiletype values will corrupt alignment)
 function tilemap_show(tilemap,title)
 	title = title or ''
 	print("================================ " .. title .. " ============================================================")
