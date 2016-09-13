@@ -6,6 +6,7 @@
     - More work on Brogue dungeon generation port (very time consuming)
     - Some research in to fantasy creature systems
     - Some research in to Buddhist, Chinese, Hindu, and Tai mythology
+    - Many additional tilemap functions to support Brogue-style dungeon generation algorithms
 
  * __2016-09-12__ (5-6 days remaining / 11 days used):
     - Began the day by reading some studies of [level generation](http://brogue.wikia.com/wiki/Level_Generation) algorithms in [Brogue](https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/), documenting a few more issues and solutions, and brainstorming further about what will be easier/harder to get working in time for ARRP.
