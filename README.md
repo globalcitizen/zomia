@@ -4,7 +4,7 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 
 ## Project background
 
-I twisted my ankle in Vietnam in early August 2016 and decided to use part of the resulting enforced period of immobility to learn me some Lua! A roguelike based on Yunnanese history seemed the obvious project. I don't expect to spend much time on it beyond the current few weeks, so plan to launch an early version of it for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). This gives me approximately nine days to get something playable together. Not a great deal of time... anyway, you can also check out [Zomia's entry on Roguebasin](http://www.roguebasin.com/index.php?title=Zomia).
+I twisted my ankle in Vietnam in early August 2016 and decided to use part of the resulting enforced period of immobility to learn me some Lua! A roguelike based on Yunnanese history seemed the obvious project. I don't expect to spend much time on it beyond the current few weeks, so plan to launch an early version of it for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). This gives me approximately four more days to get something playable together. Not a great deal of time... anyway, you can also check out [Zomia's entry on Roguebasin](http://www.roguebasin.com/index.php?title=Zomia).
 
 ## Development status
 
@@ -59,13 +59,15 @@ For screenshots of longer term elements, under development but lying outside of 
 
 Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. Doors can be opened and closed.
 
+Note that the dungeon generation is currently under heavy development - I am porting the algorithms from [Brogue](https://sites.google.com/site/broguegame/) as best I can, so hopefully things will be prettier/more walkable/interesting soon.
+
 ![Dungeon](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-dungeon.jpg)
 
 Here is a brand new field of view output overlay showing working FOV calculcation.
 
 ![Field of view](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov.jpg)
 
-And here is the final FOV implementation showing previously seen tiles, currently seen tiles, and unknown.
+And here is the FOV implementation showing previously seen tiles, currently seen tiles, and unknown.
 
 ![Field of view #2](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-fov2.jpg)
 
