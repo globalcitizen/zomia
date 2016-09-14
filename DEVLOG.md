@@ -3,7 +3,7 @@
  * __2016-09-14__ (3-4 days remaining / 13 days used):
     - Fix bug related to non-halvable tile resolutions from different screen resolutions
     - Update linecount tool
-    - Processed and integrated 'pickup' noises (8 bit stuff sounds out of place), 'drop' noises (not yet in use), 'breathing' noises (not yet in use)
+    - Processed and integrated 'pickup' noises (8 bit stuff sounds out of place), 'drop' noises (not yet in use), 'breathing' noises (not yet in use), 'stairs' noises
     - More research (Scythians may have influenced Dian culture: pole worship, Palaung/Karen origins in Mongolia, Pyu city-states thought to have used 'Sak' language family, etc.)
     - Changed quit from escape to shift+Q (preparation for modal menu display)
     - Made icons for future standing with religious factions

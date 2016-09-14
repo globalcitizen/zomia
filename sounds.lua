@@ -558,3 +558,25 @@ sounds={}
 				"sounds/pickups/pickup-rock-8.mp3",
 				"sounds/pickups/pickup-rock-9.mp3"
 			})
+
+   sounds['stairs'] = {}
+   sounds['stairs']['stone'] = {}
+   sounds['stairs']['stone']['up'] = love.audio.newSource({
+"sounds/stairs/stone-stairs-up-1.mp3",
+"sounds/stairs/stone-stairs-up-2.mp3",
+"sounds/stairs/stone-stairs-up-3.mp3",
+"sounds/stairs/stone-stairs-up-4.mp3"
+			})
+
+   sounds['stairs']['stone']['down'] = love.audio.newSource({
+"sounds/stairs/stone-stairs-down-1.mp3",
+"sounds/stairs/stone-stairs-down-10.mp3",
+"sounds/stairs/stone-stairs-down-2.mp3",
+"sounds/stairs/stone-stairs-down-3.mp3",
+"sounds/stairs/stone-stairs-down-4.mp3",
+"sounds/stairs/stone-stairs-down-5.mp3",
+"sounds/stairs/stone-stairs-down-6.mp3",
+"sounds/stairs/stone-stairs-down-7.mp3",
+"sounds/stairs/stone-stairs-down-8.mp3",
+"sounds/stairs/stone-stairs-down-9.mp3"
+			})

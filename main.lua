@@ -1221,7 +1221,7 @@ function endTurn()
 			--
 			-- let's say we get 0.01 volume @ max distance, and 0.5ish volume @ close distance
 			minimum_volume=0.01
-			maximum_volume=0.5
+			maximum_volume=0.2
  			-- if we define max distance as the distance between two corners of the map, then...
 			largest_possible_distance = math.sqrt(math.abs(resolutionTilesX,1)^2 + math.abs(resolutionTilesY-1)^2)
 			-- and our sound's distance is...
@@ -1298,6 +1298,8 @@ end
 function descend()
 	if tilemap[characterX][characterY] == ">" then
 		logMessage(notifyMessageColor,'Descending...')
+		sound = sounds.stairs.stone.down:play()
+                sound:setVolume(0.5)
                 world_load_area(world_location.z-1,world_location.x,world_location.y)
 	else
 		logMessage(failMessageColor,'There is no way down here!')
@@ -1307,6 +1309,8 @@ end
 function ascend()
 	if tilemap[characterX][characterY] == "<" then
 		logMessage(notifyMessageColor,'Ascending...')
+		sound = sounds.stairs.stone.up:play()
+                sound:setVolume(0.5)
                 world_load_area(world_location.z+1,world_location.x,world_location.y)
 	else
 		logMessage(failMessageColor,'There is no way up here!')
