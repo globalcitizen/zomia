@@ -433,6 +433,49 @@ function mapgen_broguestyle_room_cavern_tile_callback_helper(x,y,z)
 	mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = z
 end
 
+
+-- Generate a 'blob' (cellular automata based random shape result) that meets the required specifications
+function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, min_width, min_height, max_width, max_height, percent_seeded)
+
+	-- continue until success or timeout
+	local success = false
+	local max_attempts = 10
+	local attempt = 1
+	while attempt <= max_attempts do
+
+		-- new tilemap workspace
+		blob = tilemap_new(#tilemap,#tilemap[1],0)
+
+		-- reset inter-function global
+		mapgen_broguestyle_room_cavern_callback_tilemap = tilemap_new(#tilemap,#tilemap[1])
+
+		-- perform cellular automata based blob generation
+		--  NOTE: previously tilemap dimensions * 0.7 were used for width/height
+		--  NOTE: could try 'minimumZoneArea: 10'
+		local minimum_blob_area = math.max(min_width,min_height)*3
+        	cl = ROT.Map.Cellular:new(math.floor(#tilemap*0.7),math.floor(#tilemap[1]*0.7),{survive={4,5,6,7,8},minimumZoneArea=minimum_blob_area})
+        	cl:randomize(percent_seeded/100)
+        	for i=1,iterations,1 do
+        	        cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
+        	        tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Attempt #" .. attempt .. " / Generation #" .. i)
+        	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
+        	end
+        	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
+        	cl:_completeMaze()
+
+		-- see if we got what we were looking for
+		if something_measured_success then
+			success = true
+		else
+			attempt = attempt + 1
+		end
+	end
+
+	-- return the result
+	return mapgen_broguestyle_room_cavern_callback_tilemap
+end
+
+
 -- This one requires rotLove cellular automata library integration.
 --  For this reason there is an additional function mapgen_broguestyle_room_cavern_tile_callback_helper() and
 --  a global variable to share data:
@@ -442,31 +485,17 @@ function mapgen_broguestyle_room_cavern(tilemap,minwidth,maxwidth,minheight,maxh
         -- new tilemap workspace
         grid = tilemap_new(#tilemap,#tilemap[1],0)
 
-	-- reset inter-function global
-	mapgen_broguestyle_room_cavern_callback_tilemap = tilemap_new(#tilemap,#tilemap[1])
-
 	-- local variable
 	local foundfillpoint = false
 
-	--blobgrid = tilemap_newblob(#tilemap,#tilemap[1],minwidth,minheight,maxwidth,maxheight,percentseeded))
-	local success = false
-	cl = ROT.Map.Cellular:new(math.floor(#tilemap*.7),math.floor(#tilemap[1]*.7),{survive={4,5,6,7,8}})
-	cl:randomize(.45)
-	local iterations=6
-	for i=1,iterations,1 do
-		cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
-		tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Generation #" .. i)
-		mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
-	end
-	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
-	cl:_completeMaze()
-	tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Raw blobgrid")
+	-- generate a 'blob' (cellular automata result)
+	local iterations = 6
+	local percent_seeded = 45
+	grid = mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, minwidth, maxwidth, minheight, maxheight, percent_seeded)
+	tilemap_show_cute(grid,"Raw blobgrid")
 
-	print("minwidth: " .. minwidth .. " / maxwidth: " .. maxwidth)
+	print("nwidth: " .. minwidth .. "-" .. maxwidth .. " / width: " .. minwidth .. "-" .. maxwidth .. " / %-seeded: " .. percent_seeded)
 	os.exit()
-	--[[
-	    createBlobOnGrid(blobGrid, &caveX, &caveY, &caveWidth, &caveHeight, 5, minWidth, minHeight, maxWidth, maxHeight, 55, "ffffffttt", "ffffttttt");
-	--]]
 
 	--[[
         // Position the new cave in the middle of the grid...
