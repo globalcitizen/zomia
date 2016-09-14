@@ -528,11 +528,6 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
                 local top_blob_min_y	= max_height
                 local top_blob_max_y	= 0
 
-		print("top_blob_min_x = " .. top_blob_min_x)
-		print("top_blob_min_y = " .. top_blob_min_y)
-		print("top_blob_max_x = " .. top_blob_min_x)
-		print("top_blob_max_y = " .. top_blob_min_y)
-
 		-- fill each blob with its own number, starting with 2 (since 1 means floor), and keeping track of the biggest
                 blob_number = 2
 		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
