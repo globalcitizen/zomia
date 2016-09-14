@@ -1,6 +1,6 @@
 # Development log
 
- * __2016_09_14__ (3-4 days remaining / 13 days used):
+ * __2016-09-14__ (3-4 days remaining / 13 days used):
     - Fix bug related to non-halvable tile resolutions from different screen resolutions
     - Update linecount tool
     - Processed and integrated 'pickup' noises (8 bit stuff sounds out of place), 'drop' noises (not yet in use), 'breathing' noises (not yet in use)
