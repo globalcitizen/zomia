@@ -9,6 +9,8 @@
     - Made icons for future standing with religious factions
     - More work on Brogue dungeon generation port
        - Improved `tilemap_show` function for additional debugging clarity
+    - Ordered key list in help output
+    - Beginnings or door-spiking
     - Linecount 4941
 
  * __2016-09-13__ (4-5 days remaining / 12 days used):
