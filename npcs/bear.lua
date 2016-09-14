@@ -3,37 +3,36 @@ npc_types['bear'] = {
 			color={108,40,90},
 			hostile=true,
 			move='attack',
-			tail=true,
 			vocal=true,
 			sounds={
 				attack=love.audio.newSource({
-								"npcs/bearbear-growl-1.mp3",
-								"npcs/bearbear-growl-2.mp3",
-								"npcs/bearbear-growl-3.mp3",
-								"npcs/bearbear-growl-4.mp3",
-								"npcs/bearbear-growl-5.mp3",
-								"npcs/bearbear-growl-6.mp3",
-								"npcs/bearbear-growl-7.mp3"
+								"npcs/bear/bear-growl-1.mp3",
+								"npcs/bear/bear-growl-2.mp3",
+								"npcs/bear/bear-growl-3.mp3",
+								"npcs/bear/bear-growl-4.mp3",
+								"npcs/bear/bear-growl-5.mp3",
+								"npcs/bear/bear-growl-6.mp3",
+								"npcs/bear/bear-growl-7.mp3"
 							     }),
 				target=love.audio.newSource({
-								"npcs/bearbear-growl-1.mp3",
-								"npcs/bearbear-growl-2.mp3",
-								"npcs/bearbear-growl-3.mp3",
-								"npcs/bearbear-growl-4.mp3",
-								"npcs/bearbear-growl-5.mp3",
-								"npcs/bearbear-growl-6.mp3",
-								"npcs/bearbear-growl-7.mp3"
+								"npcs/bear/bear-growl-1.mp3",
+								"npcs/bear/bear-growl-2.mp3",
+								"npcs/bear/bear-growl-3.mp3",
+								"npcs/bear/bear-growl-4.mp3",
+								"npcs/bear/bear-growl-5.mp3",
+								"npcs/bear/bear-growl-6.mp3",
+								"npcs/bear/bear-growl-7.mp3"
 							     }),
 				distance=love.audio.newSource({
-								"npcs/bearbear-noise-1.mp3",
-								"npcs/bearbear-noise-2.mp3",
-								"npcs/bearbear-noise-3.mp3",
-								"npcs/bearbear-noise-4.mp3",
-								"npcs/bearbear-noise-5.mp3",
-								"npcs/bearbear-noise-6.mp3",
-								"npcs/bearbear-noise-7.mp3",
-								"npcs/bearbear-noise-8.mp3",
-								"npcs/bearbear-noise-9.mp3"
+								"npcs/bear/bear-noise-1.mp3",
+								"npcs/bear/bear-noise-2.mp3",
+								"npcs/bear/bear-noise-3.mp3",
+								"npcs/bear/bear-noise-4.mp3",
+								"npcs/bear/bear-noise-5.mp3",
+								"npcs/bear/bear-noise-6.mp3",
+								"npcs/bear/bear-noise-7.mp3",
+								"npcs/bear/bear-noise-8.mp3",
+								"npcs/bear/bear-noise-9.mp3"
 							     }),
 				die=love.audio.newSource({
 								"npcs/bear/bear-death-1.mp3",
