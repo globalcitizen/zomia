@@ -445,8 +445,6 @@ function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(
 
 	-- iterate through the four cardinal neighbors
 	for dir=1, 4, 1 do
-		print("directions[" .. dir .. "] ...")
-		print(table.show(directions[dir]))
 		new_x = x + directions[dir][1]
 		new_y = y + directions[dir][2]
 		if tilemap_coordinates_valid(mapgen_broguestyle_room_cavern_callback_tilemap,new_x,new_y) then
@@ -467,7 +465,32 @@ end
 function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, min_width, min_height, max_width, max_height, percent_seeded)
 
 	-- verify input
-	-- TODO
+	print("mapgen_broguestyle_room_cavern_create_blob_helper() passed " .. #tilemap .. "x" .. #tilemap[1] .. " tilemap, iterations=" .. iterations .. ", min_width=" .. min_width .. ", min_height=" .. min_height .. ", max_width=" .. max_width .. ", max_height=" .. max_height .. ", percent_seeded=" .. percent_seeded)
+	if iterations < 1 or iterations > 100 then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed bad number of iterations (wanted 0-100, got " .. iterations)
+		os.exit()
+	elseif min_width < 1 then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed zero or negative minimum width.")
+		os.exit()
+	elseif max_width > #tilemap then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum width " .. max_width .. " exceeding tilemap width " .. #tilemap .. ".")
+		os.exit()
+	elseif max_width < min_width then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum width " .. max_width .. " which is less than the minimum width " .. min_width)
+		os.exit()
+	elseif min_height < 1 then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed zero or negative minimum height.")
+		os.exit()
+	elseif max_height > #tilemap then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum height " .. max_height .. " exceeding tilemap height " .. #tilemap .. ".")
+		os.exit()
+	elseif max_height < min_height then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum height " .. max_height .. " which is less than the minimum height " .. min_height)
+		os.exit()
+	elseif percent_seeded < 0 or percent_seeded > 100 then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed invalid percent_seeded (received " .. percent_seeded .. ", expected 0-100")
+		os.exit()
+	end
 
 	-- continue generating until success or timeout
 	local success = false
@@ -505,6 +528,11 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
                 local top_blob_min_y	= max_height
                 local top_blob_max_y	= 0
 
+		print("top_blob_min_x = " .. top_blob_min_x)
+		print("top_blob_min_y = " .. top_blob_min_y)
+		print("top_blob_max_x = " .. top_blob_min_x)
+		print("top_blob_max_y = " .. top_blob_min_y)
+
 		-- fill each blob with its own number, starting with 2 (since 1 means floor), and keeping track of the biggest
                 blob_number = 2
 		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
@@ -525,6 +553,64 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 
 		-- DEBUG
 		tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"NUMBERED BLOBS")
+		print("top_blob_min_x = " .. top_blob_min_x)
+		print("top_blob_min_y = " .. top_blob_min_y)
+		print("top_blob_max_x = " .. top_blob_min_x)
+		print("top_blob_max_y = " .. top_blob_min_y)
+
+		-- determine the top blob's dimensions
+		--  first, min and max x
+		local last_x = nil
+		local last_y = nil
+		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+			local found_a_cell_this_line = false
+			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == top_blob_number then
+					found_a_cell_this_line = true
+					last_x = i
+					last_y = j
+					break
+				end
+			end
+			if found_a_cell_this_line then
+				if last_x < top_blob_min_x then
+					top_blob_min_x = last_x
+				end
+				if last_x > top_blob_max_x then
+					top_blob_max_x = last_x
+				end
+			end
+		end
+
+		--  now, min and max y
+		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+			local found_a_cell_this_line = false
+			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == top_blob_number then
+					found_a_cell_this_line = true
+					last_x = i
+					last_y = j
+					break
+				end
+			end
+			if found_a_cell_this_line then
+				if last_y < top_blob_min_y then
+					top_blob_min_y = last_y
+				end
+				if last_y > top_blob_max_y then
+					top_blob_max_y = last_y
+				end
+			end
+		end
+
+		-- finally, compute dimensions
+		blob_width = top_blob_max_x - top_blob_min_x + 1
+		blob_height = top_blob_max_y - top_blob_min_y + 1
+
+		-- end of round summary (DEBUG)
+		print("blob_width = " .. blob_width .. " (wanted " .. min_width .. "-" .. max_width .. ")")
+		print("blob_height = " .. blob_height .. " (wanted " .. min_height .. "-" .. max_height .. ")")
+		os.exit()
 
 		-- see if we got what we were looking for
 		if blob_width > min_width and
