@@ -21,6 +21,7 @@ end
 
 
 -- load reference npc types
+require "npcs/bear"
 require "npcs/chicken"
 require "npcs/dog"
 require "npcs/goblin"
