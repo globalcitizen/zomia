@@ -1185,8 +1185,12 @@ function closedoor(x,y)
 end
 
 function inventory_add(thing)
-	local instance = sounds['pickup']:play()
-	instance:setVolume(1)
+	if thing == 'vegetable matter' then
+		local instance = sounds['pickups']['generic']:play()
+	elseif thing == 'pebble' then
+		local instance = sounds['pickups']['rock']:play()
+	end
+	instance:setVolume(0.25)
 	if inventory[thing] == nil then
 		inventory[thing] = {qty=0}
 	end

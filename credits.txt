@@ -130,7 +130,7 @@ Album: 'We Used To Paint Stars In The Sky' / Scott Holmes (2012)
 
 Tracks 'Feather', 'Always The Last To Know', 'Ascension', 'Levels Of Greatness', 'October', 'Signals', 'We Used To Paint Stars In The Sky', 'Death Of An Orchid', 'Beyond Something Beautiful'.
 
-CCC-BY-4.0 Attribution License
+CC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2014-02-06)
 
@@ -139,14 +139,14 @@ Album: 'Colossal Stillness' / Scott Holmes (2014)
 
 Tracks 'Reflections Across The Sky', 'Breathe New Life', 'Chasing Shadows', 'Uninvited', 'Origin l', 'Origin ll', 'Wash Away', 'Remember The Archer', 'Close To The Distance', 'Reminiscence'.
 
-CCC-BY-4.0 Attribution License
+CC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2015-02-06)
 
 --
 
 'Midnight Caravan' / Artofescapism
-CCC-BY-4.0 Attribution License
+CC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2016-06-20)
 
@@ -156,7 +156,7 @@ Album: 'Sound-trax' / Philipp Weigl (Germany)
 
 Tracks 'Subdivision of the Masses', 'Even when we fall', 'The Scent of Cedars'.
 
-CCC-BY-4.0 Attribution License
+CC-BY-4.0 Attribution License
 http://creativecommons.org/licenses/by/4.0/
 (Uploaded: 2016-04-28)
 
@@ -194,11 +194,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Cave Drips' / Everythingsounds
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Monster Sigh in Cave' / TinTinOko
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cave River Fall 04' / jpdeglet69
@@ -210,11 +210,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Creature in da Cave v2' / CGEffex
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Ambience Cave 00' / LittleRobotSoundFactory
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cave Atmosphere' / vegapomme27
@@ -222,7 +222,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Atmosphere Cave (Loop)' / xDimebagx
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Water Dripping (Large Echo)' / editor_adp
@@ -238,7 +238,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'SylverMonk Cave Grunt' / SylverMonk
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cavernscape' / Blaukreuz
@@ -246,11 +246,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Lava Loop' / Audionautics
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'IndustialDoors Piezo Short' / Klankbeeld
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Water Splash 01' / Aglinder
@@ -258,15 +258,15 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Creepy Dungeon Ambience' / DrMinky
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Monster Screaming in a Cave' / qubodup
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Wumpus Roar' / smcameron
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Creek Cave Summer' / kvgarlic
@@ -282,39 +282,39 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Arrow Clatter' / smcameron
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Fall with Impact' / smcameron
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cavedoor' / smidoid
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Birdsong in Woodland' / earthsounds
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Ominous Heavy Breathing' / DaxSchaffer
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20131102 Scream 03' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20131102 Roar' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Grunt' / TobiasKosmos
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Angry Dog Bark Snarl Flat' / Jaylew1987
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark 1' / esperri
@@ -322,35 +322,35 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Small Dog Barking' / ivolipa
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark' / exuberate
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barks' / exuberate
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark Aggressive' / ivolipa
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Bark Light Aggressive' / ivolipa
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'FX Dog Barking' / davidmenke
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Big Dog Barking 02' / mich3d
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barking' / praesius
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog whining impression' / scottemoil
@@ -358,19 +358,19 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Dog whining sound' / Piink_Aces
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Animals Dog Bark Springer Spaniel 001' / soundscalpel.com
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Aggressive Dog Barks' / ivolipa
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Howl 01/02/03' / CGEffex
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'One Bark of a Poodle Dog' / fabiopx
@@ -378,11 +378,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Dog Growl' / Benboncan (Remix of ljudman)
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dog Barking 03' / oen
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Goblin Cackle' / spookymodem
@@ -406,15 +406,15 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Evil Laugh 10' / Nanakisan
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster' / Kangaroovindaloo
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Gailis' / Sam_Kaleja
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Singing in the Morning' / caculo
@@ -422,11 +422,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Rooster Chicken Calls 1' / AGFX
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Chicken Calls 2' / AGFX
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster Sclolex' / Sclolex
@@ -442,7 +442,7 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 '20070812 Rooster' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster crow' / jsbarrett
@@ -466,39 +466,39 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Rooster call up close' / msantoro11
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster call 2' / msantoro11
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Rooster 1' / Tomlija
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20150403_01 Dawn Chorus' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20100423 Ros(e)mary Shrub' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 '20150403 Morning Chorus' / dobroide
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
-'Buffalo' /  __O
+'Buffalo' / __O
 Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Water Buffalo Bells - Laos / RTB45
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Buffles - Grognement + amb oiseaux' / roubignolle
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Cow - Breath Multiple 1' / JarredGibb
@@ -510,27 +510,27 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps, Puddles, A' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Muddy, D' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Dry Leaves, E' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Stones, A' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Concrete, A' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps, Ice, A' / InspectorJ
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Concrete Footstep 1' / Yoyodaman234
@@ -538,23 +538,23 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Grassy Footstep 1' / OwlStorm
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 2' / OwlStorm
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 3' / OwlStorm
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grassy Footstep 4' / OwlStorm
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'FootstepsGravel' / mikaelfernstrom
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Snow Crunchy Close' / lwdickens
@@ -582,59 +582,59 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps Stairs Wooden Hollow 02' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 03' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 04' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 01' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 07' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 03' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 06' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 05' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Step Ladder Metal 02' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 08' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Footsteps Stairs Wooden Hollow 01' / D W
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Bridge-Boot Footsteps SFX #2' / Adam Wayne Gistarb
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Grass-Boot Footsteps SFX #1' / Adam Wayne Gistarb
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Dirt & Rocks Footsteps SFX #3' / Adam Wayne Gistarb
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Step 1' - 'Step 12' / carrigsound
@@ -650,11 +650,11 @@ Public Domain / CC-0 1.0 License
 http://creativecommons.org/publicdomain/zero/1.0/
 
 'Footsteps' / hazure
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Small Rocks Footsteps' / hazure
-CCC-BY-3.0 Attribution License
+CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
 
 'Human Footstep Snow 001' / soundscalpel.com
@@ -1000,3 +1000,552 @@ http://creativecommons.org/publicdomain/zero/1.0/
 'Rockmisc' / mystiscool
 CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
+
+'Sniff' / OwlStorm
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Female breathing heavily' / OwlStorm
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Female breathing heavily 2' / OwlStorm
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breath' / mcroce
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing' / RICHERlandTV
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing' / Viznoman
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Man Breathing' / STUDIO BADA
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Zombie Breathing' (2x) / Huminaatio
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing' / Shinplaster
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breath' / samule44
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Giant Breathing' (24x) / Satoration
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Velociraptor_Breathing' / crcavol
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing' / ceberation
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Man Breathing' / jason130178
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Punch Sound' / jason130178
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breath' / wobblyjelly01
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Male breathing' / zogmachine
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing' (4x) / meroleroman7
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Nose breathing' / J.Zazvurek
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Mouth breathing' / J.Zazvurek
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Easy Breathing 7/14' / Jeffreys2
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Creature Deep Breathing 7/14' / Jeffreys2
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Lick Easy 8/14' / Jeffreys2
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dragon Long 1/14' / Jeffreys2
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dragon 2/14' / Jeffreys2
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing Industrial Game' (Numbers: 1,11,12,15,16,17,19,20,22,23,24,27,28) / SpankMyFilth
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Werewolf breathing and sniffing' / kd_jack
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Guitar Breathing' / soundplusdesign
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Horse Breathing' / metaepitome
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing' / herwint
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Fast Breathing, Struggle Male' / aslamshoev
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Frightened Breathing' / nickrave
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breath' / haku89
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing Female' / Kuroseishin
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Nasal Breathing' / sophiehall3535
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Beast Breathing' / THE_bizniss
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Demon Dying' / THE_bizniss
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Nose-Breathing' / Simsym23
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Out of Breath' / Miniscozzie
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing' / UncleSigmund
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Fast Breath' / smcameron
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing, Panicked' / chrillz3r
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing, Nose Calm' / chrillz3r
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing, Calm Mouth Exhale' / chrillz3r
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sigh, Male' / chrillz3r
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sigh 2, Male' / chrillz3r
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Spooky Breath' / pqr
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing Off Mic Loop' / bevangoldswain
+CC Sampling+ 1.0 License
+https://creativecommons.org/licenses/sampling+/1.0/
+
+'Breathing Licking' / sgarrison2127
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Diver Breath01' / chipfork
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Strange Breath01' / chipfork
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heaving Breathing' / MAJ061785
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing Mouth' / nickrave
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing' / scarbelly25
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Girl, Female, Inhale, Exhale, Sigh, Breathing' / MentalSanityOff
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Woman, Female, Inhale, Exhale, Sigh, Breathing' / MentalSanityOff
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Male Breathing' / Iwiploppenisse
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Supernatural Breath / MoltenMustafa
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing Out' / squareal
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Boston Terrier, Snarls, Snorts, Breathing' / MentalSanityOff
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing Sounds' / scottemoil
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing Scared' / Adam_N
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Male Breathing Slow' / Kodack
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing' / Benboncan
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breath Scared' (Numbers: 0,1,2,3,5,6,7,8,9,10,11,13,14,15,16,17) / LittleRobotSoundFactory
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Creepy Breath' / Polishake3426player
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Heavy Breathing' / Under7dude
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathing Apparatus' / ArtOrDie
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Mild surprise breath' / smcameron
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Horse Breathing CU' / n_audioman
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing Good' / bcimmet
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathe Out' (Numbers: 1-8) / FreqMan
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathe In' (Numbers: 1-2) / FreqMan
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heavy Breathing' / AbuNijmeh
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Woman Breathing Heavily Horror Stress Sex' (2x) / bulbastre
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Int-HeavyBreathing' / n_audioman
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Breathing Injured Sick 01' / n_audioman
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Faster Breathing' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Orgasm and Breathing' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Oh Yah' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Moaning Breathless Do That Again' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Panting Moaning' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Orgasm 1' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heavier Moaning' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heavy Sighing' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Do It Again' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Moaning Getting Closer' / epanody
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Man Breathing' (1-3) / Aiwha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Woman Breathing 1' / Aiwha
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Animal Heavy Breathing' / benjaminharveydesign
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Mask Breathing Sound' / Kodack
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Labored Breathing Sleeping' / jephwallace
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Asthmatic Breathing' / harleto
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Ghost Voice Wind 2' / Cell31_Sound_Productions
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Acoustic Breathing, Bounced' / Nosebleed Cinema
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Scary Ghost/Spirit Breathing' / 4_and_a_half_Star_Games
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Bronchitis' / deranger
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Man Breathing Asleep' / harleto
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dying Breath' / qubodup
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Yawn' / qubodup
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Underwater / Breathing' / Ryan Conway
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heavy Breathing Man/Boy' / darranambler
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Donkey Breathing in the early morning in south of France' / felix.blume
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Large Monster Breathing, Growls and Screeches' / nornalbion
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Deep Breath-in Male 01' / klankbeeld
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Particle Mask Breath Through Mouth' / PapercutterJohn
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Caball Esbufega + Renill' / Crater RF
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Pig Grunts Snorts Breathing Hackney City Farm' / tompallant
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Oxygenated Breathing Inside Space Helmer' / Bliss
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'LEBER Zoe 2014 2015 Breath' / iut_Paris8
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Panicked Breathing' / l_forbes
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Ghost Breath' / l_forbes
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Ghostly Exhalation' / l_forbes
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Whispers and Heavy Breathing' / 11linda
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Monster Breathing' / ztrees1
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Heavy Breath Wheezing' / Borgory
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'SALY Margaux 2015 2016 Underwater Breathing' / univ_lyon3
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Human Sniffing' / Shain_T
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dog Panting' / keweldog
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sniffing Sounds' / scottemoil
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'AccordianBreath1' / nicStage
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Animal Breathing Monster' / vrodge
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Big Monster Breathing 001' / yottasounds
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Zombie Breathing' / pyro13djt
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Fight Reaction Person' (1,1B,2,3) / milnersouza
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Extreme Pain Shout' / milnersouza
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Fight Reaction Kick Sequence' / milnersouza
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Suffering From Pain' / milnersouza
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Sleeping Child' / schafferdavid
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dog Hyperventilating' / Cognito Perceptu
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dino Hiss Dragon Roar' / syrvive
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Pig - Breathing and Chewing 1' / JarredGibb
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Dog Eating' / peridactyloptrix
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Inhale Exhale' / qubodup
+CC-BY-3.0 Attribution License
+http://creativecommons.org/licenses/by/3.0/
+
+'Male Choking 2' / Drkvixn91
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathless Panting' (1-2) / Drkvixn91
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
+'Breathless Coughing 2' / Drkvixn91
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+

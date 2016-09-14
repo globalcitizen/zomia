@@ -5,11 +5,6 @@ current_area_music = {}
 sounds={}
 
 
-   sounds['pickup'] = love.audio.newSource({
-				   "sounds/8-bit/pickup.wav",
-				   "sounds/8-bit/pickup-2.wav"
-			})
-
    sounds['footfalls'] = {}
 
    sounds['footfalls']['bridge'] = love.audio.newSource({
@@ -501,4 +496,65 @@ sounds={}
 				"sounds/doors/door-wood-open-97.mp3",
 				"sounds/doors/door-wood-open-98.mp3",
 				"sounds/doors/door-wood-open-99.mp3"
+			})
+
+   sounds['pickups'] = {}
+
+   sounds['pickups']['generic'] = love.audio.newSource({
+				"sounds/pickups/pickup-1.mp3",
+				"sounds/pickups/pickup-10.mp3",
+				"sounds/pickups/pickup-11.mp3",
+				"sounds/pickups/pickup-2.mp3",
+				"sounds/pickups/pickup-3.mp3",
+				"sounds/pickups/pickup-4.mp3",
+				"sounds/pickups/pickup-5.mp3",
+				"sounds/pickups/pickup-6.mp3",
+				"sounds/pickups/pickup-7.mp3",
+				"sounds/pickups/pickup-8.mp3",
+				"sounds/pickups/pickup-9.mp3"
+			})
+
+   sounds['pickups']['metal'] = love.audio.newSource({
+				"sounds/pickups/pickup-metal-1.mp3",
+				"sounds/pickups/pickup-metal-2.mp3",
+				"sounds/pickups/pickup-metal-3.mp3",
+				"sounds/pickups/pickup-metal-4.mp3",
+				"sounds/pickups/pickup-metal-5.mp3",
+				"sounds/pickups/pickup-metal-6.mp3",
+				"sounds/pickups/pickup-metal-generic-1.mp3",
+				"sounds/pickups/pickup-metal-generic-2.mp3"
+			})
+				
+   sounds['pickups']['metal_ringing'] = love.audio.newSource({
+				"sounds/pickups/pickup-metal-ringing-1.mp3",
+				"sounds/pickups/pickup-metal-ringing-2.mp3",
+				"sounds/pickups/pickup-metal-ringing-3.mp3"
+			})
+
+   sounds['pickups']['money'] = love.audio.newSource({
+				"sounds/pickups/pickup-money-1.mp3"
+			})
+
+   sounds['pickups']['rock'] = love.audio.newSource({
+				"sounds/pickups/pickup-rock-1.mp3",
+				"sounds/pickups/pickup-rock-10.mp3",
+				"sounds/pickups/pickup-rock-11.mp3",
+				"sounds/pickups/pickup-rock-12.mp3",
+				"sounds/pickups/pickup-rock-13.mp3",
+				"sounds/pickups/pickup-rock-14.mp3",
+				"sounds/pickups/pickup-rock-15.mp3",
+				"sounds/pickups/pickup-rock-16.mp3",
+				"sounds/pickups/pickup-rock-17.mp3",
+				"sounds/pickups/pickup-rock-18.mp3",
+				"sounds/pickups/pickup-rock-19.mp3",
+				"sounds/pickups/pickup-rock-2.mp3",
+				"sounds/pickups/pickup-rock-20.mp3",
+				"sounds/pickups/pickup-rock-21.mp3",
+				"sounds/pickups/pickup-rock-3.mp3",
+				"sounds/pickups/pickup-rock-4.mp3",
+				"sounds/pickups/pickup-rock-5.mp3",
+				"sounds/pickups/pickup-rock-6.mp3",
+				"sounds/pickups/pickup-rock-7.mp3",
+				"sounds/pickups/pickup-rock-8.mp3",
+				"sounds/pickups/pickup-rock-9.mp3"
 			})
