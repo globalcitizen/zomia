@@ -9,10 +9,11 @@
     - Made icons for future standing with religious factions
     - More work on Brogue dungeon generation port
        - Improved `tilemap_show` function for additional debugging clarity
+       - More work on cellular automata based caverns
     - Ordered key list in help output
     - Beginnings or door-spiking
     - Added new `bear` NPC
-    - Linecount 5014
+    - Linecount 5133
 
  * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
