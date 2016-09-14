@@ -12,7 +12,7 @@
        - More work on cellular automata based caverns
     - Ordered key list in help output
     - Beginnings of door-spiking
-    - Added new `bear` NPC
+    - Added new `bear` NPC, including locating and processing sounds
     - Half-implemented fade-outs between levels using new `tween` library
     - Linecount 5299
 
