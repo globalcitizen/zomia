@@ -5,7 +5,7 @@
     - Update linecount tool
     - Processed and integrated 'pickup' noises (8 bit stuff sounds out of place)
     - More research (Scythians may have influenced Dian culture: pole worship, Palaung/Karen origins in Mongolia, Pyu city-states thought to have used 'Sak' language family, etc.)
-    - 
+    - Changed quit from escape to shift+Q (preparation for modal menu display)
 
  * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
