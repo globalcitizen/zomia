@@ -1,5 +1,12 @@
 # Development log
 
+ * __2016_09_14__ (3-4 days remaining / 13 days used):
+    - Fix bug related to non-halvable tile resolutions from different screen resolutions
+    - Update linecount tool
+    - Processed and integrated 'pickup' noises (8 bit stuff sounds out of place)
+    - More research (Scythians may have influenced Dian culture: pole worship, Palaung/Karen origins in Mongolia, Pyu city-states thought to have used 'Sak' language family, etc.)
+    - 
+
  * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
     - Added the `moss` ground feature
@@ -9,6 +16,7 @@
        - Many additional tilemap functions to support Brogue-style dungeon generation algorithms
        - Most room generators (except cellular automata based cavern type) working
        - Mostly everything else still broken
+    - Processed 'pickup' noises (8 bit stuff sounds out of place)
     - Linecount 4857
 
  * __2016-09-12__ (5-6 days remaining / 11 days used):
