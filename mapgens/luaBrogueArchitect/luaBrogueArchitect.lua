@@ -435,8 +435,31 @@ end
 
 
 -- Helper function to fill and dimension a contiguous region within a tilemap
-function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(mapgen_broguestyle_room_cavern_callback_tilemap, i, j, blob_number)
-	-- ...
+function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(x, y, fill_value)
+
+	-- setup
+	local number_of_cells = 0
+
+	-- fill
+	mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = fill_value
+
+	-- iterate through the four cardinal neighbors
+	for dir=1, 4, 1 do
+		print("directions[" .. dir .. "] ...")
+		print(table.show(directions[dir]))
+		new_x = x + directions[dir][1]
+		new_y = y + directions[dir][2]
+		if tilemap_coordinates_valid(mapgen_broguestyle_room_cavern_callback_tilemap,new_x,new_y) then
+			if mapgen_broguestyle_room_cavern_callback_tilemap[new_x][new_y] == 1 then
+				-- recurse
+				number_of_cells = number_of_cells + mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(new_x,new_y,fill_value)
+			end
+		end
+	end
+	
+	-- return the result
+	return number_of_cells
+
 end
 
 
@@ -464,11 +487,14 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
         	cl:randomize(percent_seeded/100)
         	for i=1,iterations,1 do
         	        cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
-        	        tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Attempt #" .. attempt .. " / Generation #" .. i)
+        	        --tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Attempt #" .. attempt .. " / Generation #" .. i)
         	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
         	end
         	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	cl:_completeMaze()
+
+		-- DEBUG
+                tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"FINAL")
 
 		-- measure results
 		--  (these are best-of variables; we begin with worst-case values)
@@ -486,7 +512,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				-- an unmarked blob-tile?
 				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == 1 then
 					-- call helper function to mark all the cells and return the total size
-					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(mapgen_broguestyle_room_cavern_callback_tilemap, i, j, blob_number)
+					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(i, j, blob_number)
 					-- if this blob's size is the largest seen so far
 					if blob_size > top_blob_size then
 						top_blob_size = blob_size
@@ -496,6 +522,9 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				end
 			end
 		end
+
+		-- DEBUG
+		tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"NUMBERED BLOBS")
 
 		-- see if we got what we were looking for
 		if blob_width > min_width and
