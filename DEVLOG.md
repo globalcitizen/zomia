@@ -11,7 +11,8 @@
        - Improved `tilemap_show` function for additional debugging clarity
     - Ordered key list in help output
     - Beginnings or door-spiking
-    - Linecount 4941
+    - Added new `bear` NPC
+    - Linecount 4988
 
  * __2016-09-13__ (4-5 days remaining / 12 days used):
     - Discolor then slowly color-shift back to normal player footsteps when treading in blood or water
