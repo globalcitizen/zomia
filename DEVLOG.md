@@ -13,6 +13,7 @@
     - Ordered key list in help output
     - Beginnings or door-spiking
     - Added new `bear` NPC
+    - Half-implemented fade-outs between levels using new `tween` library
     - Linecount 5133
 
  * __2016-09-13__ (4-5 days remaining / 12 days used):
