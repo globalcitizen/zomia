@@ -10,3 +10,6 @@
 [submodule "libs/shack"]
 	path = libs/shack
 	url = https://github.com/Ulydev/shack.git
+[submodule "libs/tween"]
+	path = libs/tween
+	url = https://github.com/kikito/tween.lua.git
