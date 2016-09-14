@@ -516,9 +516,6 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
         	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	cl:_completeMaze()
 
-		-- DEBUG
-                tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"FINAL")
-
 		-- measure results
 		--  (these are best-of variables; we begin with worst-case values)
                 local top_blob		= 0
@@ -605,16 +602,17 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		-- end of round summary (DEBUG)
 		print("blob_width = " .. blob_width .. " (wanted " .. min_width .. "-" .. max_width .. ")")
 		print("blob_height = " .. blob_height .. " (wanted " .. min_height .. "-" .. max_height .. ")")
-		os.exit()
 
 		-- see if we got what we were looking for
 		if blob_width > min_width and
 		   blob_height < min_height and
 		   top_blob ~= 0 then
 			success = true
+			break
 		else
 			attempt = attempt + 1
 		end
+		os.exit()
 	end
 
 	-- failure?
