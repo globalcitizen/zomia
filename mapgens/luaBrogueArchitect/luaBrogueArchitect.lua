@@ -424,7 +424,7 @@ end
 
 -- Helper for mapgen_broguestyle_room_cavern()'s use of rotLove cellular automata library.
 function mapgen_broguestyle_room_cavern_tile_callback_helper(x,y,z)
-	print(x .. " / " .. y .. " / " .. z)
+	--print(x .. " / " .. y .. " / " .. z)
 	mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = z
 end
 
@@ -444,11 +444,19 @@ function mapgen_broguestyle_room_cavern(tilemap,minwidth,maxwidth,minheight,maxh
 	local foundfillpoint = false
 
 	--blobgrid = tilemap_newblob(#tilemap,#tilemap[1],minwidth,minheight,maxwidth,maxheight,percentseeded))
-	cl = ROT.Map.Cellular:new(minwidth,maxwidth,{topology=8,connected=true,born={4,5,5,7,8},survive={2,3,4,5}})
-	cl:randomize(.65)
+	local success = false
+	cl = ROT.Map.Cellular:new(math.floor(#tilemap*.7),math.floor(#tilemap[1]*.7),{survive={4,5,6,7,8}})
+	cl:randomize(.45)
+	local iterations=6
+	for i=1,iterations,1 do
+		cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
+		tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Generation #" .. i)
+		mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
+	end
 	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
+	cl:_completeMaze()
+	tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Raw blobgrid")
 
-	tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"Raw blobgrid")
 	print("minwidth: " .. minwidth .. " / maxwidth: " .. maxwidth)
 	os.exit()
 	--[[
