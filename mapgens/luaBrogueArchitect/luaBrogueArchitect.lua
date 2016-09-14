@@ -434,17 +434,24 @@ function mapgen_broguestyle_room_cavern_tile_callback_helper(x,y,z)
 end
 
 
+-- Helper function to fill and dimension a contiguous region within a tilemap
+function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(mapgen_broguestyle_room_cavern_callback_tilemap, i, j, blob_number)
+	-- ...
+end
+
+
 -- Generate a 'blob' (cellular automata based random shape result) that meets the required specifications
 function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, min_width, min_height, max_width, max_height, percent_seeded)
 
-	-- continue until success or timeout
-	local success = false
-	local max_attempts = 10
-	local attempt = 1
-	while attempt <= max_attempts do
+	-- verify input
+	-- TODO
 
-		-- new tilemap workspace
-		blob = tilemap_new(#tilemap,#tilemap[1],0)
+	-- continue generating until success or timeout
+	local success = false
+	local max_attempts = 30
+	local attempt = 1
+	local top_blob_number = 0
+	while attempt <= max_attempts do
 
 		-- reset inter-function global
 		mapgen_broguestyle_room_cavern_callback_tilemap = tilemap_new(#tilemap,#tilemap[1])
@@ -463,16 +470,67 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
         	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	cl:_completeMaze()
 
+		-- measure results
+		--  (these are best-of variables; we begin with worst-case values)
+                local top_blob		= 0
+                local top_blob_size	= 0
+                local top_blob_min_x	= max_width
+                local top_blob_max_x	= 0
+                local top_blob_min_y	= max_height
+                local top_blob_max_y	= 0
+
+		-- fill each blob with its own number, starting with 2 (since 1 means floor), and keeping track of the biggest
+                blob_number = 2
+		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+				-- an unmarked blob-tile?
+				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == 1 then
+					-- call helper function to mark all the cells and return the total size
+					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(mapgen_broguestyle_room_cavern_callback_tilemap, i, j, blob_number)
+					-- if this blob's size is the largest seen so far
+					if blob_size > top_blob_size then
+						top_blob_size = blob_size
+						top_blob_number = blob_number
+					end
+					blob_number = blob_number + 1
+				end
+			end
+		end
+
 		-- see if we got what we were looking for
-		if something_measured_success then
+		if blob_width > min_width and
+		   blob_height < min_height and
+		   top_blob ~= 0 then
 			success = true
 		else
 			attempt = attempt + 1
 		end
 	end
 
+	-- failure?
+	if not success then
+		-- really bad
+		print("FATAL: Failed to generate blob with required specifications. Cowardly dying.")
+		os.exit()
+	end
+
+	-- isolate the successful result
+--[[
+        // Replace the winning blob with 1's, and everything else with 0's:
+    for(i=0; i<DCOLS; i++) {
+        for(j=0; j<DROWS; j++) {
+                        if (grid[i][j] == topBlobNumber) {
+                                grid[i][j] = 1;
+                        } else {
+                                grid[i][j] = 0;
+                        }
+                }
+        }
+--]]
+
 	-- return the result
-	return mapgen_broguestyle_room_cavern_callback_tilemap
+        return mapgen_broguestyle_room_cavern_callback_tilemap
+
 end
 
 
