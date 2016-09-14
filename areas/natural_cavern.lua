@@ -51,6 +51,7 @@ area_types['natural_cavern'] = {
 
 					-- Populate with NPCs
 					instance.npcs = {}
+				        add_npcs(instance.npcs,'bear',5)
 				        add_npcs(instance.npcs,'goblin',5)
 				        add_npcs(instance.npcs,'mouse',1)
 			
