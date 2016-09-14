@@ -12,6 +12,7 @@ require 'tilemap'
 require 'sounds'
 
 -- utilities
+require 'libs/utils/pairsbykeys'
 require 'libs/utils/tableshow'
 require 'libs/utils/split'
 
@@ -29,7 +30,7 @@ fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
 player = {name="Joe Player",health=initial_health,max_health=initial_health}
-inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30}}
+inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
 equipment = {left_hand='sword'}
 beautify=true
 simpleAreaShade=false
@@ -733,13 +734,14 @@ function draw_popups()
 			h='Help',
 			i='Inventory',
 			o='Open doors',
+			s='Spike doors shut',
 			arrows='Movement',
 			['shift+Q']='Quit',
 			['<']='Up stairs / ladder',
 			['>']='Down stairs / ladder'
 		       }
 		local i=0
-		for key,description in pairs(keys) do
+		for key,description in pairsByKeys(keys) do
 			output = {}
 			table.insert(output, popupBrightTextColor)
 			table.insert(output, key)
