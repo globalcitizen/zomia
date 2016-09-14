@@ -167,7 +167,7 @@ function love.keypressed(key)
         elseif key == "o" then
 		-- attempt to open nearby doors
 		opendoors()
-        elseif key == "escape" then
+        elseif key == "q" and (love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift")) then
 		love.event.quit()
 	-- '>'
 	elseif key == "." and (love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift")) then
@@ -734,7 +734,7 @@ function draw_popups()
 			i='Inventory',
 			o='Open doors',
 			arrows='Movement',
-			escape='Quit',
+			['shift+Q']='Quit',
 			['<']='Up stairs / ladder',
 			['>']='Down stairs / ladder'
 		       }
