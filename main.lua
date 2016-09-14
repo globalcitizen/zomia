@@ -3,6 +3,7 @@ ROT=require 'libs/rotLove/rotLove/rotLove'
 astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
 shack=require 'libs/shack/shack'
+tween=require 'libs/tween/tween'
 
 -- game portions
 require 'npcs'
@@ -24,6 +25,7 @@ rng:randomseed()
 
 -- keyboard
 love.keyboard.setKeyRepeat(true)
+keyboard_input_disabled = false
 
 -- basics
 fov = 15    -- de-facto distance of vision
@@ -74,6 +76,10 @@ popupBlingTextColor={255,255,255}
 popupBrightTextColor={188,188,188}
 popupNormalTextColor={128,128,128}
 popupDarkTextColor={75,75,75}
+
+-- graphics
+fade_factor = {}
+fade_factor['black'] = 0
 
 -- footprints
 footprints = {}
@@ -146,6 +152,7 @@ function love.load()
 end
 
 function love.keypressed(key)
+	if keyboard_input_disabled then return end
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
         elseif key == "right" or key == "6" then
@@ -235,10 +242,20 @@ function love.draw()
 	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	
+	-- now fade screen if required
+	if fade_factor.black ~= 0 then
+		draw_fade()
+	end
 end
 
 function love.update(dt)
  shack:update(dt)
+end
+
+function draw_fade()
+	local alpha = 255*fade_factor.black
+	love.graphics.setColor(0,0,0,alpha)
+	love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
 end
 
 function draw_tilemap()
@@ -1311,6 +1328,7 @@ function ascend()
 		logMessage(notifyMessageColor,'Ascending...')
 		sound = sounds.stairs.stone.up:play()
                 sound:setVolume(0.5)
+		local fadeTween=tween.new(2,fade_factor,{black=1},'inQuint')
                 world_load_area(world_location.z+1,world_location.x,world_location.y)
 	else
 		logMessage(failMessageColor,'There is no way up here!')
