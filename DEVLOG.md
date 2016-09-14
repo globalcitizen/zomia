@@ -11,7 +11,7 @@
        - Improved `tilemap_show` function for additional debugging clarity
        - More work on cellular automata based caverns
     - Ordered key list in help output
-    - Beginnings or door-spiking
+    - Beginnings of door-spiking
     - Added new `bear` NPC
     - Half-implemented fade-outs between levels using new `tween` library
     - Linecount 5299
