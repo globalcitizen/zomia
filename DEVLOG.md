@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-14__ (2-3 days remaining / 14 days used):
+    - More work on Brogue dungeon generation port
+
  * __2016-09-14__ (3-4 days remaining / 13 days used):
     - Fix bug related to non-halvable tile resolutions from different screen resolutions
     - Update linecount tool
