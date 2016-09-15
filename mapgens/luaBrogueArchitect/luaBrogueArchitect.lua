@@ -34,6 +34,7 @@ function mapgen_broguestyle(width,height)
 
 	-- Begin with blank (rock/wall) tiles
 	local new_tilemap = tilemap_new(width,height,0)
+	print("got new tilemap of " .. #new_tilemap .. " x " .. #new_tilemap[1])
 
 	-- First, place a room.
 	new_tilemap = mapgen_broguestyle_design_random_room(new_tilemap)
@@ -548,7 +549,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
         	for i=1,iterations,1 do
         	        cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	        --tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Attempt #" .. attempt .. " / Generation #" .. i)
-        	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap[1],#tilemap)
+        	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
         	end
         	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	cl:_completeMaze()
@@ -673,7 +674,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 			       top_blob_width > min_height and top_blob_width < max_height then
 				print("NOTICE: Blob needs axial flip.")
 				-- go ahead and flip it
-				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap[1],#mapgen_broguestyle_room_cavern_callback_tilemap,0)
+				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap,#mapgen_broguestyle_room_cavern_callback_tilemap[1],0)
 				for x=1,#mapgen_broguestyle_room_cavern_callback_tilemap,1 do
 					for y=1,#mapgen_broguestyle_room_cavern_callback_tilemap[1],1 do
 						print("Flipping " .. x .. "/" .. y .. " to " .. (x-top_blob_min_x) .. "/" .. (y-top_blob_min_y) .. ".")
@@ -727,7 +728,7 @@ mapgen_broguestyle_room_cavern_callback_tilemap = {}
 function mapgen_broguestyle_room_cavern(tilemap,iterations,minwidth,minheight,maxwidth,maxheight)
 
 	-- validate input
-	print("mapgen_broguestyle_room_cavern() supplied " .. #tilemap[1] .. "x" .. #tilemap .. " tilemap, iterations=" .. iterations .. ", width=" .. minwidth .. "-" .. maxwidth .. ", height=" .. minheight .. "-" .. maxheight)
+	print("mapgen_broguestyle_room_cavern() supplied " .. #tilemap .. "x" .. #tilemap[1] .. " tilemap, iterations=" .. iterations .. ", width=" .. minwidth .. "-" .. maxwidth .. ", height=" .. minheight .. "-" .. maxheight)
 	local iterations = iterations or 6
 
         -- new tilemap workspace
