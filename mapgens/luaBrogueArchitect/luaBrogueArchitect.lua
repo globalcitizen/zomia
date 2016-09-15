@@ -438,7 +438,7 @@ end
 function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(x, y, fill_value)
 
 	-- setup
-	local number_of_cells = 0
+	local number_of_cells = 1
 
 	-- fill
 	mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = fill_value
@@ -533,6 +533,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == 1 then
 					-- call helper function to mark all the cells and return the total size
 					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(i, j, blob_number)
+					print("mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper() returned blob_size " .. blob_size)
 					-- if this blob's size is the largest seen so far
 					if blob_size > top_blob_size then
 						top_blob_size = blob_size
@@ -545,10 +546,6 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 
 		-- DEBUG
 		tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"NUMBERED BLOBS")
-		print("top_blob_min_x = " .. top_blob_min_x)
-		print("top_blob_min_y = " .. top_blob_min_y)
-		print("top_blob_max_x = " .. top_blob_min_x)
-		print("top_blob_max_y = " .. top_blob_min_y)
 
 		-- determine the top blob's dimensions
 		--  first, min and max x
@@ -596,22 +593,67 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		end
 
 		-- finally, compute dimensions
-		blob_width = top_blob_max_x - top_blob_min_x + 1
-		blob_height = top_blob_max_y - top_blob_min_y + 1
+		top_blob_width = top_blob_max_x - top_blob_min_x
+		top_blob_height = top_blob_max_y - top_blob_min_y
 
 		-- end of round summary (DEBUG)
-		print("blob_width = " .. blob_width .. " (wanted " .. min_width .. "-" .. max_width .. ")")
-		print("blob_height = " .. blob_height .. " (wanted " .. min_height .. "-" .. max_height .. ")")
+		print("-- end of round summary --")
+		print("top_blob_number = " .. top_blob_number)
+		print("top_blob_size   = " .. top_blob_size)
+		print("top_blob_min_x  = " .. top_blob_min_x)
+		print("top_blob_min_y  = " .. top_blob_min_y)
+		print("top_blob_max_x  = " .. top_blob_max_x)
+		print("top_blob_max_y  = " .. top_blob_max_y)
+		print("top_blob_width  = " .. top_blob_width .. "  (ie. " .. top_blob_max_x .. "-" .. top_blob_min_x .. " / want " .. min_width .. "-" .. max_width .. ")")
+		print("top_blob_height = " .. top_blob_height .. " (ie. " .. top_blob_max_y .. "-" .. top_blob_min_y .. "/ want " .. min_height .. "-" .. max_height .. ")")
 
-		-- see if we got what we were looking for
-		if blob_width > min_width and
-		   blob_height < min_height and
-		   top_blob ~= 0 then
-			success = true
-			break
+		-- note that we can have a perfectly good blob where rotating 90 degrees
+		-- (ie. flipping the X and Y dimensions) resolves a mismatch, and delivers success
+		--  we should therefore probably implement flipping here (TODO)
+
+		-- first, check we have a blob
+		if top_blob_number ~= 0 then
+			-- first, detemine whether the dimensions are already appropriate
+			local width_ok = false
+			local height_ok = false
+			if top_blob_width >= min_width and top_blob_width <= max_width then
+				width_ok = true
+			end
+			if top_blob_height >= min_height and top_blob_height <= max_height then
+				height_ok = true
+			end
+
+			-- if so...
+			if width_ok and height_ok then
+				print("NOTICE: Blob OK!")
+				-- success
+				success = true
+				break
+			-- otherwise, if flipping get us what we want...
+			elseif top_blob_height > min_width and top_blob_height < max_width and
+			       top_blob_width > min_height and top_blob_width < max_height then
+				print("NOTICE: Blob needs axial flip.")
+				-- go ahead and flip it
+				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap,#mapgen_broguestyle_room_cavern_callback_tilemap[1],0)
+				for i=1,#mapgen_broguestyle_room_cavern_callback_tilemap,1 do
+					for j=1,#mapgen_broguestyle_room_cavern_callback_tilemap[1],1 do
+						print("Flipping " .. i .. "/" .. j .. " to " .. (i-top_blob_min_x) .. "/" .. (j-top_blob_min_y) .. ".")
+						tmp_blob[i-top_blob_min_x][j-top_blob_min_y] = mapgen_broguestyle_room_cavern_callback_tilemap[i][j]
+					end
+				end
+				-- finally, set the flipped version as the result
+				mapgen_broguestyle_room_cavern_callback_tilemap = tmp_blob
+				-- success
+				success = true
+				break
+			else
+				-- our blob is unworkable
+				print("WARNING: Blob " .. top_blob_width .. "x" .. top_blob_height .. " did not match requisite dimensions (ie. (" .. min_width .. "-" .. max_width .. ")x(" .. min_height .. "-" .. max_height .. ") tiles).")
+			end
 		else
-			attempt = attempt + 1
+			print("WARNING: No blob at all!")
 		end
+		attempt = attempt + 1
 		os.exit()
 	end
 
