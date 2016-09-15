@@ -210,17 +210,21 @@ end
 function tilemap_show(tilemap,title)
 	title = title or ''
 	print("================================ " .. title .. " ============================================================")
-	for i=1,#tilemap,1 do
-		line = table.concat(tilemap[i])
-		print(line)
+	for y=1,#tilemap[1],1 do -- y is 29
+		local line = ''
+		for x=1,#tilemap,1 do -- x is 79
+			line = line .. tilemap[x][y]
+		end
+		print(y .. ':' .. line)
 	end
+	print("tilemap supplied was " .. #tilemap .. " (in first dimension) x " .. #tilemap[1] .. " (in second) ... which is " .. #tilemap[1] .. "x" .. #tilemap .. " in conventional written form (eg. 80x25)")
 	print("============================================================================================================")
 end
 
 function tilemap_show_cute(tilemap,title)
 	local newtilemap = tilemap
-	for x=1,#tilemap,1 do
-		for y=1,#tilemap[1],1 do
+	for y=1,#tilemap[1],1 do
+		for x=1,#tilemap,1 do
 			if newtilemap[x][y] == 1 then 
 				newtilemap[x][y] = '#'
 			else
