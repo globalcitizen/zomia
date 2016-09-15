@@ -213,11 +213,13 @@ function tilemap_show(tilemap,title)
 	for y=1,#tilemap[1],1 do -- y is 29
 		local line = ''
 		for x=1,#tilemap,1 do -- x is 79
-			line = line .. tilemap[x][y]
+			if tilemap[x][y] ~= nil then
+				line = line .. tilemap[x][y]
+			end
 		end
-		print(y .. ':' .. line)
+		print(line .. " = line #" .. y)
 	end
-	print("tilemap supplied was " .. #tilemap .. " (in first dimension) x " .. #tilemap[1] .. " (in second) ... which is " .. #tilemap[1] .. "x" .. #tilemap .. " in conventional written form (eg. 80x25)")
+	print("tilemap supplied was " .. #tilemap .. " (columns/first dimension) x " .. #tilemap[1] .. " (rows/second)")
 	print("============================================================================================================")
 end
 
