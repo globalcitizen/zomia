@@ -6,7 +6,7 @@ require "tableshow"
 rng = ROT.RNG.Twister:new()
 rng:randomseed()
 
-tilemap = mapgen_broguestyle(24,80)
+tilemap = mapgen_broguestyle(79,29)
 
 tilemap_show(tilemap,"End result")
 os.exit()

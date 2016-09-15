@@ -270,7 +270,7 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 		room = mapgen_broguestyle_room_cavern(tilemap, iterations, min_width, min_height, max_width, max_height)
 	elseif roomtype == 7 then						-- WAITING FOR INTEGRATION WITH ROTLOVE
 		-- Cavern (the kind that fills a level)
-            	room = mapgen_broguestyle_room_cavern(tilemap, CAVE_MIN_WIDTH, DCOLS - 2, CAVE_MIN_HEIGHT, DROWS - 2);
+            	--room = mapgen_broguestyle_room_cavern(tilemap, CAVE_MIN_WIDTH, DCOLS - 2, CAVE_MIN_HEIGHT, DROWS - 2);
 	end
 
 	-- ok, now we have it
@@ -436,10 +436,10 @@ function mapgen_broguestyle_room_chunky(tilemap)
 	tilemap_draw_circle(grid, #grid/2, #grid[1]/2, 2, 1)
 
 	-- constraints
-	minx = #tilemap/2 - 3
-	maxx = #tilemap/2 + 3
-	miny = #tilemap[1]/2 - 3
-	maxy = #tilemap[1]/2 + 3
+	minx = #tilemap[1]/2 - 3
+	maxx = #tilemap[1]/2 + 3
+	miny = #tilemap/2 - 3
+	maxy = #tilemap/2 + 3
 
 	-- perform chunkcount iterations of adding a circle-chunk
 	local i=0
@@ -450,9 +450,9 @@ function mapgen_broguestyle_room_chunky(tilemap)
 			grid = tilemap_draw_circle(grid,x,y,2,1)
 			i = i + 1
 			minx = math.max(1, math.min(x - 3, minx))
-			maxx = math.min(#tilemap - 2, math.max(x + 3, maxx))
+			maxx = math.min(#tilemap[1] - 2, math.max(x + 3, maxx))
 			miny = math.max(1, math.min(y - 3, miny))
-			maxy = math.min(#tilemap[1] - 2, math.max(y + 3, maxy))
+			maxy = math.min(#tilemap - 2, math.max(y + 3, maxy))
 		end
 	end
 
@@ -482,9 +482,11 @@ function mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(
 	for dir=1, 4, 1 do
 		new_x = x + directions[dir][1]
 		new_y = y + directions[dir][2]
+		-- discard out of bounds coordinates
 		if tilemap_coordinates_valid(mapgen_broguestyle_room_cavern_callback_tilemap,new_x,new_y) then
+			-- if floor
 			if mapgen_broguestyle_room_cavern_callback_tilemap[new_x][new_y] == 1 then
-				-- recurse
+				-- fill and recurse
 				number_of_cells = number_of_cells + mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(new_x,new_y,fill_value)
 			end
 		end
@@ -500,7 +502,7 @@ end
 function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, min_width, min_height, max_width, max_height, percent_seeded)
 
 	-- verify input
-	print("mapgen_broguestyle_room_cavern_create_blob_helper() passed " .. #tilemap .. "x" .. #tilemap[1] .. " tilemap, iterations=" .. iterations .. ", width=" .. min_width .. "-" .. max_width .. ", height=" .. min_height .. "-" .. max_height .. ", percent_seeded=" .. percent_seeded)
+	print("mapgen_broguestyle_room_cavern_create_blob_helper() passed " .. #tilemap[1] .. "x" .. #tilemap .. " tilemap, iterations=" .. iterations .. ", width=" .. min_width .. "-" .. max_width .. ", height=" .. min_height .. "-" .. max_height .. ", percent_seeded=" .. percent_seeded)
 	if iterations < 1 or iterations > 100 then
 		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed bad number of iterations (wanted 0-100, got " .. iterations)
 		os.exit()
@@ -516,8 +518,8 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 	elseif min_height < 1 then
 		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed zero or negative minimum height.")
 		os.exit()
-	elseif max_height > #tilemap then
-		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum height " .. max_height .. " exceeding tilemap height " .. #tilemap .. ".")
+	elseif max_height > #tilemap[1] then
+		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum height " .. max_height .. " exceeding tilemap height " .. #tilemap[1] .. ".")
 		os.exit()
 	elseif max_height < min_height then
 		print("FATAL: mapgen_broguestyle_room_cavern_create_blob_helper() passed maximum height " .. max_height .. " which is less than the minimum height " .. min_height)
@@ -541,12 +543,12 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		--  NOTE: previously tilemap dimensions * 0.7 were used for width/height
 		--  NOTE: could try 'minimumZoneArea: 10'
 		local minimum_blob_area = math.max(min_width,min_height)*3
-        	cl = ROT.Map.Cellular:new(math.floor(#tilemap*0.7),math.floor(#tilemap[1]*0.7),{survive={4,5,6,7,8},minimumZoneArea=minimum_blob_area})
+        	cl = ROT.Map.Cellular:new(math.floor(#tilemap[1]*0.7),math.floor(#tilemap*0.7),{survive={4,5,6,7,8},minimumZoneArea=minimum_blob_area})
         	cl:randomize(percent_seeded/100)
         	for i=1,iterations,1 do
         	        cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	        --tilemap_show_cute(mapgen_broguestyle_room_cavern_callback_tilemap,"Attempt #" .. attempt .. " / Generation #" .. i)
-        	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap,#tilemap[1])
+        	        mapgen_broguestyle_room_cavern_callback_tilemap=tilemap_new(#tilemap[1],#tilemap)
         	end
         	cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
         	cl:_completeMaze()
@@ -562,13 +564,13 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 
 		-- fill each blob with its own number, starting with 2 (since 1 means floor), and keeping track of the biggest
                 blob_number = 2
-		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
-			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+		for x=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+			for y=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
 				-- an unmarked blob-tile?
-				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == 1 then
+				if mapgen_broguestyle_room_cavern_callback_tilemap[x][y] == 1 then
 					-- call helper function to mark all the cells and return the total size
-					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(i, j, blob_number)
-					print("mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper() returned blob_size " .. blob_size)
+					blob_size = mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper(x, y, blob_number)
+					print("mapgen_broguestyle_room_cavern_fill_and_count_contiguous_region_helper() returned blob_size " .. blob_size .. " for blob number " .. blob_number)
 					-- if this blob's size is the largest seen so far
 					if blob_size > top_blob_size then
 						top_blob_size = blob_size
@@ -586,13 +588,13 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		--  first, min and max x
 		local last_x = nil
 		local last_y = nil
-		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+		for x=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
 			local found_a_cell_this_line = false
-			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
-				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == top_blob_number then
+			for y=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+				if mapgen_broguestyle_room_cavern_callback_tilemap[x][y] == top_blob_number then
 					found_a_cell_this_line = true
-					last_x = i
-					last_y = j
+					last_x = x
+					last_y = y
 					break
 				end
 			end
@@ -607,13 +609,13 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		end
 
 		--  now, min and max y
-		for i=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+		for x=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
 			local found_a_cell_this_line = false
-			for j=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
-				if mapgen_broguestyle_room_cavern_callback_tilemap[i][j] == top_blob_number then
+			for y=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+				if mapgen_broguestyle_room_cavern_callback_tilemap[x][y] == top_blob_number then
 					found_a_cell_this_line = true
-					last_x = i
-					last_y = j
+					last_x = x
+					last_y = y
 					break
 				end
 			end
@@ -633,6 +635,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 
 		-- end of round summary (DEBUG)
 		print("-- end of round summary --")
+		print("tilemap size    = " .. #mapgen_broguestyle_room_cavern_callback_tilemap[1] .. "x" .. #mapgen_broguestyle_room_cavern_callback_tilemap)
 		print("top_blob_number = " .. top_blob_number)
 		print("top_blob_size   = " .. top_blob_size)
 		print("top_blob_min_x  = " .. top_blob_min_x)
@@ -660,7 +663,8 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 
 			-- if so...
 			if width_ok and height_ok then
-				print("NOTICE: Blob OK!")
+				tilemap_show(mapgen_broguestyle_room_cavern_callback_tilemap,"OK blob")
+				print("NOTICE: Blob #" .. top_blob_number .. " is OK!")
 				-- success
 				success = true
 				break
@@ -669,11 +673,11 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 			       top_blob_width > min_height and top_blob_width < max_height then
 				print("NOTICE: Blob needs axial flip.")
 				-- go ahead and flip it
-				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap,#mapgen_broguestyle_room_cavern_callback_tilemap[1],0)
-				for i=1,#mapgen_broguestyle_room_cavern_callback_tilemap,1 do
-					for j=1,#mapgen_broguestyle_room_cavern_callback_tilemap[1],1 do
-						print("Flipping " .. i .. "/" .. j .. " to " .. (i-top_blob_min_x) .. "/" .. (j-top_blob_min_y) .. ".")
-						tmp_blob[i-top_blob_min_x][j-top_blob_min_y] = mapgen_broguestyle_room_cavern_callback_tilemap[i][j]
+				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap[1],#mapgen_broguestyle_room_cavern_callback_tilemap,0)
+				for x=1,#mapgen_broguestyle_room_cavern_callback_tilemap,1 do
+					for y=1,#mapgen_broguestyle_room_cavern_callback_tilemap[1],1 do
+						print("Flipping " .. x .. "/" .. y .. " to " .. (x-top_blob_min_x) .. "/" .. (y-top_blob_min_y) .. ".")
+						tmp_blob[x-top_blob_min_x][y-top_blob_min_y] = mapgen_broguestyle_room_cavern_callback_tilemap[x][y]
 					end
 				end
 				-- finally, set the flipped version as the result
@@ -689,29 +693,26 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 			print("WARNING: No blob at all!")
 		end
 		attempt = attempt + 1
-		os.exit()
+		--os.exit()
 	end
 
 	-- failure?
 	if not success then
 		-- really bad
-		print("FATAL: Failed to generate blob with required specifications. Cowardly dying.")
+		print("FATAL: Failed to generate blob with required specifications (after " .. attempt .. " attempts). Cowardly dying.")
 		os.exit()
 	end
 
-	-- isolate the successful result
---[[
-        // Replace the winning blob with 1's, and everything else with 0's:
-    for(i=0; i<DCOLS; i++) {
-        for(j=0; j<DROWS; j++) {
-                        if (grid[i][j] == topBlobNumber) {
-                                grid[i][j] = 1;
-                        } else {
-                                grid[i][j] = 0;
-                        }
-                }
-        }
---]]
+	-- isolate the successful result by replacing the winning blob with 1, everything else with 0
+	for x=1, #mapgen_broguestyle_room_cavern_callback_tilemap, 1 do
+		for y=1, #mapgen_broguestyle_room_cavern_callback_tilemap[1], 1 do
+			if mapgen_broguestyle_room_cavern_callback_tilemap[x][y] == top_blob_number then
+				mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = 1
+			else
+				mapgen_broguestyle_room_cavern_callback_tilemap[x][y] = 0
+			end
+		end
+	end
 
 	-- return the result
         return mapgen_broguestyle_room_cavern_callback_tilemap
@@ -726,7 +727,7 @@ mapgen_broguestyle_room_cavern_callback_tilemap = {}
 function mapgen_broguestyle_room_cavern(tilemap,iterations,minwidth,minheight,maxwidth,maxheight)
 
 	-- validate input
-	print("mapgen_broguestyle_room_cavern() supplied " .. #tilemap .. "x" .. #tilemap[1] .. " tilemap, iterations=" .. iterations .. ", width=" .. minwidth .. "-" .. maxwidth .. ", height=" .. minheight .. "-" .. maxheight)
+	print("mapgen_broguestyle_room_cavern() supplied " .. #tilemap[1] .. "x" .. #tilemap .. " tilemap, iterations=" .. iterations .. ", width=" .. minwidth .. "-" .. maxwidth .. ", height=" .. minheight .. "-" .. maxheight)
 	local iterations = iterations or 6
 
         -- new tilemap workspace
@@ -757,6 +758,7 @@ function mapgen_broguestyle_room_cavern(tilemap,iterations,minwidth,minheight,ma
         // ...and copy it to the master grid.
     insertRoomAt(grid, blobGrid, destX - caveX, destY - caveY, fillX, fillY);
 	--]]
+
 	--tilemap = tilemap_overwrite(tilemap,blobgrid,(#tilemap-#blobgrid)/2 - #blobgrid, (#tilemap[1]-#blobgrid[1],
 
 	-- return room
