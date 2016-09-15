@@ -25,6 +25,13 @@
 -- Generate a Brogue-style level map of the supplied dimensions.
 function mapgen_broguestyle(width,height)
 
+	-- Verify input
+	print("mapgen_broguestyle() called to create " .. width .. "x" .. height .. " tilemap")
+	if width < 10 or height < 10 or width > 200 or height > 200 then
+		print("FATAL: mapgen_broguestyle() called to create tilemap with invalid dimensions. (Per-axis limit 10-200)")
+		os.exit()
+	end
+
 	-- Begin with blank (rock/wall) tiles
 	local new_tilemap = tilemap_new(width,height,0)
 
@@ -240,20 +247,22 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 			min_width	= 12
 			min_height	= 4
 			max_height	= 8
+			max_width	= #tilemap-2
 		elseif type == 1 then
 			-- Large north-south cave room.
 			print("DEBUG: large north-south cave room")
 			iterations	= 3
 			min_width	= 12
 			min_height	= 15
+			max_width	= #tilemap-2
 			max_height	= #tilemap[1]-2
 		elseif type == 2 then
 			-- Large east-west cave room.
 			print("DEBUG: large east-west cave room")
 			iterations	= 20
-			min_width	= #tilemap-2
+			min_width	= 8
 			min_height	= 4
-			max_width	= 8
+			max_width	= #tilemap-2
 			max_height	= #tilemap[1]-2		-- NOTE: original source code excludes this argument
 		end
 		-- Finally, we generate the room
@@ -728,7 +737,7 @@ function mapgen_broguestyle_room_cavern(tilemap,iterations,minwidth,minheight,ma
 
 	-- generate a 'blob' (cellular automata result)
 	local percent_seeded = 45
-	grid = mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, minwidth, maxwidth, minheight, maxheight, percent_seeded)
+	grid = mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, minwidth, minheight, maxwidth, maxheight, percent_seeded)
 	tilemap_show_cute(grid,"Raw blobgrid")
 
 	os.exit()
