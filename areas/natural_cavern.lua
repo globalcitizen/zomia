@@ -87,7 +87,12 @@ area_types['natural_cavern'] = {
 					--]]
 					-- ambient noise
 					instance.ambient = {
-				                                                "sounds/ambient/cave-drips.mp3"
+						"sounds/ambient/cave-ambience.mp3",
+						"sounds/ambient/cave-atmosphere.mp3",
+						"sounds/ambient/cave-cavernscape.mp3",
+						"sounds/ambient/cave-drips-2.mp3",
+						"sounds/ambient/cave-drips.mp3",
+						"sounds/ambient/cave-winds.mp3"
 				                           }
 					instance.ambient_volume = 2
 
