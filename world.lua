@@ -124,6 +124,9 @@ function world_load_area(z,x,y)
 		world[z][x][y].footprints = {}
 	end
 
+	-- clean tilemap in case of nonsense
+	world[z][x][y].map = map_sanitize(world[z][x][y].map)
+
 	-- assign maptiles and related from area
 	tilemap = world[z][x][y].map
 	seenTiles = world[z][x][y].seenTiles
@@ -196,3 +199,29 @@ function world_load_area(z,x,y)
 	end
 
 end
+
+
+function map_sanitize(map)
+	for x=1,#map,1 do
+		for y=1,#map,1 do
+			-- if the tile is a closed or open door
+			if map[x][y] == 2 or map[x][y] == 3 then
+				-- count the wall tiles around the this tile
+				local wallcount = 0
+				for i=1,4,1 do
+					dir = directions[i]
+					if map[x+dir[1]][y+dir[2]] == 0 then
+						wallcount = wallcount + 1
+					end
+				end
+				-- if there are not exactly two walls next to this tile
+				if wallcount ~= 2 then
+					-- remove the door by setting it to 1 (floor)
+					map[x][y] = 1
+				end
+			end
+		end
+	end
+	return map
+end
+
