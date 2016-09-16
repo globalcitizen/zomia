@@ -580,3 +580,91 @@ sounds={}
 "sounds/stairs/stone-stairs-down-8.mp3",
 "sounds/stairs/stone-stairs-down-9.mp3"
 			})
+
+   sounds['impact'] = {}
+   sounds['impact']['hit'] = love.audio.newSource({
+"sounds/impact/hit-1.mp3",
+"sounds/impact/hit-10.mp3",
+"sounds/impact/hit-11.mp3",
+"sounds/impact/hit-12.mp3",
+"sounds/impact/hit-2.mp3",
+"sounds/impact/hit-3.mp3",
+"sounds/impact/hit-4.mp3",
+"sounds/impact/hit-5.mp3",
+"sounds/impact/hit-6.mp3",
+"sounds/impact/hit-7.mp3",
+"sounds/impact/hit-8.mp3",
+"sounds/impact/hit-9.mp3"
+			})
+
+ sounds['impact']['eat'] = love.audio.newSource({
+"sounds/impact/eat-1.mp3",
+"sounds/impact/eat-10.mp3",
+"sounds/impact/eat-11.mp3",
+"sounds/impact/eat-12.mp3",
+"sounds/impact/eat-13.mp3",
+"sounds/impact/eat-14.mp3",
+"sounds/impact/eat-15.mp3",
+"sounds/impact/eat-16.mp3",
+"sounds/impact/eat-17.mp3",
+"sounds/impact/eat-2.mp3",
+"sounds/impact/eat-3.mp3",
+"sounds/impact/eat-4.mp3",
+"sounds/impact/eat-5.mp3",
+"sounds/impact/eat-6.mp3",
+"sounds/impact/eat-7.mp3",
+"sounds/impact/eat-8.mp3",
+"sounds/impact/eat-9.mp3"
+			})
+
+ sounds['impact']['slime-eat'] = love.audio.newSource({
+"sounds/impact/silme-eat-14.mp3",
+"sounds/impact/slime-eat-1.mp3",
+"sounds/impact/slime-eat-10.mp3",
+"sounds/impact/slime-eat-11.mp3",
+"sounds/impact/slime-eat-12.mp3",
+"sounds/impact/slime-eat-13.mp3",
+"sounds/impact/slime-eat-14.mp3",
+"sounds/impact/slime-eat-15.mp3",
+"sounds/impact/slime-eat-16.mp3",
+"sounds/impact/slime-eat-17.mp3",
+"sounds/impact/slime-eat-18.mp3",
+"sounds/impact/slime-eat-19.mp3",
+"sounds/impact/slime-eat-2.mp3",
+"sounds/impact/slime-eat-3.mp3",
+"sounds/impact/slime-eat-4.mp3",
+"sounds/impact/slime-eat-5.mp3",
+"sounds/impact/slime-eat-6.mp3",
+"sounds/impact/slime-eat-7.mp3",
+"sounds/impact/slime-eat-8.mp3",
+"sounds/impact/slime-eat-9.mp3"
+			})
+
+ sounds['impact']['bang'] = love.audio.newSource({
+"sounds/impact/bang-1.mp3",
+"sounds/impact/bang-2.mp3"
+			})
+
+ sounds['impact']['punch'] = love.audio.newSource({
+"sounds/impact/punch-1.mp3",
+"sounds/impact/punch-10.mp3",
+"sounds/impact/punch-2.mp3",
+"sounds/impact/punch-3.mp3",
+"sounds/impact/punch-4.mp3",
+"sounds/impact/punch-5.mp3",
+"sounds/impact/punch-6.mp3",
+"sounds/impact/punch-7.mp3",
+"sounds/impact/punch-8.mp3",
+"sounds/impact/punch-9.mp3",
+"sounds/impact/punch-hollow-1.mp3",
+"sounds/impact/punch-hollow-2.mp3",
+"sounds/impact/punch-hollow-3.mp3",
+"sounds/impact/punch-hollow-4.mp3",
+"sounds/impact/punch-hollow-5.mp3"
+			})
+
+ sounds['impact']['slime-feast'] = love.audio.newSource({
+"sounds/impact/slime-feast-1.mp3",
+"sounds/impact/slime-feast-2.mp3",
+"sounds/impact/slime-feast-3.mp3"
+			})
