@@ -20,6 +20,7 @@
     - Make monster not spawn on the player, and vice versa
     - Make stuck (shut in) monsters noisy
     - Make seen doors remain visible when out of line of sight
+    - Players become 'unseen' by monsters when they re-enter a level they have previously visited
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
