@@ -16,6 +16,7 @@ require 'sounds'
 require 'libs/utils/pairsbykeys'
 require 'libs/utils/tableshow'
 require 'libs/utils/split'
+require 'libs/utils/deepcopy'
 
 -- random
 --rng = ROT.RNG.LCG:new()

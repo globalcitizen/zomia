@@ -1,6 +1,7 @@
 ROT = require "rotLove"
 require "tilemap"
 require "luaBrogueArchitect"
+require "deepcopy"
 require "tableshow"
 
 rng = ROT.RNG.Twister:new()

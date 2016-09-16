@@ -224,7 +224,7 @@ function tilemap_show(tilemap,title)
 end
 
 function tilemap_show_cute(tilemap,title)
-	local newtilemap = tilemap
+	local newtilemap = deepcopy(tilemap)
 	for y=1,#tilemap[1],1 do
 		for x=1,#tilemap,1 do
 			if newtilemap[x][y] == 1 then 

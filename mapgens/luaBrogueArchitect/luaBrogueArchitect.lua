@@ -271,7 +271,7 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 	end
 
 	-- ok, now we have it
-	tilemap_show(room,"Temporary Room (type = " .. roomtype .. ")")
+	tilemap_show(room,"random_room result (type = " .. roomtype .. ")")
 	--os.exit()
 
 --[[
@@ -837,7 +837,7 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
 
 	-- Then we get a new map structure the same size
 	print("Build room map.")
-	local roommap = tilemap_new(#tilemap,#tilemap[1],0)
+	roommap = tilemap_new(#tilemap,#tilemap[1],0)
 
 --[[
     for (roomsBuilt = roomsAttempted = 0; roomsBuilt < maxRoomCount && roomsAttempted < attempts; roomsAttempted++) {
@@ -869,6 +869,8 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
 		end
 
 		roommap = mapgen_broguestyle_design_random_room(roommap, attach_hallway, doorsites)
+		tilemap_show(roommap,"attach_rooms() generated room #" .. roomsattempted)
+		roomsattempted = roomsattempted + 1
 
 --[[
         // Slide hyperspace across real space, in a random but predetermined order, until the room matches up with a wall.
@@ -907,7 +909,6 @@ function mapgen_broguestyle_attach_rooms(tilemap,max_attempts,max_roomcount)
 				break
 			end
 		end
-		roomsattempted = roomsattempted + 1
 	end
 
 	-- return full result
@@ -1601,6 +1602,7 @@ function mapgen_broguestyle_valid_stair_loc(tilemap,x,y)
 end
 
 -- Copy a room from a single-room tilemap to another tilemap, where the destination tilemap contains 0 and the single-room tilemap contains non-zero
+roommap = {}
 function mapgen_broguestyle_insert_room_at(tilemap,roommap,room_to_dungeon_x,room_to_dungeon_y,x_room,y_room)
 --[[
 void insertRoomAt(short **dungeonMap, short **roomMap, const short roomToDungeonX, const short roomToDungeonY, const short xRoom, const short yRoom) {
@@ -1645,7 +1647,7 @@ void insertRoomAt(short **dungeonMap, short **roomMap, const short roomToDungeon
 		   tilemap_coordinates_valid(tilemap,dest_x + room_to_dungeon_x, dest_y + room_to_dungeon_y) and				-- coordi
 		   tilemap[dest_x + room_to_dungeon_x][dest_y + room_to_dungeon_y] == 0 then						-- destination tilemap is 0
 			-- copy
-			mapgen_broguestyle_insert_room_at(tilemap, roommap, room_to_dungeon_x, roomt_to_dungeon_y, dest_x, dest_y)
+			mapgen_broguestyle_insert_room_at(tilemap, roommap, room_to_dungeon_x, room_to_dungeon_y, dest_x, dest_y)
 		end
 		   
 	end
