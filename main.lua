@@ -1310,6 +1310,9 @@ function endTurn()
                                         	npc.sounds.attack:play()
                                                 npc.sounds.attack:setVolume(2)
                                         end
+                        		shack:setShake(20)
+                        		shack:setRotation(.2)
+                        		shack:zoom(1.25)
 				else
 					-- move toward the player using a dijkstra map for routing
 					--  note: right now we just use one callback that says no monster can open doors.
