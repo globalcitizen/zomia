@@ -13,6 +13,13 @@
     - More ambient tracks for `natural_cave` area
     - NPC movement complete-ish (monsters will attack and follow but currently cannot open doors)
     - Fixed bloody footstep bug
+    - Monsters make noise when noticing player
+    - Some monsters always make noise while moving (`midnight_jelly`)
+    - Make monsters not run in to one another
+    - Make monster respect closed doors
+    - Make monster not spawn on the player, and vice versa
+    - Make stuck (shut in) monsters noisy
+    - Make seen doors remain visible when out of line of sight
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
