@@ -1333,7 +1333,7 @@ function endTurn()
                                         	new_y = npc.location.y + direction_to_move_y
 					end
 					-- check we have movement scheduled
-					if direction_to_move_x ~= 0 or direction_to_move_y ~= 0 then
+					if direction_to_move_x ~= 0 or direction_to_move_y ~= 0 and tile_is_passable_no_npcs(new_x,new_y) then
 						-- move
 						npc.location.x = new_x
 						npc.location.y = new_y
@@ -1815,37 +1815,38 @@ end
 
 -- check if a given tile is passable for a monster, assuming doors are open/passable, and is not occupied by other monsters
 function tile_is_passable_assuming_open_doors_no_npcs(x,y)
-	local occupied = false
         -- only return true for open or closed doors and floor
         if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 then
 		-- but only if the tile also has no NPCs
 		for _,npc in pairs(npcs) do
 			if npc.location.x == x and npc.location.y == y then
-				occupied=true
+				return false
 			end
 		end
-		if occupied == false then
-                	return true
-		end
+                return true
         end
         return false
 end
 
 -- check if a given tile is passable for a monster, WITHOUT assuming doors are open/passable, and is not occupied by other monsters
 function tile_is_passable_no_npcs(x,y)
-	local occupied = false
+	if x == nil or y == nil then
+		print("FATAL: tile_is_passable_no_npcs() passed invalid coordinates.")
+		print(table.show(x))
+		print(table.show(y))
+		os.exit()
+	end
         -- only return true for open doors and floor
         if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
 		-- but only if the tile also has no NPCs
 		for _,npc in pairs(npcs) do
 			if npc.location.x == x and npc.location.y == y then
-				occupied=true
+				print(x .. "/" .. y .. " impassible due to NPC.")
+				return false
 			end
 		end
-		if occupied == false then
-                	return true
-		end
-        end
+               	return true
+	end
         return false
 end
 
