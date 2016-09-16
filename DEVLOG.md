@@ -23,6 +23,7 @@
     - Players become 'unseen' by monsters when they re-enter a level they have previously visited
     - Monsters attack players
     - Fix door closing to be impossible if NPC-occupied
+    - Shake screen when hit by monsters
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
