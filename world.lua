@@ -89,7 +89,7 @@ function world_load_area(z,x,y)
 
 	-- YOU. CANT. Stop the music
 	for i,m in pairs(current_area_music) do
-		m:stop()
+                table.insert(tweens,flux.to(m,2,{volume=0}))
 	end
 	current_area_music = {}
 
@@ -154,9 +154,13 @@ function world_load_area(z,x,y)
 		music = love.audio.newSource(world[z][x][y].music)
 		music:setLooping(true)
 		music:play()
+		music:setVolume(0)
+		local desired_volume = 0.5
 		if world[z][x][y].music_volume ~= nil then
-			music:setVolume(world[z][x][y].music_volume)
+			desired_volume = world[z][x][y].music_volume
 		end
+		music:setVolume(desired_volume)
+                --table.insert(tweens,flux.to(music,2,{volume=desired_volume}))		-- deosn't work
 		table.insert(current_area_music,music)
 	end
 
@@ -166,9 +170,13 @@ function world_load_area(z,x,y)
 		ambience = love.audio.newSource(world[z][x][y].ambient)
 		ambience:setLooping(true)
 		ambience:play()
-		if world[z][x][y].ambient_volume ~= nil then
-			ambience:setVolume(world[z][x][y].ambient_volume)
+		ambience:setVolume(0)
+		local desired_volume = 1
+		if world[z][x][y].ambience_volume ~= nil then
+			desired_volume = world[z][x][y].ambience_volume
 		end
+		ambience:setVolume(desired_volume)
+                --table.insert(tweens,flux.to(ambience,2,{volume=desired_volume}))	-- doesn't work
 		table.insert(current_area_music,ambience)
 	end
 

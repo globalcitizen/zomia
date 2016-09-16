@@ -1319,7 +1319,7 @@ function descend()
 	if tilemap[characterX][characterY] == ">" then
 		logMessage(notifyMessageColor,'Descending...')
 		sound = sounds.stairs.stone.down:play()
-                sound:setVolume(0.5)
+                sound:setVolume(0.9)
 		keyboard_input_disabled = true
 		table.insert(tweens,flux.to(fade_factor,2,{black=1}):oncomplete(function() 
 				world_load_area(world_location.z-1,world_location.x,world_location.y)
@@ -1335,7 +1335,7 @@ function ascend()
 	if tilemap[characterX][characterY] == "<" then
 		logMessage(notifyMessageColor,'Ascending...')
 		sound = sounds.stairs.stone.up:play()
-                sound:setVolume(0.5)
+                sound:setVolume(0.9)
 		keyboard_input_disabled = true
 		table.insert(tweens,flux.to(fade_factor,2,{black=1}):oncomplete(function() 
 				world_load_area(world_location.z+1,world_location.x,world_location.y)
