@@ -346,12 +346,12 @@ function draw_groundfeatures()
 		elseif feature['type'] == 'puddle' then
 			love.graphics.setColor(puddleColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
-			current_footprint_color = puddleColor
+			current_footprint_color = deepcopy(puddleColor)
 		elseif feature['type'] == 'blood' then
 			love.graphics.setColor(bloodColor)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
-			current_footprint_color = bloodColor
+			current_footprint_color = deepcopy(bloodColor)
 		elseif feature['type'] == 'stone' then
 			love.graphics.setColor(rockColor,120)
 			love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -386,12 +386,12 @@ function draw_groundfeatures_visibilitylimited()
 				elseif feature['type'] == 'puddle' then
 					love.graphics.setColor(0,10,65,155)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
-					current_footprint_color = puddleColor
+					current_footprint_color = deepcopy(puddleColor)
 				elseif feature['type'] == 'blood' then
 					love.graphics.setColor(bloodColor)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2, (feature['y']-1)*tilePixelsY+tilePixelsY/2, (tilePixelsX/2)-5)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2-3, (feature['y']-1)*tilePixelsY+tilePixelsY/2-5+(feature['x']*feature['y']%10), (tilePixelsX/2)-5)
-					current_footprint_color = bloodColor
+					current_footprint_color = deepcopy(bloodColor)
 				elseif feature['type'] == 'stone' then
 					love.graphics.setColor(rockColor,120)
 					love.graphics.circle('fill',(feature['x']-1)*tilePixelsX+tilePixelsX/2+3, (feature['y']-1)*tilePixelsY+tilePixelsY/2+6, (tilePixelsX/4)-3)
@@ -650,11 +650,12 @@ function draw_npcs_visibilitylimited()
 	-- draw npcs
 	for i=1,#npcs,1 do
 		local l=npcs[i]['location']
-		-- check if it's in the list of visible tiles
 
-		-- cheat and display a dot on each unseen NPC
+		-- DEBUG/TEST AID: cheat and display a dot on each unseen NPC
 		love.graphics.setColor(255,255,255,255)
 		love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+(characterSmallness+3),(l['y']-1)*tilePixelsY+(characterSmallness+3),tilePixelsX-(characterSmallness+3)*2,tilePixelsY-(characterSmallness+3)*2)
+
+		-- check if it's in the list of visible tiles
 		local found=false
 		for j=1,#visibleTiles,1 do
                 	local tile = visibleTiles[j]
@@ -662,7 +663,11 @@ function draw_npcs_visibilitylimited()
 				found = true
 			end
 		end
+		-- yes, it's visible
 		if found==true then
+			-- first, 'wake up' the NPC and allow it to notice the player
+			npcs[i]['seen_player'] = true
+			-- now draw it
 			if npcs[i]['color'] ~= nil then
 				love.graphics.setColor(npcs[i]['color'])
 			else
@@ -959,7 +964,7 @@ function moveCharacterRelatively(x,y)
 				end
 				-- if we are not current leaving footprints in the default color
 				if current_footprint_color ~= footprintColor then
-					local min_shift = 10
+					local min_shift = 20
 					-- slowly shift the color back toward the normal, on a per-element basis
 					rshift = math.min(min_shift,((current_footprint_color[1] + footprintColor[1])/2))
 					gshift = math.min(min_shift,((current_footprint_color[2] + footprintColor[2])/2))
@@ -1252,8 +1257,34 @@ function endTurn()
 			volume = minimum_volume + volume_ratio*(maximum_volume-minimum_volume)
         		npc.sounds.attack:play():setVolume(volume)
 		end
-		-- each one has a 10% chance of moving, but only if they have 'random' movement enabled
-		if npc.move=='random' and math.floor(rng:random(0,10)) == 9 then
+
+		-- if they have seen the player and are hostile
+		if npc.seen_player == true and npc.hostile==true then
+			-- if they have line of sight to the player...
+			local visible = false
+			for i=1,#visibleTiles,1 do
+                		local tile = visibleTiles[i]
+				if npc.location.x == tile.x and npc.location.y == tile.y then
+					visible=true
+					break
+				end
+			end
+			if visible == true then
+				-- move toward or attack the player
+				x_distance = characterX-npc.location.x
+				y_distance = characterY-npc.location.y
+				-- if the distance is no more than 1 in either direction, they are adjacent...
+				if math.abs(x_distance) <= 1 and math.abs(y_distance) <= 1 then
+					-- attack the player!
+					logMessage(bloodColor,'The ' .. npc.name .. ' would attack you! (If code existed)')
+				else
+					-- move toward the player using a dijkstra map for routing
+					logMessage(notifyMessageColor,'The ' .. npc.name .. ' would move toward you! (If code existed)')
+				end
+			end
+	
+		-- if they are set to move randomly, then do so with a 10% chance
+		elseif npc.move=='random' and math.floor(rng:random(0,10)) == 9 then
 			-- attempt to move: pick a direction, then try all directions clockwise until success
 			local direction = math.ceil(rng:random(0,9))
 			local success=false
