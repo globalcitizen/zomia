@@ -21,6 +21,7 @@
     - Make stuck (shut in) monsters noisy
     - Make seen doors remain visible when out of line of sight
     - Players become 'unseen' by monsters when they re-enter a level they have previously visited
+    - Monsters attack players
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
