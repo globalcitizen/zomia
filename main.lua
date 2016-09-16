@@ -1308,16 +1308,27 @@ function endTurn()
                                         	new_x = npc.location.x + direction_to_move_x
                                         	new_y = npc.location.y + direction_to_move_y
 					end
-					npc.location.x = new_x
-					npc.location.y = new_y
-					-- play a sound
-					if npc.sounds.move ~= nil then
-						npc.sounds.distance:play()
-					        npc.sounds.attack:setVolume(2)
-					elseif npc.sounds.distance ~= nil then
-						if rng:random(1,10) == 1 then
-							npc.sounds.distance:play()
-					        	npc.sounds.distance:setVolume(2)
+					-- check we have movement scheduled
+					if direction_to_move_x ~= 0 or direction_to_move_y ~= 0 then
+						-- move
+						npc.location.x = new_x
+						npc.location.y = new_y
+						-- play a sound
+						if npc.sounds.move ~= nil then
+							npc.sounds.move:play()
+						        npc.sounds.move:setVolume(2)
+						elseif npc.sounds.distance ~= nil then
+							if rng:random(1,10) == 1 then
+								npc.sounds.distance:play()
+						        	npc.sounds.distance:setVolume(2)
+							end
+						end
+					else
+						-- npc is stuck, express anger
+						logMessage(notifyMessageColor,npc.name .. " is stuck and angry!")
+						if npc.sounds.attack ~= nil then
+                                                	npc.sounds.attack:play()
+                                                	npc.sounds.attack:setVolume(2)
 						end
 					end
 				end
