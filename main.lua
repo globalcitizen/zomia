@@ -1281,11 +1281,12 @@ function endTurn()
 					logMessage(bloodColor,'The ' .. npc.name .. ' would attack you! (If code existed)')
 				else
 					-- move toward the player using a dijkstra map for routing
-					logMessage(notifyMessageColor,'The ' .. npc.name .. ' would move toward you! (If code existed)')
 					--  note: right now we just use one callback that says no monster can open doors.
-					player_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors)
+					player_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors_or_npcs)
 					player_dijkstra_map:compute()
 					direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
+					if direction_to_move_x == nil then direction_to_move_x = 0 end
+					if direction_to_move_y == nil then direction_to_move_y = 0 end
 					local new_x = npc.location.x + direction_to_move_x
 					local new_y = npc.location.y + direction_to_move_y
 					-- check no other NPCs have occupied the space
@@ -1302,11 +1303,23 @@ function endTurn()
 						local special_snowflake_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors_or_npcs)
 						special_snowflake_dijkstra_map:compute()
 						direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
+						if direction_to_move_x == nil then direction_to_move_x = 0 end
+						if direction_to_move_y == nil then direction_to_move_y = 0 end
                                         	new_x = npc.location.x + direction_to_move_x
                                         	new_y = npc.location.y + direction_to_move_y
 					end
 					npc.location.x = new_x
 					npc.location.y = new_y
+					-- play a sound
+					if npc.sounds.move ~= nil then
+						npc.sounds.distance:play()
+					        npc.sounds.attack:setVolume(2)
+					elseif npc.sounds.distance ~= nil then
+						if rng:random(1,10) == 1 then
+							npc.sounds.distance:play()
+					        	npc.sounds.distance:setVolume(2)
+						end
+					end
 				end
 			end
 	
