@@ -1,6 +1,6 @@
 npc_types['midnight_jelly'] = {
 			name="Midnight Jelly",
-			color={40,40,0},
+			color={140,240,30},
 			hostile=true,
 			move='attack',
 			vocal=true,
