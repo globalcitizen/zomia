@@ -1260,6 +1260,7 @@ function endTurn()
 
 		-- if they have seen the player and are hostile
 		if npc.seen_player == true and npc.hostile==true then
+			--[[
 			-- if they have line of sight to the player...
 			local visible = false
 			for i=1,#visibleTiles,1 do
@@ -1269,7 +1270,8 @@ function endTurn()
 					break
 				end
 			end
-			if visible == true then
+			--]]
+			if true then	-- disabled logic here ;)
 				-- move toward or attack the player
 				x_distance = characterX-npc.location.x
 				y_distance = characterY-npc.location.y
@@ -1280,6 +1282,31 @@ function endTurn()
 				else
 					-- move toward the player using a dijkstra map for routing
 					logMessage(notifyMessageColor,'The ' .. npc.name .. ' would move toward you! (If code existed)')
+					--  note: right now we just use one callback that says no monster can open doors.
+					player_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors)
+					player_dijkstra_map:compute()
+					direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
+					local new_x = npc.location.x + direction_to_move_x
+					local new_y = npc.location.y + direction_to_move_y
+					-- check no other NPCs have occupied the space
+					local occupied = false
+					for _,other_npc in pairs(npcs) do
+						if other_npc.location.x == new_x and other_npc.location.y == new_y then
+							occupied = true
+							break
+						end
+					end
+					-- if the target location was occupied, recalculate the entire dijkstra map for this monster,
+					-- who we will denote a 'special snowflake'. this should not fail, so we do no success checks.
+					if occupied == true then
+						local special_snowflake_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors_or_npcs)
+						special_snowflake_dijkstra_map:compute()
+						direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
+                                        	new_x = npc.location.x + direction_to_move_x
+                                        	new_y = npc.location.y + direction_to_move_y
+					end
+					npc.location.x = new_x
+					npc.location.y = new_y
 				end
 			end
 	
@@ -1727,4 +1754,31 @@ function groundtype(x,y)
 	else
 		return 'gravel'
 	end
+end
+
+-- check if a given tile is passable for a monster
+function tile_is_passable_without_closed_doors(x,y)
+	-- only return true for open doors and floor
+	if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
+		return true
+	end
+	return false
+end
+
+-- check if a given tile is passable for a monster, and is not occupied by other monsters
+function tile_is_passable_without_closed_doors_or_npcs(x,y)
+	local occupied = false
+        -- only return true for open doors and floor
+        if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
+		-- but only if the tile also has no NPCs
+		for _,npc in pairs(npcs) do
+			if npc.location.x == x and npc.location.y == y then
+				occupied=true
+			end
+		end
+		if occupied == false then
+                	return true
+		end
+        end
+        return false
 end
