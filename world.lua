@@ -218,6 +218,20 @@ function map_sanitize(map)
 				if wallcount ~= 2 then
 					-- remove the door by setting it to 1 (floor)
 					map[x][y] = 1
+				else
+                                	-- the door still exists. check there are no diagonally adjacent doors, which causes graphical issues
+					local found_a_diagonal = false
+					for i=5,8,1 do
+						dir = directions[i]
+						if map[x+dir[1]][y+dir[2]] == 2 or map[x+dir[1]][y+dir[2]] == 3 then
+							found_a_diagonal = true
+							break
+						end
+					end
+					if found_a_diagonal == true then
+						-- remove the door by setting it to 1 (floor)
+						map[x][y] = 1
+					end
 				end
 			end
 		end
