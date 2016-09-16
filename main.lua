@@ -1333,7 +1333,7 @@ function endTurn()
                                         	new_y = npc.location.y + direction_to_move_y
 					end
 					-- check we have movement scheduled
-					if direction_to_move_x ~= 0 or direction_to_move_y ~= 0 and tile_is_passable_no_npcs(new_x,new_y) then
+					if (direction_to_move_x ~= 0 or direction_to_move_y ~= 0) and tile_is_passable_no_npcs(new_x,new_y) then
 						-- move
 						npc.location.x = new_x
 						npc.location.y = new_y
