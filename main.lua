@@ -1219,10 +1219,21 @@ end
 
 function closedoor(x,y)
 	if tilemap[x][y] == 3 then
-		local instance = sounds['door_close']:play()
-		instance:setVolume(0.8)
-		logMessage(notifyMessageColor,"You closed the door.")
-		tilemap[x][y] = 2
+		-- first, check there are no NPCs standing in the way
+		local failed = false
+        	for i,npc in ipairs(npcs) do
+			local l=npc.location
+			if l.x == x and l.y == y then
+				failed=true
+				break
+			end
+		end
+		if not failed then
+			local instance = sounds['door_close']:play()
+			instance:setVolume(0.8)
+			logMessage(notifyMessageColor,"You closed the door.")
+			tilemap[x][y] = 2
+		end
 	end
 end
 
@@ -1846,7 +1857,6 @@ function tile_is_passable_no_npcs(x,y)
 		-- but only if the tile also has no NPCs
 		for _,npc in pairs(npcs) do
 			if npc.location.x == x and npc.location.y == y then
-				print(x .. "/" .. y .. " impassible due to NPC.")
 				return false
 			end
 		end
