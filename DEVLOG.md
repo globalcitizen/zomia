@@ -9,6 +9,8 @@
     - Add impact noises for player hits
     - Add new NPC `midnight_jelly`
     - Make wall impact and fighting different arcade-style visual effects
+       - Re-adjust these
+    - More ambient tracks for `natural_cave` area
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
