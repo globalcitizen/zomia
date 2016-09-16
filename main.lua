@@ -999,8 +999,8 @@ function moveCharacterRelatively(x,y)
 			end
 		else
 			shack:setShake(20)
-			shack:setRotation(.1)
-			shack:zoom(1.05)
+			shack:setRotation(.3)
+			shack:zoom(1.35)
 		end
 	else
 		shack:setShake(20)

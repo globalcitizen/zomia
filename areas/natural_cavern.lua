@@ -46,6 +46,7 @@ area_types['natural_cavern'] = {
 					instance.npcs = {}
 				        add_npcs(instance.npcs,'bear',5)
 				        add_npcs(instance.npcs,'goblin',5)
+				        add_npcs(instance.npcs,'midnight_jelly',5)
 				        add_npcs(instance.npcs,'mouse',1)
 			
 				        -- ground features
