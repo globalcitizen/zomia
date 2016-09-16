@@ -12,9 +12,10 @@
 --   https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/
 -- 
 --  Feel free to hack it to pieces, fork it, improve it, whatever. However, be aware
---  that the code currently relies on a few external functions: tilemap_new() and
---  tilemap_show() for example; as well as the rotLove library for cellular automata
---  support (critical for the frequently used 'cavern' type room generator).
+--  that the code currently relies on a few external functions: tilemap_*() functions,
+--  a preinitialized rng object with a random() method; as well as the rotLove library 
+--  for cellular automata support (critical for the frequently used 'cavern' type room 
+--  generator).
 --
 --  Note of caution:
 --    As I am not really comfortable in C *and* I am new to Lua there are probably
