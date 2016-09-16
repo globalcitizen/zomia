@@ -1348,6 +1348,8 @@ function ascend()
 end
 
 function attack_npc(i)
+	sounds.impact.hit:setVolume(2)
+	sounds.impact.hit:play()
 	npc=npcs[i]
 	npc.sounds.attack:setVolume(3)
 	npc.sounds.attack:play()
