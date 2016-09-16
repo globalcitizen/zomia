@@ -8,15 +8,7 @@ area_types['natural_cavern'] = {
 					local new_tilemap
 					new_tilemap = tilemap_new()
 
-					-- OLD generate tilemap
-					--[[
-					        cl=ROT.Map.Cellular:new(resolutionTilesX, resolutionTilesY) -- , {connected=true})
-					        cl:randomize(.50)  -- .50 is the probability any given tile is a floor
-					        cl=ROT.Map.Rogue:new(resolutionTilesX, resolutionTilesY)
-					        cl:create(tile_callback)
-					--]]
-
-					-- NEW generate tilemap
+					-- generate tilemap
         				--  width,
         				--  height,
         				--  changeDirectionModifier,    (10 = super straight, 90 = wiggly as hell)   = "wiggliness"
@@ -46,6 +38,7 @@ area_types['natural_cavern'] = {
                         				end
                 				end
         				end
+
 					-- assign new map
 					instance.map=new_tilemap
 
@@ -105,4 +98,3 @@ area_types['natural_cavern'] = {
 					instance.fov = 15
 				 end
 		       	    }
-
