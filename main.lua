@@ -531,10 +531,10 @@ end
 
 function draw_doors_visibilitylimited()
 	-- draw doors (on top of the map tilemap)
-        for i=1,#visibleTiles,1 do
-                local tile = visibleTiles[i]
-                x=tile.x
-                y=tile.y
+        for i,p in pairs(seenTiles) do
+                local tile = split(i,',')
+                x=tile[1]+0
+                y=tile[2]+0
 		if tilemap[x] ~= nil and tilemap[x][y] ~= nil then
 			-- if horizontal door
 			if (x>1 and tilemap[x-1][y] == 0) or (x<resolutionTilesX and tilemap[x+1][y] == 0) then
@@ -665,8 +665,19 @@ function draw_npcs_visibilitylimited()
 		end
 		-- yes, it's visible
 		if found==true then
-			-- first, 'wake up' the NPC and allow it to notice the player
-			npcs[i]['seen_player'] = true
+			-- first, 'wake up' the NPC and allow it to notice the player, if appropriate
+			if npcs[i].seen_player == nil or (npcs[i].seen_player ~= nil and npcs[i].seen_player ~= true) then
+				-- 'wake up'
+				npcs[i].seen_player = true
+				-- play a sound
+                                if npcs[i].sounds.target ~= nil then
+                                	npcs[i].sounds.target:play()
+                                	npcs[i].sounds.target:setVolume(2)
+                                elseif npcs[i].sounds.attack ~= nil then
+                                	npcs[i].sounds.attack:play()
+                                	npcs[i].sounds.attack:setVolume(2)
+                                end
+			end
 			-- now draw it
 			if npcs[i]['color'] ~= nil then
 				love.graphics.setColor(npcs[i]['color'])
@@ -1087,6 +1098,10 @@ function randomStandingLocationWithoutNPCsOrPlayer(thetilemap)
 					end
 				end
 			end
+			-- search character coordinates
+			if characterX == x and characterY == y then
+				failed = failed + 1
+			end
 			failed = failed - 1
 		end
 	end
@@ -1282,25 +1297,34 @@ function endTurn()
 				else
 					-- move toward the player using a dijkstra map for routing
 					--  note: right now we just use one callback that says no monster can open doors.
-					player_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors_or_npcs)
+					player_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_assuming_open_doors_no_npcs)
 					player_dijkstra_map:compute()
 					direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
 					if direction_to_move_x == nil then direction_to_move_x = 0 end
 					if direction_to_move_y == nil then direction_to_move_y = 0 end
 					local new_x = npc.location.x + direction_to_move_x
 					local new_y = npc.location.y + direction_to_move_y
-					-- check no other NPCs have occupied the space
+					-- a few checks
 					local occupied = false
-					for _,other_npc in pairs(npcs) do
-						if other_npc.location.x == new_x and other_npc.location.y == new_y then
-							occupied = true
-							break
+					-- check the space is not a closed door
+					if tilemap[new_x][new_y] == 2 then
+						occupied = true
+					else
+						-- check no other NPCs have occupied the space
+						for _,other_npc in pairs(npcs) do
+							if other_npc.location.x == new_x and other_npc.location.y == new_y then
+								occupied = true
+								break
+							end
 						end
 					end
 					-- if the target location was occupied, recalculate the entire dijkstra map for this monster,
 					-- who we will denote a 'special snowflake'. this should not fail, so we do no success checks.
+					-- note that a common use of this is a monster who has been routed assuming an open door, but reaches
+					-- it closed and then has to think otherwise. this has the effect of at least bunching monsters at
+					-- the door they cannot pass where they last saw the player, if the player closed it.
 					if occupied == true then
-						local special_snowflake_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_without_closed_doors_or_npcs)
+						local special_snowflake_dijkstra_map = ROT.DijkstraMap:new(characterX, characterY, #tilemap, #tilemap[1], tile_is_passable_no_npcs)
 						special_snowflake_dijkstra_map:compute()
 						direction_to_move_x,direction_to_move_y = player_dijkstra_map:dirTowardsGoal(npc.location.x,npc.location.y)
 						if direction_to_move_x == nil then direction_to_move_x = 0 end
@@ -1789,8 +1813,26 @@ function tile_is_passable_without_closed_doors(x,y)
 	return false
 end
 
--- check if a given tile is passable for a monster, and is not occupied by other monsters
-function tile_is_passable_without_closed_doors_or_npcs(x,y)
+-- check if a given tile is passable for a monster, assuming doors are open/passable, and is not occupied by other monsters
+function tile_is_passable_assuming_open_doors_no_npcs(x,y)
+	local occupied = false
+        -- only return true for open or closed doors and floor
+        if tilemap[x][y] == 1 or tilemap[x][y] == 2 or tilemap[x][y] == 3 then
+		-- but only if the tile also has no NPCs
+		for _,npc in pairs(npcs) do
+			if npc.location.x == x and npc.location.y == y then
+				occupied=true
+			end
+		end
+		if occupied == false then
+                	return true
+		end
+        end
+        return false
+end
+
+-- check if a given tile is passable for a monster, WITHOUT assuming doors are open/passable, and is not occupied by other monsters
+function tile_is_passable_no_npcs(x,y)
 	local occupied = false
         -- only return true for open doors and floor
         if tilemap[x][y] == 1 or tilemap[x][y] == 3 then
@@ -1806,3 +1848,4 @@ function tile_is_passable_without_closed_doors_or_npcs(x,y)
         end
         return false
 end
+
