@@ -1294,6 +1294,11 @@ function endTurn()
 				if math.abs(x_distance) <= 1 and math.abs(y_distance) <= 1 then
 					-- attack the player!
 					logMessage(bloodColor,'The ' .. npc.name .. ' would attack you! (If code existed)')
+					player.health = player.health - 1
+                                        if npc.sounds.attack ~= nil then
+                                        	npc.sounds.attack:play()
+                                                npc.sounds.attack:setVolume(2)
+                                        end
 				else
 					-- move toward the player using a dijkstra map for routing
 					--  note: right now we just use one callback that says no monster can open doors.
