@@ -50,6 +50,26 @@ npc_types['midnight_jelly'] = {
 "sounds/impact/slime-feast-2.mp3",
 "sounds/impact/slime-feast-3.mp3"
 							     }),
+				move=love.audio.newSource({
+"sounds/impact/slime-1.mp3",
+"sounds/impact/slime-10.mp3",
+"sounds/impact/slime-11.mp3",
+"sounds/impact/slime-12.mp3",
+"sounds/impact/slime-13.mp3",
+"sounds/impact/slime-14.mp3",
+"sounds/impact/slime-15.mp3",
+"sounds/impact/slime-16.mp3",
+"sounds/impact/slime-17.mp3",
+"sounds/impact/slime-18.mp3",
+"sounds/impact/slime-2.mp3",
+"sounds/impact/slime-3.mp3",
+"sounds/impact/slime-4.mp3",
+"sounds/impact/slime-5.mp3",
+"sounds/impact/slime-6.mp3",
+"sounds/impact/slime-7.mp3",
+"sounds/impact/slime-8.mp3",
+"sounds/impact/slime-9.mp3"
+							     }),
 				distance=love.audio.newSource({
 "sounds/impact/slime-1.mp3",
 "sounds/impact/slime-10.mp3",
