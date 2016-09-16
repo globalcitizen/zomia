@@ -37,13 +37,12 @@ function mapgen_broguestyle(width,height)
 
 	-- First, place a room.
 	new_tilemap = mapgen_broguestyle_design_random_room(new_tilemap)
-	tilemap_show(new_tilemap,"First room")
-	os.exit()
-
+	--os.exit()
 	if new_tilemap == nil then
 		print("ERROR: tilemap is nil after randomroom.")
 		os.exit()
 	end
+	tilemap_show(new_tilemap,"First room")
 
 --[[ 
 Then, it draws another room on another grid, which it slides like a piece of cellophane over the level until the new room fits snugly against an existing room without touching or overlapping. When there’s a fit, it transfers the room from the cellophane to the master grid and punches out a door. It does that repeatedly until it can’t fit any more rooms.
@@ -213,7 +212,7 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 	]]--
 
 	-- currently we have only implemented room types 0-5 and 7.
-	roomtype = 6
+	roomtype = 7
 	--roomtype = rng:random(0,4)
 	if roomtype == 0 then							-- OK, works (but half off top of map)
 		room = mapgen_broguestyle_room_cross(tilemap)
@@ -227,7 +226,7 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 		room = mapgen_broguestyle_room_entrance(tilemap)
 	elseif roomtype == 5 then						-- OK
 		room = mapgen_broguestyle_room_chunky(tilemap)
-	elseif roomtype == 6 then						-- WAITING FOR INTEGRATION WITH ROTLOVE
+	elseif roomtype == 6 then						-- MOSTLY OK (some failures)
 		-- Cave, one of three types...
 		--  Note that the resolution of the axes in the default code (against which the magic values below
 		--  were defined) is significant, and that resolution is 79x29 (see Rogue.h in Brogue source)
@@ -265,17 +264,17 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 		-- Finally, we generate the room
 		print("mapgen_broguestyle_design_random_room() calling with " .. #tilemap .. "x" .. #tilemap[1] .. " tilemap, width=" .. min_width .. "-" .. max_width .. ", height=" .. min_height .. "-" .. max_height)
 		room = mapgen_broguestyle_room_cavern(tilemap, min_width, min_height, max_width, max_height)
-	elseif roomtype == 7 then						-- WAITING FOR INTEGRATION WITH ROTLOVE
+	elseif roomtype == 7 then
 		-- Cavern (the kind that fills a level)
-            	room = mapgen_broguestyle_room_cavern(tilemap, 8, 8, #tilemap[1]-2, #tilemap-2);
+            	room = mapgen_broguestyle_room_cavern(tilemap, 8, 8, #tilemap-2, #tilemap[1]-2);
 	end
 
 	-- ok, now we have it
 	tilemap_show(room,"Temporary Room (type = " .. roomtype .. ")")
-	os.exit()
+	--os.exit()
 
+--[[
 	-- time to copy it in to the tilemap
-	
 	if doorsites ~= nil then
 		mapgen_broguestyle_choose_random_doorsites(tilemap,doorsites)
 		if attach_hallway then
@@ -287,16 +286,16 @@ function mapgen_broguestyle_design_random_room(tilemap,attach_hallway,doorsites,
 					dir = (dir + 1) % 4 -- each room will have at least 2 valid directions for doors.
 				end
 			end
-			tilemap = mapgen_broguestyle_attach_hallway_to(tilemap, doorsites);
+			room = mapgen_broguestyle_attach_hallway_to(room, doorsites);
 		end
 	end
-
-	if tilemap == nil then
+--]]
+	if room == nil then
 		print("ERROR: randomroom returning nil tilemap.")
 		os.exit()
 	end
 
-	return tilemap
+	return room
 end
 
 -- Cross ('+')-shaped room
@@ -497,6 +496,13 @@ end
 
 
 -- Generate a 'blob' (cellular automata based random shape result) that meets the required specifications
+--  Note that the variables below are required for re-palcement of the blob by the calling function.
+top_blob_min_x = 0
+top_blob_max_x = 0
+top_blob_min_y = 0
+top_blob_max_y = 0
+top_blob_width = 0
+top_blob_height = 0
 function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, min_width, min_height, max_width, max_height, percent_seeded)
 
 	-- verify input
@@ -534,14 +540,14 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 	local top_blob_number = 0
 	while attempt <= max_attempts do
 
-		-- reset inter-function global
+		-- reset inter-function olobal
 		mapgen_broguestyle_room_cavern_callback_tilemap = tilemap_new(#tilemap,#tilemap[1])
 
 		-- perform cellular automata based blob generation
 		--  NOTE: previously tilemap dimensions * 0.7 were used for width/height
 		--  NOTE: could try 'minimumZoneArea: 10'
 		local minimum_blob_area = math.max(min_width,min_height)*3
-        	cl = ROT.Map.Cellular:new(math.floor(#tilemap*0.7),math.floor(#tilemap[1]*0.7),{survive={4,5,6,7,8},minimumZoneArea=minimum_blob_area})
+        	cl = ROT.Map.Cellular:new(math.floor(#tilemap*0.7),math.floor(#tilemap[1]*0.7),{survive={4,5,6,7,8},minimumZoneArea=minimum_blob_area},rng)
         	cl:randomize(percent_seeded/100)
         	for i=1,iterations,1 do
         	        cl:create(mapgen_broguestyle_room_cavern_tile_callback_helper)
@@ -558,10 +564,10 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 		--  (these are best-of variables; we begin with worst-case values)
                 local top_blob		= 0
                 local top_blob_size	= 0
-                local top_blob_min_x	= max_width
-                local top_blob_max_x	= 0
-                local top_blob_min_y	= max_height
-                local top_blob_max_y	= 0
+                top_blob_min_x	= max_width
+                top_blob_max_x	= 0
+                top_blob_min_y	= max_height
+                top_blob_max_y	= 0
 
 		-- fill each blob with its own number, starting with 2 (since 1 means floor), and keeping track of the biggest
                 blob_number = 2
@@ -669,6 +675,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				-- success
 				success = true
 				break
+--[[
 			-- otherwise, if flipping get us what we want...
 			elseif top_blob_height > min_width and top_blob_height < max_width and
 			       top_blob_width > min_height and top_blob_width < max_height then
@@ -677,7 +684,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				local tmp_blob = tilemap_new(#mapgen_broguestyle_room_cavern_callback_tilemap,#mapgen_broguestyle_room_cavern_callback_tilemap[1],0)
 				for x=1,#mapgen_broguestyle_room_cavern_callback_tilemap,1 do
 					for y=1,#mapgen_broguestyle_room_cavern_callback_tilemap[1],1 do
-						print("Flipping " .. x .. "/" .. y .. " to " .. (x-top_blob_min_x) .. "/" .. (y-top_blob_min_y) .. ".")
+						print("Flipping " .. x .. "/" .. y .. " to " .. (x-top_blob_min_x) .. "(" .. x .. " - " .. top_blob_min_x .. ") /" .. (y-top_blob_min_y) .. " (" .. y .. " - " .. top_blob_min_y .. ".")
 						tmp_blob[y-top_blob_min_y][x-top_blob_min_x] = mapgen_broguestyle_room_cavern_callback_tilemap[x][y]
 					end
 				end
@@ -686,6 +693,7 @@ function mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, 
 				-- success
 				success = true
 				break
+--]]
 			else
 				-- our blob is unworkable
 				print("WARNING: Blob " .. top_blob_width .. "x" .. top_blob_height .. " did not match requisite dimensions (ie. (" .. min_width .. "-" .. max_width .. ")x(" .. min_height .. "-" .. max_height .. ") tiles).")
@@ -742,7 +750,13 @@ function mapgen_broguestyle_room_cavern(tilemap,minwidth,minheight,maxwidth,maxh
 	grid = mapgen_broguestyle_room_cavern_create_blob_helper(tilemap, iterations, minwidth, minheight, maxwidth, maxheight, percent_seeded)
 	tilemap_show_cute(grid,"Raw blobgrid")
 
-	os.exit()
+	-- we have the following variables set in addition to the tilemap:
+	--  top_blob_min_x
+	--  top_blob_max_x
+	--  top_blob_min_y
+	--  top_blob_max_y
+	--  top_blob_width 
+	--  top_blob_height
 
 	--[[
         // Position the new cave in the middle of the grid...
@@ -759,8 +773,22 @@ function mapgen_broguestyle_room_cavern(tilemap,minwidth,minheight,maxwidth,maxh
         // ...and copy it to the master grid.
     insertRoomAt(grid, blobGrid, destX - caveX, destY - caveY, fillX, fillY);
 	--]]
-
-	--tilemap = tilemap_overwrite(tilemap,blobgrid,(#tilemap-#blobgrid)/2 - #blobgrid, (#tilemap[1]-#blobgrid[1],
+	local dest_x = math.floor(#tilemap    - top_blob_width  / 2)
+	local dest_y = math.floor(#tilemap[1] - top_blob_height / 2)
+	local x = 1
+	local fill_x = 0
+	local fill_y = 0
+	while x<#grid and fill_x == 0 do
+		for y=1, #grid[1], 1 do
+			if grid[x][y] == 1 then
+				fill_x = x
+				fill_y = y
+				break
+			end
+		end
+		x = x + 1
+	end
+	tilemap = mapgen_broguestyle_insert_room_at(tilemap, blobgrid, dest_x - top_blob_min_x, dest_y - top_blob_min_y, fill_x, fill_y)
 
 	-- return room
 	tilemap_show(grid,"room_cavern")
@@ -1571,3 +1599,55 @@ function mapgen_broguestyle_valid_stair_loc(tilemap,x,y)
 	return false
 end
 
+-- Copy a room from a single-room tilemap to another tilemap, where the destination tilemap contains 0 and the single-room tilemap contains non-zero
+function mapgen_broguestyle_insert_room_at(tilemap,roommap,room_to_dungeon_x,room_to_dungeon_y,x_room,y_room)
+--[[
+void insertRoomAt(short **dungeonMap, short **roomMap, const short roomToDungeonX, const short roomToDungeonY, const short xRoom, const short yRoom) {
+--]]
+
+--[[
+    short newX, newY;
+    enum directions dir;
+
+    brogueAssert(coordinatesAreInMap(xRoom + roomToDungeonX, yRoom + roomToDungeonY));
+--]]
+	local dest_x = x_room + room_to_dungeon_x
+	local dest_y = y_room + room_to_dungeon_y
+
+	if not tilemap_coordinates_valid(tilemap,dest_x,dest_y) then
+		print ("FATAL: Coordinates " .. dest_x .. "/" .. dest_y .." are invalid.")
+		os.exit()
+	end
+
+--[[
+    dungeonMap[xRoom + roomToDungeonX][yRoom + roomToDungeonY] = 1;
+    for (dir = 0; dir < 4; dir++) {
+        newX = xRoom + nbDirs[dir][0];
+        newY = yRoom + nbDirs[dir][1];
+        if (coordinatesAreInMap(newX, newY)
+            && roomMap[newX][newY]
+            && coordinatesAreInMap(newX + roomToDungeonX, newY + roomToDungeonY)
+            && dungeonMap[newX + roomToDungeonX][newY + roomToDungeonY] == 0) {
+
+            insertRoomAt(dungeonMap, roomMap, roomToDungeonX, roomToDungeonY, newX, newY);
+        }
+    }
+}--]]
+
+	-- NOTE: possibly issues here with first argument of tilemap_coordinates_valid() calls specifying wrong map for coordinates check
+	tilemap[dest_x][dest_y] = 1
+	for dir=1,4,1 do
+		dest_x = x_room + directions[dir][1]
+		dest_y = y_room + directions[dir][2]
+		if tilemap_coordinates_valid(tilemap,dest_x,dest_y) and
+		   roommap[dest_x][dest_y] ~= 0 and											-- source roommap tile is not 0
+		   tilemap_coordinates_valid(tilemap,dest_x + room_to_dungeon_x, dest_y + room_to_dungeon_y) and				-- coordi
+		   tilemap[dest_x + room_to_dungeon_x][dest_y + room_to_dungeon_y] == 0 then						-- destination tilemap is 0
+			-- copy
+			mapgen_broguestyle_insert_room_at(tilemap, roommap, room_to_dungeon_x, roomt_to_dungeon_y, dest_x, dest_y)
+		end
+		   
+	end
+
+	return tilemap
+end
