@@ -89,7 +89,8 @@ function world_load_area(z,x,y)
 
 	-- YOU. CANT. Stop the music
 	for i,m in pairs(current_area_music) do
-                table.insert(tweens,flux.to(m,2,{volume=0}))
+		m:stop()
+                --table.insert(tweens,flux.to(m,2,{volume=0}))		-- doesn't work
 	end
 	current_area_music = {}
 
