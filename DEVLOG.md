@@ -5,6 +5,7 @@
     - Fixed doors issue
     - Made inter-level fades work and got tweening happening (switched from tween.lua to flux library)
     - Additional audio modifications
+    - Impact sounds (identification, processing)
 
  * __2016-09-15__ (2-3 days remaining / 14 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
