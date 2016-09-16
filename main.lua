@@ -3,7 +3,8 @@ ROT=require 'libs/rotLove/rotLove/rotLove'
 astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
 shack=require 'libs/shack/shack'
-tween=require 'libs/tween/tween'
+flux=require 'libs/flux/flux'
+tweens={}
 
 -- game portions
 require 'npcs'
@@ -250,7 +251,8 @@ function love.draw()
 end
 
 function love.update(dt)
- shack:update(dt)
+	shack:update(dt)
+	flux.update(dt)
 end
 
 function draw_fade()
@@ -651,8 +653,8 @@ function draw_npcs_visibilitylimited()
 		-- check if it's in the list of visible tiles
 
 		-- cheat and display a dot on each unseen NPC
-		--love.graphics.setColor(255,255,255,255)
-		--love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+(characterSmallness+3),(l['y']-1)*tilePixelsY+(characterSmallness+3),tilePixelsX-(characterSmallness+3)*2,tilePixelsY-(characterSmallness+3)*2)
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+(characterSmallness+3),(l['y']-1)*tilePixelsY+(characterSmallness+3),tilePixelsX-(characterSmallness+3)*2,tilePixelsY-(characterSmallness+3)*2)
 		local found=false
 		for j=1,#visibleTiles,1 do
                 	local tile = visibleTiles[j]
@@ -1318,7 +1320,12 @@ function descend()
 		logMessage(notifyMessageColor,'Descending...')
 		sound = sounds.stairs.stone.down:play()
                 sound:setVolume(0.5)
-                world_load_area(world_location.z-1,world_location.x,world_location.y)
+		keyboard_input_disabled = true
+		table.insert(tweens,flux.to(fade_factor,2,{black=1}):oncomplete(function() 
+				world_load_area(world_location.z-1,world_location.x,world_location.y)
+				table.insert(tweens,flux.to(fade_factor,1,{black=0}))
+				keyboard_input_disabled = false
+				end))
 	else
 		logMessage(failMessageColor,'There is no way down here!')
 	end
@@ -1329,8 +1336,12 @@ function ascend()
 		logMessage(notifyMessageColor,'Ascending...')
 		sound = sounds.stairs.stone.up:play()
                 sound:setVolume(0.5)
-		local fadeTween=tween.new(2,fade_factor,{black=1},'inQuint')
-                world_load_area(world_location.z+1,world_location.x,world_location.y)
+		keyboard_input_disabled = true
+		table.insert(tweens,flux.to(fade_factor,2,{black=1}):oncomplete(function() 
+				world_load_area(world_location.z+1,world_location.x,world_location.y)
+				table.insert(tweens,flux.to(fade_factor,1,{black=0}))
+				keyboard_input_disabled = false
+				end))
 	else
 		logMessage(failMessageColor,'There is no way up here!')
 	end

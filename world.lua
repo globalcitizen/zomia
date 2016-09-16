@@ -198,6 +198,9 @@ function world_load_area(z,x,y)
 	 characterY = upstairs[1].y
 	end
 
+	-- update visibility
+        update_draw_visibility_new()
+
 end
 
 
