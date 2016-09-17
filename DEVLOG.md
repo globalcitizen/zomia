@@ -10,6 +10,8 @@
     - Make battles leave blood pools
     - De-duplicate blood pools
     - Make player structure similar to NPCs
+    - Make good messages in combat a different color
+    - Notify player when things die
 
  * __2016-09-16__ (1-2 days remaining / 15 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
