@@ -4,6 +4,70 @@ npc_types['goblin'] = {
 			hostile=true,
 			move='attack',
 			vocal=true,
+                        armour={
+                                        {
+                                                type="flesh",
+                                                natural=true,                   -- means cannot be lost/destroyed
+                                                value=2                         -- defensively quite ok
+                                        }
+                        },
+                        weapons={
+                                        {
+                                                weapon_name='sword',
+                                                natural=false,
+                                                likelihood=5,
+                                                attacks={
+                                                        {
+								likelihood=4,
+                                                                attack_verbs={'swings','slashes','slices','cleaves','scrapes','lacerates','chops','rends','carves','hacks','incises','cuts'},
+                                                                damage={dice_qty=1,dice_sides=6,plus=0},
+                                                                critical_chance_multiplier=1.8
+                                                        },
+                                                        {
+								likelihood=6,
+                                                                attack_verbs={'pokes','skewers','pierces','lances','stabs','perforates','pricks','spears','sticks'},
+                                                                damage={dice_qty=1,dice_sides=4,plus=0},
+                                                                critical_chance_multiplier=0.8
+                                                        }
+                                                }
+                                        },
+                                        {
+                                                weapon_name='body',
+                                                natural=true,
+                                                likelihood=1,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'bashes','knocks','charges','runs in to','smashes'},
+                                                                damage={dice_qty=1,dice_sides=4,plus=1},
+                                                                critical_chance_multiplier=0.3
+                                                        }
+                                                }
+                                        },
+                                        {
+                                                weapon_name='foot',
+                                                natural=true,
+                                                likelihood=2,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'kicks','roundhouses','punts','side kicks','crescent kicks','reverse roundhouses'},
+                                                                damage={dice_qty=1,dice_sides=4,plus=0},
+                                                                critical_chance_multiplier=0.3
+                                                        }
+                                                }
+                                        },
+                                        {
+                                                weapon_name='fist',
+                                                natural=true,
+                                                likelihood=2,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'punches','whacks','smashes','hits','clocks'},
+                                                                damage={dice_qty=1,dice_sides=4,plus=0},
+                                                                critical_chance_multiplier=0.3
+                                                        }
+                                                }
+                                        }
+                        },
 			sounds={
 				attack=love.audio.newSource({
 					"sounds/impact/punch-1.mp3",

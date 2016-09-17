@@ -6,6 +6,26 @@ npc_types['mouse'] = {
 			move='attack',
 			tail=true,
 			vocal=true,
+                        armour={
+                                        {
+                                                type="flesh",
+                                                natural=true,
+                                                value=1
+                                        }
+                        },
+                        weapons={
+                                        {
+                                                weapon_name='teeth',
+                                                natural=true,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'bites','gnaws at','gnaws on','scrapes','nips'},
+                                                                damage={dice_qty=1,dice_sides=1,plus=0},
+                                                                critical_chance_multiplier=0.2
+                                                        }
+                                                }
+                                        }
+                        },
 			sounds={
 				attack=love.audio.newSource({
 								"npcs/mouse/mouse-1.mp3",

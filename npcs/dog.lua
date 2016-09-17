@@ -5,6 +5,27 @@ npc_types['dog'] = {
 			move='attack',
 			tail=true,
 			vocal=true,
+			health=10,
+			armour={
+                			{
+                        			type="flesh",
+                        			natural=true,                   -- means cannot be lost/destroyed
+                        			value=1                         -- defensively almost useless
+                			}
+            		},
+     			weapons={
+                			{
+                        			weapon_name='teeth',
+                        			natural=true,                   -- means cannot be disarmed
+                        			attacks={
+                                			{
+                                        			attack_verbs={'bites','gnaws','seizes','chomps on','takes a chunk out of','sinks in to'},
+                                        			damage={dice_qty=1,dice_sides=2,plus=0},
+                                        			critical_chance_multiplier=2
+                                			}
+                               			}
+                			}
+             		},
 			sounds={
 				attack=love.audio.newSource({
 									"npcs/dog/dog-bark-1.mp3",

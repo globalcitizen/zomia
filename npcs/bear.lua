@@ -4,6 +4,39 @@ npc_types['bear'] = {
 			hostile=true,
 			move='attack',
 			vocal=true,
+                        armour={
+                                        {
+                                                type="flesh",
+                                                natural=true,                   -- means cannot be lost/destroyed
+                                                value=2                         -- defensively quite ok
+                                        }
+                        },
+                        weapons={
+                                        {
+                                                weapon_name='teeth',
+                                                natural=true,
+						likelihood=2,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'bites','gnaws','seizes','chomps on','takes a chunk out of','sinks in to'},
+                                                                damage={dice_qty=2,dice_sides=6,plus=2},
+                                                                critical_chance_multiplier=3
+                                                        }
+                                                }
+                                        },
+                                        {
+                                                weapon_name='claws',
+                                                natural=true,
+                                                likelihood=8,
+                                                attacks={
+                                                        {
+                                                                attack_verbs={'whacks','scrapes','scratches','mauls','rips','vicerates','tears'},
+                                                                damage={dice_qty=2,dice_sides=4,plus=3},
+                                                                critical_chance_multiplier=1.5
+                                                        }
+                                                }
+                                        }
+                        },
 			sounds={
 				attack=love.audio.newSource({
 								"npcs/bear/bear-growl-1.mp3",
