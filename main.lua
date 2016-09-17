@@ -2006,7 +2006,7 @@ function player_is_dead()
 							"The energy saps from your body as you collapse, lifelessly.",
 							"Death washes over you like relief from a great horror.",
 							"Perhaps in death you shall find peace.",
-							"Ye shall rise again in eternal dreams."
+							"Ye shall rise again, victorious, in now-eternal dreams."
 						 }
 				centralMessage(death_messages[rng:random(1,#death_messages)])
         end))
