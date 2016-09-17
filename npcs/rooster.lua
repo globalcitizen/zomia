@@ -4,6 +4,26 @@ npc_types['rooster'] = {
 			hostile=false,
 			move='random',
 			vocal=true,
+                        armour={
+                                        {
+                                                type="flesh",
+                                                natural=true,
+                                                value=1
+                                        }
+                        },
+                        weapons={
+                                        {
+                                                name='beak',
+                                                natural=true,
+                                                attacks={
+                                                        {
+                                                                verbs={'pecks','pokes','scrapes','nips'},
+                                                                damage={dice_qty=1,dice_sides=1,plus=1},
+                                                                critical_chance_multiplier=0.2
+                                                        }
+                                                }
+                                        }
+                        },
 			sounds={
 				attack=love.audio.newSource({
 					"npcs/rooster/rooster-call-1.mp3",

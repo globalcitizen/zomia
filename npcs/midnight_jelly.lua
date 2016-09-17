@@ -13,24 +13,24 @@ npc_types['midnight_jelly'] = {
                         },
                         weapons={
                                         {
-                                                weapon_name='nebulous mouth-like opening',
+                                                name='nebulous mouth-like opening',
                                                 natural=true,
                                                 likelihood=3,
                                                 attacks={
                                                         {
-                                                                attack_verbs={'bites at','gnaws on','seizes','chomps on','absorbs part of','sinks in to','melds with','reverse-regurgitates'},
+                                                                verbs={'bites at','gnaws on','seizes','chomps on','absorbs part of','sinks in to','melds with','reverse-regurgitates'},
                                                                 damage={dice_qty=1,dice_sides=6,plus=2},
                                                                 critical_chance_multiplier=1.5
                                                         }
                                                 }
                                         },
                                         {
-                                                weapon_name='jelly',
+                                                name='jelly',
                                                 natural=true,
                                                 likelihood=7,
                                                 attacks={
                                                         {
-                                                                attack_verbs={'subsumes','absorbs','digests','dissolves','obtains','draws from','invests in'},
+                                                                verbs={'subsumes','absorbs','digests','dissolves','obtains','draws from','invests in'},
                                                                 damage={dice_qty=1,dice_sides=6,plus=0},
                                                                 critical_chance_multiplier=0.7
                                                         }

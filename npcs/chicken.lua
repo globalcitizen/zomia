@@ -13,11 +13,11 @@ npc_types['chicken'] = {
                         },
                         weapons={
                                         {
-                                                weapon_name='beak',
+                                                name='beak',
                                                 natural=true,
                                                 attacks={
                                                         {
-                                                                attack_verbs={'pecks','pokes','scrapes','nips'},
+                                                                verbs={'pecks','pokes','scrapes','nips'},
                                                                 damage={dice_qty=1,dice_sides=1,plus=0},
                                                                 critical_chance_multiplier=0.2
                                                         }

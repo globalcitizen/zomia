@@ -15,11 +15,11 @@ npc_types['mouse'] = {
                         },
                         weapons={
                                         {
-                                                weapon_name='teeth',
+                                                name='teeth',
                                                 natural=true,
                                                 attacks={
                                                         {
-                                                                attack_verbs={'bites','gnaws at','gnaws on','scrapes','nips'},
+                                                                verbs={'bites','gnaws at','gnaws on','scrapes','nips'},
                                                                 damage={dice_qty=1,dice_sides=1,plus=0},
                                                                 critical_chance_multiplier=0.2
                                                         }

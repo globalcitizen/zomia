@@ -15,11 +15,11 @@ npc_types['dog'] = {
             		},
      			weapons={
                 			{
-                        			weapon_name='teeth',
+                        			name='teeth',
                         			natural=true,                   -- means cannot be disarmed
                         			attacks={
                                 			{
-                                        			attack_verbs={'bites','gnaws','seizes','chomps on','takes a chunk out of','sinks in to'},
+                                        			verbs={'bites','gnaws','seizes','chomps on','takes a chunk out of','sinks in to'},
                                         			damage={dice_qty=1,dice_sides=2,plus=0},
                                         			critical_chance_multiplier=2
                                 			}

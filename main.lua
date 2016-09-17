@@ -1306,18 +1306,9 @@ function endTurn()
 				-- if the distance is no more than 1 in either direction, they are adjacent...
 				if math.abs(x_distance) <= 1 and math.abs(y_distance) <= 1 then
 					-- attack the player!
-					logMessage(bloodColor,'The ' .. npc.name .. ' would attack you! (If code existed)')
-					player.health = player.health - 1
-                                        if npc.sounds.attack ~= nil then
-                                        	npc.sounds.attack:play()
-                                                npc.sounds.attack:setVolume(2)
-                                        end
-					local amount = rng:random(20)+5
-                        		shack:setShake(20)
-					local amount = rng:random(1,3)*0.1
-                        		shack:setRotation(amount)
-					local amount = rng:random(30)+10
-                        		shack:zoom(1.25)
+					npc_attack(npc)
+
+
 				else
 					-- move toward the player using a dijkstra map for routing
 					--  note: right now we just use one callback that says no monster can open doors.
@@ -1872,5 +1863,64 @@ function tile_is_passable_no_npcs(x,y)
                	return true
 	end
         return false
+end
+
+
+-- attack the player with a given NPC
+function npc_attack(npc)
+
+	-- first, select a random weapon based upon weighted likelihoods (if present)
+	local weapon_selection = {}
+	for weapon_index,weapon in ipairs(npc.weapons) do
+		local chances=1
+		if weapon.likelihood ~= nil then
+			chances=weapon.likelihood
+		end
+		for i=1,chances,1 do
+			table.insert(weapon_selection,weapon_index)
+		end
+	end
+	local weapon = npc.weapons[weapon_selection[rng:random(1,#weapon_selection)]]
+	logMessage(notifyMessageColor," (selected weapon: " .. weapon.name .. ")")
+
+	-- next, select a random attack based upon weighted likelihoods (if present)
+	local attack_selection = {}
+	for attack_index,attack in ipairs(weapon.attacks) do
+		local chances=1
+		if attack.likelihood ~= nil then
+			chances=attack.likelihood
+		end
+		for i=1,chances,1 do
+			table.insert(attack_selection,attack_index)
+		end
+	end
+	local attack = weapon.attacks[attack_selection[rng:random(1,#attack_selection)]]
+	local attack_verb = attack.verbs[rng:random(1,#attack.verbs)]
+
+	-- now to business! calculate success and damage
+	local attack_successful = false
+	-- TODO
+
+	-- notify the player
+	logMessage(notifyMessageColor,"The " .. npc.name .. " " .. attack_verb .. " you with it's " .. weapon.name .. "...)")
+	
+	-- effects
+	if attack_successful then
+		-- reduce player health
+		player.health = player.health - 1
+		-- play a sound
+       		if npc.sounds.attack ~= nil then
+        		npc.sounds.attack:play()
+        	        npc.sounds.attack:setVolume(2)
+        	end
+		-- shake the screen for effect
+		--  (note: make this based on damage)
+		local amount = rng:random(20)+5
+        	shack:setShake(20)
+		local amount = rng:random(1,3)*0.1
+        	shack:setRotation(amount)
+		local amount = rng:random(30)+10
+        	shack:zoom(1.25)
+	end
 end
 
