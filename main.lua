@@ -34,7 +34,7 @@ fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
 player = {name="you",health=initial_health,max_health=initial_health}
-inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
+inventory = {dagger={qty=1,attack={qty=1,faces=3,bonus=1},name="Needle the dissector"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
 equipment = {left_hand='sword'}
 beautify=true
 simpleAreaShade=false
@@ -1918,7 +1918,6 @@ function attack(target,attacker)
 		end
 	end
 	local weapon = attacker.weapons[weapon_selection[rng:random(1,#weapon_selection)]]
-	logMessage(notifyMessageColor," (selected weapon: " .. weapon.name .. ")")
 
 	-- next, select a random attack based upon weighted likelihoods (if present)
 	local attack_selection = {}
@@ -1997,17 +1996,20 @@ function player_is_dead()
 
 	-- first, keep the sequence uninterrupted
 	keyboard_input_disabled=true
+
+	-- next, show the death message
+	death_messages = {
+				"You are overcome.",
+				"The energy saps from your body as you collapse,\nlifelessly.",
+				"Death washes over you\nlike relief from a great horror.",
+				"Perhaps in death you shall find peace.",
+				"Ye shall rise again,\nvictorious,\nin now-eternal dreams."
+			 }
+	centralMessage(death_messages[rng:random(1,#death_messages)])
 	
 	-- begin to fade the screen
-        table.insert(tweens,flux.to(fade_factor,4,{black=1}):oncomplete(function()
-				-- after fading, display a message
-				death_messages = {
-							"You are overcome.",
-							"The energy saps from your body as you collapse, lifelessly.",
-							"Death washes over you like relief from a great horror.",
-							"Perhaps in death you shall find peace.",
-							"Ye shall rise again, victorious, in now-eternal dreams."
-						 }
-				centralMessage(death_messages[rng:random(1,#death_messages)])
+        table.insert(tweens,flux.to(fade_factor,10,{black=1}):oncomplete(function()
+				-- after fading, quit
+				os.exit()
         end))
 end
