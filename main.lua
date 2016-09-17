@@ -1250,6 +1250,7 @@ function opendoor(x,y)
 		instance:setVolume(0.8)
 		logMessage(notifyMessageColor,"You opened the door.")
 		tilemap[x][y] = 3
+		endTurn()
 	end
 end
 
@@ -1269,6 +1270,7 @@ function closedoor(x,y)
 			instance:setVolume(0.8)
 			logMessage(notifyMessageColor,"You closed the door.")
 			tilemap[x][y] = 2
+			endTurn()
 		end
 	end
 end
@@ -1502,16 +1504,10 @@ function ascend()
 	end
 end
 
+-- have the player attack an NPC
 function attack_npc(i)
 	attack(npcs[i],player)
-	sounds.impact.hit:setVolume(2)
-	sounds.impact.hit:play()
-	npc=npcs[i]
-	npc.sounds.attack:setVolume(3)
-	npc.sounds.attack:play()
-	-- add blood
-	--logMessage(notifyMessageColor,'You smash it!')
-	--table.remove(npcs,i)
+	endTurn()
 end
 
 -- calculate the set of visible tilemap squares
