@@ -58,6 +58,7 @@ healthyColor = {255,0,0,150}
 unhealthyColor = {85,0,0,120}
 footprintColor={50,50,50,100}
 mossColor={41,113,13,150}
+happyMessageColor={0,255,0}
 notifyMessageColor={128,128,128}
 failMessageColor={195,50,50}
 vegetableMessageColor={50,115,50}
@@ -1956,13 +1957,18 @@ function attack(target,attacker)
 	local attacker_name = attacker.name
 	local target_name = target.name
 	local pronoun = "it's "
+	local messageColor = notifyMessageColor
+	-- if the receipient of damage is you, then...
+	if target_name == "you" then
+		messageColor=bloodMessageColor
 	-- if the receipient of damage is not you, then...
-	if target_name ~= "you" then
+	elseif target_name ~= "you" then
 		-- it's "the goblin"
 		target_name = "the " .. target_name
 	end
 	-- if the attacker is you, then ...
 	if attacker == player then
+		messageColor=happyMessageColor
 		if weapon.name ~= nil then
 			-- '... with Blahzee the Wotsit Weapon'
 			pronoun = ""
@@ -1975,7 +1981,7 @@ function attack(target,attacker)
 	end
 	
 	if attack_successful then
-		logMessage(bloodMessageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. " for " .. attack_damage .. "!")
+		logMessage(messageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. " for " .. attack_damage .. "!")
 	else
 		logMessage(notifyMessageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. ", but misses!)")
 	end
@@ -1994,6 +2000,7 @@ function attack(target,attacker)
 			if target == player then
 				player_is_dead()
 			else
+				logMessage(notifyMessageColor,"The " .. target.name .. " is dead!")
 				remove_npc(target)
 			end
 		end
