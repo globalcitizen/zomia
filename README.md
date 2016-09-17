@@ -4,7 +4,7 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 
 ## News
 
-* __v0.0.1 released__: Hooray! This is a very early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP).
+* __v0.0.1 released__: Hooray! This is a very early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). Get it on [the releases page](https://github.com/globalcitizen/zomia/releases).
 
 ## Project background
 
@@ -21,10 +21,10 @@ Development began on the 2nd of September, 2016. As of September 17 the game is 
 The easiest way to run the game is to download one of the [releases](https://github.com/globalcitizen/zomia/releases).
 
 There are two kinds of releases:
- * Platform-specific releases (win32, etc.)
- * Love file releases (runs anywhere, if you have [Love 0.10.1](https://love2d.org/#download) installed for your system)
+ * Platform-specific releases (Windows, OSX, etc.). These run just like a native application.
+ * Love file releases (runs anywhere, but only if you have [Love 0.10.1](https://love2d.org/#download) installed for your system)
 
-On unix-likes (including OSX), you can execute this from the command-line to start the love file. On graphical systems, double-click.
+With the love file releases, on unix-likes (including OSX), you can execute this from the command-line to start the love file. On graphical systems, you can also just double-click the file.
 
 ```
 love .
