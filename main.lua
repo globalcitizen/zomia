@@ -748,12 +748,12 @@ function draw_centralmessages()
 	if #centralMessages > 0 then
 		for i,message in ipairs(centralMessages) do
 			local difference = os.clock() - message['time']
-			a = 455 - (255*string.format("%.2f",difference))
+			a = 435 - (255*string.format("%.2f",difference))
 			if a > 0 then
 				local myColor = r,g,b,a
 				love.graphics.setColor(a,a,a,a)
 				love.graphics.setFont(heavy_font)
-				love.graphics.printf(message['message'],math.floor(resolutionPixelsX/2)-math.floor(resolutionPixelsX*0.8/2),math.floor(resolutionPixelsY/2),math.floor(resolutionPixelsX*0.8),"center")
+				love.graphics.printf(message['message'],0,math.floor(resolutionPixelsY/2),resolutionPixelsX,"center")
 			else
 				message['delete'] = true
 			end
@@ -1999,7 +1999,7 @@ function player_is_dead()
 	keyboard_input_disabled=true
 	
 	-- begin to fade the screen
-        table.insert(tweens,flux.to(fade_factor,5,{black=1}):oncomplete(function()
+        table.insert(tweens,flux.to(fade_factor,4,{black=1}):oncomplete(function()
 				-- after fading, display a message
 				death_messages = {
 							"You are overcome.",
