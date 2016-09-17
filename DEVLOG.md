@@ -5,6 +5,7 @@
     - Study combat systems and decide on something that can be implemented today
     - Add armour and weapon information to NPCs
     - NPC combat system
+    - Permadeath
 
  * __2016-09-16__ (1-2 days remaining / 15 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)

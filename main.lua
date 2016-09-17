@@ -33,7 +33,7 @@ keyboard_input_disabled = false
 fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
-player = {name="Joe Player",health=initial_health,max_health=initial_health}
+player = {name="you",health=initial_health,max_health=initial_health}
 inventory = {sword={qty=1,attack={qty=1,faces=6,bonus=3},name="A'Long the deathbringer"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
 equipment = {left_hand='sword'}
 beautify=true
@@ -48,6 +48,7 @@ tilemap = {}
 visibleTiles = {}
 seenTiles = {}
 logMessages = {}
+centralMessages = {}
 
 -- colors
 healthyColor = {255,0,0,150}
@@ -250,6 +251,9 @@ function love.draw()
 	if fade_factor.black ~= 0 then
 		draw_fade()
 	end
+
+	-- finally, draw central messages
+	draw_centralmessages()
 end
 
 function love.update(dt)
@@ -738,6 +742,30 @@ function draw_logmessages()
 	end
 end
 
+function draw_centralmessages()
+	-- draw central messages
+	local a = 0
+	if #centralMessages > 0 then
+		for i,message in ipairs(centralMessages) do
+			local difference = os.clock() - message['time']
+			a = 455 - (255*string.format("%.2f",difference))
+			if a > 0 then
+				local myColor = r,g,b,a
+				love.graphics.setColor(a,a,a,a)
+				love.graphics.setFont(heavy_font)
+				love.graphics.printf(message['message'],math.floor(resolutionPixelsX/2)-math.floor(resolutionPixelsX*0.8/2),math.floor(resolutionPixelsY/2),math.floor(resolutionPixelsX*0.8),"center")
+			else
+				message['delete'] = true
+			end
+		end
+		for i,message in ipairs(centralMessages) do
+			if message['delete'] == true then
+				table.remove(centralMessages,i)
+			end
+		end
+	end
+end
+
 function draw_popups()
 	-- draw popups
 	local border=100
@@ -1136,6 +1164,10 @@ function randomStandingLocation(thetilemap,size)
 		end
 	end
 	return x,y
+end
+
+function centralMessage(color,string)
+	table.insert(centralMessages,{time=os.clock(),message={color,string}})
 end
 
 function logMessage(color,string)
@@ -1868,10 +1900,15 @@ end
 
 -- attack the player with a given NPC
 function npc_attack(npc)
+	attack(player,npc)
+end
+
+-- one being attacks another
+function attack(target,attacker)
 
 	-- first, select a random weapon based upon weighted likelihoods (if present)
 	local weapon_selection = {}
-	for weapon_index,weapon in ipairs(npc.weapons) do
+	for weapon_index,weapon in ipairs(attacker.weapons) do
 		local chances=1
 		if weapon.likelihood ~= nil then
 			chances=weapon.likelihood
@@ -1880,7 +1917,7 @@ function npc_attack(npc)
 			table.insert(weapon_selection,weapon_index)
 		end
 	end
-	local weapon = npc.weapons[weapon_selection[rng:random(1,#weapon_selection)]]
+	local weapon = attacker.weapons[weapon_selection[rng:random(1,#weapon_selection)]]
 	logMessage(notifyMessageColor," (selected weapon: " .. weapon.name .. ")")
 
 	-- next, select a random attack based upon weighted likelihoods (if present)
@@ -1899,28 +1936,78 @@ function npc_attack(npc)
 
 	-- now to business! calculate success and damage
 	local attack_successful = false
-	-- TODO
+	-- for now, all attacks succed 75% of the time
+	if rng:random(1,20) <= 15 then
+		attack_successful = true
+	end
 
 	-- notify the player
-	logMessage(notifyMessageColor,"The " .. npc.name .. " " .. attack_verb .. " you with it's " .. weapon.name .. "...)")
+	local target_name = target.name
+	if target_name ~= "you" then
+		target_name = "the " .. target_name
+	end
+	
+	if attack_successful then
+		logMessage(bloodMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with it's " .. weapon.name .. "...)")
+	else
+		logMessage(notifyMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with it's " .. weapon.name .. ", but misses!)")
+	end
 	
 	-- effects
 	if attack_successful then
-		-- reduce player health
-		player.health = player.health - 1
+		-- reduce target health
+		local attack_damage = (attack.damage.dice_qty * attack.damage.dice_sides) + attack.damage.plus
+		target.health = target.health - attack_damage
+
+		-- criticals (TODO)
+
+		-- check for death
+		if target.health <= 0 then
+			target.health=0		-- prevent graphical issues
+			if target == player then
+				player_is_dead()
+			else
+				remove_npc(target)
+			end
+		end
+
 		-- play a sound
-       		if npc.sounds.attack ~= nil then
-        		npc.sounds.attack:play()
-        	        npc.sounds.attack:setVolume(2)
+       		if attacker.sounds.attack ~= nil then
+        		attacker.sounds.attack:play()
+        	        attacker.sounds.attack:setVolume(2)
         	end
+		-- if the target is the player, then
 		-- shake the screen for effect
 		--  (note: make this based on damage)
-		local amount = rng:random(20)+5
-        	shack:setShake(20)
-		local amount = rng:random(1,3)*0.1
-        	shack:setRotation(amount)
-		local amount = rng:random(30)+10
-        	shack:zoom(1.25)
+		if target == player then
+			-- shake the screen for effect
+			local amount = rng:random(20)+5
+        		shack:setShake(20)
+			local amount = rng:random(1,3)*0.1
+        		shack:setRotation(amount)
+			local amount = rng:random(30)+10
+        		shack:zoom(1.25)
+		end
 	end
 end
 
+
+-- do some death stuff
+function player_is_dead()
+
+	-- first, keep the sequence uninterrupted
+	keyboard_input_disabled=true
+	
+	-- begin to fade the screen
+        table.insert(tweens,flux.to(fade_factor,5,{black=1}):oncomplete(function()
+				-- after fading, display a message
+				death_messages = {
+							"You are overcome.",
+							"The energy saps from your body as you collapse, lifelessly.",
+							"Death washes over you like relief from a great horror.",
+							"Perhaps in death you shall find peace.",
+							"Ye shall rise again in eternal dreams."
+						 }
+				centralMessage(death_messages[rng:random(1,#death_messages)])
+        end))
+end
