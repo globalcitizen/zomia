@@ -17,13 +17,8 @@ npc_types['yi_villager'] = {
 lines = {}
 yiNames=ROT.StringGenerator:new()
 filename = "npcs/yi_villager/yi-names.txt"
-f = assert(io.open(filename, "r"))
-done=false
-line=true
-while not (line==nil) do
-	line=f:read()
-	if not (line==nil) then
-  		yiNames:observe(line)
- 	end
+for line in love.filesystem.lines(filename) do
+        if not (line==nil) then
+                yiNames:observe(line)
+        end
 end
-f:close()

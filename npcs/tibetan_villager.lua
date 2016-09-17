@@ -17,13 +17,8 @@ npc_types['tibetan_villager'] = {
 lines = {}
 tibetanNames=ROT.StringGenerator:new()
 filename = "npcs/tibetan_villager/tibetan-names.txt"
-f = assert(io.open(filename, "r"))
-done=false
-line=true
-while not (line==nil) do
-	line=f:read()
-	if not (line==nil) then
-  		tibetanNames:observe(line)
- 	end
+for line in love.filesystem.lines(filename) do
+        if not (line==nil) then
+                tibetanNames:observe(line)
+        end
 end
-f:close()

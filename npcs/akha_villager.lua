@@ -17,13 +17,8 @@ npc_types['akha_villager'] = {
 lines = {}
 akhaNames=ROT.StringGenerator:new()
 filename = "npcs/akha_villager/akha-names.txt"
-f = assert(io.open(filename, "r"))
-done=false
-line=true
-while not (line==nil) do
-	line=f:read()
+for line in love.filesystem.lines(filename) do
 	if not (line==nil) then
   		akhaNames:observe(line)
  	end
 end
-f:close()

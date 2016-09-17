@@ -65,14 +65,8 @@ area_types['wilderness'] = {
 lines = {}
 wildernessNames=ROT.StringGenerator:new()
 filename = "areas/wilderness/wilderness-names.txt"
-f = assert(io.open(filename, "r"))
-done=false
-line=true
-while not (line==nil) do
-        line=f:read()
+for line in love.filesystem.lines(filename) do
         if not (line==nil) then
                 wildernessNames:observe(line)
         end
 end
-f:close()
-

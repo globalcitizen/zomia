@@ -17,13 +17,8 @@ npc_types['tai_villager_female'] = {
 lines = {}
 taiFemaleNames=ROT.StringGenerator:new()
 filename = "npcs/tai_villager/tai-female-names.txt"
-f = assert(io.open(filename, "r"))
-done=false
-line=true
-while not (line==nil) do
-	line=f:read()
-	if not (line==nil) then
-  		taiFemaleNames:observe(line)
- 	end
+for line in love.filesystem.lines(filename) do
+        if not (line==nil) then
+                taiFemaleNames:observe(line)
+        end
 end
-f:close()
