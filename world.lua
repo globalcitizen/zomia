@@ -133,7 +133,7 @@ function world_load_area(z,x,y)
 	seenTiles = world[z][x][y].seenTiles
 	footprints = world[z][x][y].footprints
 
-	-- if any NPCs are not placed, place them randomly now. also set seen_player to false.
+	-- if any NPCs are not placed, place them randomly now. also set seen_player to false and initialize health
 	if world[z][x][y].npcs ~= nil then
 		for i,npc in ipairs(world[z][x][y].npcs) do
 			npc.seen_player = false
@@ -142,6 +142,9 @@ function world_load_area(z,x,y)
 				npcx,npcy = randomStandingLocation(tilemap)
 				npc.location['x'] = npcx
 				npc.location['y'] = npcy
+			end
+			if npc.health == nil then
+				npc.health = npc.max_health
 			end
 		end
 	end
