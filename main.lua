@@ -33,8 +33,10 @@ keyboard_input_disabled = false
 fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
-player = {name="you",health=initial_health,max_health=initial_health}
-inventory = {dagger={qty=1,attack={qty=1,faces=3,bonus=1},name="Needle the dissector"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
+player = {name="you",health=initial_health,max_health=initial_health,weapons={},sounds={}}
+player.sounds.attack=sounds.impact.hit
+inventory = {dagger={qty=1,attacks={{verbs={'slice','carve','skewer','poke','impale','disembowl','bleed'},damage={dice_qty=1,dice_sides=3,plus=1}}},name="Needle the dissector"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
+table.insert(player.weapons,inventory.dagger)
 equipment = {left_hand='sword'}
 beautify=true
 simpleAreaShade=false
@@ -1501,13 +1503,14 @@ function ascend()
 end
 
 function attack_npc(i)
+	attack(npcs[i],player)
 	sounds.impact.hit:setVolume(2)
 	sounds.impact.hit:play()
 	npc=npcs[i]
 	npc.sounds.attack:setVolume(3)
 	npc.sounds.attack:play()
 	-- add blood
-	logMessage(notifyMessageColor,'You smash it!')
+	--logMessage(notifyMessageColor,'You smash it!')
 	table.insert(groundfeatures,{x=npc.location.x,y=npc.location.y,type='blood'})
 	table.remove(npcs,i)
 end
@@ -1906,6 +1909,8 @@ end
 -- one being attacks another
 function attack(target,attacker)
 
+	if attacker.weapons == nil then return end
+
 	-- first, select a random weapon based upon weighted likelihoods (if present)
 	local weapon_selection = {}
 	for weapon_index,weapon in ipairs(attacker.weapons) do
@@ -1942,14 +1947,27 @@ function attack(target,attacker)
 
 	-- notify the player
 	local target_name = target.name
+	local pronoun = "it's"
+	-- if the receipient of damage is not you, then...
 	if target_name ~= "you" then
+		-- it's "the goblin"
 		target_name = "the " .. target_name
+	end
+	-- if the attacker is you, then ...
+	if attacker == player then
+		if weapon.name ~= nil then
+			-- '... with Blahzee the Wotsit Weapon'
+			pronoun = ""
+		else
+			-- '... with your sword'
+			pronoun = "your"
+		end
 	end
 	
 	if attack_successful then
-		logMessage(bloodMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with it's " .. weapon.name .. "...)")
+		logMessage(bloodMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. " " .. weapon.name .. "...)")
 	else
-		logMessage(notifyMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with it's " .. weapon.name .. ", but misses!)")
+		logMessage(notifyMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. " " .. weapon.name .. ", but misses!)")
 	end
 	
 	-- effects
