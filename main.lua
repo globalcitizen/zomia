@@ -43,13 +43,15 @@ characterX=1
 characterY=1
 tilePixelsX=16
 tilePixelsY=16
+characterSmallness=4
 tilemap = {}
 visibleTiles = {}
 seenTiles = {}
 logMessages = {}
 
 -- colors
-characterSmallness=4
+healthyColor = {255,0,0,150}
+unhealthyColor = {85,0,0,120}
 footprintColor={50,50,50,100}
 mossColor={41,113,13,150}
 notifyMessageColor={128,128,128}
@@ -1310,8 +1312,11 @@ function endTurn()
                                         	npc.sounds.attack:play()
                                                 npc.sounds.attack:setVolume(2)
                                         end
+					local amount = rng:random(20)+5
                         		shack:setShake(20)
-                        		shack:setRotation(.2)
+					local amount = rng:random(1,3)*0.1
+                        		shack:setRotation(amount)
+					local amount = rng:random(30)+10
                         		shack:zoom(1.25)
 				else
 					-- move toward the player using a dijkstra map for routing
@@ -1649,9 +1654,10 @@ end
 
 function draw_player_status_overlay()
 		percentage = player.health/player.max_health
-		local healthy_color = {255,0,0,150}
-		love.graphics.setColor(healthy_color)
+		love.graphics.setColor(unhealthyColor)
 		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY*0.5)
+		love.graphics.setColor(healthyColor)
+		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05*percentage,tilePixelsY*0.5)
 		percentage = (percentage * 100) .. '%'
 		love.graphics.setColor(0,0,0,100)
 		love.graphics.setFont(light_font)
