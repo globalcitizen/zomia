@@ -30,6 +30,7 @@ love.keyboard.setKeyRepeat(true)
 keyboard_input_disabled = false
 
 -- basics
+turns = 0
 fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
@@ -873,18 +874,19 @@ function draw_popups()
 					table.insert(item_description,popupNormalTextColor)
 					table.insert(item_description,'" ')
 			end
-			if item['attack'] ~= nil then
-				if item['attack']['qty'] ~= nil and
-				   item['attack']['faces'] ~= nil then
+			if item['attacks'] ~= nil then
+				-- TODO: fix this for multi-attack weapons
+				if item['attacks'][1]['damage']['dice_qty'] ~= nil and
+				   item['attacks'][1]['damage']['dice_sides'] ~= nil then
 					table.insert(item_description, popupDarkTextColor)
 					table.insert(item_description, ' <')
 					table.insert(item_description, popupBrightTextColor)
-					table.insert(item_description, item['attack']['qty'] .. 'd' .. item['attack']['faces'])
-					if item['attack']['bonus'] ~= nil then
+					table.insert(item_description, item['attacks'][1]['damage']['dice_qty'] .. 'd' .. item['attacks'][1]['damage']['dice_sides'])
+					if item['attacks'][1]['damage']['plus'] ~= nil then
 						table.insert(item_description, popupNormalTextColor)
 						table.insert(item_description, '+')
 						table.insert(item_description, popupBrightTextColor)
-						table.insert(item_description, item['attack']['bonus'])
+						table.insert(item_description, item['attacks'][1]['damage']['plus'])
 					end
 					table.insert(item_description, popupDarkTextColor)
 					table.insert(item_description, '>')
@@ -1469,6 +1471,11 @@ function endTurn()
 				attempts = attempts + 1
 			end
 		end
+	end
+	turns = turns + 1
+	if turns % 10 == 0 then
+		player.health = player.health + 1
+		if player.health > player.max_health then player.health = player.max_health end
 	end
 end
 
