@@ -6,6 +6,7 @@ npc_types['mouse'] = {
 			move='attack',
 			tail=true,
 			vocal=true,
+			max_health=8,
                         armour={
                                         {
                                                 type="flesh",

@@ -4,6 +4,7 @@ npc_types['midnight_jelly'] = {
 			hostile=true,
 			move='attack',
 			vocal=true,
+			max_health=16,
                         armour={
                                         {
                                                 type="flesh",

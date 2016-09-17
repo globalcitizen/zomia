@@ -4,6 +4,7 @@ npc_types['goblin'] = {
 			hostile=true,
 			move='attack',
 			vocal=true,
+			max_health=11,
                         armour={
                                         {
                                                 type="flesh",

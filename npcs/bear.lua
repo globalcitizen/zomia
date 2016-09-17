@@ -4,6 +4,7 @@ npc_types['bear'] = {
 			hostile=true,
 			move='attack',
 			vocal=true,
+			max_health=20,
                         armour={
                                         {
                                                 type="flesh",

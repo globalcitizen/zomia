@@ -4,6 +4,7 @@ npc_types['rooster'] = {
 			hostile=false,
 			move='random',
 			vocal=true,
+			max_health=6,
                         armour={
                                         {
                                                 type="flesh",

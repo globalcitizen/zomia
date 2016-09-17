@@ -4,6 +4,7 @@ npc_types['chicken'] = {
 			hostile=false,
 			move='random',
 			vocal=true,
+			max_health=3,
                         armour={
                                         {
                                                 type="flesh",

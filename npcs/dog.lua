@@ -5,7 +5,7 @@ npc_types['dog'] = {
 			move='attack',
 			tail=true,
 			vocal=true,
-			health=10,
+			max_health=10,
 			armour={
                 			{
                         			type="flesh",
