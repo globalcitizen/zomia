@@ -33,7 +33,7 @@ keyboard_input_disabled = false
 fov = 15    -- de-facto distance of vision
 defaultOutsideFOV = 20
 initial_health=25
-player = {name="you",health=initial_health,max_health=initial_health,weapons={},sounds={}}
+player = {name="you",health=initial_health,max_health=initial_health,weapons={},sounds={},location={x=1,y=1}}
 player.sounds.attack=sounds.impact.hit
 inventory = {dagger={qty=1,attacks={{verbs={'slice','carve','skewer','poke','impale','disembowl','bleed'},damage={dice_qty=1,dice_sides=3,plus=1}}},name="Needle the dissector"},['edible moss']={qty=5},['dry mushrooms']={qty=30},['door spikes']={qty=10}}
 table.insert(player.weapons,inventory.dagger)
@@ -41,8 +41,8 @@ equipment = {left_hand='sword'}
 beautify=true
 simpleAreaShade=false
 --beautify=false
-characterX=1
-characterY=1
+characterX=player.location.x
+characterY=player.location.y
 tilePixelsX=16
 tilePixelsY=16
 characterSmallness=4
@@ -750,7 +750,7 @@ function draw_centralmessages()
 	if #centralMessages > 0 then
 		for i,message in ipairs(centralMessages) do
 			local difference = os.clock() - message['time']
-			a = 435 - (255*string.format("%.2f",difference))
+			a = 535 - (255*string.format("%.2f",difference))
 			if a > 0 then
 				local myColor = r,g,b,a
 				love.graphics.setColor(a,a,a,a)
@@ -1511,8 +1511,7 @@ function attack_npc(i)
 	npc.sounds.attack:play()
 	-- add blood
 	--logMessage(notifyMessageColor,'You smash it!')
-	table.insert(groundfeatures,{x=npc.location.x,y=npc.location.y,type='blood'})
-	table.remove(npcs,i)
+	--table.remove(npcs,i)
 end
 
 -- calculate the set of visible tilemap squares
@@ -1940,14 +1939,20 @@ function attack(target,attacker)
 
 	-- now to business! calculate success and damage
 	local attack_successful = false
+	local attack_damage = 0
 	-- for now, all attacks succed 75% of the time
 	if rng:random(1,20) <= 15 then
 		attack_successful = true
+		-- calculate damage
+		attack_damage = (attack.damage.dice_qty * attack.damage.dice_sides) + attack.damage.plus
+		-- add blood at the appropriate location
+		add_blood(target.location.x,target.location.y)
 	end
 
 	-- notify the player
+	local attacker_name = attacker.name
 	local target_name = target.name
-	local pronoun = "it's"
+	local pronoun = "it's "
 	-- if the receipient of damage is not you, then...
 	if target_name ~= "you" then
 		-- it's "the goblin"
@@ -1960,14 +1965,16 @@ function attack(target,attacker)
 			pronoun = ""
 		else
 			-- '... with your sword'
-			pronoun = "your"
+			pronoun = "your "
 		end
+	else
+		attacker_name = "The " .. attacker_name
 	end
 	
 	if attack_successful then
-		logMessage(bloodMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. " " .. weapon.name .. "...)")
+		logMessage(bloodMessageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. " for " .. attack_damage .. "!")
 	else
-		logMessage(notifyMessageColor,"The " .. attacker.name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. " " .. weapon.name .. ", but misses!)")
+		logMessage(notifyMessageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. ", but misses!)")
 	end
 	
 	-- effects
@@ -2031,3 +2038,27 @@ function player_is_dead()
 				os.exit()
         end))
 end
+
+function remove_npc(npc_to_remove)
+	for index,npc in ipairs(npcs) do
+		if npc == npc_to_remove then
+			table.remove(npcs,index)
+			break
+		end
+	end
+end
+
+function add_blood(x,y)
+	-- first check there isn't already blood there
+	local already_exists = false
+	for index,feature in ipairs(groundfeatures) do
+		if feature.type=='blood' and feature.x == x and feature.y == y then
+			already_exists=true
+			break
+		end
+	end
+	if not already_exists then
+		table.insert(groundfeatures,{x=x,y=y,type='blood'})
+	end
+end
+
