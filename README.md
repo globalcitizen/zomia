@@ -45,9 +45,7 @@ git submodule init
 git submodule update
 ```
 
-### Get media
-
-Some media is included in the source, other media is not.
+Some media is included in the source, other media is not. Currently it is not required but may be later.
 
 To get extra music, do this:
 
