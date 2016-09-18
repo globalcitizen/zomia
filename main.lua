@@ -789,7 +789,7 @@ function draw_centralmessages()
 				local myColor = r,g,b,a
 				love.graphics.setColor(a,a,a,a)
 				love.graphics.setFont(heavy_2xfont)
-				love.graphics.printf(message['message'],0,math.floor(resolutionPixelsY/2),resolutionPixelsX,"center")
+				love.graphics.printf(message['message'],0,math.floor(resolutionPixelsY/2)-20,resolutionPixelsX,"center")
 			else
 				message['delete'] = true
 			end
@@ -862,7 +862,6 @@ function draw_popups()
 		if modal_data['selected'] == nil then
 			modal_data['selected'] = 1
 			modal_data['max_selected'] = #inventory
-			print(table.show(modal_data))
 		end
 		modal_data['max_selected'] = #inventory
 		print(table.show(modal_data))
@@ -877,7 +876,7 @@ function draw_popups()
 		love.graphics.rectangle('fill',border+pad,border+pad,resolutionPixelsX-(border*2)-(pad*2),resolutionPixelsY-(border*2)-(pad*2))
 		-- draw title
 		love.graphics.setColor(popupTitleColor)
-		love.graphics.setFont(heavy_font)
+		love.graphics.setFont(heavy_2xfont)
 		love.graphics.printf("Inventory",0,border*1.3,resolutionPixelsX,"center")
 		-- draw inventory contents
 		local i=1
@@ -887,10 +886,10 @@ function draw_popups()
 				selected = modalSelectedColor
 			end
 			love.graphics.setColor(selected or popupBrightTextColor)
-			love.graphics.setFont(light_font)
+			love.graphics.setFont(light_2xfont)
 			love.graphics.printf(item.qty, border+pad, border*1.3+pad+pad+i*20-1, pad+resolutionPixelsX/2*0.1-pad, "right")
 			love.graphics.setColor(popupDarkTextColor)
-			love.graphics.setFont(light_font)
+			love.graphics.setFont(light_2xfont)
 			love.graphics.print('x',	math.floor(border+pad+resolutionPixelsX/2*0.1+pad),    	border*1.3+pad+pad+i*20)
 			love.graphics.setColor(255,255,255,255)
 			local item_description = { popupBrightTextColor, index }
@@ -921,12 +920,12 @@ function draw_popups()
 					table.insert(item_description, '>')
 				end
 			end
-			love.graphics.setFont(light_font)
+			love.graphics.setFont(light_2xfont)
 			love.graphics.print(item_description,	math.floor(border+pad+resolutionPixelsX/2*0.1+pad*3),	border*1.3+pad+pad+i*20)
 			i = i + 1
 		end
 		if i==0 then
-			love.graphics.setFont(medium_font)
+			love.graphics.setFont(medium_2xfont)
 			love.graphics.printf("You have no items.",0,math.floor(resolutionPixelsY/2)-10,resolutionPixelsX,"center")
 		end
 	end
@@ -1431,10 +1430,10 @@ function endTurn()
 						end
 					else
 						-- npc is stuck, express anger
-						logMessage(notifyMessageColor,npc.name .. " is stuck and angry!")
+						--logMessage(notifyMessageColor,npc.name .. " is stuck and angry!")
 						if npc.sounds.attack ~= nil then
                                                 	npc.sounds.attack:play()
-                                                	npc.sounds.attack:setVolume(2)
+                                                	npc.sounds.attack:setVolume(0.5)
 						end
 					end
 				end
