@@ -867,8 +867,6 @@ function draw_popups()
 		if modal_data['selected'] == nil then
 			modal_data['selected'] = 1
 		end
-		--modal_data['max_selected'] = #inventory
-		print(table.show(modal_data))
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
 		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
