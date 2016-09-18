@@ -1439,8 +1439,12 @@ function endTurn()
 						-- npc is stuck, express anger
 						--logMessage(notifyMessageColor,npc.name .. " is stuck and angry!")
 						if npc.sounds.attack ~= nil then
-                                                	npc.sounds.attack:play()
-                                                	npc.sounds.attack:setVolume(0.5)
+							-- make a noise 10% of the time
+							-- FIXTHIS: audio levels should adjust vs. distance
+							if rng:random(1,10) == 1 then
+                                                		npc.sounds.attack:play()
+                                                		npc.sounds.attack:setVolume(0.5)
+							end
 						end
 					end
 				end
