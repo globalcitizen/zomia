@@ -6,7 +6,8 @@
     - Adjust difficulty (remove bears from upper levels)
     - Switch to double-size fonts for readability in response to user feedback
     - Downloaded more samples (mostly female death noises, some others)
-    - Linecount 6344
+    - Reset groundfeatures on map change
+    - Linecount 6351
 
  * __2016-09-16__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red
