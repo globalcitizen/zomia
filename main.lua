@@ -52,6 +52,7 @@ visibleTiles = {}
 seenTiles = {}
 logMessages = {}
 centralMessages = {}
+modal_dialog = ''
 
 -- colors
 healthyColor = {255,0,0,150}
@@ -162,6 +163,16 @@ end
 
 function love.keypressed(key)
 	if keyboard_input_disabled then return end
+	-- if we are in a modal
+	if modal_dialog ~= '' then
+		-- escape to exit
+		if key == "escape" then modal_dialog = '' end
+		-- otherwise press the same key to exit
+		if modal_dialog == 'help' and key == 'h' then modal_dialog = '' end
+		if modal_dialog == 'inventory' and key == 'i' then modal_dialog = '' end
+		return
+	end
+	-- we are not in a modal
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
         elseif key == "right" or key == "6" then
@@ -192,6 +203,10 @@ function love.keypressed(key)
 	-- '<'
 	elseif key == "," and (love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift")) then
 		ascend()
+	elseif key == 'i' then
+		modal_dialog = 'inventory'
+	elseif key == 'h' then
+		modal_dialog = 'help'
         end
 	-- redetermine visibility of all squares
 	if fov > 0 then
@@ -775,7 +790,7 @@ function draw_popups()
 	local border=100
 	local pad=10
 	-- help
-	if love.keyboard.isDown('h') then
+	if modal_dialog == 'help' then
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
 		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
@@ -800,8 +815,8 @@ function draw_popups()
 		--     m: world map               
 		keys = {
 			c='Close doors',
-			h='Help',
-			i='Inventory / Equipment',
+			h='Help Menu',
+			i='Inventory / Equipment Menu',
 			o='Open doors',
 			s='Spike doors shut',
 			arrows='Movement',
@@ -825,7 +840,7 @@ function draw_popups()
 			i=i+1
 		end
 	-- inventory
-	elseif love.keyboard.isDown('i') then
+	elseif modal_dialog == 'inventory' then
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
 		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
