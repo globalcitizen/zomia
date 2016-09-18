@@ -8,6 +8,7 @@
     - Downloaded more samples (mostly female death noises, some others)
     - Reset groundfeatures on map change
     - Linecount 6351
+    - Made v0.0.2 release (win32, OSX, .love)
 
  * __2016-09-16__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red

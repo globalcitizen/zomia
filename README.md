@@ -4,6 +4,7 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 
 ## News
 
+* __v0.0.2 released__: Hooray! This is a the final early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). Get it on [the releases page](https://github.com/globalcitizen/zomia/releases).
 * __v0.0.1 released__: Hooray! This is a very early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). Get it on [the releases page](https://github.com/globalcitizen/zomia/releases).
 
 ## Project background
