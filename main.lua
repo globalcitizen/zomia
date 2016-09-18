@@ -56,6 +56,7 @@ modal_dialog = ''
 modal_data = {}
 
 -- colors
+modalSelectedColor = {255,0,0,255}
 healthyColor = {255,0,0,150}
 unhealthyColor = {85,0,0,120}
 footprintColor={50,50,50,100}
@@ -116,6 +117,9 @@ function love.load()
 
 	-- load font
 	print('Loading fonts')
+        heavy_2xfont = love.graphics.newFont("fonts/pf_tempesta_five_extended_bold.ttf",16)
+        medium_2xfont = love.graphics.newFont("fonts/pf_tempesta_five_bold.ttf",16)
+        light_2xfont = love.graphics.newFont("fonts/pf_tempesta_five.ttf",16)
         heavy_font = love.graphics.newFont("fonts/pf_tempesta_five_extended_bold.ttf",8)
         medium_font = love.graphics.newFont("fonts/pf_tempesta_five_bold.ttf",8)
         light_font = love.graphics.newFont("fonts/pf_tempesta_five.ttf",8)
@@ -184,7 +188,7 @@ function love.keypressed(key)
 		if modal_dialog == 'inventory' and key == 'i' then modal_dialog = '' end
 		return
 	end
-	modal_data = {}
+	modal_data = {selected=1}
 	-- we are not in a modal
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
@@ -760,7 +764,7 @@ function draw_logmessages()
 			if a > 0 then
 				local myColor = r,g,b,a
 				love.graphics.setColor(a,a,a,a)
-				love.graphics.setFont(light_font)
+				love.graphics.setFont(light_2xfont)
 				love.graphics.print(message['message'],20,15*i)
 			else
 				message['delete'] = true
@@ -784,7 +788,7 @@ function draw_centralmessages()
 			if a > 0 then
 				local myColor = r,g,b,a
 				love.graphics.setColor(a,a,a,a)
-				love.graphics.setFont(heavy_font)
+				love.graphics.setFont(heavy_2xfont)
 				love.graphics.printf(message['message'],0,math.floor(resolutionPixelsY/2),resolutionPixelsX,"center")
 			else
 				message['delete'] = true
@@ -855,9 +859,13 @@ function draw_popups()
 	-- inventory
 	elseif modal_dialog == 'inventory' then
 		-- status
-		if modal_data == {} then
+		if modal_data['selected'] == nil then
 			modal_data['selected'] = 1
+			modal_data['max_selected'] = #inventory
+			print(table.show(modal_data))
 		end
+		modal_data['max_selected'] = #inventory
+		print(table.show(modal_data))
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
 		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
@@ -872,9 +880,13 @@ function draw_popups()
 		love.graphics.setFont(heavy_font)
 		love.graphics.printf("Inventory",0,border*1.3,resolutionPixelsX,"center")
 		-- draw inventory contents
-		local i=0
+		local i=1
 		for index,item in pairs(inventory) do
-			love.graphics.setColor(popupBrightTextColor)
+			local selected = false
+			if i == modal_data['selected'] then
+				selected = modalSelectedColor
+			end
+			love.graphics.setColor(selected or popupBrightTextColor)
 			love.graphics.setFont(light_font)
 			love.graphics.printf(item.qty, border+pad, border*1.3+pad+pad+i*20-1, pad+resolutionPixelsX/2*0.1-pad, "right")
 			love.graphics.setColor(popupDarkTextColor)
@@ -1700,16 +1712,16 @@ end
 function draw_player_status_overlay()
 		percentage = player.health/player.max_health
 		love.graphics.setColor(unhealthyColor)
-		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY*0.5)
+		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY)
 		love.graphics.setColor(healthyColor)
-		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05*percentage,tilePixelsY*0.5)
+		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05*percentage,tilePixelsY)
 		percentage = (percentage * 100) .. '%'
 		love.graphics.setColor(0,0,0,100)
-		love.graphics.setFont(light_font)
-		love.graphics.printf(percentage,resolutionPixelsX*0.3+1,-2,resolutionPixelsX*0.05,'center')
+		love.graphics.setFont(light_2xfont)
+		love.graphics.printf(percentage,resolutionPixelsX*0.3+5,-2,resolutionPixelsX*0.05,'center')
 		love.graphics.setColor(255,255,255)
-		love.graphics.setFont(light_font)
-		love.graphics.printf(percentage,resolutionPixelsX*0.3,-2,resolutionPixelsX*0.05,'center')
+		love.graphics.setFont(light_2xfont)
+		love.graphics.printf(percentage,resolutionPixelsX*0.3+4,-2,resolutionPixelsX*0.05,'center')
 end
 
 function draw_coordinates_overlay()
@@ -1721,10 +1733,10 @@ end
 function draw_depth_overlay()
 		if world_location.z < 0 then
 			love.graphics.setColor(155,155,155)
-			love.graphics.setFont(light_font)
-			love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,0,tilePixelsX*10,'right')
-			love.graphics.setFont(light_font)
-                	love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,0)
+			love.graphics.setFont(light_2xfont)
+			love.graphics.printf('Depth: ', math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,-2,tilePixelsX*10,'right')
+			love.graphics.setFont(light_2xfont)
+                	love.graphics.print((world_location.z*-1*20) .. ' meters',math.floor(resolutionTilesX/2)*tilePixelsX,-2)
 		else
 			draw_areaname_overlay()
 		end
