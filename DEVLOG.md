@@ -2,6 +2,7 @@
 
  * __2016-09-17__ (D-day, 17 days used):
     - Enable modal dialogs
+    - Adjust difficulty (remove bears from upper levels)
 
  * __2016-09-16__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red
