@@ -53,6 +53,7 @@ seenTiles = {}
 logMessages = {}
 centralMessages = {}
 modal_dialog = ''
+modal_data = {}
 
 -- colors
 healthyColor = {255,0,0,150}
@@ -167,11 +168,23 @@ function love.keypressed(key)
 	if modal_dialog ~= '' then
 		-- escape to exit
 		if key == "escape" then modal_dialog = '' end
+		-- if selection enabled, move with arrows
+		if modal_data.selected ~= nil then
+			if key == "down" then
+				modal_data.selected = modal_data.selected+1 
+			elseif key == "up" then
+				modal_data.selected = modal_data.selected-1
+				if modal_data.selected < 1 then
+					modal_data.selected = 1
+				end
+			end
+		end
 		-- otherwise press the same key to exit
 		if modal_dialog == 'help' and key == 'h' then modal_dialog = '' end
 		if modal_dialog == 'inventory' and key == 'i' then modal_dialog = '' end
 		return
 	end
+	modal_data = {}
 	-- we are not in a modal
         if key == "left" or key == "4" then
                 moveCharacterRelatively(-1,0)
@@ -841,6 +854,10 @@ function draw_popups()
 		end
 	-- inventory
 	elseif modal_dialog == 'inventory' then
+		-- status
+		if modal_data == {} then
+			modal_data['selected'] = 1
+		end
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
 		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
