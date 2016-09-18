@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-17__ (D-day, 17 days used):
+    - Enable modal dialogs
+
  * __2016-09-16__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red
     - Study combat systems and decide on something that can be implemented today
@@ -12,6 +15,7 @@
     - Make player structure similar to NPCs
     - Make good messages in combat a different color
     - Notify player when things die
+    - Made v0.0.1 release (win32, OSX, .love)
 
  * __2016-09-16__ (1-2 days remaining / 15 days used):
     - More work on Brogue dungeon generation port (this is eating so much time!)
