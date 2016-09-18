@@ -47,9 +47,9 @@ area_types['natural_cavern'] = {
 					-- first 3 levels
 					if world_location.z >= -3 then
 				        	add_npcs(instance.npcs,'goblin',rng:random(2,math.abs(2.5*world_location.z)))
-				        	add_npcs(instance.npcs,'bear',math.abs(world_location.z))
 				        	add_npcs(instance.npcs,'mouse',rng:random(1,5))
 					elseif world_location.z >= -5 then
+				        	add_npcs(instance.npcs,'bear',math.abs(world_location.z))
 				        	add_npcs(instance.npcs,'midnight_jelly',math.abs(world_location.z+3*rng:random(1,2)))
 				        	add_npcs(instance.npcs,'bear',math.abs(world_location.z))
 					end
