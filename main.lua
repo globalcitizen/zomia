@@ -800,9 +800,8 @@ function draw_popups()
 		--     m: world map               
 		keys = {
 			c='Close doors',
-			e='Equipment',
 			h='Help',
-			i='Inventory',
+			i='Inventory / Equipment',
 			o='Open doors',
 			s='Spike doors shut',
 			arrows='Movement',
@@ -825,21 +824,6 @@ function draw_popups()
 			love.graphics.print(output,	math.floor(border+pad+resolutionPixelsX/2*0.1+pad*3),	border*1.3+pad+pad+i*20)
 			i=i+1
 		end
-	-- equipment
-	elseif love.keyboard.isDown('e') then
-		-- shade others
-		love.graphics.setColor(popupShadeColor)
-		love.graphics.rectangle('fill',0,0,resolutionPixelsX,resolutionPixelsY)
-		-- draw popup
-		love.graphics.setColor(popupBorderColor)
-		love.graphics.rectangle('fill',border,border,resolutionPixelsX-(border*2),resolutionPixelsY-(border*2))
-		-- draw popup content box
-		love.graphics.setColor(popupBackgroundColor)
-		love.graphics.rectangle('fill',border+pad,border+pad,resolutionPixelsX-(border*2)-(pad*2),resolutionPixelsY-(border*2)-(pad*2))
-		-- draw title
-		love.graphics.setColor(popupTitleColor)
-		love.graphics.setFont(heavy_font)
-		love.graphics.printf("Equipment",0,border*1.3,resolutionPixelsX,"center")
 	-- inventory
 	elseif love.keyboard.isDown('i') then
 		-- shade others
