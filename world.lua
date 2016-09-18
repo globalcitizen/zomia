@@ -125,6 +125,11 @@ function world_load_area(z,x,y)
 		world[z][x][y].footprints = {}
 	end
 
+	-- if there is no groundfeatures table, create it now
+	if world[z][x][y].groundfeatures == nil then
+		world[z][x][y].groundfeatures = {}
+	end
+
 	-- clean tilemap in case of nonsense
 	world[z][x][y].map = map_sanitize(world[z][x][y].map)
 
@@ -152,6 +157,8 @@ function world_load_area(z,x,y)
 	-- load npcs
 	npcs = world[z][x][y].npcs
 
+	-- load groundfeatures
+	groundfeatures = world[z][x][y].groundfeatures
 
 	-- start music
 	if world[z][x][y].music ~= nil then
