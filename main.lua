@@ -176,6 +176,11 @@ function love.keypressed(key)
 		if modal_data.selected ~= nil then
 			if key == "down" then
 				modal_data.selected = modal_data.selected+1 
+				if modal_data.max_selected ~= nil then
+					if modal_data.selected > modal_data.max_selected then
+						modal_data.selected=modal_data.max_selected
+					end
+				end
 			elseif key == "up" then
 				modal_data.selected = modal_data.selected-1
 				if modal_data.selected < 1 then
@@ -819,7 +824,7 @@ function draw_popups()
 		love.graphics.rectangle('fill',border+pad,border+pad,resolutionPixelsX-(border*2)-(pad*2),resolutionPixelsY-(border*2)-(pad*2))
 		-- draw title
 		love.graphics.setColor(popupTitleColor)
-		love.graphics.setFont(heavy_font)
+		love.graphics.setFont(heavy_2xfont)
 		love.graphics.printf("Help",0,border*1.3,resolutionPixelsX,"center")
 		-- ideas: could combine many potential keys in to a single overlay. simplicity of interface is good to aim for.
 		--        (in particular, probably we should kill 'e' for equipment)... for example...
@@ -846,14 +851,14 @@ function draw_popups()
 			output = {}
 			table.insert(output, popupBrightTextColor)
 			table.insert(output, key)
-			local width=80
-			love.graphics.setFont(light_font)
-			love.graphics.printf(output, border+pad, border*1.3+pad+pad+i*20-1, pad+resolutionPixelsX/2*0.1-pad, "right")
+			local width=180
+			love.graphics.setFont(light_2xfont)
+			love.graphics.printf(output, border+pad*4, border*1.3+pad+pad+i*20-1, pad*4+resolutionPixelsX/2*0.1-pad, "right")
 			output = {}
 			table.insert(output, popupNormalTextColor)
 			table.insert(output, description)
-			love.graphics.setFont(light_font)
-			love.graphics.print(output,	math.floor(border+pad+resolutionPixelsX/2*0.1+pad*3),	border*1.3+pad+pad+i*20)
+			love.graphics.setFont(light_2xfont)
+			love.graphics.print(output,	math.floor(border+pad*5+resolutionPixelsX/2*0.1+pad*3),	border*1.3+pad+pad+i*20)
 			i=i+1
 		end
 	-- inventory
@@ -861,9 +866,8 @@ function draw_popups()
 		-- status
 		if modal_data['selected'] == nil then
 			modal_data['selected'] = 1
-			modal_data['max_selected'] = #inventory
 		end
-		modal_data['max_selected'] = #inventory
+		--modal_data['max_selected'] = #inventory
 		print(table.show(modal_data))
 		-- shade others
 		love.graphics.setColor(popupShadeColor)
@@ -927,6 +931,9 @@ function draw_popups()
 		if i==0 then
 			love.graphics.setFont(medium_2xfont)
 			love.graphics.printf("You have no items.",0,math.floor(resolutionPixelsY/2)-10,resolutionPixelsX,"center")
+		end
+		if modal_data['max_selected'] == nil then
+			modal_data['max_selected'] = i-1 
 		end
 	end
 end
@@ -1698,12 +1705,12 @@ function draw_areaname_overlay()
 			prefix = world[world_location.z][world_location.x][world_location.y].prefix
 		end
 		love.graphics.setColor(255,255,255)
-		love.graphics.setFont(heavy_font)
+		love.graphics.setFont(heavy_2xfont)
 		if name ~= nil then
 			love.graphics.print(name,math.floor(resolutionTilesX/2)*tilePixelsX,tilePixelsY)
 		end
 		if prefix ~= nil then
-			love.graphics.setFont(light_font)
+			love.graphics.setFont(light_2xfont)
 			love.graphics.printf(prefix,math.floor(resolutionTilesX/2-10)*tilePixelsX-tilePixelsX/2,tilePixelsY,tilePixelsX*10,'right')
 		end
 end
@@ -1724,9 +1731,9 @@ function draw_player_status_overlay()
 end
 
 function draw_coordinates_overlay()
-		love.graphics.setColor(155,155,155)
-		love.graphics.setFont(heavy_font)
-		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y .. ' (' .. love.timer.getFPS() .. 'fps)',(resolutionTilesX-10)*tilePixelsX,0)
+		love.graphics.setColor(105,105,105)
+		love.graphics.setFont(heavy_2xfont)
+		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y .. ' (' .. love.timer.getFPS() .. 'fps)',(resolutionTilesX-20)*tilePixelsX,-2)
 end
 
 function draw_depth_overlay()
