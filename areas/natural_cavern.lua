@@ -75,8 +75,19 @@ area_types['natural_cavern'] = {
 				        instance.map[stairsX][stairsY] = '>'
 				        stairsX, stairsY = randomStandingLocation(instance.map)
 				        instance.map[stairsX][stairsY] = '<'
+
+					-- randomly open doors
+					for x=1, #instance.map, 1 do
+						for y=1, #instance.map[1], 1 do
+							if instance.map[x][y] == 2 and rng:random(1,2) == 1 then
+								instance.map[x][y] = 3
+							end
+						end
+					end
+
 --[[
 				
+
 				        -- music
 					--[[
 					instance.music = {

@@ -2,6 +2,7 @@
 
  * __2016-09-19__:
     - Fix bug where monsters can move to player's new location if a door is opened by the player
+    - Implement some doors randomly being pre-opened when generating `natural_cavern`
 
  * __2016-09-18__ (D-day, 17 days used):
     - Enable modal dialogs
