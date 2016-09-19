@@ -1,6 +1,9 @@
 # Development log
 
- * __2016-09-17__ (D-day, 17 days used):
+ * __2016-09-19__:
+    - Fix bug where monsters can move to player's new location if a door is opened by the player
+
+ * __2016-09-18__ (D-day, 17 days used):
     - Enable modal dialogs
        - Create/test/debug a generic selection mechanism for modal dialogs
     - Adjust difficulty (remove bears from upper levels)
@@ -8,9 +11,9 @@
     - Downloaded more samples (mostly female death noises, some others)
     - Reset groundfeatures on map change
     - Linecount 6351
-    - Made v0.0.2 release (win32, OSX, .love)
+    - Made v0.0.2 (Final ARRP) release (win32, OSX, .love)
 
- * __2016-09-16__ (1 day remaining / 16 days used):
+ * __2016-09-17__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red
     - Study combat systems and decide on something that can be implemented today
     - Add armour and weapon information to NPCs

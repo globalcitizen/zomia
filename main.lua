@@ -1934,7 +1934,10 @@ function tile_is_passable_no_npcs(x,y)
 				return false
 			end
 		end
-               	return true
+		-- and is not where the character is standing
+		if x ~= characterX and y ~= characterY then
+               		return true
+		end
 	end
         return false
 end
