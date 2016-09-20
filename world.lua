@@ -13,7 +13,8 @@ for z=-math.floor(world_radius/2),math.floor(world_radius/2),1 do
 end
 	
 -- holds location in world
-world_location = {z=0,x=10,y=10}
+initial_world_location = {z=0,x=10,y=10}
+world_location = initial_world_location
 last_world_location = world_location
 
 -- generates world at start of game
@@ -75,7 +76,10 @@ function generate_world()
 	end
 end
 
-function world_load_area(z,x,y)
+function world_load_area(z,x,y,default_placement)
+	-- optional argument
+	default_placement = default_placement or false
+
 	-- remember last location
 	last_world_location = {z=world_location.z,y=world_location.y,x=world_location.x}
 	-- remember seenTiles
@@ -206,12 +210,12 @@ function world_load_area(z,x,y)
 
 	-- place character intelligently as appropriate
 	--  if we just came from below...
-	if last_world_location.z == z-1 and last_world_location.y == y and last_world_location.x == x then
+	if (not default_placement) and last_world_location.z == z-1 and last_world_location.y == y and last_world_location.x == x then
 	 -- place the player at the '>' (ie. down stairs)
 	 upstairs = tilemap_find_maptiletype(tilemap,'>')
 	 characterX = upstairs[1].x
 	 characterY = upstairs[1].y
-	elseif last_world_location.z == z+1 and last_world_location.y == y and last_world_location.x == x then
+	elseif default_placement or (last_world_location.z == z+1 and last_world_location.y == y and last_world_location.x == x) then
 	 -- place the player at the '<' (ie. up stairs)
 	 upstairs = tilemap_find_maptiletype(tilemap,'<')
 	 characterX = upstairs[1].x

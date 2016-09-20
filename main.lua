@@ -151,11 +151,16 @@ function love.load()
 
 	-- load initial world location
 	print('Entering world.')
-	world_load_area(world_location.z,world_location.x,world_location.y)
+	world_load_area(world_location.z,world_location.x,world_location.y,true)
 
-        -- place character
-        print "Placing character..."
-        characterX, characterY = randomStandingLocation(tilemap)
+        -- play downstairs sound
+        sound = sounds.stairs.stone.down:play()
+        sound:setVolume(1.5)
+        keyboard_input_disabled = true
+	fade_factor.black=1
+        table.insert(tweens,flux.to(fade_factor,4,{black=0}):oncomplete(function()
+                                keyboard_input_disabled = false
+                                end))
 
 	-- update visibility
 	if fov > 0 then
@@ -172,7 +177,7 @@ function love.keypressed(key)
 	if modal_dialog ~= '' then
 		-- escape to exit
 		if key == "escape" then modal_dialog = '' end
-		-- if selection enabled, move with arrows
+		-- if standard modal selection has been enabled, allow the user to move it with arrows
 		if modal_data.selected ~= nil then
 			if key == "down" then
 				modal_data.selected = modal_data.selected+1 
@@ -844,7 +849,8 @@ function draw_popups()
 			arrows='Movement',
 			['shift+Q']='Quit',
 			['<']='Up stairs / ladder',
-			['>']='Down stairs / ladder'
+			['>']='Down stairs / ladder',
+			['*']='Throw or fire (missile weapon / object)'
 		       }
 		local i=0
 		for key,description in pairsByKeys(keys) do
