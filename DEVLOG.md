@@ -1,5 +1,10 @@
 # Development log
 
+ * __2016-09-20__:
+    - Default initial character placements at stairs
+    - Play downstairs noise at start
+    - Fade in at start
+
  * __2016-09-19__:
     - Fix bug where monsters can move to player's new location if a door is opened by the player
     - Implement some doors randomly being pre-opened when generating `natural_cavern`
