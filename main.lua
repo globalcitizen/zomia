@@ -156,12 +156,11 @@ function love.load()
         -- play downstairs sound
         sound = sounds.stairs.stone.down:play()
         sound:setVolume(1.5)
-        keyboard_input_disabled = true
-	fade_factor.black=1
-        table.insert(tweens,flux.to(fade_factor,2,{black=0}):oncomplete(function()
-                                keyboard_input_disabled = false
-                                end))
 
+	-- fade the screen in for 2 seconds
+	fade_factor.black=1
+        table.insert(tweens,flux.to(fade_factor,2,{black=0}))
+	
 	-- update visibility
 	if fov > 0 then
 		update_draw_visibility_new()
