@@ -158,7 +158,7 @@ function love.load()
         sound:setVolume(1.5)
         keyboard_input_disabled = true
 	fade_factor.black=1
-        table.insert(tweens,flux.to(fade_factor,4,{black=0}):oncomplete(function()
+        table.insert(tweens,flux.to(fade_factor,3,{black=0}):oncomplete(function()
                                 keyboard_input_disabled = false
                                 end))
 
@@ -459,10 +459,11 @@ function draw_groundfeatures_visibilitylimited()
 end
 
 function draw_stairs_visibilitylimited()
-        for i=1,#visibleTiles,1 do
-                local tile = visibleTiles[i]
-                x=tile.x
-                y=tile.y
+        -- draw doors (on top of the map tilemap)
+        for i,p in pairs(seenTiles) do
+                local tile = split(i,',')
+                x=tile[1]+0
+                y=tile[2]+0
 		if tilemap[x] ~= nil and tilemap[x][y] ~= nil and (tilemap[x][y] == '>' or tilemap[x][y] == '<') then
 			love.graphics.setColor(0,0,0,255)
 			love.graphics.rectangle('fill',(x-1)*tilePixelsX,(y-1)*tilePixelsY+2,tilePixelsX-3,tilePixelsY-3)
