@@ -1745,7 +1745,7 @@ function draw_player_status_overlay()
 		love.graphics.printf(percentage,resolutionPixelsX*0.3+5,-2,resolutionPixelsX*0.05,'center')
 		love.graphics.setColor(255,255,255)
 		love.graphics.setFont(light_2xfont)
-		love.graphics.printf(percentage,resolutionPixelsX*0.3+4,-2,resolutionPixelsX*0.05,'center')
+		love.graphics.printf(percentage,resolutionPixelsX*0.3+4,-3,resolutionPixelsX*0.05,'center')
 end
 
 function draw_coordinates_overlay()
