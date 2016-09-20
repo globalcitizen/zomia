@@ -158,7 +158,7 @@ function love.load()
         sound:setVolume(1.5)
         keyboard_input_disabled = true
 	fade_factor.black=1
-        table.insert(tweens,flux.to(fade_factor,3,{black=0}):oncomplete(function()
+        table.insert(tweens,flux.to(fade_factor,2,{black=0}):oncomplete(function()
                                 keyboard_input_disabled = false
                                 end))
 
@@ -263,8 +263,8 @@ function love.draw()
 		draw_doors_visibilitylimited()
 		draw_stairs_visibilitylimited()
 		draw_character()
-		draw_npcs_visibilitylimited()
 		draw_poorvisibility_overlay()
+		draw_npcs_visibilitylimited()
 	else
 		draw_footprints()			-- frequent changes
 		draw_groundfeatures()			-- occasional changes
