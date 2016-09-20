@@ -5,6 +5,7 @@
     - Play downstairs noise at start
     - Fade in at start
     - Stairs remain visible on the map after being seen
+    - Draw NPC labels over fog of war
 
  * __2016-09-19__:
     - Fix bug where monsters can move to player's new location if a door is opened by the player
