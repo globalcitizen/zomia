@@ -8,6 +8,8 @@
     - Draw NPC labels over fog of war
     - Simplify NPC drawing code
     - Fix inter-map diagonal movement bug
+    - Correct status (health) display text offset
+    - Locate, download, process and integrate noises for swinging weapons (misses)
 
  * __2016-09-19__:
     - Fix bug where monsters can move to player's new location if a door is opened by the player

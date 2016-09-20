@@ -2039,6 +2039,8 @@ function attack(target,attacker)
 		logMessage(messageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. " for " .. attack_damage .. "!")
 	else
 		logMessage(notifyMessageColor,attacker_name .. " " .. attack_verb .. " " .. target_name .. " with " .. pronoun .. weapon.name .. ", but misses!)")
+		sounds.misses.swing:play()
+		sounds.misses.swing:setVolume(2)
 	end
 	
 	-- effects

@@ -1756,3 +1756,8 @@ http://creativecommons.org/licenses/by/3.0/
 'Cry' / silversatyr
 CC-BY-3.0 Attribution License
 http://creativecommons.org/licenses/by/3.0/
+
+'Free Whoosh Sound Pack' / qubodup
+Public Domain / CC-0 1.0 License
+http://creativecommons.org/publicdomain/zero/1.0/
+
