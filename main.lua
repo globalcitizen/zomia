@@ -736,30 +736,39 @@ function draw_npcs_visibilitylimited()
 			else
 				love.graphics.setColor(defaultNpcColor)
 			end
-			love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness,(l['y']-1)*tilePixelsY+characterSmallness,tilePixelsX-characterSmallness*2,tilePixelsY-characterSmallness*2)
+			-- first calculate the top-left and top-right of the tile
+			local base_x = (l['x']-1)*tilePixelsX		-- we use -1 because the first row is 1, not 0
+			local base_y = (l['y']-1)*tilePixelsY
+			if l.tween ~= nil and l.tween.x ~= nil then
+				base_x = base_x + l.tween.x		-- if the NPC is currently moving between cells
+			end
+			if l.tween ~= nil and l.tween.y ~= nil then
+				base_y = base_y + l.tween.y
+			end
+			love.graphics.rectangle('fill',base_x+characterSmallness,base_y+characterSmallness,tilePixelsX-characterSmallness*2,tilePixelsY-characterSmallness*2)
 			if npcs[i]['tail'] ~= nil then
-				love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness,(l['y']-1)*tilePixelsY+tilePixelsY-characterSmallness-2,-2,2)
-				love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+characterSmallness-2,(l['y']-1)*tilePixelsY+tilePixelsY-characterSmallness-4,1,2)
+				love.graphics.rectangle('fill',base_x+characterSmallness,base_y+tilePixelsY-characterSmallness-2,-2,2)
+				love.graphics.rectangle('fill',base_y+characterSmallness-2,base_y+tilePixelsY-characterSmallness-4,1,2)
 				love.graphics.setColor(0,0,0,255)
 				love.graphics.points({
-					(l['x']-1)*tilePixelsX+characterSmallness+2,
-					(l['y']-1)*tilePixelsY+characterSmallness+2,
-					(l['x']-1)*tilePixelsX+tilePixelsX-characterSmallness-3,
-					(l['y']-1)*tilePixelsY+characterSmallness+2,
+					(base_x+characterSmallness+2),
+					(base_y+characterSmallness+2),
+					(base_x+tilePixelsX-characterSmallness-3),
+					(base_y+characterSmallness+2),
 						    })
 			end
 		        love.graphics.setColor(npcLabelShadowColor)
 			-- NB. The following line is useful for debugging UTF-8 issues which Lua has in buckets
 			--print("name: " .. npcs[i]['name'] .. " (" .. npcs[i]['type'] .. ")")
 			love.graphics.setFont(light_font)
-       		         love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+7, (l['y']-1)*tilePixelsY+2)
+       		         love.graphics.print(npcs[i]['name'],base_x+math.floor(tilePixelsX/2)+7, base_y+2)
 			if npcs[i]['color'] ~= nil then
 				love.graphics.setColor(npcs[i]['color'])
 			else
 				love.graphics.setColor(defaultNpcLabelColor)
 			end
 			love.graphics.setFont(light_font)
-        	        love.graphics.print(npcs[i]['name'],(l['x']-1)*tilePixelsX+math.floor(tilePixelsX/2)+6, (l['y']-1)*tilePixelsY+1)
+        	        love.graphics.print(npcs[i]['name'],base_x+math.floor(tilePixelsX/2)+6, base_y+1)
 		end
 	end
 end
@@ -969,7 +978,7 @@ function moveCharacterRelatively(x,y)
 			world_location.x = world_location.x + 1
 			characterX=1
 			characterY=1
-		elseif newX > resolutionTilesY and newY < 1 then
+		elseif newX > resolutionTilesX and newY < 1 then
 			-- up right
 			world_location.y = world_location.y - 1
 			world_location.x = world_location.x + 1
@@ -1506,6 +1515,7 @@ function endTurn()
 						end
 					end
 					if blocked == false then
+						-- actually move the NPC
 						l.x=tryx
 						l.y=tryy
 						success=true
