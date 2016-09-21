@@ -2089,6 +2089,10 @@ function player_is_dead()
 	-- first, keep the sequence uninterrupted
 	keyboard_input_disabled=true
 
+	-- play death scream
+	sounds.deaths.male:play()
+	sounds.deaths.male:setVolume(2)
+
 	-- next, show the death message
 	death_messages = {
 				"You are overcome.",

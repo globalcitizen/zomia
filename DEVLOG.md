@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-21__:
+    - Download male death noises, integrate and process ouch and death noises
+
  * __2016-09-20__:
     - Default initial character placements at stairs
     - Play downstairs noise at start
@@ -10,6 +13,7 @@
     - Fix inter-map diagonal movement bug
     - Correct status (health) display text offset
     - Locate, download, process and integrate noises for swinging weapons (misses)
+    - Linecount 6419
 
  * __2016-09-19__:
     - Fix bug where monsters can move to player's new location if a door is opened by the player
@@ -22,8 +26,8 @@
     - Switch to double-size fonts for readability in response to user feedback
     - Downloaded more samples (mostly female death noises, some others)
     - Reset groundfeatures on map change
-    - Linecount 6351
     - Made v0.0.2 (Final ARRP) release (win32, OSX, .love)
+    - Linecount 6351
 
  * __2016-09-17__ (1 day remaining / 16 days used):
     - Make character health percentage display bar show depleted portions in darker red
