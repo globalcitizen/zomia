@@ -2016,6 +2016,9 @@ function attack(target,attacker)
 	-- if the receipient of damage is you, then...
 	if target_name == "you" then
 		messageColor=bloodMessageColor
+		-- play a sound
+		sounds.ouches.male:play()
+		sounds.ouches.male:setVolume(2)
 	-- if the receipient of damage is not you, then...
 	elseif target_name ~= "you" then
 		-- it's "the goblin"
