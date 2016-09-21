@@ -2,6 +2,8 @@
 
  * __2016-09-21__:
     - Download male death noises, integrate and process ouch and death noises
+    - Made v0.0.3 release (win32, OSX, .love)
+    - Linecount 6629
 
  * __2016-09-20__:
     - Default initial character placements at stairs
