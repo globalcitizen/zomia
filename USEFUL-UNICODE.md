@@ -2,6 +2,8 @@
 
 Right now these are just hand-picked examples that I thought others may find useful.
 
+Note that some characters look *very* different in different fonts, so you should ideally choose a font and display this file in it, or test the characters you wish to use in your target font before committing to selections.
+
 If you are viewing this on Github, check out the [raw version](https://raw.githubusercontent.com/globalcitizen/zomia/master/USEFUL-UNICODE.md) for a copy/pasteable format. [Contributions](https://github.com/globalcitizen/zomia/issues/new) and pull requests welcome.
 
 For a complete list of characters, see [the Unicode character charts](http://www.unicode.org/charts/).
