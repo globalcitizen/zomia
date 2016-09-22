@@ -8,7 +8,7 @@ If you are viewing this on Github, check out the [raw version](https://raw.githu
 
 For a complete list of characters, see [the Unicode character charts](http://www.unicode.org/charts/).
 
-Note that you will need a font that covers the right characters; some options are [noto-fonts](https://github.com/googlei18n/noto-fonts), and the [list of unicode fonts at unicode resources](http://unicode.org/resources/fonts.html).
+Note that you will need a font that covers the right characters; some options are [noto-fonts](https://github.com/googlei18n/noto-fonts) (especially unhinted __NotoSansSymbols-*.ttf__), and the [list of unicode fonts at unicode resources](http://unicode.org/resources/fonts.html).
 
 ## Items/Tiles
  * ❤ heart
@@ -125,4 +125,3 @@ Note that you will need a font that covers the right characters; some options ar
  * ᜈ nintendo-style carnivorous flower
  * ⌤ frowny monster
  * ⌭ top-down bipedal creature
-
