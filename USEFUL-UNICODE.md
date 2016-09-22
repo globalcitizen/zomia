@@ -1,4 +1,6 @@
-== Useful Unicode characters ==
+== Useful Unicode characters for Roguelikes ==
+
+If you are viewing this on Github, check out the [raw version](https://raw.githubusercontent.com/globalcitizen/zomia/master/USEFUL-UNICODE.md) for a copy/pasteable format. [Contributions](https://github.com/globalcitizen/zomia/issues/new) and pull requests welcome.
 
 ===Items/Tiles===
  * ❤ heart
@@ -15,31 +17,31 @@
  * ❄/⁂/⊛ snowflake or cold
  * ♫ musical item
  * ˑ/᛫/᠂/•/․/‧ pebble
- * ᚋ/Ϯ/ϯ/ʄ/ʇ/ʈ/ރ/ߪ/ተ/ᛶ /† dagger/sword/rapier
- * ʭ/ᆅ/ᆙ/ᆖ/ᆂ/ᝐ/≣ stairs/ladder
+ * ᚋ/Ϯ/ϯ/ʄ/ʇ/ʈ/ރ/ߪ/ተ/ᛶ /†/⌿/⍀ dagger/sword/rapier/burial-marker (cross)
+ * ʭ/ᆅ/ᆙ/ᆖ/ᆂ/ᝐ/≣/⌸ stairs/ladder
  * ʚ/ɷ/ώ/ϖ/ϐ/థ/ద/ధ/ౚ/ಥ/ದ/ಧ/ಹ/ ೃ/ ೖ/೨/ര/ඦ/༲/༳/༰/ᅌ/ᆼ/ᇰ/ወ/ዉ/ዐ/ዑ/ዕ/ዩ/ዾ/ፁ/ፆ/Ꭴ/Ꮄ/Ꮕ/Ꮡ/Ꮫ/ᜊ fruit
  * ࡔ/ȸ scissors
  * ࠍ/Ɂ/ʡ/ʢ/ˤ/ट/ॽ/౮/༢/ཌ/ཏ/ད/འ/၄/၃/၎/ა/Ꭾ/ᕈ/ᕋ/ᕊ/ᕍ/ᘢ/ᘣ/ᘨ ankh/sickle
  * ˀ/ˁ ear
  * ˠ/γ wishbone
- * ˬ/˯/ ̮/ ͜ /ν/ں/ࠈ/ࡖ/ப/౮/པ/ဗ/ၑ/ሀ/ሁ/ህ/ሆ/᎑/ᗜ/ᘢ/ᘨ/ᘮ/ᘴ/ᙀ/ᤙ cup/bowl/plate
- * ˰/ߘ/౧/೧/೧/ന/റ/ෆ/෴ /ྊ/ၐ/ၑ/ი/ო/ለ/ላ/ጠ/ጦ /᎔/ᗰ/ᗵ/ᗶ/ᘁ/ᙀ/ᙁ/ ᤸ/∇/∆/⊽/⌂/⌓/⌒ bump/spike/mound/tooth
+ * ˬ/˯/ ̮/ ͜ /ν/ں/ࠈ/ࡖ/ப/౮/པ/ဗ/ၑ/ሀ/ሁ/ህ/ሆ/᎑/ᗜ/ᘢ/ᘨ/ᘮ/ᘴ/ᙀ/ᤙ/⌴/⌵ cup/bowl/plate
+ * ˰/ߘ/౧/೧/೧/ന/റ/ෆ/෴ /ྊ/ၐ/ၑ/ი/ო/ለ/ላ/ጠ/ጦ /᎔/ᗰ/ᗵ/ᗶ/ᘁ/ᙀ/ᙁ/ ᤸ/∇/∆/⊽/⌂/⌓/⌒/⌢/⌣/⌳ bump/spike/mound/tooth
  *  ̧/ ̨/ ು / ြ / ျ / ှ  tails (combining)
  *  ͡/ࠂ/ࡁ/࿄/ᇫ helmet
- * Ϫ/ϫ/ϔ/ϓ/ϒ/Ͳ/ͳ/փ/ץ/צ/ש/ߠ/ौ /প/শ/ଶ/ൡ/ ൢ/ ൣ/༈/༲/ᆅ /ሦ/ሟ/ም/ቧ/ተ/ቸ/ቿ/ነ/ኑ/ኖ/ኘ/ኯ/ዩ/ደ/ጉ/ግ/ጐ/ጕ/ጘ/ጙ/ጝ/ጞ/ጨ/ጫ/ጬ/ጭ /ጮ /ፑ/ᎁ/ ᎃ /᎙/Ꭸ/ᖗ/ᖘ/ᗐ/ᗯ/ᘃ/ᘉ/ᘝ/ᘞ/ᘟ/ᘠ/ᘡ/ᚠ/ᚡ/ᚴ/ᚵ/ᚶ/ᛉ/ᛘ/ᛠ tree
- * π/П/п/ח/۝/۞۞  /ߛ  /༓ /Ⴟ /ሰ/ስ/በ /ዘ /ዠ /ᚘ /ᢂ /ᥰ /᪣ t/⊠ able/door/seat
+ * Ϫ/ϫ/ϔ/ϓ/ϒ/Ͳ/ͳ/փ/ץ/צ/ש/ߠ/ौ /প/শ/ଶ/ൡ/ ൢ/ ൣ/༈/༲/ᆅ /ሦ/ሟ/ም/ቧ/ተ/ቸ/ቿ/ነ/ኑ/ኖ/ኘ/ኯ/ዩ/ደ/ጉ/ግ/ጐ/ጕ/ጘ/ጙ/ጝ/ጞ/ጨ/ጫ/ጬ/ጭ /ጮ /ፑ/ᎁ/ ᎃ /᎙/Ꭸ/ᖗ/ᖘ/ᗐ/ᗯ/ᘃ/ᘉ/ᘝ/ᘞ/ᘟ/ᘠ/ᘡ/ᚠ/ᚡ/ᚴ/ᚵ/ᚶ/ᛉ/ᛘ/ᛠ/⍋ tree
+ * π/П/п/ח/۝/۞۞  /ߛ  /༓ /Ⴟ /ሰ/ስ/በ /ዘ /ዠ /ᚘ /ᢂ /ᥰ /᪣ t/⊠ a/⌺/⌻/⌼  table/door/seat
  * σ/િ/ ી/ઽ/ଖ/ଟ/ ୗ /ୠ/୭/ண /ഗ/ട/ഴ/ອ/༢/༣/༩/၇/᎕/᎖ whip
  * Ⴡ/ᖼ/ᖿ/ᝐ flail
  * ψ/ѱ/Ѱ/ሐ/ሓ/ሖ/ᏹ /ᛉ/ᛘ/ᛣ/ᛦ trident or candelebra
- * φ/Ϙ/ϙ/ቁ/ቂ/ቀ/ቄ/ቃ/ቅ/ቆ/ቇ/ቈ/ቊ/ቋ/ቌ/ቍ /ቘ/ቚ/ቛ/ቜ/ቝ/የ/ᛰ fan/mirror
+ * φ/Ϙ/ϙ/ቁ/ቂ/ቀ/ቄ/ቃ/ቅ/ቆ/ቇ/ቈ/ቊ/ቋ/ቌ/ቍ /ቘ/ቚ/ቛ/ቜ/ቝ/የ/ᛰ/⌽/⌾ fan/mirror
  * ϕ/ф/Փ/߉/ߐ/ࠒ/ࠓ/ཁ/ག/ཤ/ཥ/ཫ/ཀ/ቐ/ቑ/ቕ/ቖ/ቶ/ቸ/ቿ/ዟ/ᛮ/ᛳ  sign
  * ж/Ӂ/ӂ/Ӝ/ӝ/Ӿ/ӿ/ᚘ/ᚕ/ᚸ/ᚼ/ᛡ/ᛤ fire
- * Ѻ/ѻ/༓/࿃/Ꮎ/᳂/᳃/᳁ /ↀ  pill/pressure plate/button
+ * Ѻ/ѻ/༓/࿃/Ꮎ/᳂/᳃/᳁ /ↀ /⌾ pill/pressure plate/button
  * ༿ / ༾ / Ӿ / ӿ / ҂ / ሖ / ሐ  /ሓ /ᚘ/ᚸ/ᚼ/ᚾ/ᛀ/ᛅ/ᛝ sticks
  * ֍/֎ /യ/࿌/࿋/࿊/ ࿆/࿃/ዎ/ዏ /ዖ/የ/ፆ/᪥/᪠ /᯽ flower
  * ߃/߄/ߔ/ߓ/ߥ/ߧ/ߢ/ࡃ/ࡄ/न/९/ਵ/๛ /༖/ሥ /ሥ /ቂ/ቁ/ቄ/ቃ/ቅ/ቆ/ቇ/ቈ/ቊ/ቋ/ቌ/ቍ/ቜ/ቝ /ቴ/ቶ/ዊ/ዋ/ዌ/ው /᎘/ᖴ/ᖷ/ᖶ/ᖵ/ᚗ key
- * ࠏ/ߜ/ߡ/ᐁ/ᐃ/മ/ᚖ/ᛜ/៙/⌔ gem/stone/rock/diamond
- * ߷ /ஐ/ஜ/ణ/༜/༶/྿/࿏/჻/Ꮬ/᠅/᯽ /⁂ water foliage/lilypad/rocks
+ * ࠏ/ߜ/ߡ/ᐁ/ᐃ/മ/ᚖ/ᛜ/៙/⌔/⌬ gem/stone/rock/diamond
+ * ߷ /ஐ/ஜ/ణ/༜/༶/྿/࿏/჻/Ꮬ/᠅/᯽ /⁂/⌘  water foliage/lilypad/rocks
  * ࠂ/ࠃ/ࠓ/ᖰ/ᖳ/ᖱ/ᖲ/ᚹ hammer/axe/golf club/severed leg
  * ༨/ᚨ/ᚹ/ᛐ/ᛩ/ᝨ pick
  * ࠑ/ࠅ/ࠄ/ࠉ /༗/༰/ሥ /ሥ  leaf/palm leaf
@@ -54,25 +56,26 @@
  * එ/ඒ/࿂/ᳩ  bracelet
  * ෴  grass
  * ๛ /៚  shell
- * ༅/༄ /࿐ /࿑/࿓ /࿔/ᆻ/ᘞ/᠀/ᨐ/ᨓ /᯾/≈/≅/≊/≋/≌/⋍ wave or moving air
+ * ༅/༄ /࿐ /࿑/࿓ /࿔/ᆻ/ᘞ/᠀/ᨐ/ᨓ /᯾/≈/≅/≊/≋/≌/⋍/⌣/⌢ wave or moving air
  * ༈/།/༏/༐/༑/ ྇ torch
  * ༕/བ/ར/ཬ/࿈/ᐁ/ᐃ/ᐅ/ᐊ/ᚣ/ᚥ knife/tooth
  * ༼/༽/᯿ bow
- * ྿/࿇/࿃/࿕/࿖/࿗/࿘/፠/።/፣/፤/፥/፦/፧/፨/᎓/᛬/᠃/᠄/᎒/Ꭽ/ᐉ/ᐈ/ᐇ/ᐆ/ᐄ/ᐋ/ᐌ/ᐍ/ᐎ/ᐏ/ᐐ/ᐑ/ᐒ/ᐓ/ᐔ/ᐕ/ᐖ/ᐗ/ᐘ/ᐙ/ᐚ/ᐛ/ᐫ/ᐬ/ᐭ/ᐮ/ᐰ/ᐲ/ᐴ/ᐵ/ᐶ/ᐷ/ᐹ/ᐺ/ᐻ/ᐼ/ᐽ/ᐾ/ᐿ/ᑀ/ᑁ/ᑂ/ᑃ/ᑄ/ᑅ/ᑆ/ᑇ/ᑈ/ᑑ/ᑒ/ᑓ/ᑔ/ᑖ/ᑗ/ᑘ/ᙇ/ᙌ/ᙹ /ᛥ/ᛯ/᠁ /ᢆ /ᨁ/ ᨃ/ ᨋ /᯼ /᳀/᳁ /᳄ /※/⁜ magic markings
- * ࿉/࿃/࿁/࿀/ဓ/ဗ/ဝ/ၐ/ၑ/ᅌ/ᆼ/ዐ/ፀ/Ꮂ/Ꮻ/ᝪ/៙/០/៰/᠐/ ᤱ/᥆/ᦞ/ ᦲ/᧐/᮰/ ᯪ/ᯣ /ᯆ /᱀ /᱐/ᱛ/᳁/᳂/᳃/⊙/⊚  egg/eyeball
- * ࿅/Ꮖ/‡ sceptre/scroll
+ * ྿/࿇/࿃/࿕/࿖/࿗/࿘/፠/።/፣/፤/፥/፦/፧/፨/᎓/᛬/᠃/᠄/᎒/Ꭽ/ᐉ/ᐈ/ᐇ/ᐆ/ᐄ/ᐋ/ᐌ/ᐍ/ᐎ/ᐏ/ᐐ/ᐑ/ᐒ/ᐓ/ᐔ/ᐕ/ᐖ/ᐗ/ᐘ/ᐙ/ᐚ/ᐛ/ᐫ/ᐬ/ᐭ/ᐮ/ᐰ/ᐲ/ᐴ/ᐵ/ᐶ/ᐷ/ᐹ/ᐺ/ᐻ/ᐼ/ᐽ/ᐾ/ᐿ/ᑀ/ᑁ/ᑂ/ᑃ/ᑄ/ᑅ/ᑆ/ᑇ/ᑈ/ᑑ/ᑒ/ᑓ/ᑔ/ᑖ/ᑗ/ᑘ/ᙇ/ᙌ/ᙹ /ᛥ/ᛯ/᠁ /ᢆ /ᨁ/ ᨃ/ ᨋ /᯼ /᳀/᳁ /᳄ /※/⁜/⌯ magic markings
+ * ࿉/࿃/࿁/࿀/ဓ/ဗ/ဝ/ၐ/ၑ/ᅌ/ᆼ/ዐ/ፀ/Ꮂ/Ꮻ/ᝪ/៙/០/៰/᠐/ ᤱ/᥆/ᦞ/ ᦲ/᧐/᮰/ ᯪ/ᯣ /ᯆ /᱀ /᱐/ᱛ/᳁/᳂/᳃/⊙/⊚/⌾  egg/eyeball
+ * ࿅/Ꮖ/‡/⌶/⌷ sceptre/scroll
  * ࿄ bell
- * ᆷ/ፀ/∎/⊠/⊡ box/pressure plate/paving stone
+ * ᆷ/ፀ/∎/⊠/⊡/⌧ /⌷/⌸/⌺/⌻/⌼ box/pressure plate/paving stone
  * ወ/ው/Ꮗ /ᚑ/ↈ /ↀ /ↂ  gourd/glasses
  * ᎘/ᘢ ladel
  * Ꭳ/ᛍ potion
  * Ꮸ boxing gloves/button
  * ᖻ/ᖸ scythe
- * ᗝ/ᗞ/ᗟ/ᗠ/ᗡ/ᗺ/ᗷ/ᗸ/ᗹ bullet
- * ᗢ/ᗣ/ᗤ/ᗥ/ᗦ/ᗧ bomb/bullet
+ * ᗝ/ᗞ/ᗟ/ᗠ/ᗡ/ᗺ/ᗷ/ᗸ/ᗹ/⌦/⌫  bullet/shield
+ * ᗢ/ᗣ/ᗤ/ᗥ/ᗦ/ᗧ bomb/bullet/shield
+ * ⌢ shield
  * ᘲ/ᘱ/ᘰ/ᘳ severed or sleeping heads
  * ᚏ fence
- * ᚙ/≣ trapdoor
+ * ᚙ/≣/⌗/# grate/grill/trapdoor
  * ᛃ footprints
  * ᛍ lightbulb
  * ᛙ/ᛳ  pole
@@ -81,6 +84,12 @@
  * ᪭ ring
  * ⌂ house
  * ⌕ magnifying glass
+ * ⌛ hourglass
+ * ⌭ barrel/pipe/spinning thing
+ * ⌮ prism
+ * ⌲ paper plane
+ * ⌶ steel beam
+ * ⌸/⌹/⌺/⌻/⌼ filing cabinet/chest of drawers
 
 ===Monsters===
  * ♞/୩/ዅ/ዀ/ዂ/ዄ/ዃ horse or equine-like creature
@@ -106,3 +115,6 @@
  * ጱ/ጲ/ጴ/ጹ/ጺ/ጼ bipedal humanoids with tails
  * ᗾ/ᗽ/ᗿ/ᘀ butterfly/sack
  * ᜈ nintendo-style carnivorous flower
+ * ⌤ frowny monster
+ * ⌭ top-down bipedal creature
+
