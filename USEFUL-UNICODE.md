@@ -1,6 +1,12 @@
 # Useful Unicode characters for Roguelikes
 
+Right now these are just hand-picked examples that I thought others may find useful.
+
 If you are viewing this on Github, check out the [raw version](https://raw.githubusercontent.com/globalcitizen/zomia/master/USEFUL-UNICODE.md) for a copy/pasteable format. [Contributions](https://github.com/globalcitizen/zomia/issues/new) and pull requests welcome.
+
+For a complete list of characters, see [the Unicode character charts](http://www.unicode.org/charts/).
+
+Note that you will need a font that covers the right characters; some options are [noto-fonts](https://github.com/googlei18n/noto-fonts), and the [list of unicode fonts at unicode resources](http://unicode.org/resources/fonts.html).
 
 ## Items/Tiles
  * ❤ heart
