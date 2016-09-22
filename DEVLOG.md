@@ -1,5 +1,8 @@
 # Development log
 
+ * __2016-09-22__:
+    - Add list of useful unicode characters for later use in monster/item art
+
  * __2016-09-21__:
     - Download male death noises, integrate and process ouch and death noises
     - Made v0.0.3 release (win32, OSX, .love)
