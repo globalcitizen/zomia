@@ -1,7 +1,12 @@
 # Development log
 
+ * __2016-09-23__:
+    - Extend list of useful Unicode characters
+    - Implement [svg2love](https://github.com/globalcitizen/svg2love) to allow importing SVG vector graphics from [primitive](https://github.com/fogleman/primitive). This is now the hands down plan for a graphical style for the cut-scene/NPC/whatever other graphics may be required.
+
  * __2016-09-22__:
     - Add list of useful unicode characters for later use in monster/item art
+    - Discover interesting tool for graphics, [primitive](https://github.com/fogleman/primitive)
 
  * __2016-09-21__:
     - Download male death noises, integrate and process ouch and death noises
