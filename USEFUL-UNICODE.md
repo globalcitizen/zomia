@@ -1,4 +1,4 @@
-== Useful Unicode characters for Roguelikes ==
+==Useful Unicode characters for Roguelikes==
 
 If you are viewing this on Github, check out the [raw version](https://raw.githubusercontent.com/globalcitizen/zomia/master/USEFUL-UNICODE.md) for a copy/pasteable format. [Contributions](https://github.com/globalcitizen/zomia/issues/new) and pull requests welcome.
 
