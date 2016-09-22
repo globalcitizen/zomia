@@ -1,8 +1,8 @@
-==Useful Unicode characters for Roguelikes==
+# Useful Unicode characters for Roguelikes
 
 If you are viewing this on Github, check out the [raw version](https://raw.githubusercontent.com/globalcitizen/zomia/master/USEFUL-UNICODE.md) for a copy/pasteable format. [Contributions](https://github.com/globalcitizen/zomia/issues/new) and pull requests welcome.
 
-===Items/Tiles===
+## Items/Tiles
  * ❤ heart
  * ✓ tick
  * ˟/྾/ᚷ/X/x/᛭/ᝣ/ᳵ  cross
@@ -91,7 +91,7 @@ If you are viewing this on Github, check out the [raw version](https://raw.githu
  * ⌶ steel beam
  * ⌸/⌹/⌺/⌻/⌼ filing cabinet/chest of drawers
 
-===Monsters===
+## Monsters
  * ♞/୩/ዅ/ዀ/ዂ/ዄ/ዃ horse or equine-like creature
  * ς/§/˷/Ϟ/ϟ/Ϛ/ϛ/ϱ/Ҩ/ҩ/Ԇ/ԇ/Ԅ/ԅ/Լ/Ժ/շ/չ/ջ/ן/פ/ک/ڪ/ګ/ޱ /߆/ࡂ/ࡘ/ऽ/ઽ/૭/ଌ/ୡ/உ/ల/ఽ/౨/౽/౾/ಇ/ಌ/ಒ/ಓ/ಖ/ಬ/೩/೭/ ೢ/೭/ട/ള/ശ/ ൂ / ൄ /ർ/ൽ/ൾ/උ/ඞ/ຂ/ຊ/ທ/ຣ/ວ/ຮ/ໆ/Ⴧ /ჳ/ჴ/ነ/ፄ/ᔓ/ᔐ/ᔑ/ᔕ/ᝐ/ៜ snake
  * ¤ currency sign
