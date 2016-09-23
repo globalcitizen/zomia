@@ -5,7 +5,6 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 ## News
 
 ### September 2016
-* Working on importing SVG graphics. Here is a teaser of a monster status image: [!Goblin](http://oi66.tinypic.com/124verq.jpg)
 * __2016-09-21__ / __v0.0.3 released__: Bug fixes, additional sound effects, fade-in effect. [Get it over here](https://github.com/globalcitizen/zomia/releases/tag/v0.0.3).
 * __2016-09-18__ / __v0.0.2 released__: Hooray! This is a the final early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). [Get it over here](https://github.com/globalcitizen/zomia/releases/tag/v0.0.2).
 * __2016-09-17__ / __v0.0.1 released__: Hooray! This is a very early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). Get it on [the releases page](https://github.com/globalcitizen/zomia/releases).
