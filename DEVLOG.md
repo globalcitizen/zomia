@@ -1,7 +1,7 @@
 # Development log
 
  * __2016-09-27__:
-    - Finished porting SVG to Love converter to Lua.
+    - Finished porting SVG to Love converter to Lua library, [svglover](https://github.com/globalcitizen/svglover).
 
  * __2016-09-26__:
     - Begin porting SVG to Love converter to Lua library.
