@@ -1,5 +1,18 @@
 # Development log
 
+ * __2016-09-27__:
+    - Finished porting SVG to Love converter to Lua.
+
+ * __2016-09-26__:
+    - Begin porting SVG to Love converter to Lua library.
+    - Uncovered lots of potentially useful images.
+
+ * __2016-09-25__:
+    - Got drunk.
+
+ * __2016-09-24__:
+    - Got drunk.
+
  * __2016-09-23__:
     - Extend list of useful Unicode characters
     - Implement [svg2love](https://github.com/globalcitizen/svg2love) to allow importing SVG vector graphics from [primitive](https://github.com/fogleman/primitive). This is now the hands down plan for a graphical style for the cut-scene/NPC/whatever other graphics may be required.
