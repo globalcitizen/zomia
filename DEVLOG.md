@@ -2,12 +2,12 @@
 
  * __2016-09-27__:
     - Finished porting SVG to Love converter to Lua library, [svglover](https://github.com/globalcitizen/svglover).
-    - Further research ([https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7 translation])
+    - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
 
  * __2016-09-26__:
     - Begin porting SVG to Love converter to Lua library.
     - Uncovered lots of potentially useful images.
-    - Further research ([https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7 translation])
+    - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
 
  * __2016-09-25__:
     - Got drunk.
