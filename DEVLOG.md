@@ -1,5 +1,9 @@
 # Development log
 
+ * __2016-09-28__:
+    - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
+    - Got drunk.
+
  * __2016-09-27__:
     - Finished porting SVG to Love converter to Lua library, [svglover](https://github.com/globalcitizen/svglover).
     - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
