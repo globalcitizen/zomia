@@ -13,3 +13,6 @@
 [submodule "libs/flux"]
 	path = libs/flux
 	url = https://github.com/rxi/flux.git
+[submodule "libs/svglover"]
+	path = libs/svglover
+	url = git@github.com:globalcitizen/svglover.git
