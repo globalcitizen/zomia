@@ -55,6 +55,11 @@ logMessages = {}
 centralMessages = {}
 modal_dialog = ''
 modal_data = {}
+npcs_overlay_start_x = 30
+npcs_overlay_start_y = 200
+npcs_overlay_row_height = 110
+npcs_overlay_width = 80
+npcs_overlay_height = 90
 
 -- colors
 modalSelectedColor = {255,0,0,255}
@@ -70,6 +75,7 @@ waterMessageColor={50,50,195}
 rockColor={0,0,0}
 bloodColor={255,0,0,100}
 bloodMessageColor={bloodColor[1],bloodColor[2],bloodColor[3],255}
+npcsOverlayColor = {40,40,40,255}
 groundColor={25,25,25}
 waterColor={0,10,95}
 treeColor={80,185,50}
@@ -1737,18 +1743,22 @@ function draw_areaname_overlay()
 end
 
 function draw_player_status_overlay()
-		percentage = player.health/player.max_health
+		draw_health_bar(resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY,player.health,player.max_health)
+end
+
+function draw_health_bar(start_x,start_y,width,height,current_value,max_value)
+		percentage = current_value/max_value
 		love.graphics.setColor(unhealthyColor)
-		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05,tilePixelsY)
+		love.graphics.rectangle('fill',start_x,start_y,width,height)
 		love.graphics.setColor(healthyColor)
-		love.graphics.rectangle('fill',resolutionPixelsX*0.3,2,resolutionPixelsX*0.05*percentage,tilePixelsY)
+		love.graphics.rectangle('fill',start_x,start_y,width*percentage,height)
 		percentage = (percentage * 100) .. '%'
 		love.graphics.setColor(0,0,0,100)
 		love.graphics.setFont(light_2xfont)
-		love.graphics.printf(percentage,resolutionPixelsX*0.3+5,-2,resolutionPixelsX*0.05,'center')
+		love.graphics.printf(percentage,start_x+5,start_y-4,width,'center')
 		love.graphics.setColor(255,255,255)
 		love.graphics.setFont(light_2xfont)
-		love.graphics.printf(percentage,resolutionPixelsX*0.3+4,-3,resolutionPixelsX*0.05,'center')
+		love.graphics.printf(percentage,start_x+4,start_y-5,width,'center')
 end
 
 function draw_coordinates_overlay()
@@ -1778,7 +1788,7 @@ function update_npcs_overlay()
                 if found==true then
 			if npcs[i]['image'] ~= nil then
 				-- we have an image to display
-				svglover_display(npcs[i]['image'],30,200+(offset*110),80,90,true,{40,40,40,255})
+				svglover_display(npcs[i]['image'],npcs_overlay_start_x,npcs_overlay_start_y+(offset*npcs_overlay_row_height),npcs_overlay_width,npcs_overlay_height,true,npcsOverlayColor)
 				offset = offset + 1
 			end
 		end
