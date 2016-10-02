@@ -7,6 +7,8 @@
     - Update to svglover-1.0.3
     - Add compressed SVG loading
     - Randomize NPC image selection
+    - Recreate some images for better background integration
+    - Move player health bar to reusable function
 
  * __2016-09-28 - 2016-10-02__:
     - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
