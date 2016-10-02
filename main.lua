@@ -299,6 +299,7 @@ function love.draw()
 	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
         svglover_draw()
+	draw_npcs_overlay()
 	
 	-- now fade screen if required
 	if fade_factor.black ~= 0 then
@@ -1752,7 +1753,7 @@ function draw_health_bar(start_x,start_y,width,height,current_value,max_value)
 		love.graphics.rectangle('fill',start_x,start_y,width,height)
 		love.graphics.setColor(healthyColor)
 		love.graphics.rectangle('fill',start_x,start_y,width*percentage,height)
-		percentage = (percentage * 100) .. '%'
+		percentage = math.floor(percentage * 100) .. '%'
 		love.graphics.setColor(0,0,0,100)
 		love.graphics.setFont(light_2xfont)
 		love.graphics.printf(percentage,start_x+5,start_y-4,width,'center')
@@ -1765,6 +1766,34 @@ function draw_coordinates_overlay()
 		love.graphics.setColor(105,105,105)
 		love.graphics.setFont(heavy_2xfont)
 		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y .. ' (' .. love.timer.getFPS() .. 'fps)',(resolutionTilesX-20)*tilePixelsX,-2)
+end
+
+function draw_npcs_overlay()
+	-- the SVGs have already been drawn, so now we just add text and health bars
+        --  - handle multiple npcs
+        local offset = 0
+        -- first we must determine visibility
+        for i=1,#npcs,1 do
+                local l=npcs[i]['location']
+
+                -- check if it's in the list of visible tiles
+                local found=false
+                for j=1,#visibleTiles,1 do
+                        local tile = visibleTiles[j]
+                        if tile.x == l['x'] and tile.y == l['y'] then
+                                found = true
+                        end
+                end
+                -- yes, it's visible
+                if found==true then
+			x = npcs_overlay_start_x
+			y = npcs_overlay_start_y+(offset*npcs_overlay_row_height)
+			w = npcs_overlay_width
+			h = npcs_overlay_height
+			draw_health_bar(x,y+h-tilePixelsY,w,tilePixelsY,npcs[i].health,npcs[i].max_health)
+			offset = offset + 1
+		end
+	end
 end
 
 function update_npcs_overlay()
