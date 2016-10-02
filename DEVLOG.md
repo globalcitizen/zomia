@@ -1,8 +1,12 @@
 # Development log
 
- * __2016-09-28__:
+ * __2016-10-02__:
+    - Bring in new [svglover](https://github.com/globalcitizen/svglover) library
+    - Add goblin and mouse images
+    - Make NPC icons get drawn while visible
+
+ * __2016-09-28 - 2016-10-02__:
     - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
-    - Got drunk.
 
  * __2016-09-27__:
     - Finished porting SVG to Love converter to Lua library, [svglover](https://github.com/globalcitizen/svglover).
@@ -12,12 +16,6 @@
     - Begin porting SVG to Love converter to Lua library.
     - Uncovered lots of potentially useful images.
     - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
-
- * __2016-09-25__:
-    - Got drunk.
-
- * __2016-09-24__:
-    - Got drunk.
 
  * __2016-09-23__:
     - Extend list of useful Unicode characters
