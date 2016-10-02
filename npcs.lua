@@ -18,7 +18,7 @@ function add_npcs(structure,npc_type,npc_qty)
 		end
 		-- assign a random image if appropriate
 		if new_npc.images ~= nil then
-			new_npc['image'] = svglover_load(new_npc['images'][1])
+			new_npc['image'] = svglover_load(new_npc['images'][rng:random(1,#new_npc['images'])])
 		end
 		table.insert(structure,new_npc)
 	end
