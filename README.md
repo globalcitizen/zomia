@@ -5,6 +5,7 @@ Roguelike game set in ancient Yunnan: a wild land where the longest and most pow
 ## News
 
 ### September 2016
+* __2016-10-02__ / __v0.0.4 released__: Graphical monster/NPC popups, health bars, bugfixes. [Get it over here](https://github.com/globalcitizen/zomia/releases/tag/v0.0.4).
 * __2016-09-21__ / __v0.0.3 released__: Bug fixes, additional sound effects, fade-in effect. [Get it over here](https://github.com/globalcitizen/zomia/releases/tag/v0.0.3).
 * __2016-09-18__ / __v0.0.2 released__: Hooray! This is a the final early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). [Get it over here](https://github.com/globalcitizen/zomia/releases/tag/v0.0.2).
 * __2016-09-17__ / __v0.0.1 released__: Hooray! This is a very early version for the [2016 Annual Roguelike Release Party](http://www.roguebasin.com/index.php?title=2016_ARRP). Get it on [the releases page](https://github.com/globalcitizen/zomia/releases).
@@ -68,7 +69,7 @@ cd sounds
 
 ![Dungeon](https://raw.githubusercontent.com/globalcitizen/zomia/master/screenshots/screenshot-dungeon.jpg)
 
-Here is a typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. Doors can be opened and closed.
+Here is an older but roughly typical view of a current dungeon level. The whole dungeon is drawn from scratch, no sprites are used. The display is full screen: on my machine that works out to 90 x 56 tiles, which is 1440 x 900 pixels at maximum fullscreen resolution divided by a 16 x 16 pixel tilesize. Doors can be opened and closed.
 
 Note that the dungeon generation is currently under heavy development - I am porting the algorithms from [Brogue](https://sites.google.com/site/broguegame/) as best I can, so hopefully things will be prettier/more walkable/interesting soon.
 
