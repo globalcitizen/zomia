@@ -714,8 +714,10 @@ function draw_npcs_visibilitylimited()
 		local l=npcs[i]['location']
 
 		-- DEBUG/TEST AID: cheat and display a dot on each unseen NPC
+		--[[
 		love.graphics.setColor(255,255,255,255)
 		love.graphics.rectangle('fill',(l['x']-1)*tilePixelsX+(characterSmallness+3),(l['y']-1)*tilePixelsY+(characterSmallness+3),tilePixelsX-(characterSmallness+3)*2,tilePixelsY-(characterSmallness+3)*2)
+		--]]
 
 		-- check if it's in the list of visible tiles
 		local found=false
