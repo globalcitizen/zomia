@@ -6,6 +6,7 @@
     - Make NPC icons get drawn while visible
     - Update to svglover-1.0.3
     - Add compressed SVG loading
+    - Randomize NPC image selection
 
  * __2016-09-28 - 2016-10-02__:
     - Further research ([translation](https://en.wikisource.org/wiki/Translation:Manshu/Chapter_7))
