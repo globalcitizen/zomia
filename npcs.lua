@@ -12,8 +12,13 @@ function add_npcs(structure,npc_type,npc_qty)
 		local new_npc = {}
 		new_npc.type=npc_type
 		setmetatable(new_npc,{__index = npc_types[npc_type]})
+		-- run setup function if provided
 		if new_npc.setup ~= nil then
 			new_npc:setup(new_npc)
+		end
+		-- assign a random image if appropriate
+		if new_npc.images ~= nil then
+			new_npc['image'] = svglover_load(new_npc['images'][1])
 		end
 		table.insert(structure,new_npc)
 	end
