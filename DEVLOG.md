@@ -2,7 +2,7 @@
 
  * __2016-10-02__:
     - Bring in new [svglover](https://github.com/globalcitizen/svglover) library
-    - Add goblin and mouse images
+    - Add goblin, mouse and bear images
     - Make NPC icons get drawn while visible
     - Update to svglover-1.0.3
     - Add compressed SVG loading
