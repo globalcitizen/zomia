@@ -38,6 +38,15 @@ npc_types['bear'] = {
                                                 }
                                         }
                         },
+			images={
+				"npcs/bear/1.svg.gz",
+				"npcs/bear/2.svg.gz",
+				"npcs/bear/3.svg.gz",
+				"npcs/bear/4.svg.gz",
+				"npcs/bear/5.svg.gz",
+				"npcs/bear/6.svg.gz",
+				"npcs/bear/7.svg.gz"
+			},
 			sounds={
 				attack=love.audio.newSource({
 								"npcs/bear/bear-growl-1.mp3",
