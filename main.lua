@@ -292,6 +292,7 @@ function love.draw()
 	draw_coordinates_overlay()
 	--draw_areaname_overlay()	-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
 	draw_depth_overlay()		-- dungeon levels are unnamed (re-enable after 2016 ARRP release)
+        svglover_draw()
 	
 	-- now fade screen if required
 	if fade_factor.black ~= 0 then
@@ -305,6 +306,7 @@ end
 function love.update(dt)
 	shack:update(dt)
 	flux.update(dt)
+	update_npcs_overlay()
 end
 
 function draw_fade()
@@ -1753,6 +1755,34 @@ function draw_coordinates_overlay()
 		love.graphics.setColor(105,105,105)
 		love.graphics.setFont(heavy_2xfont)
 		love.graphics.print(characterX .. '/' .. characterY .. ' @ ' .. world_location.z .. '/' .. world_location.x .. '/' .. world_location.y .. ' (' .. love.timer.getFPS() .. 'fps)',(resolutionTilesX-20)*tilePixelsX,-2)
+end
+
+function update_npcs_overlay()
+	-- reset
+	svglover_onscreen_svgs = {}
+	-- handle multiple npcs
+	local offset = 0
+	-- first we must determine visibility
+        for i=1,#npcs,1 do
+                local l=npcs[i]['location']
+
+                -- check if it's in the list of visible tiles
+                local found=false
+                for j=1,#visibleTiles,1 do
+                        local tile = visibleTiles[j]
+                        if tile.x == l['x'] and tile.y == l['y'] then
+                                found = true
+                        end
+                end
+                -- yes, it's visible
+                if found==true then
+			if npcs[i]['image'] ~= nil then
+				-- we have an image to display
+				svglover_display(npcs[i]['image'],30,200+(offset*110),80,90,true,{40,40,40,255})
+				offset = offset + 1
+			end
+		end
+	end
 end
 
 function draw_depth_overlay()
