@@ -26,6 +26,18 @@ npc_types['dog'] = {
                                			}
                 			}
              		},
+			images={
+				"npcs/dog/1.svg.gz",
+				"npcs/dog/2.svg.gz",
+				"npcs/dog/3.svg.gz",
+				"npcs/dog/4.svg.gz",
+				"npcs/dog/5.svg.gz",
+				"npcs/dog/6.svg.gz",
+				"npcs/dog/7.svg.gz",
+				"npcs/dog/8.svg.gz",
+				"npcs/dog/9.svg.gz",
+				"npcs/dog/10.svg.gz"
+			},
 			sounds={
 				attack=love.audio.newSource({
 									"npcs/dog/dog-bark-1.mp3",
