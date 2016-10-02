@@ -4,6 +4,7 @@ astray=require 'libs/astray/astray'
 require 'libs/slam/slam'
 shack=require 'libs/shack/shack'
 flux=require 'libs/flux/flux'
+require 'libs/svglover/svglover'
 tweens={}
 
 -- game portions
