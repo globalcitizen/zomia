@@ -28,7 +28,7 @@ npc_types['mouse'] = {
                                         }
                         },
 			images={
-				"npcs/mouse/1.svg"
+				"npcs/mouse/1.svg.gz"
 			},
 			sounds={
 				attack=love.audio.newSource({
