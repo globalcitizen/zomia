@@ -13,15 +13,15 @@ npc_types['goblin'] = {
                                         }
                         },
 			images={
-				"npcs/goblin/1.svg",
-				"npcs/goblin/2.svg",
-				"npcs/goblin/3.svg",
-				"npcs/goblin/4.svg",
-				"npcs/goblin/5.svg",
-				"npcs/goblin/6.svg",
-				"npcs/goblin/7.svg",
-				"npcs/goblin/8.svg",
-				"npcs/goblin/9.svg"
+				"npcs/goblin/1.svg.gz",
+				"npcs/goblin/2.svg.gz",
+				"npcs/goblin/3.svg.gz",
+				"npcs/goblin/4.svg.gz",
+				"npcs/goblin/5.svg.gz",
+				"npcs/goblin/6.svg.gz",
+				"npcs/goblin/7.svg.gz",
+				"npcs/goblin/8.svg.gz",
+				"npcs/goblin/9.svg.gz"
 			},
                         weapons={
                                         {
