@@ -4,7 +4,7 @@
     - Bring in new [svglover](https://github.com/globalcitizen/svglover) library
     - Add goblin, mouse, bear and dog images
     - Make NPC icons get drawn while visible
-    - Update to svglover-1.0.3
+    - Update to svglover-1.0.4
     - Add compressed SVG loading
     - Randomize NPC image selection
     - Recreate some images for better background integration
