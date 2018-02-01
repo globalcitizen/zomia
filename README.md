@@ -34,6 +34,8 @@ With the love file releases, on unix-likes (including OSX), you can execute this
 love .
 ```
 
+Note that love relies on libsdl2, and libsdl2 can be compiled without OpenGL support. Love requires that your libsdl2 has OpenGL support.
+
 ### From source (recommended for masochists, puritans and developers only)
 
 Zomia relies on quite a few libraries. They have all been placed in this repository as `git submodule` entries, so to get the whole thing working all you have to do is:
